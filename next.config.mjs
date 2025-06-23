@@ -20,48 +20,11 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   distDir: 'dist',
-  experimental: {
-    optimizeCss: true,
-  },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
-    
-    // Garantir que optimization existe antes de modificar
-    if (!config.optimization) {
-      config.optimization = {};
-    }
-    
-    if (!config.optimization.splitChunks) {
-      config.optimization.splitChunks = {};
-    }
-    
-    if (!config.optimization.splitChunks.cacheGroups) {
-      config.optimization.splitChunks.cacheGroups = {};
-    }
-    
-    // Otimizar CSS em produção
-    if (process.env.NODE_ENV === 'production') {
-      config.optimization.splitChunks.cacheGroups.styles = {
-        name: 'styles',
-        test: /\.(css|scss)$/,
-        chunks: 'all',
-        enforce: true,
-      };
-    }
-    
-    return config;
-  },
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
 }
 
 export default nextConfig

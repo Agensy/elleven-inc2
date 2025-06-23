@@ -93,6 +93,57 @@ export const mediaCatalog: EmpreendimentoMedia = {
       description: "Vídeo da fachada do empreendimento",
     },
   ],
+  obsidian: [
+    {
+      name: "BACKGROUND OBSIDIAN",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/FUNDO.png",
+      type: "image",
+      category: "background",
+      description: "Imagem de fundo principal do empreendimento Obsidian",
+    },
+    {
+      name: "LOGO OBSIDIAN",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/LOGO_OBSIDIAN.png",
+      type: "image",
+      category: "logo",
+      description: "Logo oficial do empreendimento Obsidian",
+    },
+    {
+      name: "FACHADA 01",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/fachada-001-scaled.png",
+      type: "image",
+      category: "fachada",
+      description: "Primeira vista da fachada do Obsidian",
+    },
+    {
+      name: "FACHADA 02",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/fachada-002-scaled.png",
+      type: "image",
+      category: "fachada",
+      description: "Segunda vista da fachada do Obsidian",
+    },
+    {
+      name: "FACHADA 03",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/fachada-003-scaled.png",
+      type: "image",
+      category: "fachada",
+      description: "Terceira vista da fachada do Obsidian",
+    },
+    {
+      name: "FACHADA 04",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/fachada-004-scaled.png",
+      type: "image",
+      category: "fachada",
+      description: "Quarta vista da fachada do Obsidian",
+    },
+    {
+      name: "VINHETA OBSIDIAN",
+      url: "https://agensya.com.br/wp-content/uploads/2025/06/VINHETA-OBSIDIAN.mp4",
+      type: "video",
+      category: "video-promocional",
+      description: "Vinheta promocional do Obsidian",
+    },
+  ],
 }
 
 // Funções utilitárias para acessar as mídias
@@ -122,3 +173,6 @@ export const getAllVideos = (empreendimento: string): MediaItem[] => {
 // const jadeImages = getAllImages('jade');
 // const jadeFachadas = getMediaByCategory('jade', 'fachada');
 // const jadeVideos = getAllVideos('jade');
+const obsidianImages = getAllImages("obsidian")
+const obsidianFachadas = getMediaByCategory("obsidian", "fachada")
+const obsidianVideos = getAllVideos("obsidian")

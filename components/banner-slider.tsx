@@ -2,32 +2,15 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import {
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
-  MapPin,
-  Home,
-  Dumbbell,
-  Users,
-  Sparkles,
-  Smartphone,
-  Shield,
-  Building,
-  Coffee,
-} from "lucide-react"
+import { ChevronLeft, ChevronRight, ArrowRight, MapPin, Home, Dumbbell, Sparkles, Coffee } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { buscarEmpreendimentosDestaque } from "@/lib/data/empreendimentos"
-import { getMediaByCategory, getAllImages } from "@/lib/data/media-catalog"
+import { getMediaByCategory } from "@/lib/data/media-catalog"
 
 // =============================================================================
 // BANNER SLIDER - SEÇÃO 3 (APÓS HERO)
 // Slider de empreendimentos com dados dinâmicos
-// =============================================================================
-
-// =============================================================================
-// DADOS DOS BANNERS
 // =============================================================================
 
 // Helper para mapear slugs para suas páginas específicas
@@ -69,18 +52,14 @@ function getEmpreendimentoTextHoverStyle(slug: string | null): string {
   return textHoverStyles[slug] || "hover:opacity-80"
 }
 
-// =============================================================================
-// DADOS DOS BANNERS
-// =============================================================================
-
 // Banners placeholder para quando não há empreendimentos
 const bannersPlaceholder = [
   {
     id: 1,
     titulo: "Em Breve",
-    slug: null, // Placeholder não tem slug
+    slug: null,
     subtitulo: "Novos Lançamentos",
-    slogan: "Excelência em Construção", // ← HEADLINE PRINCIPAL
+    slogan: "Excelência em Construção",
     localizacao: "São Paulo, SP",
     status: "Aguarde",
     descricao: "Empreendimentos exclusivos em desenvolvimento. Cadastre-se para ser o primeiro a saber.",
@@ -92,84 +71,16 @@ const bannersPlaceholder = [
     destaque: "EM BREVE",
     destaqueInfo: "Novidades",
     diferenciais: ["Projetos exclusivos", "Localização privilegiada"],
-    amenidades: [
-      { icon: Building, label: "Projetos", info: "Exclusivos" },
-      { icon: Shield, label: "Qualidade", info: "Premium" },
-      { icon: Sparkles, label: "Inovação", info: "Design" },
-      { icon: Users, label: "Atendimento", info: "VIP" },
-    ],
-    localizacaoDetalhes: [
-      { nome: "Centro", distancia: "Próximo" },
-      { nome: "Transporte", distancia: "Acessível" },
-    ],
     identidadeVisual: {
       logo: null,
       corPrimaria: "#D4AF37",
       imagemBackground: "/placeholder.svg",
     },
   },
-  {
-    id: 2,
-    titulo: "Cadastre-se",
-    slug: null, // Placeholder não tem slug
-    subtitulo: "Fique por Dentro",
-    slogan: "Oportunidades Exclusivas", // ← HEADLINE PRINCIPAL
-    localizacao: "São Paulo, SP",
-    status: "Newsletter",
-    descricao: "Seja o primeiro a conhecer nossos próximos lançamentos e oportunidades especiais.",
-    preco: "Condições especiais",
-    entrega: "Notificações",
-    imagem: "/placeholder.svg",
-    imagemDestaque: "/placeholder.svg",
-    video: false,
-    destaque: "CADASTRE-SE",
-    destaqueInfo: "Newsletter",
-    diferenciais: ["Acesso antecipado", "Condições exclusivas"],
-    amenidades: [
-      { icon: Smartphone, label: "Digital", info: "Moderno" },
-      { icon: Users, label: "Exclusivo", info: "VIP" },
-      { icon: Building, label: "Portfólio", info: "Variado" },
-      { icon: Shield, label: "Confiança", info: "Total" },
-    ],
-    localizacaoDetalhes: [
-      { nome: "Toda SP", distancia: "Cobertura" },
-      { nome: "Oportunidades", distancia: "Sempre" },
-    ],
-  },
-  {
-    id: 3,
-    titulo: "Qualidade",
-    slug: null, // Placeholder não tem slug
-    subtitulo: "Nossa Marca",
-    slogan: "Tradição e Inovação", // ← HEADLINE PRINCIPAL
-    localizacao: "São Paulo, SP",
-    status: "Sempre",
-    descricao: "Anos de experiência construindo sonhos com qualidade, inovação e responsabilidade.",
-    preco: "Valor justo sempre",
-    entrega: "No prazo",
-    imagem: "/placeholder.svg",
-    imagemDestaque: "/placeholder.svg",
-    video: false,
-    destaque: "QUALIDADE",
-    destaqueInfo: "Tradição",
-    diferenciais: ["Experiência comprovada", "Entrega no prazo"],
-    amenidades: [
-      { icon: Shield, label: "Garantia", info: "Total" },
-      { icon: Building, label: "Experiência", info: "Anos" },
-      { icon: Users, label: "Equipe", info: "Expert" },
-      { icon: Sparkles, label: "Resultados", info: "Excelentes" },
-    ],
-    localizacaoDetalhes: [
-      { nome: "Atendimento", distancia: "24/7" },
-      { nome: "Suporte", distancia: "Sempre" },
-    ],
-  },
 ]
 
 // Converter empreendimentos do sistema para formato de banner
 function empreendimentoParaBanner(emp: any) {
-  // Buscar imagens do catálogo se disponível
-  const mediaImages = getAllImages(emp.slug || emp.nome.toLowerCase())
   const backgroundImage = getMediaByCategory(emp.slug || emp.nome.toLowerCase(), "background")[0]
   const fachadaImage = getMediaByCategory(emp.slug || emp.nome.toLowerCase(), "fachada")[0]
 
@@ -184,7 +95,6 @@ function empreendimentoParaBanner(emp: any) {
     descricao: emp.descricao,
     preco: emp.precoFormatado,
     entrega: emp.entrega,
-    // Usar fachada do catálogo se disponível, senão usar a imagem original
     imagem: fachadaImage?.url || emp.imagemDestaque || emp.imagem,
     imagemDestaque: fachadaImage?.url || emp.imagem,
     video: !!emp.video,
@@ -193,22 +103,8 @@ function empreendimentoParaBanner(emp: any) {
     diferenciais: emp.diferenciais?.slice(0, 3) || ["Projeto exclusivo", "Localização premium"],
     identidadeVisual: {
       ...emp.identidadeVisual,
-      // Usar background do catálogo se disponível
       imagemBackground: backgroundImage?.url || emp.identidadeVisual?.imagemBackground,
     },
-    amenidades: [
-      { icon: Building, label: "Tipo", info: emp.tipo },
-      { icon: Home, label: "Área", info: emp.area || `${emp.quartos}Q` },
-      { icon: MapPin, label: "Local", info: emp.bairro },
-      { icon: Shield, label: "Status", info: emp.status },
-    ],
-    localizacaoDetalhes: emp.pontos_interesse?.slice(0, 2)?.map((p: any) => ({
-      nome: p.nome,
-      distancia: p.distancia,
-    })) || [
-      { nome: "Centro", distancia: "Próximo" },
-      { nome: "Transporte", distancia: "Acessível" },
-    ],
   }
 }
 
@@ -217,58 +113,63 @@ const empreendimentosDestaque = buscarEmpreendimentosDestaque()
 const banners =
   empreendimentosDestaque.length > 0 ? empreendimentosDestaque.map(empreendimentoParaBanner) : bannersPlaceholder
 
-// =============================================================================
-// COMPONENTE PRINCIPAL
-// =============================================================================
-
 export default function BannerSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false) // Iniciar como false
   const [direction, setDirection] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
 
-  // Mount effect
+  // Mount effect - executar apenas uma vez
   useEffect(() => {
     setIsMounted(true)
+    // Pequeno delay para garantir montagem completa
+    const timer = setTimeout(() => {
+      setIsAutoPlaying(true)
+    }, 1000)
+
+    return () => clearTimeout(timer)
   }, [])
 
-  // Auto-play otimizado
+  // Auto-play effect - só executar após montagem
   useEffect(() => {
-    if (!isAutoPlaying || !isMounted) return
+    if (!isAutoPlaying || !isMounted || banners.length <= 1) return
 
     const interval = setInterval(() => {
       setDirection(1)
       setCurrentSlide((prev) => (prev + 1) % banners.length)
-    }, 6000) // Aumentado para dar mais tempo para carregar
+    }, 6000)
 
     return () => clearInterval(interval)
-  }, [isAutoPlaying, isMounted])
+  }, [isAutoPlaying, isMounted, banners.length])
 
-  // Navegação otimizada com useCallback
+  // Navegação com useCallback
   const nextSlide = useCallback(() => {
+    if (!isMounted) return
     setDirection(1)
     setCurrentSlide((prev) => (prev + 1) % banners.length)
     setIsAutoPlaying(false)
-  }, [])
+  }, [isMounted, banners.length])
 
   const prevSlide = useCallback(() => {
+    if (!isMounted) return
     setDirection(-1)
     setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length)
     setIsAutoPlaying(false)
-  }, [])
+  }, [isMounted, banners.length])
 
   const goToSlide = useCallback(
     (index: number) => {
+      if (!isMounted) return
       setDirection(index > currentSlide ? 1 : -1)
       setCurrentSlide(index)
       setIsAutoPlaying(false)
     },
-    [currentSlide],
+    [currentSlide, isMounted],
   )
 
-  const currentBanner = banners[currentSlide]
+  const currentBanner = banners[currentSlide] || banners[0]
 
-  // Prevent hydration issues
+  // Render de loading enquanto não montou
   if (!isMounted) {
     return (
       <section className="relative h-[75vh] md:h-[80vh] overflow-hidden bg-black">
@@ -286,11 +187,9 @@ export default function BannerSlider() {
                   <span className="text-sm font-medium tracking-[0.1em] uppercase text-[#D4AF37]">São Paulo, SP</span>
                 </div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight tracking-tight">
-                  {banners[0]?.slogan || "Carregando..."}
+                  Carregando...
                 </h1>
-                <p className="text-white/70 text-base leading-relaxed max-w-lg">
-                  {banners[0]?.descricao || "Carregando conteúdo..."}
-                </p>
+                <p className="text-white/70 text-base leading-relaxed max-w-lg">Carregando conteúdo...</p>
               </div>
             </div>
           </div>
@@ -357,12 +256,16 @@ export default function BannerSlider() {
               {/* Texto - 7 colunas */}
               <div className="lg:col-span-7 space-y-8">
                 {/* Logo */}
-                {currentBanner.identidadeVisual?.logo && (
+                {(currentBanner.identidadeVisual?.logo || currentBanner.slug === "jade") && (
                   <div>
                     <img
-                      src={currentBanner.identidadeVisual.logo || "/placeholder.svg"}
+                      src={
+                        currentBanner.slug === "jade"
+                          ? getMediaByCategory("jade", "logo")[0]?.url || currentBanner.identidadeVisual?.logo
+                          : currentBanner.identidadeVisual?.logo || "/placeholder.svg"
+                      }
                       alt={`Logo ${currentBanner.titulo}`}
-                      className="h-16 md:h-20 w-auto filter drop-shadow-lg"
+                      className="h-12 md:h-16 w-auto filter drop-shadow-lg"
                     />
                   </div>
                 )}
@@ -370,7 +273,6 @@ export default function BannerSlider() {
                 {/* Localização */}
                 <div className="flex items-center gap-3">
                   <MapPin className="h-4 w-4 text-white/60" />
-                  {/* LOCALIZAÇÃO - Reduzida em 20% */}
                   <span
                     className="text-sm font-medium tracking-[0.1em] uppercase"
                     style={{ color: currentBanner.identidadeVisual?.corPrimaria || "#D4AF37" }}
@@ -379,12 +281,12 @@ export default function BannerSlider() {
                   </span>
                 </div>
 
-                {/* HEADLINE PRINCIPAL - Reduzida em 30% */}
+                {/* HEADLINE PRINCIPAL */}
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight tracking-tight">
                   {currentBanner.slogan}
                 </h1>
 
-                {/* DESCRIÇÃO - Reduzida em 20% */}
+                {/* DESCRIÇÃO */}
                 <p className="text-white/70 text-base leading-relaxed max-w-lg">{currentBanner.descricao}</p>
 
                 {/* CTA */}
@@ -405,7 +307,7 @@ export default function BannerSlider() {
               {/* Imagem - 5 colunas */}
               <div className="lg:col-span-5 relative">
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
-                  {/* Imagem principal com loading otimizado */}
+                  {/* Imagem principal */}
                   <img
                     src={currentBanner.imagemDestaque || "/placeholder.svg"}
                     alt={currentBanner.titulo}
@@ -417,43 +319,43 @@ export default function BannerSlider() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
 
                   {/* Badge status */}
-                  <div className="absolute top-6 right-6">
-                    <div className="bg-white/10 backdrop-blur-lg rounded-xl px-4 py-2 border border-white/20 shadow-xl">
-                      <span className="text-white text-xs font-bold">{currentBanner.subtitulo}</span>
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/10 backdrop-blur-lg rounded-lg px-3 py-1.5 border border-white/20 shadow-xl">
+                      <span className="text-white text-xs font-medium">{currentBanner.subtitulo}</span>
                     </div>
                   </div>
 
-                  {/* Características simplificadas */}
+                  {/* Características */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     {/* Ícones de características */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                       <div className="text-center">
-                        <div className="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-3">
-                          <Home className="h-6 w-6 text-white" strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
+                          <Home className="h-5 w-5 text-white" strokeWidth={1} />
                         </div>
                         <div className="text-xs text-white font-medium">STUDIOS</div>
                         <div className="text-xs text-white/80">25 a 40m²</div>
                       </div>
 
                       <div className="text-center">
-                        <div className="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-3">
-                          <Dumbbell className="h-6 w-6 text-white" strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
+                          <Dumbbell className="h-5 w-5 text-white" strokeWidth={1} />
                         </div>
                         <div className="text-xs text-white font-medium">SAÚDE</div>
                         <div className="text-xs text-white/80">Academia</div>
                       </div>
 
                       <div className="text-center">
-                        <div className="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-3">
-                          <Coffee className="h-6 w-6 text-white" strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
+                          <Coffee className="h-5 w-5 text-white" strokeWidth={1} />
                         </div>
                         <div className="text-xs text-white font-medium">BEM-ESTAR</div>
                         <div className="text-xs text-white/80">Sauna</div>
                       </div>
 
                       <div className="text-center">
-                        <div className="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-3">
-                          <Sparkles className="h-6 w-6 text-white" strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
+                          <Sparkles className="h-5 w-5 text-white" strokeWidth={1} />
                         </div>
                         <div className="text-xs text-white font-medium">LAZER</div>
                         <div className="text-xs text-white/80">Piscina Aquecida</div>
@@ -493,25 +395,24 @@ export default function BannerSlider() {
         </div>
       </div>
 
-      {/* Controles simplificados */}
-      <NavigationControls
-        currentSlide={currentSlide}
-        bannersLength={banners.length}
-        nextSlide={nextSlide}
-        prevSlide={prevSlide}
-        goToSlide={goToSlide}
-      />
+      {/* Controles */}
+      {banners.length > 1 && (
+        <NavigationControls
+          currentSlide={currentSlide}
+          bannersLength={banners.length}
+          nextSlide={nextSlide}
+          prevSlide={prevSlide}
+          goToSlide={goToSlide}
+        />
+      )}
 
-      {/* Barra de progresso otimizada */}
-      <ProgressBar isAutoPlaying={isAutoPlaying} currentSlide={currentSlide} />
+      {/* Barra de progresso */}
+      {banners.length > 1 && <ProgressBar isAutoPlaying={isAutoPlaying} currentSlide={currentSlide} />}
     </section>
   )
 }
 
-// =============================================================================
-// COMPONENTES AUXILIARES OTIMIZADOS
-// =============================================================================
-
+// Componentes auxiliares
 function NavigationControls({
   currentSlide,
   bannersLength,

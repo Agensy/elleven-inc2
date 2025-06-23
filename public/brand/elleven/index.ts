@@ -121,4 +121,4 @@ import { ELLEVEN_LOGOS, ELLEVEN_COLORS, getEllevenLogo } from '@/public/brand/el
     opacity: 0.1 
   }}
 />
-*/ 
+*/

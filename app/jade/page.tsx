@@ -2,13 +2,22 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, MapPin, Calendar, Home, Bath, Car, Phone, Mail, Download, Ruler, Shield, Diamond } from "lucide-react"
+import { ArrowLeft, MapPin, Phone, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import { getMediaByCategory } from "@/lib/data/media-catalog"
 
-// Dados do Jade
+// Buscar imagens do catálogo
+const jadeMedia = {
+  background: getMediaByCategory("jade", "background")[0]?.url,
+  logo: getMediaByCategory("jade", "logo")[0]?.url,
+  fachadas: getMediaByCategory("jade", "fachada"),
+  planta: getMediaByCategory("jade", "planta")[0]?.url,
+  rooftop: getMediaByCategory("jade", "area-comum")[0]?.url,
+}
+
+// Dados do Jade - atualizar as URLs das imagens
 const jade = {
   nome: "Jade",
   subtitulo: "BREVE LANÇAMENTO",
@@ -19,10 +28,13 @@ const jade = {
   area: "25 a 40m²",
   entrega: "2025",
   tipo: "Studio",
-  descricao: "No coração da Bela Vista, São Paulo, o Jade representa um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece proximidade com importantes pontos da cidade.",
-  imagem: "/empreendimentos/jade/fachada-jade.webp",
-  imagemDestaque: "/empreendimentos/jade/background-jade.webp",
-  logo: "/empreendimentos/jade/logo-jade.png",
+  descricao:
+    "No coração da Bela Vista, São Paulo, o Jade representa um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece proximidade com importantes pontos da cidade.",
+  // Usar imagens do catálogo
+  imagem: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada-jade.webp",
+  imagemDestaque: jadeMedia.background || "/empreendimentos/jade/background-jade.webp",
+  logo: jadeMedia.logo || "/empreendimentos/jade/logo-jade.png",
+  // resto dos dados permanece igual...
   diferenciais: [
     "Localização privilegiada próxima à Av. Paulista",
     "Rooftop com piscina e vista panorâmica",
@@ -31,7 +43,7 @@ const jade = {
     "Infraestrutura completa de lazer",
     "Sistema de segurança completo",
     "Próximo a hospitais, metrô e shopping centers",
-    "Investimento valorizado em bairro nobre"
+    "Investimento valorizado em bairro nobre",
   ],
   pontosInteresse: [
     { nome: "Hospital Beneficência Portuguesa", distancia: "190m" },
@@ -39,16 +51,17 @@ const jade = {
     { nome: "Estação Brigadeiro", distancia: "650m" },
     { nome: "Avenida Paulista", distancia: "700m" },
     { nome: "Estação Vergueiro", distancia: "1km" },
-    { nome: "Estação Paraíso", distancia: "1.2km" }
+    { nome: "Estação Paraíso", distancia: "1.2km" },
   ],
   plantas: [
     {
       tipo: "Studio 26m²",
       area: "26m²",
       preco: "A partir de R$ 390.000",
-      imagem: "/empreendimentos/jade/plantas/studio-26m2.jpg"
-    }
-  ]
+      // Usar planta do catálogo
+      imagem: jadeMedia.planta || "/empreendimentos/jade/plantas/studio-26m2.jpg",
+    },
+  ],
 }
 
 export default function JadePage() {
@@ -56,7 +69,7 @@ export default function JadePage() {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.6 },
-    viewport: { once: true }
+    viewport: { once: true },
   }
 
   return (
@@ -71,7 +84,7 @@ export default function JadePage() {
                 Voltar
               </Button>
             </Link>
-            
+
             <div className="flex gap-3">
               <Button variant="outline" size="sm" className="border-gray-200 text-gray-600 hover:bg-gray-50">
                 <Download className="h-4 w-4 mr-2" />
@@ -89,29 +102,30 @@ export default function JadePage() {
       {/* Hero Section Minimalista */}
       <section className="relative h-[80vh] overflow-hidden bg-gray-50">
         <div className="absolute inset-0">
-          <Image
-            src={jade.imagem}
-            alt={jade.nome}
-            fill
-            className="object-cover"
-            priority
-          />
+          <Image src={jade.imagem || "/placeholder.svg"} alt={jade.nome} fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/30" />
         </div>
-        
+
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center text-center">
           <div className="text-white">
-            <h1 
-              className="font-light mb-6 leading-tight"
-              style={{ fontSize: '2.5rem' }}
-            >
+            {/* Adicionar logo antes do título */}
+            {jade.logo && (
+              <div className="mb-6">
+                <Image
+                  src={jade.logo || "/placeholder.svg"}
+                  alt="Logo Jade"
+                  width={120}
+                  height={60}
+                  className="mx-auto"
+                  priority
+                />
+              </div>
+            )}
+            <h1 className="font-light mb-6 leading-tight" style={{ fontSize: "2.5rem" }}>
               JADE
             </h1>
-            <p 
-              className="font-light mb-8 max-w-2xl mx-auto"
-              style={{ fontSize: '0.875rem' }}
-            >
+            <p className="font-light mb-8 max-w-2xl mx-auto" style={{ fontSize: "0.875rem" }}>
               Sofisticação e modernidade no coração da Bela Vista
             </p>
           </div>
@@ -122,10 +136,10 @@ export default function JadePage() {
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center text-white text-sm">
               <div>
-                <p style={{ fontSize: '0.875rem' }}>Studios de 25m² a 40m²</p>
+                <p style={{ fontSize: "0.875rem" }}>Studios de 25m² a 40m²</p>
               </div>
               <div className="text-right">
-                <p style={{ fontSize: '0.875rem' }}>A partir de R$ 390.000</p>
+                <p style={{ fontSize: "0.875rem" }}>A partir de R$ 390.000</p>
               </div>
             </div>
           </div>
@@ -144,14 +158,13 @@ export default function JadePage() {
                 Luxo e <span className="text-orange-500">Comodidade</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                O Jade representa a união perfeita entre sofisticação e praticidade. 
-                Localizado na vibrante Bela Vista, oferece studios modernos com acabamentos 
-                premium e uma localização privilegiada.
+                O Jade representa a união perfeita entre sofisticação e praticidade. Localizado na vibrante Bela Vista,
+                oferece studios modernos com acabamentos premium e uma localização privilegiada.
               </p>
-              
+
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Com design contemporâneo e espaços otimizados, cada unidade foi pensada 
-                para proporcionar máximo conforto em um ambiente urbano dinâmico.
+                Com design contemporâneo e espaços otimizados, cada unidade foi pensada para proporcionar máximo
+                conforto em um ambiente urbano dinâmico.
               </p>
 
               <div className="grid grid-cols-2 gap-6">
@@ -168,7 +181,7 @@ export default function JadePage() {
 
             <motion.div {...fadeIn} className="relative">
               <Image
-                src={jade.imagemDestaque}
+                src={jadeMedia.rooftop || jade.imagemDestaque}
                 alt="Interior do Jade"
                 width={600}
                 height={400}
@@ -183,9 +196,7 @@ export default function JadePage() {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
-              Plantas
-            </span>
+            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Plantas</span>
             <h2 className="text-4xl font-light text-gray-900 mt-4 mb-6">
               Nossos <span className="text-orange-500">Studios</span>
             </h2>
@@ -198,7 +209,7 @@ export default function JadePage() {
                   <CardContent className="p-0">
                     <div className="aspect-[4/3] relative overflow-hidden rounded-t-lg">
                       <Image
-                        src={planta.imagem}
+                        src={planta.imagem || "/placeholder.svg"}
                         alt={planta.tipo}
                         fill
                         className="object-cover"
@@ -209,9 +220,7 @@ export default function JadePage() {
                       <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                         <span>{planta.area}</span>
                       </div>
-                      <div className="text-lg font-light text-gray-900">
-                        {planta.preco}
-                      </div>
+                      <div className="text-lg font-light text-gray-900">{planta.preco}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -226,9 +235,7 @@ export default function JadePage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeIn}>
-              <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
-                Localização
-              </span>
+              <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Localização</span>
               <h2 className="text-4xl font-light text-gray-900 mt-4 mb-8">
                 Coração da <span className="text-orange-500">Bela Vista</span>
               </h2>
@@ -238,7 +245,10 @@ export default function JadePage() {
 
               <div className="space-y-4">
                 {jade.pontosInteresse.map((ponto, index) => (
-                  <div key={index} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0"
+                  >
                     <span className="text-gray-700">{ponto.nome}</span>
                     <span className="text-sm text-gray-500">{ponto.distancia}</span>
                   </div>
@@ -263,12 +273,8 @@ export default function JadePage() {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
-              Diferenciais
-            </span>
-            <h2 className="text-4xl font-light text-gray-900 mt-4">
-              Por que escolher o Jade
-            </h2>
+            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Diferenciais</span>
+            <h2 className="text-4xl font-light text-gray-900 mt-4">Por que escolher o Jade</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -290,14 +296,18 @@ export default function JadePage() {
               Realize o sonho do seu <span className="text-orange-500">primeiro imóvel</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              O Jade oferece a oportunidade perfeita para quem busca um imóvel moderno, 
-              bem localizado e com excelente custo-benefício no centro de São Paulo.
+              O Jade oferece a oportunidade perfeita para quem busca um imóvel moderno, bem localizado e com excelente
+              custo-benefício no centro de São Paulo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
                 Baixar Material
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-gray-900"
+              >
                 Falar com Consultor
               </Button>
             </div>
@@ -306,4 +316,4 @@ export default function JadePage() {
       </section>
     </div>
   )
-} 
+}

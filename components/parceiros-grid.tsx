@@ -295,4 +295,4 @@ function ParceiroCard({
       <div className="absolute bottom-0 left-0 h-1 bg-secondary w-0 group-hover:w-full transition-all duration-500 ease-out" />
     </motion.div>
   )
-} 
+}

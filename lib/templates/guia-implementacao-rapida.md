@@ -6,7 +6,7 @@
 ## ⚡ **PASSOS RÁPIDOS**
 
 ### **1. PREPARAR ASSETS (5 min)**
-```bash
+\`\`\`bash
 # Criar pasta do empreendimento
 mkdir public/empreendimentos/[NOME]
 mkdir public/empreendimentos/[NOME]/galeria
@@ -17,13 +17,13 @@ mkdir public/empreendimentos/[NOME]/plantas
 # - 1 foto secundária (vista/área)
 # - 6+ fotos para galeria
 # - Plantas das tipologias
-```
+\`\`\`
 
 ### **2. COPIAR TEMPLATE (1 min)**
-```bash
+\`\`\`bash
 # Copiar template base
 cp lib/templates/empreendimento-page-template.tsx app/[NOME]/page.tsx
-```
+\`\`\`
 
 ### **3. SUBSTITUIR DADOS (3 min)**
 Editar `app/[NOME]/page.tsx`:
@@ -37,7 +37,7 @@ Editar `app/[NOME]/page.tsx`:
 - `DESCRIÇÃO_COMPLETA` → Texto vendedor 2-3 parágrafos
 
 ### **4. CONFIGURAR TIPOLOGIAS (1 min)**
-```typescript
+\`\`\`typescript
 tipologias: [
   {
     nome: "Studio 26m²",
@@ -50,7 +50,7 @@ tipologias: [
   },
   // Adicionar mais conforme necessário
 ]
-```
+\`\`\`
 
 ---
 
@@ -79,7 +79,7 @@ tipologias: [
 
 **Copie e preencha rapidamente:**
 
-```typescript
+\`\`\`typescript
 const EMPREENDIMENTO = {
   nome: "________",
   endereco: "________, São Paulo - SP",
@@ -115,14 +115,14 @@ const EMPREENDIMENTO = {
     "Acabamentos _____ em todos ambientes"
   ]
 }
-```
+\`\`\`
 
 ---
 
 ## 🖼️ **PADRÃO DE IMAGENS**
 
 ### **NOMES OBRIGATÓRIOS:**
-```
+\`\`\`
 /empreendimentos/[nome]/
 ├── fachada-[nome].jpg          ← HERO principal
 ├── background-[nome].jpg       ← Seção "sobre"
@@ -137,7 +137,7 @@ const EMPREENDIMENTO = {
     ├── studio-26m2.jpg        ← Por tipologia
     ├── 1-dormitorio-45m2.jpg
     └── 2-dormitorios-65m2.jpg
-```
+\`\`\`
 
 ### **ESPECIFICAÇÕES:**
 - **Formato:** JPG ou PNG
@@ -150,7 +150,7 @@ const EMPREENDIMENTO = {
 ## ⚙️ **COMANDOS ÚTEIS**
 
 ### **Durante desenvolvimento:**
-```bash
+\`\`\`bash
 # Servidor local
 npm run dev
 
@@ -159,23 +159,23 @@ npm run build
 
 # Verificar erros
 npm run lint
-```
+\`\`\`
 
 ### **Otimizar imagens (opcional):**
-```bash
+\`\`\`bash
 # Redimensionar com ImageMagick
 convert input.jpg -resize 1920x1080^ -gravity center -crop 1920x1080+0+0 output.jpg
 
 # Comprimir com TinyPNG online ou:
 npx imagemin input.jpg --out-dir=output --plugin=imagemin-mozjpeg
-```
+\`\`\`
 
 ---
 
 ## 🎨 **PERSONALIZAÇÃO RÁPIDA**
 
 ### **Cores específicas do empreendimento:**
-```css
+\`\`\`css
 /* Se houver cor específica */
 .empreendimento-cor {
   background-color: #COR_ESPECÍFICA;
@@ -185,7 +185,7 @@ npx imagemin input.jpg --out-dir=output --plugin=imagemin-mozjpeg
 .elleven-primary {
   background-color: #1A2D54;
 }
-```
+\`\`\`
 
 ### **Diferenciais únicos por empreendimento:**
 - **Luxury/Alto padrão:** Diamond, Crown, Star
@@ -247,4 +247,4 @@ npx imagemin input.jpg --out-dir=output --plugin=imagemin-mozjpeg
 
 ---
 
-*Guia criado para acelerar desenvolvimento - Janeiro 2025* 
+*Guia criado para acelerar desenvolvimento - Janeiro 2025*

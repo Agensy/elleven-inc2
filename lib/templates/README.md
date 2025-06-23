@@ -53,25 +53,25 @@
 
 ## 📁 **ESTRUTURA DE ARQUIVOS**
 
-```
+\`\`\`
 lib/templates/
 ├── README.md                              ← Este arquivo
 ├── empreendimento-page-structure.md       ← Documentação completa
 ├── guia-implementacao-rapida.md           ← Guia prático
 ├── empreendimento-page-template.tsx       ← Template de código
 └── empreendimento-template.ts             ← Dados estruturados
-```
+\`\`\`
 
 ---
 
 ## 🎨 **PADRÕES VISUAIS ELLEVEN**
 
 ### **Cores Oficiais**
-```css
+\`\`\`css
 Primary: #1A2D54    /* Azul Elleven */
 Hover: #152444      /* Azul escuro */
 Neutral: #F8F9FA    /* Backgrounds */
-```
+\`\`\`
 
 ### **Seções Obrigatórias**
 1. **Header** com botão voltar
@@ -95,7 +95,7 @@ Neutral: #F8F9FA    /* Backgrounds */
 ## 🚀 **INÍCIO RÁPIDO**
 
 ### **Para criar página do JADE:**
-```bash
+\`\`\`bash
 # 1. Preparar assets
 mkdir public/empreendimentos/jade/{galeria,plantas}
 
@@ -110,7 +110,7 @@ cp lib/templates/empreendimento-page-template.tsx app/jade/page.tsx
 # 4. Testar
 npm run build
 npm run dev
-```
+\`\`\`
 
 ### **Resultado esperado:**
 - ✅ Página funcionando em 10 minutos
@@ -220,4 +220,4 @@ Com esta documentação, você deve conseguir:
 
 ---
 
-*Documentação atualizada em Janeiro 2025 - Elleven Engenharia* 
+*Documentação atualizada em Janeiro 2025 - Elleven Engenharia*

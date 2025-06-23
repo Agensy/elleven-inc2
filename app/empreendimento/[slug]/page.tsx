@@ -310,4 +310,4 @@ export default function EmpreendimentoPage({ params }: Props) {
       
     </div>
   )
-} 
+}

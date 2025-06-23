@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Elleven Engenharia - Muito além do aço e concreto, construímos sonhos",
   description:
     "Empreendimentos premium que redefinem o conceito de morar bem. Inovação, qualidade e sustentabilidade em cada projeto.",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -21,7 +21,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange={false}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange={true}
+          forcedTheme="light"
+        >
           {children}
         </ThemeProvider>
       </body>

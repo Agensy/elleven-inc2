@@ -425,4 +425,4 @@ export default function ObsidianPage() {
       </section>
     </div>
   )
-} 
+}

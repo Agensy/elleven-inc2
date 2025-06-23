@@ -3,7 +3,7 @@
 ## 🎯 **Layout da Seção de Serviços (5 Cards Numerados)**
 
 ### **Estrutura Base**
-```jsx
+\`\`\`jsx
 export default function ServicesSection() {
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -36,10 +36,10 @@ export default function ServicesSection() {
     </section>
   )
 }
-```
+\`\`\`
 
 ### **Header Padrão**
-```jsx
+\`\`\`jsx
 function HeaderSection({ fadeInUp }) {
   return (
     <motion.div
@@ -58,10 +58,10 @@ function HeaderSection({ fadeInUp }) {
     </motion.div>
   )
 }
-```
+\`\`\`
 
 ### **Grid de 5 Serviços**
-```jsx
+\`\`\`jsx
 function ServicesGrid({ services, staggerContainer }) {
   return (
     <motion.div
@@ -81,10 +81,10 @@ function ServicesGrid({ services, staggerContainer }) {
     </motion.div>
   )
 }
-```
+\`\`\`
 
 ### **Card de Serviço Individual**
-```jsx
+\`\`\`jsx
 function ServiceCard({ service, number }) {
   const Icon = service.icon
   
@@ -130,11 +130,11 @@ function ServiceCard({ service, number }) {
     </motion.div>
   )
 }
-```
+\`\`\`
 
 ## 📊 **Dados de Exemplo**
 
-```jsx
+\`\`\`jsx
 const services = [
   {
     icon: ClipboardList,
@@ -172,12 +172,12 @@ const services = [
     itens: ["Supervisão técnica", "Controle de qualidade", "Gestão de equipes"],
   },
 ]
-```
+\`\`\`
 
 ## 📱 **Responsividade Específica**
 
 ### **Breakpoints para Grid de Serviços**
-```css
+\`\`\`css
 /* Mobile: 1 coluna */
 grid-cols-1
 
@@ -186,10 +186,10 @@ md:grid-cols-2
 
 /* Desktop: 5 colunas */
 lg:grid-cols-5
-```
+\`\`\`
 
 ### **Ajustes de Conteúdo por Tela**
-```jsx
+\`\`\`jsx
 // Mobile
 className="text-sm" // Textos menores
 className="p-4" // Padding reduzido
@@ -201,42 +201,42 @@ className="md:p-6" // Padding normal
 // Desktop
 className="lg:text-lg" // Textos maiores
 className="lg:p-8" // Padding aumentado
-```
+\`\`\`
 
 ## 🎨 **Variações de Design**
 
 ### **Versão com Timeline Conectada**
-```jsx
+\`\`\`jsx
 // Adicionar linha conectora entre cards
 <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent -z-10" />
-```
+\`\`\`
 
 ### **Versão com Cards Destacados**
-```jsx
+\`\`\`jsx
 // Primeiro card com destaque especial
 className={`${index === 0 ? 'ring-2 ring-secondary/20 bg-secondary/5' : ''}`}
-```
+\`\`\`
 
 ### **Versão com Progress Indicators**
-```jsx
+\`\`\`jsx
 // Adicionar indicador de progresso
 <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-background" />
-```
+\`\`\`
 
 ## ⚡ **Melhorias de UX**
 
 ### **Micro-interações Avançadas**
-```jsx
+\`\`\`jsx
 // Hover em sequência
 onMouseEnter={() => setHoveredIndex(index)}
 className={`transition-all duration-300 ${
   hoveredIndex === index ? 'scale-105 z-10' : 
   hoveredIndex !== null ? 'scale-95 opacity-50' : ''
 }`}
-```
+\`\`\`
 
 ### **Click para Expandir**
-```jsx
+\`\`\`jsx
 const [expandedCard, setExpandedCard] = useState(null)
 
 // Click handler
@@ -252,21 +252,21 @@ onClick={() => setExpandedCard(expandedCard === index ? null : index)}
     {/* Conteúdo adicional */}
   </motion.div>
 )}
-```
+\`\`\`
 
 ### **Tooltips Informativos**
-```jsx
+\`\`\`jsx
 // Tooltip no hover do número
 <Tooltip content={`Etapa ${number} do processo`}>
   <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center cursor-help">
     <span className="text-sm font-bold text-secondary">{number}</span>
   </div>
 </Tooltip>
-```
+\`\`\`
 
 ## 🚀 **Call-to-Action Final**
 
-```jsx
+\`\`\`jsx
 function CTASection({ fadeInUp }) {
   return (
     <motion.div
@@ -294,8 +294,8 @@ function CTASection({ fadeInUp }) {
     </motion.div>
   )
 }
-```
+\`\`\`
 
 ---
 
-**Este padrão deve ser usado sempre que precisar criar uma seção de serviços ou processo sequencial no site da Elleven Engenharia.** 
+**Este padrão deve ser usado sempre que precisar criar uma seção de serviços ou processo sequencial no site da Elleven Engenharia.**

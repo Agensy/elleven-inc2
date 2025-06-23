@@ -169,4 +169,4 @@ const watermarkConfig = getWatermarkProps({ opacity: 0.03, rotation: 15, size: '
 
 // Cor da marca em CSS
 // style={{ backgroundColor: ELLEVEN_BRAND.colors.primary }}
-*/ 
+*/

@@ -42,7 +42,7 @@ Fontes tipográficas da marca:
 ## 📝 Como Usar
 
 ### No código:
-```tsx
+\`\`\`tsx
 // Logo principal
 <img src="/brand/elleven/logos/logo-primary.png" alt="Elleven Engenharia" />
 
@@ -56,7 +56,7 @@ Fontes tipográficas da marca:
 <div className="text-white" style={{ backgroundColor: "#1A2D54" }}>
   Texto com cor da marca
 </div>
-```
+\`\`\`
 
 ## 🔄 Atualizações
 
@@ -69,4 +69,4 @@ Sempre que novos assets da marca forem criados:
 ---
 
 **Última atualização:** $(date)
-**Responsável:** Equipe de Desenvolvimento 
+**Responsável:** Equipe de Desenvolvimento

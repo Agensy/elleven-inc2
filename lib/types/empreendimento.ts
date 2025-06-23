@@ -143,4 +143,4 @@ export interface OpcoesFilter {
   status: EmpreendimentoStatus[]
   bairros: string[]
   faixas: FaixaPreco[]
-} 
+}

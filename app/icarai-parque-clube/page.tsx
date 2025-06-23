@@ -434,4 +434,4 @@ export default function IcaraiPage() {
       </section>
     </div>
   )
-} 
+}

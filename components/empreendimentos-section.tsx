@@ -587,4 +587,3 @@ function getStatusColor(status: string): string {
     default: return "bg-foreground/60"
   }
 }
-

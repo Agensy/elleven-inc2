@@ -153,4 +153,4 @@ export const criarEmpreendimentoDoTemplate = (dados: Partial<EmpreendimentoTempl
   }
 }
 
-export default EmpreendimentoTemplate 
+export default EmpreendimentoTemplate

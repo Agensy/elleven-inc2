@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getEllevenLogo } from "@/lib/brand/elleven"
 
-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -39,26 +38,23 @@ export default function Header() {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img
-              src={isScrolled ? getEllevenLogo('header-dark') : getEllevenLogo('header-light')}
+              src={isScrolled ? getEllevenLogo("header-dark") : getEllevenLogo("header-light")}
               alt="Elleven Engenharia"
               className="h-11 w-auto transition-all duration-300"
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Lighter Font Weight */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative transition-colors duration-200 group text-lg font-medium ${
-                  isScrolled 
-                    ? "text-foreground/80 hover:text-foreground" 
-                    : "text-white/80 hover:text-white"
+                className={`relative transition-colors duration-200 group text-lg font-normal ${
+                  isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -69,11 +65,11 @@ export default function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Button 
+            <Button
               size="sm"
               className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
-                isScrolled 
-                  ? "text-white" 
+                isScrolled
+                  ? "text-white"
                   : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
               }`}
               style={isScrolled ? { backgroundColor: "#1A2D54" } : {}}
@@ -93,8 +89,8 @@ export default function Header() {
             variant="ghost"
             size="icon"
             className={`md:hidden transition-colors duration-200 ${
-              isScrolled 
-                ? "text-foreground/80 hover:text-foreground hover:bg-muted" 
+              isScrolled
+                ? "text-foreground/80 hover:text-foreground hover:bg-muted"
                 : "text-white/80 hover:text-white hover:bg-white/10"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -103,7 +99,7 @@ export default function Header() {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Lighter Font Weight */}
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -116,19 +112,19 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-foreground/80 hover:text-foreground transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted text-lg font-medium"
+                  className="text-foreground/80 hover:text-foreground transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted text-lg font-normal"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
               <div className="flex items-center gap-4 pt-4 mt-4 border-t border-border/50">
-                <Button 
+                <Button
                   size="sm"
                   className="text-white text-base px-6 py-3 flex-1 shadow-none transition-all duration-200"
                   style={{ backgroundColor: "#1A2D54" }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#152444"}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#1A2D54"}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#152444")}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1A2D54")}
                 >
                   Fale Conosco
                 </Button>

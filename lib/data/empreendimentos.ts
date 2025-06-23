@@ -982,4 +982,4 @@ export function gerarSlug(nome: string): string {
     .replace(/\s+/g, '-') // Substitui espaços por hífens
     .replace(/-+/g, '-') // Remove hífens duplicados
     .trim()
-} 
+}

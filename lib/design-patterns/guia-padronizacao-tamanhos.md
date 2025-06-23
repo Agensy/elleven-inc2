@@ -5,13 +5,13 @@ Padronizar apenas os **tamanhos de texto** sem alterar estruturas ou layouts exi
 
 ## ⚠️ **Problema Atual**
 O CSS global está limitando os tamanhos do Tailwind:
-```css
+\`\`\`css
 /* CSS Global limitando */
 .text-base { font-size: 0.75rem; }  /* 12px em vez de 16px */  
 .text-lg { font-size: 0.8rem; }     /* 12.8px em vez de 18px */
 .text-xl { font-size: 0.9rem; }     /* 14.4px em vez de 20px */
 .text-2xl { font-size: 1.1rem; }    /* 17.6px em vez de 24px */
-```
+\`\`\`
 
 ## 🔧 **Solução**
 Usar `style={{ fontSize: 'XXpx' }}` para contornar as limitações.
@@ -21,63 +21,63 @@ Usar `style={{ fontSize: 'XXpx' }}` para contornar as limitações.
 ## 📏 **Padrões de Tamanho**
 
 ### **H1 - Títulos Principais (Hero)**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '2.5rem' }} // 40px
-```
+\`\`\`
 
 ### **H2 - Títulos de Seção**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '1.875rem' }} // 30px
-```
+\`\`\`
 
 ### **H3 - Subtítulos**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '1.25rem' }} // 20px
-```
+\`\`\`
 
 ### **Parágrafos Principais (Descrições de Seção)**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '0.875rem' }} // 14px
-```
+\`\`\`
 
 ### **Parágrafos Padrão**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '0.875rem' }} // 14px
-```
+\`\`\`
 
 ### **Textos Secundários**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '0.75rem' }} // 12px
-```
+\`\`\`
 
 ### **Textos Pequenos (Labels, Copyright)**
-```tsx
+\`\`\`tsx
 style={{ fontSize: '0.75rem' }} // 12px
-```
+\`\`\`
 
 ---
 
 ## 🎨 **Como Aplicar**
 
 ### **Antes (Limitado pelo CSS):**
-```tsx
+\`\`\`tsx
 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
   Título da Seção
 </h2>
 <p className="text-lg text-muted-foreground">
   Descrição da seção
 </p>
-```
+\`\`\`
 
 ### **Depois (Tamanho Real):**
-```tsx
+\`\`\`tsx
 <h2 className="font-bold" style={{ fontSize: '1.875rem' }}>
   Título da Seção
 </h2>
 <p className="text-muted-foreground" style={{ fontSize: '0.875rem' }}>
   Descrição da seção
 </p>
-```
+\`\`\`
 
 ---
 
@@ -112,7 +112,7 @@ Não remover classes como `text-muted-foreground`, `font-bold`, etc.
 Apenas adicionar `style={{ fontSize: 'XXrem' }}` ao lado.
 
 ### **3. Exemplo Prático**
-```tsx
+\`\`\`tsx
 // ✅ CORRETO - Manter classes + adicionar style
 <p className="text-muted-foreground leading-relaxed" 
    style={{ fontSize: '0.875rem' }}>
@@ -123,7 +123,7 @@ Apenas adicionar `style={{ fontSize: 'XXrem' }}` ao lado.
 <p style={{ fontSize: '0.875rem' }}>
   Texto da descrição
 </p>
-```
+\`\`\`
 
 ---
 
@@ -146,11 +146,11 @@ Apenas adicionar `style={{ fontSize: 'XXrem' }}` ao lado.
 ## 🧡 **Padrão de Headlines (NOVO)**
 
 ### **Regra: Toda headline H2 deve ter uma palavra em laranja**
-```tsx
+\`\`\`tsx
 <h2 className="font-bold text-foreground">
   Texto normal <span className="text-secondary">palavra-chave</span>
 </h2>
-```
+\`\`\`
 
 ### **Exemplos Implementados:**
 - Quem somos **nós**
@@ -166,11 +166,11 @@ Apenas adicionar `style={{ fontSize: 'XXrem' }}` ao lado.
 ## 📏 **Padrão de Padding das Seções (NOVO)**
 
 ### **Regra: Todas as seções (exceto Hero) devem ter py-20**
-```tsx
+\`\`\`tsx
 <section className="py-20 bg-background">
   {/* Conteúdo da seção */}
 </section>
-```
+\`\`\`
 
 ### **Valor Padronizado:**
 - **`py-20`** = **80px** superior e inferior
@@ -190,4 +190,4 @@ Apenas adicionar `style={{ fontSize: 'XXrem' }}` ao lado.
 
 **🎯 Foco:** Tamanhos + Headlines + Padding padronizados.
 **⚡ Rápido:** Aplicação incremental por seção.
-**✅ Simples:** Manter código existente + adicionar padrões. 
+**✅ Simples:** Manter código existente + adicionar padrões.

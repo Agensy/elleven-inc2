@@ -246,4 +246,4 @@ export default function LeMont2Page() {
       </section>
     </div>
   )
-} 
+}

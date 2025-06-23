@@ -15,7 +15,7 @@
 ## 📊 **DADOS DO EMPREENDIMENTO**
 
 ### **Objeto Principal**
-```typescript
+\`\`\`typescript
 const empreendimento = {
   // BÁSICO
   nome: string,                    // "Botanique"
@@ -47,14 +47,14 @@ const empreendimento = {
   // GALERIA
   galeria: string[]               // Array de imagens
 }
-```
+\`\`\`
 
 ---
 
 ## 🎨 **SEÇÕES DA PÁGINA**
 
 ### **1. HEADER DE NAVEGAÇÃO**
-```tsx
+\`\`\`tsx
 <header className="bg-white border-b">
   <div className="container mx-auto px-4 py-4">
     <Link href="/empreendimentos">
@@ -64,7 +64,7 @@ const empreendimento = {
     </Link>
   </div>
 </header>
-```
+\`\`\`
 
 ### **2. HERO SECTION**
 - **Altura:** `h-[70vh]`
@@ -72,7 +72,7 @@ const empreendimento = {
 - **Conteúdo:** Nome, endereço, preço em badge
 - **Estilo:** Centralizado, texto branco
 
-```tsx
+\`\`\`tsx
 <section className="relative h-[70vh] overflow-hidden">
   <Image src={imagem} fill className="object-cover" />
   <div className="absolute inset-0 bg-black/40" />
@@ -80,7 +80,7 @@ const empreendimento = {
     {/* Conteúdo */}
   </div>
 </section>
-```
+\`\`\`
 
 ### **3. SOBRE O EMPREENDIMENTO**
 - **Layout:** Grid 2 colunas (lg:grid-cols-2)
@@ -126,41 +126,41 @@ const empreendimento = {
 ## 🎨 **PADRÕES VISUAIS**
 
 ### **Cores Oficiais**
-```css
+\`\`\`css
 Azul Elleven: #1A2D54
 Hover: #152444
 Backgrounds: bg-white, bg-gray-50
-```
+\`\`\`
 
 ### **Tipografia**
-```css
+\`\`\`css
 H1 Hero: text-4xl md:text-6xl font-bold
 H2 Seções: text-4xl font-bold mb-4
 H3 Cards: text-xl font-semibold mb-2
 Parágrafos: text-gray-600 leading-relaxed
-```
+\`\`\`
 
 ### **Espaçamentos**
-```css
+\`\`\`css
 Seções: py-20
 Container: container mx-auto px-4
 Cards: p-6, hover:shadow-lg
-```
+\`\`\`
 
 ### **Componentes UI**
-```tsx
+\`\`\`tsx
 // Importações necessárias
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from '@/components/ui/badge'
-```
+\`\`\`
 
 ---
 
 ## 📁 **ESTRUTURA DE ARQUIVOS**
 
 ### **Imagens Organizadas**
-```
+\`\`\`
 public/empreendimentos/[nome]/
 ├── fachada-[nome].jpg          # Hero principal
 ├── background-[nome].jpg       # Secundária
@@ -173,29 +173,29 @@ public/empreendimentos/[nome]/
     ├── tipologia-1.jpg
     ├── tipologia-2.jpg
     └── ...
-```
+\`\`\`
 
 ### **Dados Centralizados**
-```
+\`\`\`
 lib/data/empreendimentos.ts     # Dados de todos empreendimentos
 lib/types/empreendimento.ts     # Tipagens TypeScript
-```
+\`\`\`
 
 ---
 
 ## 🚀 **TEMPLATE COMPLETO**
 
 ### **Metadata SEO**
-```tsx
+\`\`\`tsx
 export const metadata: Metadata = {
   title: "[Nome] - [Tipos] | Elleven Engenharia",
   description: "[Nome] - [Descrição resumida]. [Preço]. [Localização], [diferenciais principais].",
   keywords: "[nome], [cidade], [estado], apartamento, [tipos], Elleven Engenharia, [características]",
 }
-```
+\`\`\`
 
 ### **Esqueleto da Página**
-```tsx
+\`\`\`tsx
 export default function EmpreendimentoPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -211,7 +211,7 @@ export default function EmpreendimentoPage() {
     </div>
   )
 }
-```
+\`\`\`
 
 ---
 
@@ -274,4 +274,4 @@ Para criar a página do **Jade**:
 
 ---
 
-*Documentação criada com base na página do Botanique - Janeiro 2025* 
+*Documentação criada com base na página do Botanique - Janeiro 2025*

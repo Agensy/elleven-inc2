@@ -357,4 +357,4 @@ export const getEmpreendimentosByStatus = (status: EmpreendimentoCompleto['statu
 // Função helper para buscar empreendimentos por tipo
 export const getEmpreendimentosByTipo = (tipo: EmpreendimentoCompleto['tipo']): EmpreendimentoCompleto[] => {
   return empreendimentosCompletos.filter(emp => emp.tipo === tipo);
-}; 
+};

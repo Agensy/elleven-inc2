@@ -34,6 +34,19 @@ const nextConfig = {
       };
     }
     
+    // Garantir que optimization existe antes de modificar
+    if (!config.optimization) {
+      config.optimization = {};
+    }
+    
+    if (!config.optimization.splitChunks) {
+      config.optimization.splitChunks = {};
+    }
+    
+    if (!config.optimization.splitChunks.cacheGroups) {
+      config.optimization.splitChunks.cacheGroups = {};
+    }
+    
     // Otimizar CSS em produção
     if (process.env.NODE_ENV === 'production') {
       config.optimization.splitChunks.cacheGroups.styles = {

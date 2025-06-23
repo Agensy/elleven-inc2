@@ -1,17 +1,18 @@
-import { Metadata } from "next"
-import Image from 'next/image'
+import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Building, Home, Shield, TreePine } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 
 // Dados do Le Mont
 const leMont = {
   nome: "Le Mont",
   endereco: "Estrada Morro Grande, 3400, Jardim Ísis, Cotia - São Paulo",
   tipo: "Apartamentos de 1 e 2 dormitórios + Unidades Garden",
-  descricao: "O Condomínio Le Mont foi cuidadosamente projetado para proporcionar qualidade de vida à sua família, com segurança 24 horas, contando com uma extensa área verde preservada e uma variedade de opções de lazer.",
+  descricao:
+    "O Condomínio Le Mont foi cuidadosamente projetado para proporcionar qualidade de vida à sua família, com segurança 24 horas, contando com uma extensa área verde preservada e uma variedade de opções de lazer.",
   imagem: "/empreendimentos/_SITE ELLEVEN/LE MONT/1 - VITRINE_LE MONT 1.jpg",
   status: "Concluído em Outubro 2016",
   arquiteto: "Studio Gemini",
@@ -28,13 +29,14 @@ const leMont = {
     "Churrasqueiras",
     "Segurança 24 horas",
     "Paisagismo elaborado",
-    "Localização privilegiada em Cotia"
-  ]
+    "Localização privilegiada em Cotia",
+  ],
 }
 
 export const metadata: Metadata = {
   title: "Le Mont - Condomínio com Unidades Garden em Cotia | Elleven Engenharia",
-  description: "Le Mont - Condomínio de 18.000m² em Cotia. 150 unidades, 1 e 2 dormitórios + Garden. Piscina, quadra, playground. Projeto Studio Gemini.",
+  description:
+    "Le Mont - Condomínio de 18.000m² em Cotia. 150 unidades, 1 e 2 dormitórios + Garden. Piscina, quadra, playground. Projeto Studio Gemini.",
 }
 
 export default function LeMontPage() {
@@ -52,13 +54,7 @@ export default function LeMontPage() {
       </header>
 
       <section className="relative h-[70vh] overflow-hidden">
-        <Image
-          src={leMont.imagem}
-          alt={leMont.nome}
-          fill
-          className="object-cover"
-          priority
-        />
+        <Image src={leMont.imagem || "/placeholder.svg"} alt={leMont.nome} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl mx-auto px-4">
@@ -75,11 +71,11 @@ export default function LeMontPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Conheça o {leMont.nome}</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                {leMont.descricao}
-              </p>
-              
+              <h2 className="text-4xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Conheça o {leMont.nome}
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">{leMont.descricao}</p>
+
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="font-medium">Tipo</span>
@@ -91,7 +87,7 @@ export default function LeMontPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <Image
                 src="/empreendimentos/_SITE ELLEVEN/LE MONT/LEMONT 1_FACHADAS.jpg"
@@ -108,9 +104,11 @@ export default function LeMontPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Diferenciais do Le Mont</h2>
+            <h2 className="text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
+              Diferenciais do Le Mont
+            </h2>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
@@ -121,7 +119,7 @@ export default function LeMontPage() {
                 <p className="text-gray-600">Apartamentos com acesso exclusivo ao jardim.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -131,7 +129,7 @@ export default function LeMontPage() {
                 <p className="text-gray-600">Piscina, playground e área gourmet.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -141,7 +139,7 @@ export default function LeMontPage() {
                 <p className="text-gray-600">150 unidades em 5 torres.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -157,8 +155,10 @@ export default function LeMontPage() {
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Galeria de Imagens</h2>
-          
+          <h2 className="text-3xl font-bold uppercase text-center mb-12" style={{ color: "#1A2D54" }}>
+            Galeria de Imagens
+          </h2>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative h-64 rounded-lg overflow-hidden">
               <Image

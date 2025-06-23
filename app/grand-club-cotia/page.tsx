@@ -1,17 +1,18 @@
-import { Metadata } from "next"
-import Image from 'next/image'
+import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
-import { MapPin, Home, Shield, Diamond, ArrowLeft, Building, Dumbbell, Users, Zap } from "lucide-react"
+import { ArrowLeft, Building, Dumbbell, Users, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 
 // Dados do Grand Club Cotia
 const grandClub = {
   nome: "Grand Club Cotia",
   endereco: "R. Geraldo Otaviano de Almeida, 1025, Bairro Nakamura Park, Cotia - SP",
   tipo: "Apartamentos de 1 e 2 dormitórios",
-  descricao: "O GRAND CLUB COTIA foi projetado para proporcionar um estilo de vida único, onde a flexibilidade e o conforto são prioridades. Suas plantas inteligentes foram pensadas para otimizar a distribuição e funcionalidade dos espaços.",
+  descricao:
+    "O GRAND CLUB COTIA foi projetado para proporcionar um estilo de vida único, onde a flexibilidade e o conforto são prioridades. Suas plantas inteligentes foram pensadas para otimizar a distribuição e funcionalidade dos espaços.",
   imagem: "/empreendimentos/_SITE ELLEVEN/GRANDCLUB COTIA/1 - VITRINE_GRANDCLUB.jpg",
   status: "Concluído em Maio 2019",
   arquiteto: "Studio Gemini",
@@ -28,13 +29,14 @@ const grandClub = {
     "Praças de convivência entre os edifícios",
     "Paisagismo com espécies nativas e frutíferas",
     "Segurança 24 horas com controle de acesso",
-    "Localização privilegiada com fácil acesso ao Rodoanel"
-  ]
+    "Localização privilegiada com fácil acesso ao Rodoanel",
+  ],
 }
 
 export const metadata: Metadata = {
   title: "Grand Club Cotia - 198 Unidades em Cotia | Elleven Engenharia",
-  description: "Grand Club Cotia - Condomínio de 22.000m² em Cotia. 198 unidades, 1 e 2 dormitórios. Mini golfe, fitness, piscina e área completa de lazer. Projeto Studio Gemini.",
+  description:
+    "Grand Club Cotia - Condomínio de 22.000m² em Cotia. 198 unidades, 1 e 2 dormitórios. Mini golfe, fitness, piscina e área completa de lazer. Projeto Studio Gemini.",
 }
 
 export default function GrandClubCotiaPage() {
@@ -55,7 +57,7 @@ export default function GrandClubCotiaPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <Image
-          src={grandClub.imagem}
+          src={grandClub.imagem || "/placeholder.svg"}
           alt={grandClub.nome}
           fill
           className="object-cover"
@@ -78,11 +80,11 @@ export default function GrandClubCotiaPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Conheça o {grandClub.nome}</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                {grandClub.descricao}
-              </p>
-              
+              <h2 className="text-4xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Conheça o {grandClub.nome}
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">{grandClub.descricao}</p>
+
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="font-medium">Tipo</span>
@@ -106,7 +108,7 @@ export default function GrandClubCotiaPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <Image
                 src="/empreendimentos/_SITE ELLEVEN/GRANDCLUB COTIA/GRANDCLUB_FACHADA.jpg"
@@ -124,12 +126,14 @@ export default function GrandClubCotiaPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Por que escolher o Grand Club?</h2>
+            <h2 className="text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
+              Por que escolher o Grand Club?
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Conheça os principais diferenciais que fazem do Grand Club um estilo de vida único.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
@@ -140,7 +144,7 @@ export default function GrandClubCotiaPage() {
                 <p className="text-gray-600">Campo de mini golfe exclusivo para diversão da família.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -150,7 +154,7 @@ export default function GrandClubCotiaPage() {
                 <p className="text-gray-600">Espaço fitness ao ar livre integrado à natureza.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -160,7 +164,7 @@ export default function GrandClubCotiaPage() {
                 <p className="text-gray-600">198 unidades distribuídas em 8 torres com 1 e 2 dormitórios.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -177,8 +181,10 @@ export default function GrandClubCotiaPage() {
       {/* Galeria */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Galeria de Imagens</h2>
-          
+          <h2 className="text-3xl font-bold uppercase text-center mb-12" style={{ color: "#1A2D54" }}>
+            Galeria de Imagens
+          </h2>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative h-64 rounded-lg overflow-hidden">
               <Image
@@ -237,11 +243,13 @@ export default function GrandClubCotiaPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Diferenciais do Grand Club</h2>
+              <h2 className="text-3xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Diferenciais do Grand Club
+              </h2>
               <p className="text-gray-600 mb-8">
                 O Grand Club Cotia foi projetado para proporcionar flexibilidade, conforto e estilo de vida único.
               </p>
-              
+
               <div className="space-y-4">
                 {grandClub.diferenciais.map((diferencial, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -251,7 +259,7 @@ export default function GrandClubCotiaPage() {
                 ))}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-lg">
                 <h3 className="text-2xl font-bold mb-4">Informações do Projeto</h3>

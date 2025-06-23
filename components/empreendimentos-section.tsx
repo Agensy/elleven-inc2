@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { empreendimentos, opcoesFiltros } from "@/lib/data/empreendimentos"
-import { FiltrosEmpreendimento } from "@/lib/types/empreendimento"
+import type { FiltrosEmpreendimento } from "@/lib/types/empreendimento"
 import Link from "next/link"
 
 // =============================================================================
@@ -17,16 +17,16 @@ import Link from "next/link"
 function getEmpreendimentoUrl(slug: string): string {
   // Mapeamento de slugs para páginas específicas
   const paginasEspecificas: Record<string, string> = {
-    'jade': '/jade',
-    'obsidian': '/obsidian',
-    'botanique': '/botanique',
-    'icarai': '/icarai',
-    'grand-club-cotia': '/grand-club-cotia',
-    'le-mont': '/le-mont',
-    'le-mont-2': '/le-mont-2',
-    'icarai-parque-clube': '/icarai-parque-clube'
+    jade: "/jade",
+    obsidian: "/obsidian",
+    botanique: "/botanique",
+    icarai: "/icarai",
+    "grand-club-cotia": "/grand-club-cotia",
+    "le-mont": "/le-mont",
+    "le-mont-2": "/le-mont-2",
+    "icarai-parque-clube": "/icarai-parque-clube",
   }
-  
+
   return paginasEspecificas[slug] || `/empreendimento/${slug}`
 }
 
@@ -80,11 +80,11 @@ export default function EmpreendimentosSection() {
   const empreendimentosParaExibir = useMemo(() => {
     const limitePorLinha = 3 // Assumindo 3 empreendimentos por linha
     const limiteInicial = limitePorLinha * 2 // 2 linhas = 6 empreendimentos
-    
+
     if (mostrarTodos || empreendimentosFiltrados.length <= limiteInicial) {
       return empreendimentosFiltrados
     }
-    
+
     return empreendimentosFiltrados.slice(0, limiteInicial)
   }, [empreendimentosFiltrados, mostrarTodos])
 
@@ -132,7 +132,6 @@ export default function EmpreendimentosSection() {
   return (
     <section id="empreendimentos" className="py-20 bg-muted/30">
       <div className="container mx-auto px-8">
-        
         {/* Header */}
         <motion.div
           variants={fadeInUp}
@@ -141,13 +140,13 @@ export default function EmpreendimentosSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
             Nossos Empreendimentos
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8" style={{ fontSize: '0.875rem' }}>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8" style={{ fontSize: "0.875rem" }}>
             Descubra projetos únicos que combinam design inovador, localização privilegiada e qualidade incomparável.
           </p>
-          
+
           {/* Barra de Busca */}
           <div className="max-w-xl mx-auto mb-8">
             <div className="relative group">
@@ -163,7 +162,7 @@ export default function EmpreendimentosSection() {
               </div>
             </div>
           </div>
-          
+
           {/* Container de Controles */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             {/* Botão de Filtros */}
@@ -172,19 +171,24 @@ export default function EmpreendimentosSection() {
               size="default"
               onClick={() => setMostrarFiltros(!mostrarFiltros)}
               className={`h-11 px-6 transition-all duration-300 ${
-                mostrarFiltros 
-                  ? "bg-secondary hover:bg-secondary/90 text-white shadow-lg" 
+                mostrarFiltros
+                  ? "bg-secondary hover:bg-secondary/90 text-white shadow-lg"
                   : "border-border/50 hover:border-secondary hover:bg-muted hover:shadow-md"
               }`}
             >
               <Filter className="h-4 w-4 mr-2" />
               {mostrarFiltros ? "Ocultar Filtros" : "Filtros Avançados"}
             </Button>
-            
+
             {/* Badge de Filtros Ativos */}
             {temFiltrosAtivos && (
-              <Badge variant="secondary" className="bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1">
-                {Object.values(filtros).filter(Boolean).length} filtro{Object.values(filtros).filter(Boolean).length > 1 ? 's' : ''} ativo{Object.values(filtros).filter(Boolean).length > 1 ? 's' : ''}
+              <Badge
+                variant="secondary"
+                className="bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1"
+              >
+                {Object.values(filtros).filter(Boolean).length} filtro
+                {Object.values(filtros).filter(Boolean).length > 1 ? "s" : ""} ativo
+                {Object.values(filtros).filter(Boolean).length > 1 ? "s" : ""}
               </Badge>
             )}
           </div>
@@ -192,7 +196,7 @@ export default function EmpreendimentosSection() {
 
         {/* Filtros */}
         {mostrarFiltros && (
-          <FilterSection 
+          <FilterSection
             filtros={filtros}
             updateFiltro={updateFiltro}
             limparFiltros={limparFiltros}
@@ -203,10 +207,15 @@ export default function EmpreendimentosSection() {
         )}
 
         {/* Contador e Controles */}
-        <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="mb-12">
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="mb-12"
+        >
           <div className="bg-white/50 backdrop-blur-sm border border-border/30 rounded-2xl p-6 shadow-sm">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              
               {/* Contador */}
               <div className="flex items-center gap-4">
                 {isLoading ? (
@@ -217,7 +226,8 @@ export default function EmpreendimentosSection() {
                 ) : (
                   <div className="flex items-center gap-3">
                     <div className="bg-secondary/10 text-secondary px-3 py-1.5 rounded-full font-semibold text-sm">
-                      {empreendimentosFiltrados.length} {empreendimentosFiltrados.length === 1 ? "empreendimento" : "empreendimentos"}
+                      {empreendimentosFiltrados.length}{" "}
+                      {empreendimentosFiltrados.length === 1 ? "empreendimento" : "empreendimentos"}
                     </div>
                     {!mostrarTodos && empreendimentosFiltrados.length > 6 && (
                       <span className="text-muted-foreground text-sm">
@@ -227,7 +237,7 @@ export default function EmpreendimentosSection() {
                   </div>
                 )}
               </div>
-              
+
               {/* Botões de Ação */}
               {empreendimentosFiltrados.length > 0 && (
                 <div className="flex flex-wrap items-center gap-3">
@@ -288,7 +298,7 @@ export default function EmpreendimentosSection() {
           >
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-xl blur-sm opacity-60"></div>
-              <Button 
+              <Button
                 variant="outline"
                 size="lg"
                 onClick={() => setMostrarTodos(false)}
@@ -318,13 +328,13 @@ interface FilterSectionProps {
   setDropdownAberto: (value: string | null) => void
 }
 
-function FilterSection({ 
-  filtros, 
-  updateFiltro, 
-  limparFiltros, 
-  temFiltrosAtivos, 
-  dropdownAberto, 
-  setDropdownAberto 
+function FilterSection({
+  filtros,
+  updateFiltro,
+  limparFiltros,
+  temFiltrosAtivos,
+  dropdownAberto,
+  setDropdownAberto,
 }: FilterSectionProps) {
   return (
     <motion.div
@@ -334,13 +344,14 @@ function FilterSection({
       className="mb-16 relative z-50"
     >
       <div className="bg-white/80 backdrop-blur-sm border border-border/30 rounded-2xl p-8 shadow-lg relative">
-        
         {/* Header dos filtros */}
         <div className="flex items-center gap-3 mb-6">
           <div className="bg-secondary/10 p-2 rounded-full">
             <Filter className="h-5 w-5 text-secondary" />
           </div>
-                          <h3 className="font-semibold text-foreground" style={{ fontSize: '1rem' }}>Filtros Avançados</h3>
+          <h3 className="font-semibold text-foreground" style={{ fontSize: "1rem" }}>
+            Filtros Avançados
+          </h3>
           {temFiltrosAtivos && (
             <Button
               variant="ghost"
@@ -354,7 +365,7 @@ function FilterSection({
           )}
         </div>
 
-            {/* Grid de Filtros */}
+        {/* Grid de Filtros */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-50">
           <FilterDropdown
             label="Tipo de Imóvel"
@@ -365,8 +376,8 @@ function FilterSection({
             onToggle={() => setDropdownAberto(dropdownAberto === "tipo" ? null : "tipo")}
             onSelect={(value) => {
               updateFiltro("tipo", value)
-                        setDropdownAberto(null)
-                      }}
+              setDropdownAberto(null)
+            }}
           />
 
           <FilterDropdown
@@ -378,21 +389,21 @@ function FilterSection({
             onToggle={() => setDropdownAberto(dropdownAberto === "status" ? null : "status")}
             onSelect={(value) => {
               updateFiltro("status", value)
-                          setDropdownAberto(null)
-                        }}
+              setDropdownAberto(null)
+            }}
           />
 
           <FilterDropdown
             label="Faixa de Investimento"
             value={filtros.faixa}
             placeholder="Todas as faixas"
-            options={opcoesFiltros.faixas.map(f => f.label)}
+            options={opcoesFiltros.faixas.map((f) => f.label)}
             isOpen={dropdownAberto === "faixa"}
             onToggle={() => setDropdownAberto(dropdownAberto === "faixa" ? null : "faixa")}
             onSelect={(value) => {
               updateFiltro("faixa", value)
-                        setDropdownAberto(null)
-                      }}
+              setDropdownAberto(null)
+            }}
           />
 
           <FilterDropdown
@@ -404,28 +415,36 @@ function FilterSection({
             onToggle={() => setDropdownAberto(dropdownAberto === "bairro" ? null : "bairro")}
             onSelect={(value) => {
               updateFiltro("bairro", value)
-                          setDropdownAberto(null)
-                        }}
+              setDropdownAberto(null)
+            }}
           />
-                      </div>
+        </div>
 
         {/* Filtros Ativos */}
         {temFiltrosAtivos && (
           <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-border/50">
             <span className="text-sm text-muted-foreground mr-2">Filtros ativos:</span>
-            {Object.entries(filtros).map(([key, value]) => 
-              value && (
-                <Badge key={key} variant="secondary" className="bg-white/20 backdrop-blur-md border border-white/30 text-foreground text-xs shadow-lg">
-                  {value}
-                  <button onClick={() => updateFiltro(key as keyof FiltrosEmpreendimento, "")} className="ml-1 hover:text-muted-foreground">
-                    <X className="h-3 w-3" />
-                  </button>
-                </Badge>
-              )
+            {Object.entries(filtros).map(
+              ([key, value]) =>
+                value && (
+                  <Badge
+                    key={key}
+                    variant="secondary"
+                    className="bg-white/20 backdrop-blur-md border border-white/30 text-foreground text-xs shadow-lg"
+                  >
+                    {value}
+                    <button
+                      onClick={() => updateFiltro(key as keyof FiltrosEmpreendimento, "")}
+                      className="ml-1 hover:text-muted-foreground"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </Badge>
+                ),
             )}
-                  </div>
-                )}
-              </div>
+          </div>
+        )}
+      </div>
     </motion.div>
   )
 }
@@ -446,27 +465,25 @@ function FilterDropdown({ label, value, placeholder, options, isOpen, onToggle, 
       <label className="block text-sm font-medium text-foreground mb-3">{label}</label>
       <Button
         variant="outline"
-        className="w-full justify-between border-border/30 hover:border-secondary hover:bg-white/80 relative z-50 text-sm h-11 rounded-xl shadow-sm hover:shadow-md transition-all duration-300" 
+        className="w-full justify-between border-border/30 hover:border-secondary hover:bg-white/80 relative z-50 text-sm h-11 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
         onClick={onToggle}
       >
-        <span className={value ? "text-foreground font-medium" : "text-muted-foreground"}>
-          {value || placeholder}
-        </span>
-        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <span className={value ? "text-foreground font-medium" : "text-muted-foreground"}>{value || placeholder}</span>
+        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
       </Button>
 
       {isOpen && (
         <div className="absolute mt-2 w-full bg-white/95 backdrop-blur-sm border border-border/30 rounded-xl shadow-xl z-[9999] overflow-hidden">
-          <div 
-            className="p-3 text-muted-foreground hover:bg-secondary/10 hover:text-secondary cursor-pointer text-sm transition-colors" 
+          <div
+            className="p-3 text-muted-foreground hover:bg-secondary/10 hover:text-secondary cursor-pointer text-sm transition-colors"
             onClick={() => onSelect("")}
           >
             {placeholder}
           </div>
           {options.map((option) => (
-            <div 
-              key={option} 
-              className="p-3 text-foreground hover:bg-secondary/10 hover:text-secondary cursor-pointer text-sm transition-colors border-t border-border/20" 
+            <div
+              key={option}
+              className="p-3 text-foreground hover:bg-secondary/10 hover:text-secondary cursor-pointer text-sm transition-colors border-t border-border/20"
               onClick={() => onSelect(option)}
             >
               {option}
@@ -490,7 +507,7 @@ function LoadingGrid() {
             <div className="h-4 bg-muted/50 rounded w-1/2"></div>
             <div className="h-8 bg-muted/50 rounded"></div>
           </div>
-                </div>
+        </div>
       ))}
     </>
   )
@@ -498,92 +515,109 @@ function LoadingGrid() {
 
 function EmptyState({ limparFiltros }: { limparFiltros: () => void }) {
   return (
-                  <div className="col-span-full text-center section-padding-header">
+    <div className="col-span-full text-center section-padding-header">
       <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Filter className="h-8 w-8 text-muted-foreground" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Nenhum empreendimento encontrado</h3>
-              <p className="text-muted-foreground mb-6">Tente ajustar os filtros para encontrar mais opções.</p>
-              <Button onClick={limparFiltros} className="bg-secondary hover:bg-secondary/90 text-white">
-                Limpar todos os filtros
-              </Button>
-            </div>
+        <Filter className="h-8 w-8 text-muted-foreground" />
+      </div>
+      <h3 className="text-xl font-bold text-foreground mb-2">Nenhum empreendimento encontrado</h3>
+      <p className="text-muted-foreground mb-6">Tente ajustar os filtros para encontrar mais opções.</p>
+      <Button onClick={limparFiltros} className="bg-secondary hover:bg-secondary/90 text-white">
+        Limpar todos os filtros
+      </Button>
+    </div>
   )
 }
 
 function EmpreendimentoCard({ empreendimento }: { empreendimento: any }) {
   return (
-              <motion.div
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       className="bg-card border border-border/50 rounded-lg overflow-hidden hover:border-border transition-all duration-300 group"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={empreendimento.imagem || "/placeholder.svg"}
-                    alt={empreendimento.nome}
+    >
+      <div className="relative overflow-hidden">
+        <img
+          src={empreendimento.imagem || "/placeholder.svg"}
+          alt={empreendimento.nome}
           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <Badge className="absolute top-4 left-4 text-white text-xs bg-white/10 backdrop-blur-md border border-white/20 shadow-lg group-hover:bg-secondary/40 group-hover:border-secondary/30 transition-all duration-300">
-                    {empreendimento.status}
-                  </Badge>
-                </div>
+          {empreendimento.status}
+        </Badge>
+      </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">{empreendimento.nome}</h3>
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-foreground mb-2">{empreendimento.nome}</h3>
 
-                  <div className="flex items-center text-muted-foreground mb-3">
-                    <MapPin className="h-4 w-4 mr-1" />
-                    <span className="text-sm">{empreendimento.localizacao}</span>
-                  </div>
+        <div className="flex items-center text-muted-foreground mb-3">
+          <MapPin className="h-4 w-4 mr-1" />
+          <span className="text-sm">{empreendimento.localizacao}</span>
+        </div>
 
-                         <p className="text-muted-foreground mb-4 line-clamp-2" style={{ fontSize: '0.875rem' }}>{empreendimento.descricao}</p>
+        <p className="text-muted-foreground mb-4 line-clamp-2" style={{ fontSize: "0.875rem" }}>
+          {empreendimento.descricao}
+        </p>
 
-                  <div className="flex flex-wrap gap-1 mb-4">
+        <div className="flex flex-wrap gap-1 mb-4">
           {empreendimento.tags?.slice(0, 3).map((tag: string, idx: number) => (
-            <span key={idx} className="text-xs bg-white/20 backdrop-blur-sm border border-white/20 text-muted-foreground px-2 py-1 rounded-full shadow-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+            <span
+              key={idx}
+              className="text-xs bg-white/20 backdrop-blur-sm border border-white/20 text-muted-foreground px-2 py-1 rounded-full shadow-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
 
-                  {empreendimento.tipo !== "Comercial" && empreendimento.quartos > 0 && (
-                    <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Bed className="h-4 w-4" />
-                        <span>{empreendimento.quartos}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Bath className="h-4 w-4" />
-                        <span>{empreendimento.banheiros}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Car className="h-4 w-4" />
-                        <span>{empreendimento.vagas}</span>
-                      </div>
-                    </div>
-                  )}
+        {empreendimento.tipo !== "Comercial" && empreendimento.quartos > 0 && (
+          <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-1">
+              <Bed className="h-4 w-4" />
+              <span>{empreendimento.quartos}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Bath className="h-4 w-4" />
+              <span>{empreendimento.banheiros}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Car className="h-4 w-4" />
+              <span>{empreendimento.vagas}</span>
+            </div>
+          </div>
+        )}
 
-                                <div className="flex items-center justify-end">
-                <Link href={getEmpreendimentoUrl(empreendimento.slug)}>
-                  <Button size="sm" className="text-white group text-xs" style={{ backgroundColor: "#1E2C51" }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#152140"} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#1E2C51"}>
-                    Ver Mais
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-                </div>
-              </motion.div>
+        <div className="flex items-center justify-end">
+          <Link href={getEmpreendimentoUrl(empreendimento.slug)}>
+            <Button
+              size="sm"
+              className="text-white group text-xs"
+              style={{ backgroundColor: "#1E2C51" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#152140")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1E2C51")}
+            >
+              Ver Mais
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </motion.div>
   )
 }
 function getStatusColor(status: string): string {
   switch (status) {
-    case "Lançamento": return "bg-secondary"
-    case "Em Obras": return "bg-foreground/80"
-    case "Futuro lançamento": return "bg-foreground/60"
-    case "Breve lançamento": return "bg-foreground/70"
-    case "100% vendido": return "bg-foreground/50"
-    default: return "bg-foreground/60"
+    case "Lançamento":
+      return "bg-secondary"
+    case "Em Obras":
+      return "bg-foreground/80"
+    case "Futuro lançamento":
+      return "bg-foreground/60"
+    case "Breve lançamento":
+      return "bg-foreground/70"
+    case "100% vendido":
+      return "bg-foreground/50"
+    default:
+      return "bg-foreground/60"
   }
 }

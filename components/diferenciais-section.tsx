@@ -11,22 +11,26 @@ const diferenciais = [
   {
     icon: Users,
     titulo: "Respeito",
-    descricao: "Clientes, colaboradores, investidores e parceiros são nossas prioridades. Respeitar as suas necessidades é fundamental.",
+    descricao:
+      "Clientes, colaboradores, investidores e parceiros são nossas prioridades. Respeitar as suas necessidades é fundamental.",
   },
   {
     icon: Zap,
     titulo: "Agilidade",
-    descricao: "Processos otimizados e profissionais capacitados para atender às suas demandas, sempre cumprindo com o prazo.",
+    descricao:
+      "Processos otimizados e profissionais capacitados para atender às suas demandas, sempre cumprindo com o prazo.",
   },
   {
     icon: Lightbulb,
     titulo: "Inovação",
-    descricao: "Com a capacidade para ousar, estamos alinhados com as novas tendências do mercado, em projetos verticais e horizontais.",
+    descricao:
+      "Com a capacidade para ousar, estamos alinhados com as novas tendências do mercado, em projetos verticais e horizontais.",
   },
   {
     icon: TrendingUp,
     titulo: "Aprimoramento",
-    descricao: "Estamos em constante qualificação para oferecer um serviço com excelência. A evolução está em nosso sangue.",
+    descricao:
+      "Estamos em constante qualificação para oferecer um serviço com excelência. A evolução está em nosso sangue.",
   },
 ]
 
@@ -53,7 +57,6 @@ export default function DiferenciaisSection() {
   return (
     <section id="diferenciais" className="py-20 bg-background">
       <div className="container mx-auto px-4 md:px-8">
-        
         {/* Header seguindo padrão documentado */}
         <HeaderSection fadeInUp={fadeInUp} />
 
@@ -62,7 +65,6 @@ export default function DiferenciaisSection() {
 
         {/* Bloco de Propósito */}
         <PropostoSection fadeInUp={fadeInUp} />
-        
       </div>
     </section>
   )
@@ -81,17 +83,21 @@ function HeaderSection({ fadeInUp }: { fadeInUp: any }) {
       viewport={{ once: true }}
       className="text-center mb-16"
     >
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
         Nossos Diferenciais
       </h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed" style={{ fontSize: '0.875rem' }}>
+      <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed" style={{ fontSize: "0.875rem" }}>
         O que nos torna únicos no mercado imobiliário de alto padrão
       </p>
     </motion.div>
   )
 }
 
-function DiferenciaisGrid({ diferenciais, staggerContainer, fadeInUp }: {
+function DiferenciaisGrid({
+  diferenciais,
+  staggerContainer,
+  fadeInUp,
+}: {
   diferenciais: any[]
   staggerContainer: any
   fadeInUp: any
@@ -111,7 +117,10 @@ function DiferenciaisGrid({ diferenciais, staggerContainer, fadeInUp }: {
   )
 }
 
-function DiferencialCard({ diferencial, fadeInUp }: {
+function DiferencialCard({
+  diferencial,
+  fadeInUp,
+}: {
   diferencial: any
   fadeInUp: any
 }) {
@@ -127,12 +136,12 @@ function DiferencialCard({ diferencial, fadeInUp }: {
       <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
         <Icon className="h-8 w-8 text-secondary group-hover:scale-110 transition-transform duration-300" />
       </div>
-      
+
       {/* Content */}
       <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-secondary transition-colors duration-300">
         {diferencial.titulo}
       </h3>
-      <p className="text-muted-foreground leading-relaxed" style={{ fontSize: '0.875rem' }}>
+      <p className="text-muted-foreground leading-relaxed" style={{ fontSize: "0.875rem" }}>
         {diferencial.descricao}
       </p>
     </motion.div>
@@ -149,7 +158,6 @@ function PropostoSection({ fadeInUp }: { fadeInUp: any }) {
       className="max-w-5xl mx-auto"
     >
       <div className="bg-gradient-to-r from-secondary/5 to-primary/5 border border-secondary/10 rounded-2xl p-12 text-center">
-        
         {/* Header */}
         <div className="mb-8">
           <h3 className="text-sm font-semibold text-muted-foreground tracking-wider uppercase">Nosso Propósito</h3>
@@ -161,9 +169,10 @@ function PropostoSection({ fadeInUp }: { fadeInUp: any }) {
         </h4>
 
         {/* Description */}
-        <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8" style={{ fontSize: '0.875rem' }}>
+        <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8" style={{ fontSize: "0.875rem" }}>
           Todo o nosso trabalho é planejado para ser agente transformador na conquista do seu imóvel.
-          <span className="text-foreground font-semibold"> O seu sucesso é a nossa maior conquista</span> nessa empreitada.
+          <span className="text-foreground font-semibold"> O seu sucesso é a nossa maior conquista</span> nessa
+          empreitada.
         </p>
 
         {/* Decorative Elements padrão */}

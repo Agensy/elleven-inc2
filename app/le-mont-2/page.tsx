@@ -1,17 +1,18 @@
-import { Metadata } from "next"
-import Image from 'next/image'
+import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Building, Home, Shield, TreePine } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 
 // Dados do Le Mont 2
 const leMont2 = {
   nome: "Le Mont 2",
   endereco: "Estrada Morro Grande, 3502, Jardim Ísis, Cotia - São Paulo",
   tipo: "Apartamentos de 1, 2 e 3 dormitórios",
-  descricao: "O Condomínio Le Mont 2 foi planejado com atenção aos detalhes, focado na qualidade de vida de sua família. Com uma vasta área verde preservada e um ambiente que propicia o contato constante com a natureza.",
+  descricao:
+    "O Condomínio Le Mont 2 foi planejado com atenção aos detalhes, focado na qualidade de vida de sua família. Com uma vasta área verde preservada e um ambiente que propicia o contato constante com a natureza.",
   imagem: "/empreendimentos/_SITE ELLEVEN/LE MONT 2/1 - VITRINE_LE MONT 2.jpg",
   status: "Concluído em Março 2017",
   arquiteto: "Studio Gemini",
@@ -28,13 +29,14 @@ const leMont2 = {
     "Segurança 24 horas",
     "Paisagismo elaborado",
     "Localização privilegiada em Cotia",
-    "Próximo a comércios e serviços"
-  ]
+    "Próximo a comércios e serviços",
+  ],
 }
 
 export const metadata: Metadata = {
   title: "Le Mont 2 - Condomínio 1, 2 e 3 Dormitórios em Cotia | Elleven Engenharia",
-  description: "Le Mont 2 - Condomínio de 15.000m² em Cotia. 120 unidades, 1, 2 e 3 dormitórios. Piscina, fitness, playground. Projeto Studio Gemini.",
+  description:
+    "Le Mont 2 - Condomínio de 15.000m² em Cotia. 120 unidades, 1, 2 e 3 dormitórios. Piscina, fitness, playground. Projeto Studio Gemini.",
 }
 
 export default function LeMont2Page() {
@@ -52,13 +54,7 @@ export default function LeMont2Page() {
       </header>
 
       <section className="relative h-[70vh] overflow-hidden">
-        <Image
-          src={leMont2.imagem}
-          alt={leMont2.nome}
-          fill
-          className="object-cover"
-          priority
-        />
+        <Image src={leMont2.imagem || "/placeholder.svg"} alt={leMont2.nome} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl mx-auto px-4">
@@ -75,11 +71,11 @@ export default function LeMont2Page() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Conheça o {leMont2.nome}</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                {leMont2.descricao}
-              </p>
-              
+              <h2 className="text-4xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Conheça o {leMont2.nome}
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">{leMont2.descricao}</p>
+
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="font-medium">Tipo</span>
@@ -99,7 +95,7 @@ export default function LeMont2Page() {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <Image
                 src="/empreendimentos/_SITE ELLEVEN/LE MONT 2/LEMONT 2_FACHADA.jpg"
@@ -116,9 +112,11 @@ export default function LeMont2Page() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Diferenciais do Le Mont 2</h2>
+            <h2 className="text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
+              Diferenciais do Le Mont 2
+            </h2>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
@@ -129,7 +127,7 @@ export default function LeMont2Page() {
                 <p className="text-gray-600">Vasta área verde preservada para contato com a natureza.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -139,7 +137,7 @@ export default function LeMont2Page() {
                 <p className="text-gray-600">Piscina, fitness, playground e espaço gourmet.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -149,7 +147,7 @@ export default function LeMont2Page() {
                 <p className="text-gray-600">120 unidades em 4 torres.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -165,8 +163,10 @@ export default function LeMont2Page() {
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Galeria de Imagens</h2>
-          
+          <h2 className="text-3xl font-bold uppercase text-center mb-12" style={{ color: "#1A2D54" }}>
+            Galeria de Imagens
+          </h2>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative h-64 rounded-lg overflow-hidden">
               <Image
@@ -200,11 +200,13 @@ export default function LeMont2Page() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Diferenciais do Le Mont 2</h2>
+              <h2 className="text-3xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Diferenciais do Le Mont 2
+              </h2>
               <p className="text-gray-600 mb-8">
                 O Le Mont 2 foi planejado com atenção aos detalhes, focado na qualidade de vida de sua família.
               </p>
-              
+
               <div className="space-y-4">
                 {leMont2.diferenciais.map((diferencial, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -214,7 +216,7 @@ export default function LeMont2Page() {
                 ))}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-lg">
                 <h3 className="text-2xl font-bold mb-4">Informações do Projeto</h3>

@@ -12,10 +12,11 @@ export default function HeroSection() {
   // Mount effect - executar apenas uma vez
   useEffect(() => {
     setIsMounted(true)
-    // Pequeno delay para garantir que o componente está totalmente montado
+
+    // Delay para garantir que o componente está totalmente montado
     const timer = setTimeout(() => {
       setIsLoaded(true)
-    }, 100)
+    }, 500)
 
     return () => clearTimeout(timer)
   }, [])
@@ -24,15 +25,20 @@ export default function HeroSection() {
   useEffect(() => {
     if (!isMounted) return
 
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => {
+      if (isMounted) {
+        setScrollY(window.scrollY)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [isMounted])
 
-  // Render de loading enquanto não montou
+  // Early return with static content if not mounted
   if (!isMounted) {
     return (
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
@@ -40,7 +46,7 @@ export default function HeroSection() {
           <img
             src="/background-elleven.png"
             alt="Vista panorâmica da cidade com apartamento moderno"
-            className="w-full h-full object-cover scale-105 blur-sm"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-blue-950/50 via-blue-900/40 to-blue-950/60"></div>
         </div>
@@ -52,7 +58,8 @@ export default function HeroSection() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg mb-12">
-              Excelência do pequeno ao grande detalhe.
+              <span className="block">Excelência do pequeno</span>
+              <span className="block">ao grande detalhe.</span>
             </h1>
           </div>
         </div>

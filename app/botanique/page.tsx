@@ -1,10 +1,10 @@
-import { Metadata } from "next"
-import Image from 'next/image'
+import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
-import { MapPin, Home, Shield, Diamond, ArrowLeft, Calendar, Building, Bath, Car, Ruler, Phone, Download, Play, CheckCircle, TreePine, Users } from "lucide-react"
+import { Home, Shield, ArrowLeft, Building, TreePine } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge"
 
 // Dados do Botanique
 const botanique = {
@@ -12,7 +12,8 @@ const botanique = {
   endereco: "Estr. Ribeirão, 550 - Chácara Roselândia, Cotia - São Paulo",
   preco: "Empreendimento Concluído",
   tipo: "Apartamentos de 2 e 3 dormitórios",
-  descricao: "Um condomínio clube cuidadosamente projetado pensando na qualidade de vida de sua família. Localizado em Cotia, o Botanique possui uma extensa área verde preservada de 4.500m², que propicia um agradável contato com a natureza.",
+  descricao:
+    "Um condomínio clube cuidadosamente projetado pensando na qualidade de vida de sua família. Localizado em Cotia, o Botanique possui uma extensa área verde preservada de 4.500m², que propicia um agradável contato com a natureza.",
   imagem: "/empreendimentos/_SITE ELLEVEN/BOTANIQUE/1 - VITRINE_BOTANIQUE.jpg",
   status: "Concluído em Outubro 2013",
   arquiteto: "Studio Gemini",
@@ -28,13 +29,14 @@ const botanique = {
     "Salão de festas com espaço para TV",
     "Segurança 24 horas",
     "Paisagismo elaborado",
-    "Localização privilegiada em Cotia"
-  ]
+    "Localização privilegiada em Cotia",
+  ],
 }
 
 export const metadata: Metadata = {
   title: "Botanique - Condomínio Clube em Cotia | Elleven Engenharia",
-  description: "Botanique - Condomínio com área verde de 4.500m² em Cotia. 150 unidades, 2 e 3 dormitórios. Piscina, playground e área gourmet. Projeto Studio Gemini.",
+  description:
+    "Botanique - Condomínio com área verde de 4.500m² em Cotia. 150 unidades, 2 e 3 dormitórios. Piscina, playground e área gourmet. Projeto Studio Gemini.",
 }
 
 export default function BotaniquePage() {
@@ -55,7 +57,7 @@ export default function BotaniquePage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <Image
-          src={botanique.imagem}
+          src={botanique.imagem || "/placeholder.svg"}
           alt={botanique.nome}
           fill
           className="object-cover"
@@ -78,11 +80,11 @@ export default function BotaniquePage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Conheça o {botanique.nome}</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                {botanique.descricao}
-              </p>
-              
+              <h2 className="text-4xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Conheça o {botanique.nome}
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">{botanique.descricao}</p>
+
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="font-medium">Tipo</span>
@@ -106,7 +108,7 @@ export default function BotaniquePage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <Image
                 src="/empreendimentos/_SITE ELLEVEN/BOTANIQUE/BOTANIQUE_1_FACHADA.jpg"
@@ -124,12 +126,14 @@ export default function BotaniquePage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Por que escolher o Botanique?</h2>
+            <h2 className="text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
+              Por que escolher o Botanique?
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Conheça os principais diferenciais que fazem do Botanique um lugar especial para sua família.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
@@ -140,7 +144,7 @@ export default function BotaniquePage() {
                 <p className="text-gray-600">4.500m² de área verde preservada para contato com a natureza.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -150,7 +154,7 @@ export default function BotaniquePage() {
                 <p className="text-gray-600">Piscina com deck, playground e área gourmet para toda família.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -160,7 +164,7 @@ export default function BotaniquePage() {
                 <p className="text-gray-600">150 unidades distribuídas em 5 torres com 2 e 3 dormitórios.</p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -177,8 +181,10 @@ export default function BotaniquePage() {
       {/* Galeria */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Galeria de Imagens</h2>
-          
+          <h2 className="text-3xl font-bold uppercase text-center mb-12" style={{ color: "#1A2D54" }}>
+            Galeria de Imagens
+          </h2>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative h-64 rounded-lg overflow-hidden">
               <Image
@@ -237,11 +243,13 @@ export default function BotaniquePage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Diferenciais do Botanique</h2>
+              <h2 className="text-3xl font-bold uppercase mb-6" style={{ color: "#1A2D54" }}>
+                Diferenciais do Botanique
+              </h2>
               <p className="text-gray-600 mb-8">
                 O Botanique foi pensado para oferecer qualidade de vida e contato com a natureza para toda a família.
               </p>
-              
+
               <div className="space-y-4">
                 {botanique.diferenciais.map((diferencial, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -251,7 +259,7 @@ export default function BotaniquePage() {
                 ))}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
                 <h3 className="text-2xl font-bold mb-4">Informações do Projeto</h3>

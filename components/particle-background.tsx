@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useTheme } from "next-themes"
 
 interface Particle {
@@ -16,9 +16,16 @@ export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
   const animationRef = useRef<number>(0)
+  const [isMounted, setIsMounted] = useState(false)
   const { theme } = useTheme()
 
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -26,11 +33,13 @@ export default function ParticleBackground() {
     if (!ctx) return
 
     const resizeCanvas = () => {
+      if (!canvas || !isMounted) return
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
     }
 
     const createParticles = () => {
+      if (!canvas || !isMounted) return
       const particles: Particle[] = []
       const particleCount = Math.floor((canvas.width * canvas.height) / 15000)
 
@@ -49,11 +58,13 @@ export default function ParticleBackground() {
     }
 
     const animate = () => {
+      if (!canvas || !ctx || !isMounted) return
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       // Determine colors based on theme
       const isDark = theme === "dark"
-      const particleColor = isDark ? "234, 88, 12" : "234, 88, 12" // Orange for both themes
+      const particleColor = isDark ? "234, 88, 12" : "234, 88, 12"
       const lineColor = isDark ? "234, 88, 12" : "234, 88, 12"
 
       particlesRef.current.forEach((particle, index) => {
@@ -88,27 +99,41 @@ export default function ParticleBackground() {
         })
       })
 
-      animationRef.current = requestAnimationFrame(animate)
+      if (isMounted) {
+        animationRef.current = requestAnimationFrame(animate)
+      }
     }
 
-    resizeCanvas()
-    createParticles()
-    animate()
+    // Delay initialization to ensure proper mounting
+    const initTimer = setTimeout(() => {
+      if (isMounted) {
+        resizeCanvas()
+        createParticles()
+        animate()
+      }
+    }, 100)
 
     const handleResize = () => {
-      resizeCanvas()
-      createParticles()
+      if (isMounted) {
+        resizeCanvas()
+        createParticles()
+      }
     }
 
     window.addEventListener("resize", handleResize)
 
     return () => {
+      clearTimeout(initTimer)
       window.removeEventListener("resize", handleResize)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [theme])
+  }, [theme, isMounted])
+
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <canvas

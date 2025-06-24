@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Play, Pause, Calendar } from "lucide-react"
+import { useState, useEffect, useCallback } from "react"
+import { ChevronLeft, ChevronRight, Calendar } from "lucide-react"
 
 // Dados dos projetos para a linha do tempo
 const todosOsProjetos = [
@@ -107,23 +107,40 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
   return (
     <div
       className={`flex-shrink-0 w-72 mx-6 transition-all duration-500 relative ${
-        isActive ? "opacity-100" : "opacity-80"
+        isActive ? "opacity-100 scale-110" : "opacity-60 scale-95"
       } ${isAbove ? "self-start" : "self-end"}`}
       style={{
         marginTop: isAbove ? "0" : "140px",
         marginBottom: isAbove ? "140px" : "0",
       }}
     >
-      {/* Imagem sem limitações de altura */}
-      <div className="relative">
-        <img
-          src={projeto.imagem || "/placeholder.svg"}
-          alt={`Projeto ${projeto.nome}`}
-          className="w-full object-cover rounded-xl"
-        />
+      {/* Imagem com efeitos de destaque */}
+      <div className="relative z-30">
+        {/* Container da imagem */}
+        <div className="relative overflow-hidden rounded-xl transition-all duration-500">
+          <img
+            src={projeto.imagem || "/placeholder.svg"}
+            alt={`Projeto ${projeto.nome}`}
+            className={`w-full object-cover rounded-xl transition-all duration-500 ${
+              isActive ? "brightness-110 contrast-110 saturate-110" : "brightness-90 saturate-75"
+            }`}
+          />
 
-        {/* Borda de destaque para projeto ativo */}
-        {isActive && <div className="absolute inset-0 rounded-xl border-3 border-orange-500 pointer-events-none" />}
+          {/* Indicador de pulso no canto inferior */}
+          {isActive && (
+            <div className="absolute bottom-3 left-3">
+              <div className="w-3 h-3 bg-orange-500 rounded-full animate-ping"></div>
+              <div className="absolute top-0 left-0 w-3 h-3 bg-orange-500 rounded-full"></div>
+            </div>
+          )}
+        </div>
+
+        {/* Nome do projeto abaixo da imagem para projeto ativo */}
+        {isActive && (
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500/90 to-orange-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap border border-orange-400/30">
+            {projeto.nome}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -131,83 +148,73 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
 
 export default function LinhaTempoSection() {
   const [activeProject, setActiveProject] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(true) // Inicia automaticamente ativo
-  const [windowWidth, setWindowWidth] = useState(1200)
+  const [isAutoPlay, setIsAutoPlay] = useState(false) // Inicia desabilitado
+  const [windowWidth, setWindowWidth] = useState(0) // Inicia com 0
   const [isMounted, setIsMounted] = useState(false)
 
-  // Single useEffect to handle mounting and window resize
-  useEffect(() => {
-    setIsMounted(true)
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    // Set initial width
-    setWindowWidth(window.innerWidth)
-
-    // Add event listener
-    window.addEventListener("resize", handleResize)
-
-    // Cleanup
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  // Auto-play functionality with loop - separate useEffect
-  useEffect(() => {
-    if (!isAutoPlay || !isMounted) return
-
-    const interval = setInterval(() => {
-      setActiveProject((prev) => {
-        // Quando chegar no último projeto, volta para o primeiro
-        if (prev === todosOsProjetos.length - 1) {
-          return 0
-        }
-        return prev + 1
-      })
-    }, 3000) // 3 segundos por projeto
-
-    return () => clearInterval(interval)
-  }, [isAutoPlay, isMounted])
-
-  // Navigation functions
-  useEffect(() => {
-    // Sempre que o activeProject mudar, garantir que ele fique alinhado com a caixa
-    if (isMounted) {
-      // Pequeno delay para garantir que a transição seja suave
-      const timer = setTimeout(() => {
-        // Força um re-render para garantir o alinhamento
-      }, 50)
-      return () => clearTimeout(timer)
-    }
-  }, [activeProject, isMounted])
-
-  const goToNext = () => {
+  // Memoize navigation functions to prevent unnecessary re-renders
+  const goToNext = useCallback(() => {
     setActiveProject((prev) => {
       if (prev === todosOsProjetos.length - 1) {
         return 0
       }
       return prev + 1
     })
-  }
+  }, [])
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setActiveProject((prev) => (prev === 0 ? todosOsProjetos.length - 1 : prev - 1))
-  }
+  }, [])
 
-  const goToProject = (index: number) => {
+  const goToProject = useCallback((index: number) => {
     setActiveProject(index)
-  }
+  }, [])
 
-  const toggleAutoPlay = () => {
-    setIsAutoPlay(!isAutoPlay)
-  }
+  const toggleAutoPlay = useCallback(() => {
+    setIsAutoPlay((prev) => !prev)
+  }, [])
+
+  // Handle mounting and window resize
+  useEffect(() => {
+    setIsMounted(true)
+    setWindowWidth(window.innerWidth)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    // Enable autoplay after component is mounted
+    const timer = setTimeout(() => {
+      setIsAutoPlay(true)
+    }, 1000)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      clearTimeout(timer)
+    }
+  }, [])
+
+  // Auto-play functionality - only runs when component is mounted and autoplay is enabled
+  useEffect(() => {
+    if (!isAutoPlay || !isMounted) return
+
+    const interval = setInterval(() => {
+      setActiveProject((prev) => {
+        if (prev === todosOsProjetos.length - 1) {
+          return 0
+        }
+        return prev + 1
+      })
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [isAutoPlay, isMounted])
 
   // Calculate translation para alinhar o projeto ativo exatamente com a caixa de detalhes
-  const calculateTranslateX = () => {
-    if (!isMounted) return 0
+  const calculateTranslateX = useCallback(() => {
+    if (!isMounted || windowWidth === 0) return 0
 
     const cardWidth = 288 // largura do card (w-72 = 288px)
     const cardMargin = 48 // margin horizontal total (mx-6 = 24px cada lado)
@@ -223,38 +230,80 @@ export default function LinhaTempoSection() {
     const translateX = screenCenter - activeCardCenter
 
     return translateX
-  }
+  }, [isMounted, windowWidth, activeProject])
 
   const translateX = calculateTranslateX()
 
+  // Don't render until mounted to prevent hydration issues
+  if (!isMounted) {
+    return (
+      <section className="py-20 relative overflow-hidden bg-blue-900">
+        <div className="text-center py-20">
+          <div className="animate-pulse">
+            <div className="h-8 bg-white/20 rounded w-64 mx-auto mb-4"></div>
+            <div className="h-4 bg-white/10 rounded w-96 mx-auto"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
-    <section className="py-17 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
-      {/* Background Elements */}
+    <section className="py-20 relative overflow-hidden">
+      {/* Background com a nova imagem */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/backgrounds/bloco.jpg')",
+        }}
+      />
+
+      {/* Background Elements adicionais */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-transparent" />
         <div className="absolute top-14 right-7 w-22 h-22 bg-orange-500/10 rounded-full blur-2xl" />
         <div className="absolute bottom-14 left-7 w-28 h-28 bg-blue-400/10 rounded-full blur-2xl" />
       </div>
 
       {/* Header da seção */}
-      <div className="text-center mb-11 relative z-10 p-3">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Nossa Trajetória</h2>
-        <p className="text-lg text-white/80 max-w-xl mx-auto px-4">
-          {todosOsProjetos.length} projetos que marcaram nossa história de excelência
-        </p>
+      <div className="text-center mb-16 relative z-40 px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 uppercase">Nossa Trajetória</h2>
+        <p className="text-lg text-white/80 max-w-xl mx-auto">Os projetos que marcaram nossa história de excelência</p>
       </div>
 
       {/* Timeline horizontal */}
-      <div className="relative mb-8">
+      <div className="relative mb-12 z-20">
         {/* Linha principal */}
-        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/30 transform -translate-y-1/2 z-0" />
+        <div className="absolute top-1/2 left-0 right-0 h-1 bg-orange-500/80 transform -translate-y-1/2 z-20" />
+
+        {/* Marcações dos projetos na linha */}
+        <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 z-25">
+          <div
+            className="flex transition-transform duration-700 ease-out"
+            style={{
+              transform: `translateX(${translateX}px)`,
+              width: `${todosOsProjetos.length * 336}px`,
+            }}
+          >
+            {todosOsProjetos.map((_, index) => (
+              <div key={index} className="flex-shrink-0 w-72 mx-6 flex justify-center">
+                <div
+                  className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
+                    index === activeProject
+                      ? "bg-orange-500 border-orange-300 scale-150 animate-pulse"
+                      : "bg-orange-400/80 border-orange-300/80 scale-100"
+                  }`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Container dos projetos */}
         <div
-          className="flex items-center py-8 transition-transform duration-700 ease-out"
+          className="flex items-center py-12 transition-transform duration-700 ease-out relative z-30"
           style={{
             transform: `translateX(${translateX}px)`,
-            width: `${todosOsProjetos.length * 336}px`, // Ajustado para o cálculo correto
+            width: `${todosOsProjetos.length * 336}px`,
           }}
         >
           {todosOsProjetos.map((projeto, index) => (
@@ -269,88 +318,73 @@ export default function LinhaTempoSection() {
       </div>
 
       {/* Painel de Controle */}
-      <div className="container mx-auto px-4 md:px-7 lg:px-14 relative z-10">
+      <div className="container mx-auto px-4 md:px-7 lg:px-14 relative z-40">
         <div className="space-y-4">
           {/* Informações do projeto ativo com efeito Liquid Glass */}
           <div className="text-center p-3">
-            <div className="relative group overflow-hidden inline-block transition-all duration-500 hover:scale-105 transform-gpu">
-              {/* Background principal com liquid glass */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-2xl rounded-2xl border border-white/30 shadow-2xl shadow-black/20"></div>
+            <div className="flex items-center justify-center gap-6">
+              {/* Botão anterior */}
+              <button
+                onClick={goToPrevious}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110"
+              >
+                <ChevronLeft className="w-5 h-5 text-white" />
+              </button>
 
-              {/* Efeito de brilho animado */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-out rounded-2xl"></div>
+              {/* Caixa de detalhes */}
+              <div className="relative group overflow-hidden inline-block transition-all duration-500 hover:scale-105 transform-gpu">
+                {/* Background principal com liquid glass */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-2xl rounded-2xl border border-white/30"></div>
 
-              {/* Borda interna brilhante */}
-              <div className="absolute inset-0 rounded-2xl border border-white/40 group-hover:border-white/60 transition-colors duration-300"></div>
+                {/* Efeito de brilho animado */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-out rounded-2xl"></div>
 
-              {/* Reflexo superior */}
-              <div className="absolute top-2 left-6 right-6 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-full"></div>
+                {/* Borda interna brilhante */}
+                <div className="absolute inset-0 rounded-2xl border border-white/40 group-hover:border-white/60 transition-colors duration-300"></div>
 
-              {/* Reflexo lateral esquerdo */}
-              <div className="absolute top-6 bottom-6 left-2 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent rounded-full"></div>
+                {/* Reflexo superior */}
+                <div className="absolute top-2 left-6 right-6 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-full"></div>
 
-              {/* Sombra interna */}
-              <div className="absolute inset-0 rounded-2xl shadow-inner shadow-black/5"></div>
+                {/* Reflexo lateral esquerdo */}
+                <div className="absolute top-6 bottom-6 left-2 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent rounded-full"></div>
 
-              {/* Conteúdo */}
-              <div className="relative z-10 px-6 py-4">
-                <h3 className="text-xl font-bold text-white mb-1 drop-shadow-sm">
-                  {todosOsProjetos[activeProject]?.nome}
-                </h3>
-                <div className="flex items-center justify-center gap-3 text-white/80 mb-3">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
-                    <span className="text-sm">{todosOsProjetos[activeProject]?.mesEntrega}</span>
+                {/* Conteúdo */}
+                <div className="relative z-10 px-6 py-4">
+                  <h3 className="text-xl font-bold text-white mb-1">{todosOsProjetos[activeProject]?.nome}</h3>
+                  <div className="flex items-center justify-center gap-3 text-white/80 mb-3">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      <span className="text-sm">{todosOsProjetos[activeProject]?.mesEntrega}</span>
+                    </div>
+                    <span>•</span>
+                    <span className="font-semibold text-sm">{todosOsProjetos[activeProject]?.entrega}</span>
+                    <span>•</span>
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${
+                        todosOsProjetos[activeProject]?.status === "Entregue"
+                          ? "bg-emerald-500/20 text-emerald-100 border-emerald-400/30"
+                          : "bg-orange-500/20 text-orange-100 border-orange-400/30"
+                      }`}
+                    >
+                      {todosOsProjetos[activeProject]?.status}
+                    </span>
                   </div>
-                  <span>•</span>
-                  <span className="font-semibold text-sm">{todosOsProjetos[activeProject]?.entrega}</span>
-                  <span>•</span>
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${
-                      todosOsProjetos[activeProject]?.status === "Entregue"
-                        ? "bg-emerald-500/20 text-emerald-100 border-emerald-400/30"
-                        : "bg-orange-500/20 text-orange-100 border-orange-400/30"
-                    }`}
-                  >
-                    {todosOsProjetos[activeProject]?.status}
-                  </span>
+
+                  {/* Botão Ver Detalhes simplificado */}
+                  <button className="bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 border border-orange-400/30">
+                    Ver Detalhes
+                  </button>
                 </div>
-
-                {/* Botão Ver Detalhes simplificado */}
-                <button className="bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg border border-orange-400/30">
-                  Ver Detalhes
-                </button>
               </div>
+
+              {/* Botão próximo */}
+              <button
+                onClick={goToNext}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110"
+              >
+                <ChevronRight className="w-5 h-5 text-white" />
+              </button>
             </div>
-          </div>
-
-          {/* Controles principais */}
-          <div className="flex items-center justify-center gap-3 p-3">
-            {/* Botão anterior */}
-            <button
-              onClick={goToPrevious}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110"
-            >
-              <ChevronLeft className="w-4 h-4 text-white" />
-            </button>
-
-            {/* Botão play/pause */}
-            <button
-              onClick={toggleAutoPlay}
-              className={`${
-                isAutoPlay ? "bg-orange-500/20 border-orange-500/30" : "bg-white/10 border-white/20"
-              } hover:bg-orange-500/30 backdrop-blur-sm border rounded-full p-3 transition-all duration-300 hover:scale-110`}
-            >
-              {isAutoPlay ? <Pause className="w-4 h-4 text-white" /> : <Play className="w-4 h-4 text-white" />}
-            </button>
-
-            {/* Botão próximo */}
-            <button
-              onClick={goToNext}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110"
-            >
-              <ChevronRight className="w-4 h-4 text-white" />
-            </button>
           </div>
 
           {/* Indicador de progresso e navegação por pontos */}
@@ -370,9 +404,7 @@ export default function LinhaTempoSection() {
                   key={index}
                   onClick={() => goToProject(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === activeProject
-                      ? "bg-orange-500 scale-125 shadow-lg shadow-orange-500/50"
-                      : "bg-white/30 hover:bg-white/50"
+                    index === activeProject ? "bg-orange-500 scale-125" : "bg-white/30 hover:bg-white/50"
                   }`}
                 />
               ))}

@@ -79,38 +79,92 @@ export default function QuemSomosSection() {
         </div>
 
         {/* Grid do Time */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-7xl mx-auto">
-          {timeElleven.map((pessoa) => (
-            <div key={pessoa.id} className="text-center group">
-              {/* Foto */}
-              <div className="relative mb-6 mx-auto w-48 h-48 lg:w-56 lg:h-56">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-200/20 to-orange-200/20 blur-xl scale-110 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+        {/* Eduardo Rocha - Destaque Especial */}
+        <div className="mb-16">
+          <div className="max-w-6xl mx-auto bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Foto do Eduardo */}
+              <div className="text-center lg:text-left">
+                <div className="relative mx-auto lg:mx-0 w-64 h-64 lg:w-80 lg:h-80">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-200/20 to-orange-200/20 blur-xl scale-110 opacity-70" />
 
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary/20 group-hover:border-secondary/40 transition-all duration-300 shadow-lg group-hover:shadow-xl">
-                  <img
-                    src={pessoa.imagem || "/placeholder.svg"}
-                    alt={pessoa.nome}
-                    className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-secondary/30 shadow-2xl">
+                    <img
+                      src={timeElleven[0].imagem || "/placeholder.svg"}
+                      alt={timeElleven[0].nome}
+                      className="w-full h-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent" />
+                  </div>
+
+                  {/* Badge Founder */}
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-secondary text-white py-2 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg px-2.5">
+                    Eduardo Rocha 
+                  </div>
                 </div>
               </div>
 
-              {/* Informações */}
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground group-hover:text-secondary transition-colors duration-300">
-                  {pessoa.nome}
-                </h3>
-                <p className="text-secondary font-medium text-sm uppercase tracking-wider">{pessoa.cargo}</p>
-                <p
-                  className="text-muted-foreground leading-relaxed mt-4 group-hover:text-foreground/80 transition-colors duration-300"
-                  style={{ fontSize: "0.875rem" }}
-                >
-                  {pessoa.descricao}
-                </p>
+              {/* Biografia do Eduardo */}
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">{timeElleven[0].nome}</h3>
+                  <p className="text-secondary font-medium text-lg uppercase tracking-wider mb-4">
+                    {timeElleven[0].cargo}
+                  </p>
+                </div>
+
+                <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                  <p className="text-muted-foreground leading-relaxed text-base">{timeElleven[0].descricao}</p>
+                </div>
+
+                {/* Elementos decorativos */}
+                <div className="flex items-center space-x-4 pt-4">
+                  <div className="w-12 h-1 bg-secondary rounded-full"></div>
+                  <div className="w-8 h-1 bg-secondary/60 rounded-full"></div>
+                  <div className="w-4 h-1 bg-secondary/30 rounded-full"></div>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* Outros Membros da Equipe */}
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-12 text-foreground">Diretores Executivos</h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+            {timeElleven.slice(1).map((pessoa) => (
+              <div key={pessoa.id} className="text-center group">
+                {/* Foto */}
+                <div className="relative mb-6 mx-auto w-48 h-48 lg:w-56 lg:h-56">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-200/20 to-orange-200/20 blur-xl scale-110 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-secondary/20 group-hover:border-secondary/40 transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                    <img
+                      src={pessoa.imagem || "/placeholder.svg"}
+                      alt={pessoa.nome}
+                      className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </div>
+
+                {/* Informações */}
+                <div className="space-y-2">
+                  <h4 className="text-xl font-bold text-foreground group-hover:text-secondary transition-colors duration-300">
+                    {pessoa.nome}
+                  </h4>
+                  <p className="text-secondary font-medium text-sm uppercase tracking-wider">{pessoa.cargo}</p>
+                  <p
+                    className="text-muted-foreground leading-relaxed mt-4 group-hover:text-foreground/80 transition-colors duration-300"
+                    style={{ fontSize: "0.875rem" }}
+                  >
+                    {pessoa.descricao}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

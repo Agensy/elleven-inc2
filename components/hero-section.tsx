@@ -32,7 +32,7 @@ export default function HeroSection() {
 
           {/* Main Title */}
           <div className="mb-12">
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg">
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg uppercase">
               <span className="block">Excelência do pequeno</span>
               <span className="block">ao grande detalhe.</span>
             </h1>

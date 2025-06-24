@@ -2,6 +2,7 @@ import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import BannerSlider from "@/components/banner-slider"
 import QuemSomosSection from "@/components/quem-somos-section"
+import LinhaTempoSection from "@/components/linha-tempo-section"
 import EmpreendimentosSection from "@/components/empreendimentos-section"
 import ServicosSection from "@/components/servicos-section"
 import DiferenciaisSection from "@/components/diferenciais-section"
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <QuemSomosSection />
+      <LinhaTempoSection />
       <BannerSlider />
       <EmpreendimentosSection />
       <DiferenciaisSection />

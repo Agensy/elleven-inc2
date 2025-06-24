@@ -16,8 +16,8 @@ export default function HeroSection() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-        {/* Overlay for better text readability - now darker */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/80 via-blue-900/70 to-blue-950/90"></div>
+        {/* Overlay for better text readability - now with orange gradient from bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 via-blue-900/60 to-blue-950/80"></div>
       </div>
 
       {/* Main Content - Centralized */}

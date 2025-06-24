@@ -10,6 +10,7 @@ import { getEllevenLogo } from "@/lib/brand/elleven"
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isEmpreendimentosOpen, setIsEmpreendimentosOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,10 +23,17 @@ export default function Header() {
 
   const navItems = [
     { href: "/empreendimentos", label: "Empreendimentos" },
-    { href: "/#servicos", label: "Projetos" },
     { href: "/#sobre", label: "Sobre" },
     { href: "/invista", label: "Invista" },
+    { href: "/#parceiros", label: "Parceiros" },
     { href: "/#contato", label: "Contato" },
+  ]
+
+  const empreendimentosStatus = [
+    { href: "/empreendimentos?status=breve-lancamento", label: "Breve Lançamento" },
+    { href: "/empreendimentos?status=lancamento", label: "Lançamento" },
+    { href: "/empreendimentos?status=em-obras", label: "Em Obras" },
+    { href: "/empreendimentos?status=entregues", label: "Entregues" },
   ]
 
   return (
@@ -49,7 +57,66 @@ export default function Header() {
 
           {/* Desktop Navigation - Lighter Font Weight */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {/* Empreendimentos Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsEmpreendimentosOpen(true)}
+              onMouseLeave={(e) => {
+                // Verificar se o mouse está saindo para fora de toda a área do dropdown
+                const rect = e.currentTarget.getBoundingClientRect()
+                const { clientX, clientY } = e
+
+                // Se o mouse está se movendo para baixo (para o dropdown), não fechar
+                if (clientY > rect.bottom && clientX >= rect.left && clientX <= rect.right) {
+                  return
+                }
+
+                // Delay para permitir movimento para o dropdown
+                setTimeout(() => {
+                  setIsEmpreendimentosOpen(false)
+                }, 150)
+              }}
+            >
+              <Link
+                href="/empreendimentos"
+                className={`relative transition-colors duration-200 group text-lg font-normal ${
+                  isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
+                }`}
+              >
+                Empreendimentos
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-secondary transition-all duration-200 group-hover:w-full"></span>
+              </Link>
+
+              {/* Dropdown Menu */}
+              {isEmpreendimentosOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-md border border-border/50 rounded-lg shadow-lg py-2 z-50"
+                  onMouseEnter={() => setIsEmpreendimentosOpen(true)}
+                  onMouseLeave={() => {
+                    setTimeout(() => {
+                      setIsEmpreendimentosOpen(false)
+                    }, 100)
+                  }}
+                >
+                  {empreendimentosStatus.map((status) => (
+                    <Link
+                      key={status.href}
+                      href={status.href}
+                      className="block px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors duration-200 text-base"
+                    >
+                      {status.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+
+              {/* Área invisível de conexão */}
+              {isEmpreendimentosOpen && <div className="absolute top-full left-0 w-56 h-2 bg-transparent" />}
+            </div>
+            {navItems.slice(1).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

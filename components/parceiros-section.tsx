@@ -54,6 +54,11 @@ const parceiros = [
     nome: "Vinx",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vinx%20%281%29-ZHFphsz1YXXTXfRzzyxrwVqLZn0XrZ.png",
   },
+  {
+    id: 10,
+    nome: "Kabanna",
+    logo: "/parceiros/kabanna.png",
+  },
 ]
 
 // =============================================================================
@@ -166,7 +171,7 @@ export default function ParceirosSection() {
                       <img
                         src={parceiro.logo || "/placeholder.svg"}
                         alt={`Logo ${parceiro.nome}`}
-                        className="max-h-8 md:max-h-10 max-w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+                        className="max-h-6 md:max-h-8 max-w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
                         loading="lazy"
                         style={{
                           filter: "grayscale(100%)",

@@ -81,6 +81,14 @@ const parceiros: Parceiro[] = [
     categoria: "imobiliaria",
     descricao: "Plataforma digital inovadora para transações imobiliárias.",
   },
+  {
+    id: 10,
+    nome: "Kabanna",
+    logo: "/parceiros/kabanna.png",
+    categoria: "investimento",
+    descricao:
+      "Investimentos imobiliários nos EUA com modelo de participação nos lucros para investidores brasileiros.",
+  },
 ]
 
 // =============================================================================
@@ -278,7 +286,7 @@ function ParceiroCard({
       <img
         src={parceiro.logo || "/placeholder.svg"}
         alt={`Logo ${parceiro.nome}`}
-        className="max-h-20 max-w-full object-contain mb-8 transition-all duration-300 group-hover:scale-105"
+        className="max-h-16 max-w-full object-contain mb-6 transition-all duration-300 group-hover:scale-105"
         loading="lazy"
       />
 

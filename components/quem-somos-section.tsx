@@ -50,7 +50,15 @@ export default function QuemSomosSection() {
   }
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
+    <section
+      className="py-20 bg-background relative overflow-hidden"
+      style={{
+        backgroundImage: "url(/graphics/grafismos-1.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-orange-50/20" />

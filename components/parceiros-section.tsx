@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 // =============================================================================
 // DADOS DOS PARCEIROS
@@ -84,8 +83,8 @@ export default function ParceirosSection() {
     }
 
     updateSlidesToShow()
-    window.addEventListener('resize', updateSlidesToShow)
-    return () => window.removeEventListener('resize', updateSlidesToShow)
+    window.addEventListener("resize", updateSlidesToShow)
+    return () => window.removeEventListener("resize", updateSlidesToShow)
   }, [])
 
   // Navegação
@@ -121,10 +120,13 @@ export default function ParceirosSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 uppercase"
+            style={{ color: "#1A2D54" }}
+          >
             Empresas que confiam em nosso trabalho
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto" style={{ fontSize: '0.875rem' }}>
+          <p className="text-muted-foreground max-w-2xl mx-auto" style={{ fontSize: "0.875rem" }}>
             O que nos torna únicos no mercado imobiliário de alto padrão
           </p>
         </motion.div>
@@ -154,31 +156,27 @@ export default function ParceirosSection() {
               className="flex transition-transform duration-500 ease-out"
               style={{
                 transform: `translateX(-${currentSlide * (100 / slidesToShow)}%)`,
-                width: `${(parceiros.length * 100) / slidesToShow}%`
+                width: `${(parceiros.length * 100) / slidesToShow}%`,
               }}
             >
               {parceiros.map((parceiro) => (
-                <div
-                  key={parceiro.id}
-                  className="px-2 md:px-3"
-                  style={{ width: `${100 / parceiros.length}%` }}
-                >
+                <div key={parceiro.id} className="px-2 md:px-3" style={{ width: `${100 / parceiros.length}%` }}>
                   <div className="bg-slate-800 border border-slate-600 rounded-lg p-6 h-28 md:h-32 flex items-center justify-center hover:border-secondary/50 transition-all duration-300 group cursor-pointer hover:scale-105 hover:-translate-y-1">
                     <div className="relative w-full h-full flex items-center justify-center bg-slate-700 rounded-md p-3">
                       <img
-                        src={parceiro.logo}
+                        src={parceiro.logo || "/placeholder.svg"}
                         alt={`Logo ${parceiro.nome}`}
                         className="max-h-8 md:max-h-10 max-w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
                         loading="lazy"
                         style={{
-                          filter: 'grayscale(100%)',
+                          filter: "grayscale(100%)",
                         }}
                         onError={(e) => {
-                          const img = e.currentTarget;
-                          const fallback = img.nextElementSibling as HTMLElement;
-                          img.style.display = 'none';
+                          const img = e.currentTarget
+                          const fallback = img.nextElementSibling as HTMLElement
+                          img.style.display = "none"
                           if (fallback) {
-                            fallback.style.display = 'flex';
+                            fallback.style.display = "flex"
                           }
                         }}
                       />
@@ -186,7 +184,7 @@ export default function ParceirosSection() {
                       <div className="hidden absolute inset-0 flex items-center justify-center bg-slate-600 rounded text-white text-xs font-medium border-2 border-dashed border-slate-400">
                         {parceiro.nome}
                       </div>
-                      
+
                       {/* Tooltip */}
                       <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
                         {parceiro.nome}
@@ -207,9 +205,7 @@ export default function ParceirosSection() {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? "w-8 bg-secondary" 
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
+                    index === currentSlide ? "w-8 bg-secondary" : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Ir para slide ${index + 1}`}
                 />

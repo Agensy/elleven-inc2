@@ -23,63 +23,63 @@ const parceiros: Parceiro[] = [
     nome: "Banco do Brasil",
     logo: "/parceiros/banco-do-brasil.png",
     categoria: "financeira",
-    descricao: "Soluções de financiamento imobiliário com as melhores taxas do mercado."
+    descricao: "Soluções de financiamento imobiliário com as melhores taxas do mercado.",
   },
   {
     id: 2,
     nome: "Construz",
     logo: "/parceiros/construz.png",
     categoria: "construtora",
-    descricao: "Parceria estratégica em projetos de construção e desenvolvimento urbano."
+    descricao: "Parceria estratégica em projetos de construção e desenvolvimento urbano.",
   },
   {
     id: 3,
     nome: "Safra",
     logo: "/parceiros/safra.png",
     categoria: "financeira",
-    descricao: "Banco premium com soluções financeiras exclusivas para investidores."
+    descricao: "Banco premium com soluções financeiras exclusivas para investidores.",
   },
   {
     id: 4,
     nome: "Revolução",
     logo: "/parceiros/revolucao.png",
     categoria: "imobiliaria",
-    descricao: "Inovação em vendas e marketing imobiliário com foco em resultados."
+    descricao: "Inovação em vendas e marketing imobiliário com foco em resultados.",
   },
   {
     id: 5,
     nome: "Stuchi Imóveis",
     logo: "/parceiros/stuchi-imoveis.png",
     categoria: "imobiliaria",
-    descricao: "Tradição e excelência no mercado imobiliário há mais de 20 anos."
+    descricao: "Tradição e excelência no mercado imobiliário há mais de 20 anos.",
   },
   {
     id: 6,
     nome: "Vinocur",
     logo: "/parceiros/vinocur.png",
     categoria: "construtora",
-    descricao: "Construtora especializada em empreendimentos residenciais de alto padrão."
+    descricao: "Construtora especializada em empreendimentos residenciais de alto padrão.",
   },
   {
     id: 7,
     nome: "Stuchi",
     logo: "/parceiros/stuchi.png",
     categoria: "imobiliaria",
-    descricao: "Grupo imobiliário com expertise em desenvolvimento e comercialização."
+    descricao: "Grupo imobiliário com expertise em desenvolvimento e comercialização.",
   },
   {
     id: 8,
     nome: "Smart Solution",
     logo: "/parceiros/smart-solution.png",
     categoria: "tecnologia",
-    descricao: "Soluções tecnológicas inteligentes para o setor imobiliário."
+    descricao: "Soluções tecnológicas inteligentes para o setor imobiliário.",
   },
   {
     id: 9,
     nome: "Vinx",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vinx%20%281%29-ZHFphsz1YXXTXfRzzyxrwVqLZn0XrZ.png",
     categoria: "imobiliaria",
-    descricao: "Plataforma digital inovadora para transações imobiliárias."
+    descricao: "Plataforma digital inovadora para transações imobiliárias.",
   },
 ]
 
@@ -93,7 +93,7 @@ export default function ParceirosGrid() {
 
   // Usar todos os parceiros sempre (sem filtros)
   const parceirosVisiveis = parceiros
-  
+
   // Total de slides baseado na quantidade por slide
   const totalSlides = Math.ceil(parceirosVisiveis.length / slidesToShow)
 
@@ -111,8 +111,8 @@ export default function ParceirosGrid() {
     }
 
     updateSlidesToShow()
-    window.addEventListener('resize', updateSlidesToShow)
-    return () => window.removeEventListener('resize', updateSlidesToShow)
+    window.addEventListener("resize", updateSlidesToShow)
+    return () => window.removeEventListener("resize", updateSlidesToShow)
   }, [])
 
   // Reset slide quando slidesToShow muda
@@ -136,7 +136,7 @@ export default function ParceirosGrid() {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides)
     }, 4000) // 4 segundos por slide
-    
+
     return () => clearInterval(interval)
   }, [totalSlides])
 
@@ -155,9 +155,8 @@ export default function ParceirosGrid() {
   }
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-gray-50 py-16">
       <div className="container mx-auto px-4 md:px-8">
-        
         {/* Header */}
         <motion.div
           variants={fadeInUp}
@@ -166,8 +165,8 @@ export default function ParceirosGrid() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Nossos <span className="text-foreground">Parceiros</span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4" style={{ color: "#1A2D54" }}>
+            Nossos Parceiros
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             O que nos torna únicos no mercado imobiliário de alto padrão
@@ -176,7 +175,6 @@ export default function ParceirosGrid() {
 
         {/* Carrossel de Parceiros */}
         <div className="relative max-w-6xl mx-auto">
-          
           {/* Navigation Buttons */}
           {totalSlides > 1 && (
             <>
@@ -204,11 +202,11 @@ export default function ParceirosGrid() {
               <div
                 key={slideIndex}
                 className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                  slideIndex === currentSlide 
-                    ? 'opacity-100 translate-x-0' 
-                    : slideIndex < currentSlide 
-                      ? 'opacity-0 -translate-x-full' 
-                      : 'opacity-0 translate-x-full'
+                  slideIndex === currentSlide
+                    ? "opacity-100 translate-x-0"
+                    : slideIndex < currentSlide
+                      ? "opacity-0 -translate-x-full"
+                      : "opacity-0 translate-x-full"
                 }`}
               >
                 <div className="h-full flex items-center justify-center p-4">
@@ -234,9 +232,7 @@ export default function ParceirosGrid() {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? "w-8 bg-secondary" 
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
+                    index === currentSlide ? "w-8 bg-secondary" : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Ir para slide ${index + 1}`}
                 />
@@ -262,25 +258,25 @@ export default function ParceirosGrid() {
 // COMPONENTE DO CARD
 // =============================================================================
 
-function ParceiroCard({ 
-  parceiro, 
-  index
+function ParceiroCard({
+  parceiro,
+  index,
 }: {
   parceiro: Parceiro
   index: number
 }) {
   return (
     <motion.div
-      whileHover={{ 
-        y: -8, 
-        transition: { duration: 0.2 } 
+      whileHover={{
+        y: -8,
+        transition: { duration: 0.2 },
       }}
       className="group relative rounded-xl p-8 hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col items-center justify-center"
-      style={{ backgroundColor: '#1E2C51' }}
+      style={{ backgroundColor: "#1E2C51" }}
     >
       {/* Logo centralizada */}
       <img
-        src={parceiro.logo}
+        src={parceiro.logo || "/placeholder.svg"}
         alt={`Logo ${parceiro.nome}`}
         className="max-h-20 max-w-full object-contain mb-8 transition-all duration-300 group-hover:scale-105"
         loading="lazy"

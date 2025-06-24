@@ -95,11 +95,10 @@ function ImagemStats({ fadeInRight }: { fadeInRight: any }) {
       {/* Imagem Principal */}
       <div className="relative overflow-hidden rounded-lg shadow-light-lg dark:shadow-2xl">
         <img
-          src="/modern-construction-team.png"
-          alt="Equipe Elleven Engenharia"
+          src="/images/elleven-engenharia-about.webp"
+          alt="Capacete de engenharia e plantas com skyline ao pôr do sol"
           className="w-full h-[500px] object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent dark:from-dark-900/60" />
       </div>
 
       {/* Stats Overlay */}

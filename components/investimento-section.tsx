@@ -39,7 +39,10 @@ export default function InvestimentoSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Bloco de Texto */}
           <motion.div variants={fadeInLeft} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8 leading-tight">
+            <h2
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-8 leading-tight uppercase"
+              style={{ color: "#1A2D54" }}
+            >
               A rentabilidade
               <br />
               certa para o seu
@@ -47,12 +50,12 @@ export default function InvestimentoSection() {
               investimento
             </h2>
 
-            <p className="text-muted-foreground mb-10 leading-relaxed" style={{ fontSize: '0.875rem' }}>
+            <p className="text-muted-foreground mb-10 leading-relaxed" style={{ fontSize: "0.875rem" }}>
               No mercado imobiliário, você encontra a segurança e rentabilidade que seu patrimônio merece. Invista em
               empreendimentos sólidos com potencial de valorização garantido.
             </p>
 
-            <motion.div 
+            <motion.div
               variants={staggerContainer}
               initial="initial"
               whileInView="whileInView"
@@ -63,14 +66,14 @@ export default function InvestimentoSection() {
                 { icon: TrendingUp, title: "Valorização", subtitle: "Constante" },
                 { icon: DollarSign, title: "Renda", subtitle: "Passiva" },
                 { icon: Target, title: "Segurança", subtitle: "Garantida" },
-                { icon: "percent", title: "Rentabilidade", subtitle: "Acima da média" }
+                { icon: "percent", title: "Rentabilidade", subtitle: "Acima da média" },
               ].map((item, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.2 },
                   }}
                   className="flex items-center gap-3 p-4 rounded-lg bg-gray-50 hover:bg-secondary/5 hover:shadow-md transition-all duration-300 cursor-pointer group"
                 >
@@ -82,7 +85,10 @@ export default function InvestimentoSection() {
                     )}
                   </div>
                   <div>
-                    <div className="font-bold text-foreground group-hover:text-secondary transition-colors duration-300" style={{ fontSize: '1rem' }}>
+                    <div
+                      className="font-bold text-foreground group-hover:text-secondary transition-colors duration-300"
+                      style={{ fontSize: "1rem" }}
+                    >
                       {item.title}
                     </div>
                     <div className="text-sm text-muted-foreground">{item.subtitle}</div>
@@ -97,7 +103,11 @@ export default function InvestimentoSection() {
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
 
-              <Button size="lg" variant="outline" className="border-secondary/30 text-secondary hover:border-secondary hover:bg-secondary/5">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-secondary/30 text-secondary hover:border-secondary hover:bg-secondary/5"
+              >
                 Simular Investimento
               </Button>
             </div>
@@ -120,7 +130,10 @@ export default function InvestimentoSection() {
 
               {/* Elementos decorativos melhorados */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/10 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary/20 rounded-full blur-lg animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </div>
 
             {/* Cards flutuantes com melhor posicionamento */}
@@ -147,7 +160,9 @@ export default function InvestimentoSection() {
               className="absolute top-4 right-0 lg:-top-6 lg:-right-6 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg p-3 lg:p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="text-center">
-                <div className="font-bold text-secondary mb-1" style={{ fontSize: '1rem' }}>R$ 2M+</div>
+                <div className="font-bold text-secondary mb-1" style={{ fontSize: "1rem" }}>
+                  R$ 2M+
+                </div>
                 <div className="text-xs text-muted-foreground">Investimentos</div>
               </div>
             </motion.div>

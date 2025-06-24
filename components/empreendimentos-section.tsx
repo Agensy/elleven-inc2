@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Bed, Bath, Car, ArrowRight, Filter, X, ChevronDown, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -35,10 +35,6 @@ function getEmpreendimentoUrl(slug: string): string {
 // =============================================================================
 
 export default function EmpreendimentosSection() {
-  // Refs para controle de montagem
-  const isMountedRef = useRef(false)
-  const timeoutRefs = useRef<NodeJS.Timeout[]>([])
-
   // Estados
   const [filtros, setFiltros] = useState<FiltrosEmpreendimento>({
     tipo: "",
@@ -52,45 +48,13 @@ export default function EmpreendimentosSection() {
   const [mostrarTodos, setMostrarTodos] = useState(false)
   const [mostrarFiltros, setMostrarFiltros] = useState(false)
 
-  // Função segura para atualizar estado
-  const safeSetState = useCallback((updateFn: () => void) => {
-    if (isMountedRef.current) {
-      updateFn()
-    }
-  }, [])
-
-  // Cleanup function
-  const cleanup = useCallback(() => {
-    timeoutRefs.current.forEach((timeout) => clearTimeout(timeout))
-    timeoutRefs.current = []
-  }, [])
-
-  // Mount effect
-  useEffect(() => {
-    isMountedRef.current = true
-
-    return () => {
-      isMountedRef.current = false
-      cleanup()
-    }
-  }, [cleanup])
-
   // Empreendimentos filtrados
   const empreendimentosFiltrados = useMemo(() => {
-    safeSetState(() => {
-      setIsLoading(true)
-    })
-
-    const timeout = setTimeout(() => {
-      safeSetState(() => {
-        setIsLoading(false)
-      })
-    }, 300)
-
-    timeoutRefs.current.push(timeout)
+    setIsLoading(true)
+    setTimeout(() => setIsLoading(false), 300) // Simular delay
 
     return empreendimentos.filter((emp) => {
-      // Filtro de busca
+      // Filtro de busca por nome
       if (filtros.busca) {
         const termo = filtros.busca.toLowerCase()
         const matchNome = emp.nome.toLowerCase().includes(termo)
@@ -99,7 +63,6 @@ export default function EmpreendimentosSection() {
         if (!matchNome && !matchLocalizacao && !matchTags) return false
       }
 
-      // Outros filtros
       if (filtros.tipo && emp.tipo !== filtros.tipo) return false
       if (filtros.status && emp.status !== filtros.status) return false
       if (filtros.bairro && emp.bairro !== filtros.bairro) return false
@@ -111,7 +74,7 @@ export default function EmpreendimentosSection() {
 
       return true
     })
-  }, [filtros, safeSetState])
+  }, [filtros])
 
   // Empreendimentos para exibir (limitados ou todos)
   const empreendimentosParaExibir = useMemo(() => {
@@ -126,20 +89,13 @@ export default function EmpreendimentosSection() {
   }, [empreendimentosFiltrados, mostrarTodos])
 
   // Funções auxiliares
-  const updateFiltro = useCallback(
-    (key: keyof FiltrosEmpreendimento, value: string) => {
-      safeSetState(() => {
-        setFiltros((prev) => ({ ...prev, [key]: value }))
-      })
-    },
-    [safeSetState],
-  )
+  const updateFiltro = (key: keyof FiltrosEmpreendimento, value: string) => {
+    setFiltros((prev) => ({ ...prev, [key]: value }))
+  }
 
-  const limparFiltros = useCallback(() => {
-    safeSetState(() => {
-      setFiltros({ tipo: "", status: "", faixa: "", bairro: "", busca: "" })
-    })
-  }, [safeSetState])
+  const limparFiltros = () => {
+    setFiltros({ tipo: "", status: "", faixa: "", bairro: "", busca: "" })
+  }
 
   const temFiltrosAtivos = Object.values(filtros).some((filtro) => filtro !== "")
 
@@ -164,16 +120,14 @@ export default function EmpreendimentosSection() {
       if (dropdownAberto !== null) {
         const target = event.target as HTMLElement
         if (!target.closest(".dropdown-container")) {
-          safeSetState(() => {
-            setDropdownAberto(null)
-          })
+          setDropdownAberto(null)
         }
       }
     }
 
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [dropdownAberto, safeSetState])
+  }, [dropdownAberto])
 
   return (
     <section id="empreendimentos" className="py-20 bg-muted/30">
@@ -215,7 +169,7 @@ export default function EmpreendimentosSection() {
             <Button
               variant={mostrarFiltros ? "default" : "outline"}
               size="default"
-              onClick={() => safeSetState(() => setMostrarFiltros(!mostrarFiltros))}
+              onClick={() => setMostrarFiltros(!mostrarFiltros)}
               className={`h-11 px-6 transition-all duration-300 ${
                 mostrarFiltros
                   ? "bg-secondary hover:bg-secondary/90 text-white shadow-lg"
@@ -248,7 +202,7 @@ export default function EmpreendimentosSection() {
             limparFiltros={limparFiltros}
             temFiltrosAtivos={temFiltrosAtivos}
             dropdownAberto={dropdownAberto}
-            setDropdownAberto={(value) => safeSetState(() => setDropdownAberto(value))}
+            setDropdownAberto={setDropdownAberto}
           />
         )}
 
@@ -291,7 +245,7 @@ export default function EmpreendimentosSection() {
                     <Button
                       variant="default"
                       size="default"
-                      onClick={() => safeSetState(() => setMostrarTodos(true))}
+                      onClick={() => setMostrarTodos(true)}
                       className="bg-secondary hover:bg-secondary/90 text-white h-10 px-6 shadow-md hover:shadow-lg transition-all duration-300"
                     >
                       Ver Todos ({empreendimentosFiltrados.length})
@@ -347,7 +301,7 @@ export default function EmpreendimentosSection() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => safeSetState(() => setMostrarTodos(false))}
+                onClick={() => setMostrarTodos(false)}
                 className="relative bg-white/90 backdrop-blur-sm border-border/30 hover:border-secondary hover:bg-white hover:shadow-lg transition-all duration-300 h-12 px-8"
               >
                 Mostrar Menos
@@ -586,9 +540,6 @@ function EmpreendimentoCard({ empreendimento }: { empreendimento: any }) {
           src={empreendimento.imagem || "/placeholder.svg"}
           alt={empreendimento.nome}
           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-          onError={(e) => {
-            e.currentTarget.src = "/placeholder.svg"
-          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <Badge className="absolute top-4 left-4 text-white text-xs bg-white/10 backdrop-blur-md border border-white/20 shadow-lg group-hover:bg-secondary/40 group-hover:border-secondary/30 transition-all duration-300">
@@ -654,7 +605,6 @@ function EmpreendimentoCard({ empreendimento }: { empreendimento: any }) {
     </motion.div>
   )
 }
-
 function getStatusColor(status: string): string {
   switch (status) {
     case "Lançamento":

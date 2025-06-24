@@ -7,34 +7,34 @@ const timeElleven = [
   {
     id: 1,
     nome: "Eduardo Rocha",
-    cargo: "Founder & CEO",
-    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/1-EDUARDO-ROCHA.png",
+    cargo: "Founder e CEO",
+    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/1-EDUARDO-ROCHA.png", // Mantém a imagem existente
     descricao:
-      "Visionário empreendedor com mais de 15 anos de experiência no mercado imobiliário. Lidera a Elleven com foco em inovação e excelência, transformando projetos em realidade e superando expectativas dos clientes.",
+      "Executivo com mais de 30 anos no mundo corporativo e mais de 10 no setor imobiliário, com foco na construção de negócios rentáveis. Já entregou mais de 2.000 unidades habitacionais, atuando em todas as etapas dos projetos. É bacharel em Administração, pós-graduado em Marketing (ESPM) e possui MBA em Planejamento Estratégico (FGV).",
   },
   {
     id: 2,
-    nome: "Marco Tulio",
-    cargo: "CTO & Co-founder",
-    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/2-MARCO-TULIO.png",
+    nome: "Marco Túlio",
+    cargo: "Diretor Executivo de Parcerias e Investidores",
+    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/2-MARCO-TULIO.png", // Mantém a imagem existente
     descricao:
-      "Especialista em tecnologia e desenvolvimento de projetos, combina expertise técnica com visão estratégica. Responsável pela implementação de soluções inovadoras que posicionam a Elleven na vanguarda do setor.",
+      "Com mais de 28 anos de carreira, acumula experiência em projetos de implementação, desenvolvimento e expansão de negócios. Atuou como executivo na SAP e fundou empresas de consultoria em tecnologia. Hoje, aplica seu conhecimento para acelerar o crescimento da Elleven no mercado imobiliário.",
   },
   {
     id: 3,
     nome: "Fernando Remor",
-    cargo: "Diretor de Projetos",
-    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/3-FERNANDO-REMOR.png",
+    cargo: "Diretor Executivo Jurídico",
+    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/3-FERNANDO-REMOR.png", // Mantém a imagem existente
     descricao:
-      "Com vasta experiência em gestão de projetos imobiliários, Fernando garante que cada empreendimento seja executado com precisão, qualidade e dentro dos prazos estabelecidos, mantendo os mais altos padrões da empresa.",
+      "Advogado formado pela USP, com mais de 35 anos de atuação. Sua experiência inclui assessoria em negócios internacionais e estruturação de operações para investidores estrangeiros no Brasil. Atua também como empresário no mercado imobiliário dos EUA, com foco em house flipping e fundos de investimento.",
   },
   {
     id: 4,
     nome: "Mauro Resende",
-    cargo: "Diretor Comercial",
-    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/4-MAURO-RESENDE.png",
+    cargo: "Diretor Executivo de Engenharia",
+    imagem: "https://agensya.com.br/wp-content/uploads/2025/06/4-MAURO-RESENDE.png", // Mantém a imagem existente
     descricao:
-      "Especialista em relacionamento com clientes e estratégias comerciais. Mauro lidera a equipe de vendas com foco em compreender as necessidades dos clientes e oferecer soluções personalizadas de alto valor.",
+      "Engenheiro civil com mais de 40 anos de experiência em infraestrutura e saneamento. Foi responsável por mais de um milhão de metros quadrados construídos e mais de 10 mil unidades habitacionais. É formado pela UFMG, com especializações em Administração (Mackenzie) e MBA em Gestão de Negócios Imobiliários (FGV).",
   },
 ]
 

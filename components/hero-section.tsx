@@ -1,141 +1,28 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 export default function HeroSection() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
-  const [isMounted, setIsMounted] = useState(false)
-
-  // Mount effect - executar apenas uma vez
-  useEffect(() => {
-    setIsMounted(true)
-
-    // Delay para garantir que o componente está totalmente montado
-    const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  // Scroll effect - só executar após montagem
-  useEffect(() => {
-    if (!isMounted) return
-
-    const handleScroll = () => {
-      if (isMounted) {
-        setScrollY(window.scrollY)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [isMounted])
-
-  // Early return with static content if not mounted
-  if (!isMounted) {
-    return (
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-        <div className="absolute inset-0">
-          <img
-            src="/background-elleven.png"
-            alt="Vista panorâmica da cidade com apartamento moderno"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/50 via-blue-900/40 to-blue-950/60"></div>
-        </div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="text-center text-white max-w-4xl mx-auto">
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
-                <span className="text-xs font-normal text-white/70">+15 anos de excelência</span>
-              </div>
-            </div>
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg mb-12">
-              <span className="block">Excelência do pequeno</span>
-              <span className="block">ao grande detalhe.</span>
-            </h1>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-      {/* Background Elements with Parallax */}
-      <div className="absolute inset-0">
-        {/* Main Background Image with Parallax */}
-        <div
-          className="absolute inset-0"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        >
-          <img
-            src="/background-elleven.png"
-            alt="Vista panorâmica da cidade com apartamento moderno"
-            className="w-full h-[120%] object-cover scale-105 blur-sm"
-          />
-
-          {/* Base Blue Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/50 via-blue-900/40 to-blue-950/60"></div>
-        </div>
-
-        {/* Warm Light from Top Right - Parallax Layer 1 */}
-        <div
-          className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-radial from-orange-400/20 via-orange-500/12 via-amber-400/8 to-transparent rounded-full blur-3xl"
-          style={{
-            transform: `translate(${scrollY * -0.3}px, ${scrollY * 0.2}px)`,
-          }}
-        ></div>
-
-        {/* Secondary Warm Glow - Parallax Layer 2 */}
-        <div
-          className="absolute top-10 right-10 w-80 h-80 bg-gradient-radial from-yellow-300/15 via-orange-300/10 to-transparent rounded-full blur-2xl"
-          style={{
-            transform: `translate(${scrollY * -0.2}px, ${scrollY * 0.15}px)`,
-          }}
-        ></div>
-
-        {/* Cool Light from Bottom Left - Parallax Layer 3 */}
-        <div
-          className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-radial from-blue-400/15 via-cyan-500/8 to-transparent rounded-full blur-3xl"
-          style={{
-            transform: `translate(${scrollY * 0.25}px, ${scrollY * -0.1}px)`,
-          }}
-        ></div>
-
-        {/* Atmospheric Depth Layer - Slower Parallax */}
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-blue-950/30 via-transparent to-blue-900/20"
-          style={{
-            transform: `translateY(${scrollY * 0.1}px)`,
-          }}
-        ></div>
-
-        {/* Subtle Vignette */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/20"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <iframe
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] -translate-x-1/2 -translate-y-1/2 object-cover"
+          src="https://www.youtube.com/embed/Um-L2ckX2VA?autoplay=1&mute=1&controls=0&loop=1&playlist=Um-L2ckX2VA&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        {/* Overlay for better text readability - now darker */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/80 via-blue-900/70 to-blue-950/90"></div>
       </div>
 
-      {/* Main Content - Centralized with Parallax */}
-      <div
-        className="relative z-10 container mx-auto px-4"
-        style={{
-          transform: `translateY(${scrollY * -0.1}px)`,
-        }}
-      >
-        <div
-          className={`text-center text-white max-w-4xl mx-auto transition-all duration-1000 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+      {/* Main Content - Centralized */}
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="text-center text-white max-w-4xl mx-auto transition-all duration-1000 opacity-100 translate-y-0">
           {/* Badge - Ultra Discrete */}
           <div className="mb-8">
             <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
@@ -143,7 +30,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Main Title - Fixo, sem alternância */}
+          {/* Main Title */}
           <div className="mb-12">
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg">
               <span className="block">Excelência do pequeno</span>
@@ -179,13 +66,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Indicator - Enhanced with Parallax */}
-      <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/80"
-        style={{
-          transform: `translate(-50%, ${scrollY * -0.2}px)`,
-        }}
-      >
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/80">
         <span className="text-xs uppercase tracking-widest mb-4 font-medium">Scroll para explorar</span>
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm">
           <div className="w-1 h-3 bg-white/80 rounded-full mt-2 animate-bounce"></div>
@@ -195,32 +77,12 @@ export default function HeroSection() {
       {/* Elegant Top Border */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/60 via-white/40 via-orange-400/60 to-transparent"></div>
 
-      {/* Floating Particles Effect with Parallax */}
+      {/* Floating Particles Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-1 h-1 bg-white/30 rounded-full animate-pulse"
-          style={{
-            transform: `translate(${scrollY * -0.1}px, ${scrollY * 0.05}px)`,
-          }}
-        ></div>
-        <div
-          className="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-300/40 rounded-full animate-pulse delay-1000"
-          style={{
-            transform: `translate(${scrollY * 0.15}px, ${scrollY * -0.08}px)`,
-          }}
-        ></div>
-        <div
-          className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300/30 rounded-full animate-pulse delay-2000"
-          style={{
-            transform: `translate(${scrollY * -0.12}px, ${scrollY * 0.1}px)`,
-          }}
-        ></div>
-        <div
-          className="absolute top-2/3 right-1/4 w-1 h-1 bg-white/20 rounded-full animate-pulse delay-3000"
-          style={{
-            transform: `translate(${scrollY * 0.08}px, ${scrollY * -0.06}px)`,
-          }}
-        ></div>
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-300/40 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300/30 rounded-full animate-pulse delay-2000"></div>
+        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-white/20 rounded-full animate-pulse delay-3000"></div>
       </div>
     </section>
   )

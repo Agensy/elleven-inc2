@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Play, Pause, Calendar, MapPin, Building } from "lucide-react"
+import { ChevronLeft, ChevronRight, Play, Pause, Calendar } from "lucide-react"
 
 // Dados dos projetos para a linha do tempo
 const todosOsProjetos = [
@@ -13,11 +13,6 @@ const todosOsProjetos = [
     mesEntrega: "Setembro",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "09/2012",
-    localizacao: "Cotia, São Paulo",
-    unidades: "180 Unidades",
-    torres: "6 Torres",
-    vgv: "R$ 29.088.000,00",
   },
   {
     id: 2,
@@ -27,11 +22,6 @@ const todosOsProjetos = [
     mesEntrega: "Setembro",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "09/2012",
-    localizacao: "Cotia, São Paulo",
-    unidades: "180 Unidades",
-    torres: "6 Torres",
-    vgv: "R$ 29.088.000,00",
   },
   {
     id: 3,
@@ -41,11 +31,6 @@ const todosOsProjetos = [
     mesEntrega: "Julho",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "04/2013",
-    localizacao: "Cotia, São Paulo",
-    unidades: "150 Unidades",
-    torres: "5 Torres",
-    vgv: "R$ 21.192.000,00",
   },
   {
     id: 4,
@@ -55,11 +40,6 @@ const todosOsProjetos = [
     mesEntrega: "Abril",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "10/2012",
-    localizacao: "Itú, São Paulo",
-    unidades: "100 Unidades",
-    torres: "5 Torres",
-    vgv: "R$ 11.900.000,00",
   },
   {
     id: 5,
@@ -69,11 +49,6 @@ const todosOsProjetos = [
     mesEntrega: "Outubro",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "01/2013",
-    localizacao: "Itú, São Paulo",
-    unidades: "192 Unidades",
-    torres: "12 Torres",
-    vgv: "R$ 25.435.000,00",
   },
   {
     id: 6,
@@ -83,11 +58,6 @@ const todosOsProjetos = [
     mesEntrega: "Março",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "2010",
-    localizacao: "Cotia, São Paulo",
-    unidades: "151 Unidades",
-    torres: "5 Torres",
-    vgv: "R$ 19.177.000,00",
   },
   {
     id: 7,
@@ -97,11 +67,6 @@ const todosOsProjetos = [
     mesEntrega: "Julho",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "2014",
-    localizacao: "Cotia, São Paulo",
-    unidades: "120 Unidades",
-    torres: "4 Torres",
-    vgv: "R$ 18.500.000,00",
   },
   {
     id: 8,
@@ -111,11 +76,6 @@ const todosOsProjetos = [
     mesEntrega: "Maio",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "2015",
-    localizacao: "Cotia, São Paulo",
-    unidades: "98 Unidades",
-    torres: "3 Torres",
-    vgv: "R$ 15.200.000,00",
   },
   {
     id: 9,
@@ -125,11 +85,6 @@ const todosOsProjetos = [
     mesEntrega: "Janeiro",
     status: "Entregue",
     categoria: "Realizado",
-    lancamento: "2017",
-    localizacao: "Cotia, São Paulo",
-    unidades: "198 Unidades",
-    torres: "8 Torres",
-    vgv: "R$ 32.100.000,00",
   },
   {
     id: 10,
@@ -139,316 +94,294 @@ const todosOsProjetos = [
     mesEntrega: "Novembro",
     status: "Em Andamento",
     categoria: "Em Andamento",
-    lancamento: "2023",
-    localizacao: "Salto, São Paulo",
-    unidades: "408 Unidades",
-    torres: "4 Torres",
-    vgv: "R$ 55.000.000,00",
   },
 ]
 
-interface ProjetoElementoProps {
+interface ProjetoCardProps {
   projeto: (typeof todosOsProjetos)[0]
-  index: number
   isActive: boolean
-  totalProjetos: number
+  isAbove: boolean
 }
 
-function ProjetoElemento({ projeto, index, isActive, totalProjetos }: ProjetoElementoProps) {
-  const [isHovered, setIsHovered] = useState(false)
-
-  // Calcular posição na timeline (0 a 100%)
-  const positionPercent = (index / (totalProjetos - 1)) * 100
-
-  // Alternar posição acima/abaixo da linha
-  const isAbove = index % 2 === 0
-
+function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
   return (
-    <>
-      {/* Imagem Flutuante - SEM LIMITAÇÃO DE DIV */}
-      <div
-        className={`absolute transition-all duration-700 ease-out ${
-          isActive ? "scale-110 opacity-100 z-20" : "scale-95 opacity-80 z-10"
-        }`}
-        style={{
-          left: `${positionPercent}%`,
-          top: isAbove ? "20%" : "60%",
-          transform: "translateX(-50%)",
-        }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="relative group cursor-pointer">
-          <img
-            src={projeto.imagem || "/placeholder.svg?height=200&width=280"}
-            alt={`Projeto ${projeto.nome}`}
-            className={`w-72 h-48 object-cover rounded-2xl shadow-2xl transition-all duration-700 ${
-              isHovered ? "scale-105 brightness-110" : "scale-100 brightness-100"
-            }`}
-          />
+    <div
+      className={`flex-shrink-0 w-72 mx-6 transition-all duration-500 relative ${
+        isActive ? "opacity-100" : "opacity-80"
+      } ${isAbove ? "self-start" : "self-end"}`}
+      style={{
+        marginTop: isAbove ? "0" : "140px",
+        marginBottom: isAbove ? "140px" : "0",
+      }}
+    >
+      {/* Imagem sem limitações de altura */}
+      <div className="relative">
+        <img
+          src={projeto.imagem || "/placeholder.svg"}
+          alt={`Projeto ${projeto.nome}`}
+          className="w-full object-cover rounded-xl"
+        />
 
-          {/* Overlay sutil */}
-          <div
-            className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
-              isHovered
-                ? "bg-gradient-to-t from-black/60 via-transparent to-transparent"
-                : "bg-gradient-to-t from-black/20 via-transparent to-transparent"
-            }`}
-          />
-
-          {/* Conector para a linha */}
-          <div
-            className={`absolute ${
-              isAbove ? "bottom-0 translate-y-full" : "top-0 -translate-y-full"
-            } left-1/2 transform -translate-x-1/2`}
-          >
-            <div className={`w-0.5 ${isAbove ? "h-16" : "h-16"} bg-orange-500`}></div>
-          </div>
-
-          {/* Efeito de brilho no hover */}
-          {isHovered && (
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse pointer-events-none"></div>
-          )}
-
-          {/* Borda de destaque para projeto ativo */}
-          {isActive && (
-            <div className="absolute inset-0 rounded-2xl border-4 border-orange-500 pointer-events-none"></div>
-          )}
-        </div>
+        {/* Borda de destaque para projeto ativo */}
+        {isActive && <div className="absolute inset-0 rounded-xl border-3 border-orange-500 pointer-events-none" />}
       </div>
-
-      {/* Badge Ancorado na Linha */}
-      <div
-        className="absolute top-1/2 transform -translate-y-1/2 transition-all duration-700 ease-out z-30"
-        style={{
-          left: `${positionPercent}%`,
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        {/* Marcador na linha */}
-        <div
-          className={`w-6 h-6 rounded-full border-4 border-white shadow-lg transition-all duration-300 ${
-            isActive ? "bg-orange-500 scale-125 shadow-orange-500/50" : "bg-orange-400 scale-100"
-          }`}
-        ></div>
-
-        {/* Badge de informações */}
-        <div className={`absolute ${isAbove ? "top-8" : "bottom-8"} left-1/2 transform -translate-x-1/2`}>
-          <div className="bg-white/95 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg border border-white/20 min-w-max">
-            <div className="text-center">
-              <div className="text-sm font-bold text-gray-800 mb-1">{projeto.nome}</div>
-              <div className="flex items-center justify-center gap-1 text-xs text-gray-600">
-                <Calendar className="w-3 h-3" />
-                <span>
-                  {projeto.mesEntrega} {projeto.entrega}
-                </span>
-              </div>
-              <div
-                className={`inline-block px-2 py-1 rounded-full text-xs font-medium mt-1 ${
-                  projeto.status === "Entregue" ? "bg-emerald-100 text-emerald-700" : "bg-orange-100 text-orange-700"
-                }`}
-              >
-                {projeto.status}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    </div>
   )
 }
 
 export default function LinhaTempoSection() {
   const [activeProject, setActiveProject] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(false)
+  const [isAutoPlay, setIsAutoPlay] = useState(true) // Inicia automaticamente ativo
+  const [windowWidth, setWindowWidth] = useState(1200)
   const [isMounted, setIsMounted] = useState(false)
 
+  // Single useEffect to handle mounting and window resize
   useEffect(() => {
     setIsMounted(true)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    // Set initial width
+    setWindowWidth(window.innerWidth)
+
+    // Add event listener
+    window.addEventListener("resize", handleResize)
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
 
+  // Auto-play functionality with loop - separate useEffect
   useEffect(() => {
     if (!isAutoPlay || !isMounted) return
 
     const interval = setInterval(() => {
-      setActiveProject((prev) => (prev + 1) % todosOsProjetos.length)
-    }, 4000)
+      setActiveProject((prev) => {
+        // Quando chegar no último projeto, volta para o primeiro
+        if (prev === todosOsProjetos.length - 1) {
+          return 0
+        }
+        return prev + 1
+      })
+    }, 3000) // 3 segundos por projeto
 
     return () => clearInterval(interval)
   }, [isAutoPlay, isMounted])
 
-  const goToNext = () => {
+  // Navigation functions
+  useEffect(() => {
+    // Sempre que o activeProject mudar, garantir que ele fique alinhado com a caixa
     if (isMounted) {
-      setActiveProject((prev) => (prev + 1) % todosOsProjetos.length)
+      // Pequeno delay para garantir que a transição seja suave
+      const timer = setTimeout(() => {
+        // Força um re-render para garantir o alinhamento
+      }, 50)
+      return () => clearTimeout(timer)
     }
+  }, [activeProject, isMounted])
+
+  const goToNext = () => {
+    setActiveProject((prev) => {
+      if (prev === todosOsProjetos.length - 1) {
+        return 0
+      }
+      return prev + 1
+    })
   }
 
   const goToPrevious = () => {
-    if (isMounted) {
-      setActiveProject((prev) => (prev === 0 ? todosOsProjetos.length - 1 : prev - 1))
-    }
+    setActiveProject((prev) => (prev === 0 ? todosOsProjetos.length - 1 : prev - 1))
   }
 
   const goToProject = (index: number) => {
-    if (isMounted) {
-      setActiveProject(index)
-    }
+    setActiveProject(index)
   }
 
   const toggleAutoPlay = () => {
-    if (isMounted) {
-      setIsAutoPlay(!isAutoPlay)
-    }
+    setIsAutoPlay(!isAutoPlay)
   }
 
-  if (!isMounted) {
-    return null
+  // Calculate translation para alinhar o projeto ativo exatamente com a caixa de detalhes
+  const calculateTranslateX = () => {
+    if (!isMounted) return 0
+
+    const cardWidth = 288 // largura do card (w-72 = 288px)
+    const cardMargin = 48 // margin horizontal total (mx-6 = 24px cada lado)
+    const totalCardWidth = cardWidth + cardMargin // 336px total por card
+
+    // Posição do centro da tela (onde a caixa de detalhes está)
+    const screenCenter = windowWidth / 2
+
+    // Posição do centro do card ativo
+    const activeCardCenter = activeProject * totalCardWidth + cardWidth / 2 + cardMargin / 2
+
+    // Calcular o deslocamento necessário para alinhar o centro do card com o centro da tela
+    const translateX = screenCenter - activeCardCenter
+
+    return translateX
   }
 
-  const projetoAtivo = todosOsProjetos[activeProject]
+  const translateX = calculateTranslateX()
 
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
+    <section className="py-17 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-transparent" />
-        <div className="absolute top-20 right-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-14 right-7 w-22 h-22 bg-orange-500/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-14 left-7 w-28 h-28 bg-blue-400/10 rounded-full blur-2xl" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-20 relative z-10">
-        {/* Header da seção */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Nossa Trajetória</h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            {todosOsProjetos.length} projetos que marcaram nossa história de excelência
-          </p>
-        </div>
+      {/* Header da seção */}
+      <div className="text-center mb-11 relative z-10 p-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Nossa Trajetória</h2>
+        <p className="text-lg text-white/80 max-w-xl mx-auto px-4">
+          {todosOsProjetos.length} projetos que marcaram nossa história de excelência
+        </p>
+      </div>
 
-        {/* Timeline Container - Layout Livre */}
-        <div className="relative h-[500px] mb-16">
-          {/* Linha Principal */}
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-orange-500 transform -translate-y-1/2 z-0" />
+      {/* Timeline horizontal */}
+      <div className="relative mb-8">
+        {/* Linha principal */}
+        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/30 transform -translate-y-1/2 z-0" />
 
-          {/* Elementos Flutuantes - SEM LIMITAÇÃO DE DIV */}
+        {/* Container dos projetos */}
+        <div
+          className="flex items-center py-8 transition-transform duration-700 ease-out"
+          style={{
+            transform: `translateX(${translateX}px)`,
+            width: `${todosOsProjetos.length * 336}px`, // Ajustado para o cálculo correto
+          }}
+        >
           {todosOsProjetos.map((projeto, index) => (
-            <ProjetoElemento
+            <ProjetoCard
               key={projeto.id}
               projeto={projeto}
-              index={index}
               isActive={index === activeProject}
-              totalProjetos={todosOsProjetos.length}
+              isAbove={index % 2 === 0}
             />
           ))}
         </div>
+      </div>
 
-        {/* Painel de Informações do Projeto Ativo */}
-        <div className="text-center mb-12">
-          <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-8 py-6 border border-white/20 inline-block shadow-xl max-w-2xl">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">{projetoAtivo?.nome}</h3>
+      {/* Painel de Controle */}
+      <div className="container mx-auto px-4 md:px-7 lg:px-14 relative z-10">
+        <div className="space-y-4">
+          {/* Informações do projeto ativo com efeito Liquid Glass */}
+          <div className="text-center p-3">
+            <div className="relative group overflow-hidden inline-block transition-all duration-500 hover:scale-105 transform-gpu">
+              {/* Background principal com liquid glass */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-2xl rounded-2xl border border-white/30 shadow-2xl shadow-black/20"></div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600 mb-4">
-              <div className="flex items-center justify-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <div>
-                  <div className="font-medium">Lançamento</div>
-                  <div>{projetoAtivo?.lancamento}</div>
+              {/* Efeito de brilho animado */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-out rounded-2xl"></div>
+
+              {/* Borda interna brilhante */}
+              <div className="absolute inset-0 rounded-2xl border border-white/40 group-hover:border-white/60 transition-colors duration-300"></div>
+
+              {/* Reflexo superior */}
+              <div className="absolute top-2 left-6 right-6 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-full"></div>
+
+              {/* Reflexo lateral esquerdo */}
+              <div className="absolute top-6 bottom-6 left-2 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent rounded-full"></div>
+
+              {/* Sombra interna */}
+              <div className="absolute inset-0 rounded-2xl shadow-inner shadow-black/5"></div>
+
+              {/* Conteúdo */}
+              <div className="relative z-10 px-6 py-4">
+                <h3 className="text-xl font-bold text-white mb-1 drop-shadow-sm">
+                  {todosOsProjetos[activeProject]?.nome}
+                </h3>
+                <div className="flex items-center justify-center gap-3 text-white/80 mb-3">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-3 h-3" />
+                    <span className="text-sm">{todosOsProjetos[activeProject]?.mesEntrega}</span>
+                  </div>
+                  <span>•</span>
+                  <span className="font-semibold text-sm">{todosOsProjetos[activeProject]?.entrega}</span>
+                  <span>•</span>
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${
+                      todosOsProjetos[activeProject]?.status === "Entregue"
+                        ? "bg-emerald-500/20 text-emerald-100 border-emerald-400/30"
+                        : "bg-orange-500/20 text-orange-100 border-orange-400/30"
+                    }`}
+                  >
+                    {todosOsProjetos[activeProject]?.status}
+                  </span>
                 </div>
-              </div>
 
-              <div className="flex items-center justify-center gap-2">
-                <MapPin className="w-4 h-4" />
-                <div>
-                  <div className="font-medium">Localização</div>
-                  <div>{projetoAtivo?.localizacao}</div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center gap-2">
-                <Building className="w-4 h-4" />
-                <div>
-                  <div className="font-medium">Unidades</div>
-                  <div>{projetoAtivo?.unidades}</div>
-                </div>
+                {/* Botão Ver Detalhes simplificado */}
+                <button className="bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg border border-orange-400/30">
+                  Ver Detalhes
+                </button>
               </div>
             </div>
+          </div>
 
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="text-sm text-gray-600">{projetoAtivo?.torres}</span>
-              <span>•</span>
-              <span className="text-sm font-semibold text-gray-800">VGV: {projetoAtivo?.vgv}</span>
-              <span>•</span>
-              <span
-                className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  projetoAtivo?.status === "Entregue"
-                    ? "bg-emerald-100 text-emerald-700"
-                    : "bg-orange-100 text-orange-700"
-                }`}
-              >
-                Entregue em {projetoAtivo?.mesEntrega} {projetoAtivo?.entrega}
-              </span>
-            </div>
+          {/* Controles principais */}
+          <div className="flex items-center justify-center gap-3 p-3">
+            {/* Botão anterior */}
+            <button
+              onClick={goToPrevious}
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110"
+            >
+              <ChevronLeft className="w-4 h-4 text-white" />
+            </button>
 
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg">
-              Ver Detalhes do Projeto
+            {/* Botão play/pause */}
+            <button
+              onClick={toggleAutoPlay}
+              className={`${
+                isAutoPlay ? "bg-orange-500/20 border-orange-500/30" : "bg-white/10 border-white/20"
+              } hover:bg-orange-500/30 backdrop-blur-sm border rounded-full p-3 transition-all duration-300 hover:scale-110`}
+            >
+              {isAutoPlay ? <Pause className="w-4 h-4 text-white" /> : <Play className="w-4 h-4 text-white" />}
+            </button>
+
+            {/* Botão próximo */}
+            <button
+              onClick={goToNext}
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110"
+            >
+              <ChevronRight className="w-4 h-4 text-white" />
             </button>
           </div>
-        </div>
 
-        {/* Controles de Navegação */}
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <button
-            onClick={goToPrevious}
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110"
-          >
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-
-          <button
-            onClick={toggleAutoPlay}
-            className={`${
-              isAutoPlay ? "bg-orange-500/20 border-orange-500/30" : "bg-white/10 border-white/20"
-            } hover:bg-orange-500/30 backdrop-blur-sm border rounded-full p-4 transition-all duration-300 hover:scale-110`}
-          >
-            {isAutoPlay ? <Pause className="w-6 h-6 text-white" /> : <Play className="w-6 h-6 text-white" />}
-          </button>
-
-          <button
-            onClick={goToNext}
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110"
-          >
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
-        </div>
-
-        {/* Indicadores de Progresso */}
-        <div className="flex flex-col items-center gap-4">
-          {/* Barra de progresso */}
-          <div className="w-80 bg-white/20 rounded-full h-1 overflow-hidden">
-            <div
-              className="bg-orange-500 h-full transition-all duration-700 ease-out"
-              style={{ width: `${((activeProject + 1) / todosOsProjetos.length) * 100}%` }}
-            />
-          </div>
-
-          {/* Navegação por pontos */}
-          <div className="flex items-center gap-2">
-            {todosOsProjetos.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToProject(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === activeProject
-                    ? "bg-orange-500 scale-125 shadow-lg shadow-orange-500/50"
-                    : "bg-white/30 hover:bg-white/50"
-                }`}
+          {/* Indicador de progresso e navegação por pontos */}
+          <div className="flex flex-col items-center gap-3 p-3">
+            {/* Barra de progresso */}
+            <div className="w-56 bg-white/20 rounded-full h-1 overflow-hidden">
+              <div
+                className="bg-orange-500 h-full transition-all duration-700 ease-out"
+                style={{ width: `${((activeProject + 1) / todosOsProjetos.length) * 100}%` }}
               />
-            ))}
-          </div>
+            </div>
 
-          {/* Contador */}
-          <div className="text-white/60 text-sm">
-            {activeProject + 1} de {todosOsProjetos.length} projetos
+            {/* Navegação por pontos */}
+            <div className="flex items-center gap-1 p-1">
+              {todosOsProjetos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToProject(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === activeProject
+                      ? "bg-orange-500 scale-125 shadow-lg shadow-orange-500/50"
+                      : "bg-white/30 hover:bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Contador */}
+            <div className="text-white/60 text-sm p-1">
+              {activeProject + 1} de {todosOsProjetos.length} projetos
+            </div>
           </div>
         </div>
       </div>

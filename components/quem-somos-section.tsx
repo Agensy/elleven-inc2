@@ -15,7 +15,7 @@ const timeElleven = [
   {
     id: 2,
     nome: "Marco Túlio",
-    cargo: "Diretor Executivo de Parcerias e Investidores",
+    cargo: "Diretor Executivo de Parcerias", // Changed from "Diretor Executivo de Parcerias e Investidores"
     imagem: "https://agensya.com.br/wp-content/uploads/2025/06/2-MARCO-TULIO.png", // Mantém a imagem existente
     descricao:
       "Com mais de 28 anos de carreira, acumula experiência em projetos de implementação, desenvolvimento e expansão de negócios. Atuou como executivo na SAP e fundou empresas de consultoria em tecnologia. Hoje, aplica seu conhecimento para acelerar o crescimento da Elleven no mercado imobiliário.",
@@ -99,7 +99,7 @@ export default function QuemSomosSection() {
 
                   {/* Badge Founder */}
                   <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-secondary text-white py-2 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg px-2.5">
-                    Eduardo Rocha 
+                    Eduardo Rocha
                   </div>
                 </div>
               </div>

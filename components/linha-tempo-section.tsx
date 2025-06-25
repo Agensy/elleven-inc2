@@ -107,7 +107,7 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
   return (
     <div
       className={`flex-shrink-0 w-72 mx-6 transition-all duration-500 relative ${
-        isActive ? "opacity-100 scale-110" : "opacity-60 scale-95"
+        isActive ? "opacity-100 scale-125" : "opacity-100 scale-95"
       } ${isAbove ? "self-start" : "self-end"}`}
       style={{
         marginTop: isAbove ? "0" : "140px",
@@ -122,7 +122,7 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
             src={projeto.imagem || "/placeholder.svg"}
             alt={`Projeto ${projeto.nome}`}
             className={`w-full object-cover rounded-xl transition-all duration-500 ${
-              isActive ? "brightness-110 contrast-110 saturate-110" : "brightness-90 saturate-75"
+              isActive ? "brightness-110 contrast-110 saturate-110" : "brightness-75 saturate-50 grayscale-[0.3]"
             }`}
           />
 
@@ -136,11 +136,11 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
         </div>
 
         {/* Nome do projeto abaixo da imagem para projeto ativo */}
-        {isActive && (
+        {/* {isActive && (
           <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500/90 to-orange-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap border border-orange-400/30">
             {projeto.nome}
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )

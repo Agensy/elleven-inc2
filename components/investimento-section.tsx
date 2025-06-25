@@ -50,10 +50,14 @@ export default function InvestimentoSection() {
               investimento
             </h2>
 
-            <p className="mb-10 leading-relaxed text-gray-300" style={{ fontSize: "0.875rem" }}>
-              No mercado imobiliário, você encontra a segurança e rentabilidade que seu patrimônio merece. Invista em
-              empreendimentos sólidos com potencial de valorização garantido.
-            </p>
+            <p
+              className="mb-10 leading-relaxed text-gray-300"
+              style={{ fontSize: "0.875rem" }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  "No mercado imobiliário, você encontra a segurança e rentabilidade que seu patrimônio merece. <br />Invista em empreendimentos sólidos com potencial de valorização garantido.",
+              }}
+            ></p>
 
             <motion.div
               initial="initial"

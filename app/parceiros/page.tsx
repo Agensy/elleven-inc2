@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import ParceirosHero from "@/components/parceiros-hero"
 import ParceirosContent from "@/components/parceiros-content"
+import VitrineParceiros from "@/components/vitrine-parceiros"
 
 export const metadata: Metadata = {
   title: "Parceiros | Elleven Engenharia",
@@ -13,7 +13,8 @@ export default function ParceirosPage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <ParceirosHero />
+      {/* <ParceirosHero /> */}
+      <VitrineParceiros />
       <ParceirosContent />
       <Footer />
     </main>

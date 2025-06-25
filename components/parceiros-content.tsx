@@ -1,65 +1,116 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle, Globe, Users, Mail, Phone, MapPin } from "lucide-react"
+import { CheckCircle, Globe } from "lucide-react"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 export default function ParceirosContent() {
   const otherPartners = [
     {
-      name: "Banco do Brasil",
-      logo: "/parceiros/banco-do-brasil.png",
-      description: "Soluções financeiras e crédito imobiliário para seus projetos",
-      services: ["Financiamento Imobiliário", "Crédito Empresarial", "Conta Corrente PJ"],
+      name: "Bradesco",
+      logo: "/bradesco-logo-dark.png",
+      description: "Soluções bancárias completas para pessoas físicas e jurídicas.",
+      services: ["Crédito", "Investimentos", "Seguros"],
+    },
+    {
+      name: "Santander",
+      logo: "/santander-logo-dark.png",
+      description: "Serviços financeiros globais e soluções de crédito.",
+      services: ["Financiamento", "Cartões", "Câmbio"],
     },
     {
       name: "Safra",
-      logo: "/parceiros/safra.png",
-      description: "Banking privado e soluções de investimento personalizadas",
+      logo: "/placeholder-fgvpx.png",
+      description: "Banking privado e soluções de investimento personalizadas.",
       services: ["Private Banking", "Gestão de Patrimônio", "Consultoria Financeira"],
     },
     {
+      name: "Itaú",
+      logo: "/placeholder-k1exp.png",
+      description: "Um dos maiores bancos do Brasil, com ampla gama de produtos e serviços.",
+      services: ["Contas", "Empréstimos", "Consórcios"],
+    },
+    {
+      name: "CAIXA",
+      logo: "/caixa-logo-dark.png",
+      description: "Banco público com foco em habitação e programas sociais.",
+      services: ["Financiamento Habitacional", "FGTS", "Loterias"],
+    },
+    {
+      name: "Banco do Brasil",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Soluções financeiras e crédito imobiliário para seus projetos.",
+      services: ["Financiamento Imobiliário", "Crédito Empresarial", "Conta Corrente PJ"],
+    },
+    {
       name: "Stuchi Imóveis",
-      logo: "/parceiros/stuchi-imoveis.png",
-      description: "Corretagem especializada em imóveis de alto padrão",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Corretagem especializada em imóveis de alto padrão.",
       services: ["Vendas Exclusivas", "Locação Premium", "Consultoria Imobiliária"],
+    },
+    {
+      name: "Revolução Gestão Condominial",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Gestão completa e eficiente para condomínios residenciais e comerciais.",
+      services: ["Administração", "Financeiro", "Jurídico"],
+    },
+    {
+      name: "Visconde Construtora",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Construção e desenvolvimento de empreendimentos de alta qualidade.",
+      services: ["Obras Residenciais", "Obras Comerciais", "Projetos Especiais"],
+    },
+    {
+      name: "Grupo Stuchi",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Grupo empresarial com diversas atuações no mercado imobiliário.",
+      services: ["Incorporação", "Construção", "Vendas"],
+    },
+    {
+      name: "Smart Solution Technology",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Soluções tecnológicas inovadoras para o setor imobiliário.",
+      services: ["Automação", "Sistemas de Gestão", "Consultoria Tech"],
+    },
+    {
+      name: "Vinocur S.A.",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Construtora e incorporadora com vasta experiência no mercado.",
+      services: ["Incorporação", "Construção", "Desenvolvimento Urbano"],
+    },
+    {
+      name: "Zatz",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Empreendimentos imobiliários com foco em qualidade de vida e inovação.",
+      services: ["Apartamentos", "Casas", "Lançamentos"],
+    },
+    {
+      name: "Top 10 Embraesp",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Reconhecimento de excelência no mercado imobiliário.",
+      services: ["Premiações", "Ranking", "Análises de Mercado"],
+    },
+    {
+      name: "Construz Construtora",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Construção civil com foco em projetos residenciais e comerciais.",
+      services: ["Edificações", "Reformas", "Infraestrutura"],
+    },
+    {
+      name: "Vinx",
+      logo: "/placeholder.svg?height=40&width=120",
+      description: "Plataforma de soluções digitais para o mercado imobiliário.",
+      services: ["CRM Imobiliário", "Gestão de Vendas", "Marketing Digital"],
     },
   ]
 
   return (
     <div className="bg-gray-50">
-      {/* Seção 1: Vitrine Kabanna */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-6xl mx-auto"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A] p-2">
-              <div className="relative rounded-2xl overflow-hidden">
-                <Image
-                  src="/parceiros/kabanna-vitrine.jpeg"
-                  alt="Kabanna Real Estate - Invista com inteligência nos EUA"
-                  width={1200}
-                  height={600}
-                  className="w-full h-[600px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">VITRINE KABANNA</h2>
-                  <p className="text-xl md:text-2xl text-white/90">Invista com inteligência nos EUA</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Seção 2: Headline + Cadastro Kabanna */}
+      {/* Seção 1: Headline + Cadastro Kabanna */}
       <section className="py-20 bg-gray-50">
+        {" "}
+        {/* Revertido para bg-gray-50 e removido text-white */}
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Headline Sub-headline da Kabanna */}
@@ -68,7 +119,7 @@ export default function ParceirosContent() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-8 shadow-lg" // Revertido para bg-white e removido text-[#1A2D54]
             >
               <div className="space-y-6">
                 <div className="flex items-center gap-4 mb-6">
@@ -153,21 +204,6 @@ export default function ParceirosContent() {
                     Quero Investir nos EUA
                   </button>
                 </form>
-
-                <div className="border-t border-white/20 pt-6 space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-5 h-5 text-orange-500" />
-                    <span className="text-white/90">contato@kabanna.com</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-5 h-5 text-orange-500" />
-                    <span className="text-white/90">+1 (555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-orange-500" />
-                    <span className="text-white/90">Pittsburgh, PA - USA</span>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -183,69 +219,34 @@ export default function ParceirosContent() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-gray-50 rounded-3xl p-8 shadow-lg"
+              className="text-center mb-12"
             >
-              {/* Parceiros 1, 2, 3 */}
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
-                {otherPartners.map((partner, index) => (
-                  <motion.div
-                    key={partner.name}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-                        <Image
-                          src={partner.logo || "/placeholder.svg"}
-                          alt={partner.name}
-                          width={50}
-                          height={35}
-                          className="max-w-full max-h-full object-contain"
-                        />
-                      </div>
-                      <h3 className="text-lg font-bold text-[#1A2D54] mb-2">{partner.name}</h3>
-                      <p className="text-sm text-gray-600 mb-4">{partner.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Área expandida para detalhes dos parceiros */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl p-8 shadow-md"
-              >
-                <div className="text-center mb-8">
-                  <h3 className="text-3xl font-bold text-[#1A2D54] mb-4">REDE DE PARCEIROS ESTRATÉGICOS</h3>
-                  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Uma rede sólida de parceiros financeiros e imobiliários para oferecer soluções completas e
-                    personalizadas para cada projeto.
-                  </p>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8">
-                  {otherPartners.map((partner, index) => (
-                    <div key={index} className="space-y-4">
-                      <h4 className="font-bold text-[#1A2D54] text-lg">{partner.name}</h4>
-                      <div className="space-y-2">
-                        {partner.services.map((service, serviceIndex) => (
-                          <div key={serviceIndex} className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                            <span className="text-gray-700 text-sm">{service}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
+              <h3 className="text-3xl font-bold text-[#1A2D54] mb-4">NOSSOS PARCEIROS</h3>
+              <p className="text-lg text-gray-600">Parceiros estratégicos que fortalecem nossa rede de soluções</p>
             </motion.div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8">
+              {otherPartners.map((partner, index) => (
+                <motion.div
+                  key={partner.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                >
+                  <Image
+                    src={partner.logo || "/placeholder.svg"}
+                    alt={partner.name}
+                    width={120} // Ajustado para um tamanho que se encaixe melhor sem o wrapper
+                    height={80} // Ajustado para um tamanho que se encaixe melhor sem o wrapper
+                    className="mx-auto mb-6 object-contain" // Aplicado mx-auto e mb-6 diretamente
+                  />
+                  <h4 className="text-xl font-bold text-[#1A2D54] mb-3">{partner.name}</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">{partner.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -260,18 +261,24 @@ export default function ParceirosContent() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <Users className="w-16 h-16 text-orange-500 mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">SEJA NOSSO PARCEIRO</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">SEJA NOSSO PARCEIRO</h2>
             <p className="text-xl text-white/80 mb-8 leading-relaxed">
               Junte-se à nossa rede de parceiros e ofereça soluções completas aos seus clientes
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
                 Quero Ser Parceiro
-              </button>
-              <button className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all duration-300">
+              </Button>
+              <Button
+                size="lg"
+                variant="ghost"
+                className="border-2 border-white/30 text-white" // Removido hover:bg-white/10
+              >
                 Saiba Mais
-              </button>
+              </Button>
             </div>
           </motion.div>
         </div>

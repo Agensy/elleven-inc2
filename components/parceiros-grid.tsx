@@ -21,73 +21,115 @@ const parceiros: Parceiro[] = [
   {
     id: 1,
     nome: "Banco do Brasil",
-    logo: "/parceiros/banco-do-brasil.png",
+    logo: "/parceiros/bb-white.png",
     categoria: "financeira",
     descricao: "Soluções de financiamento imobiliário com as melhores taxas do mercado.",
   },
   {
     id: 2,
     nome: "Construz",
-    logo: "/parceiros/construz.png",
+    logo: "/parceiros/construz-white.png",
     categoria: "construtora",
     descricao: "Parceria estratégica em projetos de construção e desenvolvimento urbano.",
   },
   {
     id: 3,
     nome: "Safra",
-    logo: "/parceiros/safra.png",
+    logo: "/parceiros/safra-white.png",
     categoria: "financeira",
     descricao: "Banco premium com soluções financeiras exclusivas para investidores.",
   },
   {
     id: 4,
     nome: "Revolução",
-    logo: "/parceiros/revolucao.png",
+    logo: "/parceiros/revolucao-white.png",
     categoria: "imobiliaria",
     descricao: "Inovação em vendas e marketing imobiliário com foco em resultados.",
   },
   {
     id: 5,
     nome: "Stuchi Imóveis",
-    logo: "/parceiros/stuchi-imoveis.png",
+    logo: "/parceiros/stuchi-imoveis-white.png",
     categoria: "imobiliaria",
     descricao: "Tradição e excelência no mercado imobiliário há mais de 20 anos.",
   },
   {
-    id: 6,
-    nome: "Vinocur",
-    logo: "/parceiros/vinocur.png",
-    categoria: "construtora",
-    descricao: "Construtora especializada em empreendimentos residenciais de alto padrão.",
-  },
-  {
     id: 7,
     nome: "Stuchi",
-    logo: "/parceiros/stuchi.png",
+    logo: "/parceiros/stuchi-white.png",
     categoria: "imobiliaria",
     descricao: "Grupo imobiliário com expertise em desenvolvimento e comercialização.",
   },
   {
     id: 8,
     nome: "Smart Solution",
-    logo: "/parceiros/smart-solution.png",
+    logo: "/parceiros/smart-solution-white.png",
     categoria: "tecnologia",
     descricao: "Soluções tecnológicas inteligentes para o setor imobiliário.",
   },
   {
     id: 9,
     nome: "Vinx",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vinx%20%281%29-ZHFphsz1YXXTXfRzzyxrwVqLZn0XrZ.png",
+    logo: "/parceiros/vinx-white.png",
     categoria: "imobiliaria",
     descricao: "Plataforma digital inovadora para transações imobiliárias.",
   },
   {
     id: 10,
     nome: "Kabanna",
-    logo: "/parceiros/kabanna.png",
+    logo: "/parceiros/kabanna-white.png",
     categoria: "investimento",
     descricao:
       "Investimentos imobiliários nos EUA com modelo de participação nos lucros para investidores brasileiros.",
+  },
+  {
+    id: 11,
+    nome: "Itaú",
+    logo: "/parceiros/itau-white.png",
+    categoria: "financeira",
+    descricao: "Tradição e excelência no mercado financeiro há mais de 90 anos.",
+  },
+  {
+    id: 12,
+    nome: "Caixa",
+    logo: "/parceiros/caixa-white.png",
+    categoria: "financeira",
+    descricao: "Banco público com soluções habitacionais e de crédito imobiliário.",
+  },
+  {
+    id: 13,
+    nome: "Bradesco",
+    logo: "/parceiros/bradesco-white.png",
+    categoria: "financeira",
+    descricao: "Um dos maiores bancos do Brasil com ampla gama de serviços financeiros.",
+  },
+  {
+    id: 14,
+    nome: "Gemini",
+    logo: "/parceiros/gemini-white.png",
+    categoria: "construtora",
+    descricao: "Construtora especializada em empreendimentos residenciais de alto padrão.",
+  },
+  {
+    id: 15,
+    nome: "Santander",
+    logo: "/parceiros/santander-white.png",
+    categoria: "financeira",
+    descricao: "Banco internacional com soluções financeiras inovadoras.",
+  },
+  {
+    id: 16,
+    nome: "Visconde",
+    logo: "/parceiros/visconde-white.png",
+    categoria: "imobiliaria",
+    descricao: "Empresa especializada em desenvolvimento e comercialização imobiliária.",
+  },
+  {
+    id: 17,
+    nome: "Zatz",
+    logo: "/parceiros/zatz-white.png",
+    categoria: "juridica",
+    descricao: "Escritório de advocacia especializado em direito imobiliário e empresarial.",
   },
 ]
 
@@ -97,7 +139,7 @@ const parceiros: Parceiro[] = [
 
 export default function ParceirosGrid() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [slidesToShow, setSlidesToShow] = useState(3)
+  const [slidesToShow, setSlidesToShow] = useState(4)
 
   // Usar todos os parceiros sempre (sem filtros)
   const parceirosVisiveis = parceiros
@@ -111,10 +153,12 @@ export default function ParceirosGrid() {
       const width = window.innerWidth
       if (width < 640) {
         setSlidesToShow(1) // Mobile: 1 por slide
+      } else if (width < 768) {
+        setSlidesToShow(2) // Small tablet: 2 por slide
       } else if (width < 1024) {
-        setSlidesToShow(2) // Tablet: 2 por slide
+        setSlidesToShow(3) // Tablet: 3 por slide
       } else {
-        setSlidesToShow(3) // Desktop: 3 por slide
+        setSlidesToShow(4) // Desktop: 4 por slide
       }
     }
 
@@ -143,7 +187,7 @@ export default function ParceirosGrid() {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides)
-    }, 4000) // 4 segundos por slide
+    }, 5000) // 5 segundos por slide
 
     return () => clearInterval(interval)
   }, [totalSlides])
@@ -177,18 +221,18 @@ export default function ParceirosGrid() {
             Nossos Parceiros
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            O que nos torna únicos no mercado imobiliário de alto padrão
+            Parcerias estratégicas que fortalecem nosso compromisso com a excelência
           </p>
         </motion.div>
 
         {/* Carrossel de Parceiros */}
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           {/* Navigation Buttons */}
           {totalSlides > 1 && (
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-12 h-12 bg-slate-800/90 backdrop-blur-sm border border-slate-600 rounded-full hover:bg-slate-700 hover:border-secondary/50 transition-all duration-300 flex items-center justify-center"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-12 h-12 bg-slate-800/90 backdrop-blur-sm border border-slate-600 rounded-full hover:bg-slate-700 hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center"
                 aria-label="Slide anterior"
               >
                 <ChevronLeft className="h-5 w-5 text-white" />
@@ -196,7 +240,7 @@ export default function ParceirosGrid() {
 
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-12 h-12 bg-slate-800/90 backdrop-blur-sm border border-slate-600 rounded-full hover:bg-slate-700 hover:border-secondary/50 transition-all duration-300 flex items-center justify-center"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-12 h-12 bg-slate-800/90 backdrop-blur-sm border border-slate-600 rounded-full hover:bg-slate-700 hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center"
                 aria-label="Próximo slide"
               >
                 <ChevronRight className="h-5 w-5 text-white" />
@@ -218,10 +262,10 @@ export default function ParceirosGrid() {
                 }`}
               >
                 <div className="h-full flex items-center justify-center p-4">
-                  <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {getParceirosDoSlide(slideIndex).map((parceiro, index) => (
                       <div key={parceiro.id} className="flex justify-center">
-                        <div className="w-full max-w-sm">
+                        <div className="w-full max-w-xs">
                           <ParceiroCard parceiro={parceiro} index={index} />
                         </div>
                       </div>
@@ -240,7 +284,7 @@ export default function ParceirosGrid() {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? "w-8 bg-secondary" : "w-2 bg-gray-300 hover:bg-gray-400"
+                    index === currentSlide ? "w-8 bg-orange-500" : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Ir para slide ${index + 1}`}
                 />
@@ -252,11 +296,36 @@ export default function ParceirosGrid() {
           {totalSlides > 1 && (
             <div className="text-center mt-4">
               <span className="text-sm text-muted-foreground">
-                Página {currentSlide + 1} de {totalSlides}
+                {currentSlide + 1} de {totalSlides}
               </span>
             </div>
           )}
         </div>
+
+        {/* Categorias dos Parceiros */}
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <div className="flex flex-wrap justify-center gap-4">
+            {["financeira", "construtora", "imobiliaria", "tecnologia", "investimento", "juridica"].map((categoria) => (
+              <span
+                key={categoria}
+                className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium capitalize"
+              >
+                {categoria === "financeira" && "Instituições Financeiras"}
+                {categoria === "construtora" && "Construtoras"}
+                {categoria === "imobiliaria" && "Imobiliárias"}
+                {categoria === "tecnologia" && "Tecnologia"}
+                {categoria === "investimento" && "Investimentos"}
+                {categoria === "juridica" && "Jurídico"}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )
@@ -277,26 +346,38 @@ function ParceiroCard({
     <motion.div
       whileHover={{
         y: -8,
+        scale: 1.02,
         transition: { duration: 0.2 },
       }}
-      className="group relative rounded-xl p-8 hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col items-center justify-center"
-      style={{ backgroundColor: "#1E2C51" }}
+      className="group relative rounded-xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 border border-slate-700 hover:border-orange-400"
     >
       {/* Logo centralizada */}
-      <img
-        src={parceiro.logo || "/placeholder.svg"}
-        alt={`Logo ${parceiro.nome}`}
-        className="max-h-16 max-w-full object-contain mb-6 transition-all duration-300 group-hover:scale-105"
-        loading="lazy"
-      />
+      <div className="flex items-center justify-center h-16 mb-4">
+        {parceiro.logo ? (
+          <img
+            src={parceiro.logo || "/placeholder.svg"}
+            alt={`Logo ${parceiro.nome}`}
+            className="max-h-12 max-w-full object-contain transition-all duration-300 group-hover:scale-110"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-12 w-full bg-slate-700 rounded-lg">
+            <span className="text-white font-semibold text-sm">Logo</span>
+          </div>
+        )}
+      </div>
+
+      {/* Nome do parceiro para identificação */}
 
       {/* Descrição centralizada */}
-      <p className="text-sm text-white/90 text-center leading-relaxed group-hover:text-white transition-colors duration-300">
+      <p className="text-xs text-slate-300 text-center leading-relaxed group-hover:text-slate-100 transition-colors duration-300 line-clamp-3">
         {parceiro.descricao}
       </p>
 
+      {/* Badge da categoria */}
+
       {/* Linha decorativa inferior */}
-      <div className="absolute bottom-0 left-0 h-1 bg-secondary w-0 group-hover:w-full transition-all duration-500 ease-out" />
+      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-xl" />
     </motion.div>
   )
 }

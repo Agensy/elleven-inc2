@@ -6,11 +6,17 @@ import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getEllevenLogo } from "@/lib/brand/elleven"
+// Adicione o import para `usePathname`
+import { usePathname } from "next/navigation"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isEmpreendimentosOpen, setIsEmpreendimentosOpen] = useState(false)
+
+  // Dentro do componente Header, adicione a linha para obter o pathname
+  const pathname = usePathname()
+  const isParceirosPage = pathname === "/parceiros"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +47,18 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
+      // Modifique a classe do `motion.header` para forçar o fundo escuro na página /parceiros
+      // Substitua a linha:
+      // className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      //   isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border/50" : "bg-transparent"
+      // }`}
+      // Por:
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border/50" : "bg-transparent"
+        isParceirosPage
+          ? "bg-background/95 backdrop-blur-md border-b border-border/50"
+          : isScrolled
+            ? "bg-background/95 backdrop-blur-md border-b border-border/50"
+            : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6">
@@ -50,7 +66,17 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img
-              src={isScrolled ? getEllevenLogo("header-dark") : getEllevenLogo("header-light")}
+              // Modifique a src da imagem do logo para sempre ser "header-dark" na página /parceiros
+              // Substitua a linha:
+              // src={isScrolled ? getEllevenLogo("header-dark") : getEllevenLogo("header-light")}
+              // Por:
+              src={
+                isParceirosPage
+                  ? getEllevenLogo("header-dark")
+                  : isScrolled
+                    ? getEllevenLogo("header-dark")
+                    : getEllevenLogo("header-light")
+              }
               alt="Elleven Engenharia"
               className="h-11 w-auto transition-all duration-300"
             />
@@ -80,8 +106,16 @@ export default function Header() {
             >
               <Link
                 href="/empreendimentos"
+                // Modifique as classes de texto para os itens de navegação no desktop
+                // Substitua a linha:
+                // className={`relative transition-colors duration-200 group text-lg font-normal ${
+                //   isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
+                // }`}
+                // Por:
                 className={`relative transition-colors duration-200 group text-lg font-normal ${
-                  isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
+                  isParceirosPage || isScrolled
+                    ? "text-foreground/80 hover:text-foreground"
+                    : "text-white/80 hover:text-white"
                 }`}
               >
                 Empreendimentos
@@ -121,8 +155,16 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                // Modifique as classes de texto para os itens de navegação no desktop
+                // Substitua a linha:
+                // className={`relative transition-colors duration-200 group text-lg font-normal ${
+                //   isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
+                // }`}
+                // Por:
                 className={`relative transition-colors duration-200 group text-lg font-normal ${
-                  isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
+                  isParceirosPage || isScrolled
+                    ? "text-foreground/80 hover:text-foreground"
+                    : "text-white/80 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -135,10 +177,20 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             <Button
               size="sm"
+              // Modifique as classes do botão "Fale Conosco" no desktop
+              // Substitua a linha:
+              // className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
+              //   isScrolled
+              //     ? "text-white"
+              //     : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
+              // }`}
+              // Por:
               className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
-                isScrolled
+                isParceirosPage
                   ? "text-white"
-                  : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
+                  : isScrolled
+                    ? "text-white"
+                    : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
               }`}
               style={isScrolled ? { backgroundColor: "#1A2D54" } : {}}
               onMouseEnter={(e) => {
@@ -156,8 +208,16 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
+            // Modifique as classes do botão do menu mobile
+            // Substitua a linha:
+            // className={`md:hidden transition-colors duration-200 ${
+            //   isScrolled
+            //     ? "text-foreground/80 hover:text-foreground hover:bg-muted"
+            //     : "text-white/80 hover:text-white hover:bg-white/10"
+            // }`}
+            // Por:
             className={`md:hidden transition-colors duration-200 ${
-              isScrolled
+              isParceirosPage || isScrolled
                 ? "text-foreground/80 hover:text-foreground hover:bg-muted"
                 : "text-white/80 hover:text-white hover:bg-white/10"
             }`}
@@ -180,7 +240,15 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-foreground/80 hover:text-foreground transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted text-lg font-normal"
+                  // Modifique as classes de texto para os itens de navegação no mobile
+                  // Substitua a linha:
+                  // className="text-foreground/80 hover:text-foreground transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted text-lg font-normal"
+                  // Por:
+                  className={`transition-colors duration-200 py-3 px-2 rounded-md text-lg font-normal ${
+                    isParceirosPage || isScrolled
+                      ? "text-foreground/80 hover:text-foreground hover:bg-muted"
+                      : "text-foreground/80 hover:text-foreground hover:bg-muted"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

@@ -8,100 +8,94 @@ import { Button } from "@/components/ui/button"
 export default function ParceirosContent() {
   const otherPartners = [
     {
-      name: "Bradesco",
-      logo: "/bradesco-logo-dark.png",
-      description: "Soluções bancárias completas para pessoas físicas e jurídicas.",
-      services: ["Crédito", "Investimentos", "Seguros"],
-    },
-    {
-      name: "Santander",
-      logo: "/santander-logo-dark.png",
-      description: "Serviços financeiros globais e soluções de crédito.",
-      services: ["Financiamento", "Cartões", "Câmbio"],
+      name: "Banco do Brasil",
+      logo: "/parceiros/bb-white.png",
+      description: "Soluções financeiras e crédito imobiliário para seus projetos.",
+      services: ["Financiamento Imobiliário", "Crédito Empresarial", "Conta Corrente PJ"],
     },
     {
       name: "Safra",
-      logo: "/placeholder-fgvpx.png",
+      logo: "/parceiros/safra-white.png",
       description: "Banking privado e soluções de investimento personalizadas.",
       services: ["Private Banking", "Gestão de Patrimônio", "Consultoria Financeira"],
     },
     {
       name: "Itaú",
-      logo: "/placeholder-k1exp.png",
+      logo: "/parceiros/itau-white.png",
       description: "Um dos maiores bancos do Brasil, com ampla gama de produtos e serviços.",
       services: ["Contas", "Empréstimos", "Consórcios"],
     },
     {
       name: "CAIXA",
-      logo: "/caixa-logo-dark.png",
+      logo: "/parceiros/caixa-white.png",
       description: "Banco público com foco em habitação e programas sociais.",
       services: ["Financiamento Habitacional", "FGTS", "Loterias"],
     },
     {
-      name: "Banco do Brasil",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Soluções financeiras e crédito imobiliário para seus projetos.",
-      services: ["Financiamento Imobiliário", "Crédito Empresarial", "Conta Corrente PJ"],
+      name: "Bradesco",
+      logo: "/parceiros/bradesco-white.png",
+      description: "Soluções bancárias completas para pessoas físicas e jurídicas.",
+      services: ["Crédito", "Investimentos", "Seguros"],
     },
     {
-      name: "Stuchi Imóveis",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Corretagem especializada em imóveis de alto padrão.",
-      services: ["Vendas Exclusivas", "Locação Premium", "Consultoria Imobiliária"],
-    },
-    {
-      name: "Revolução Gestão Condominial",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Gestão completa e eficiente para condomínios residenciais e comerciais.",
-      services: ["Administração", "Financeiro", "Jurídico"],
-    },
-    {
-      name: "Visconde Construtora",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Construção e desenvolvimento de empreendimentos de alta qualidade.",
-      services: ["Obras Residenciais", "Obras Comerciais", "Projetos Especiais"],
-    },
-    {
-      name: "Grupo Stuchi",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Grupo empresarial com diversas atuações no mercado imobiliário.",
-      services: ["Incorporação", "Construção", "Vendas"],
-    },
-    {
-      name: "Smart Solution Technology",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Soluções tecnológicas inovadoras para o setor imobiliário.",
-      services: ["Automação", "Sistemas de Gestão", "Consultoria Tech"],
-    },
-    {
-      name: "Vinocur S.A.",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Construtora e incorporadora com vasta experiência no mercado.",
-      services: ["Incorporação", "Construção", "Desenvolvimento Urbano"],
-    },
-    {
-      name: "Zatz",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Empreendimentos imobiliários com foco em qualidade de vida e inovação.",
-      services: ["Apartamentos", "Casas", "Lançamentos"],
-    },
-    {
-      name: "Top 10 Embraesp",
-      logo: "/placeholder.svg?height=40&width=120",
-      description: "Reconhecimento de excelência no mercado imobiliário.",
-      services: ["Premiações", "Ranking", "Análises de Mercado"],
+      name: "Santander",
+      logo: "/parceiros/santander-white.png",
+      description: "Serviços financeiros globais e soluções de crédito.",
+      services: ["Financiamento", "Cartões", "Câmbio"],
     },
     {
       name: "Construz Construtora",
-      logo: "/placeholder.svg?height=40&width=120",
+      logo: "/parceiros/construz-white.png",
       description: "Construção civil com foco em projetos residenciais e comerciais.",
       services: ["Edificações", "Reformas", "Infraestrutura"],
     },
     {
+      name: "Gemini",
+      logo: "/parceiros/gemini-white.png",
+      description: "Construtora e incorporadora com vasta experiência no mercado.",
+      services: ["Incorporação", "Construção", "Desenvolvimento Urbano"],
+    },
+    {
+      name: "Revolução Gestão Condominial",
+      logo: "/parceiros/revolucao-white.png",
+      description: "Gestão completa e eficiente para condomínios residenciais e comerciais.",
+      services: ["Administração", "Financeiro", "Jurídico"],
+    },
+    {
+      name: "Stuchi Imóveis",
+      logo: "/parceiros/stuchi-imoveis-white.png",
+      description: "Corretagem especializada em imóveis de alto padrão.",
+      services: ["Vendas Exclusivas", "Locação Premium", "Consultoria Imobiliária"],
+    },
+    {
+      name: "Grupo Stuchi",
+      logo: "/parceiros/stuchi-white.png",
+      description: "Grupo empresarial com diversas atuações no mercado imobiliário.",
+      services: ["Incorporação", "Construção", "Vendas"],
+    },
+    {
       name: "Vinx",
-      logo: "/placeholder.svg?height=40&width=120",
+      logo: "/parceiros/vinx-white.png",
       description: "Plataforma de soluções digitais para o mercado imobiliário.",
       services: ["CRM Imobiliário", "Gestão de Vendas", "Marketing Digital"],
+    },
+    {
+      name: "Visconde Construtora",
+      logo: "/parceiros/visconde-white.png",
+      description: "Construção e desenvolvimento de empreendimentos de alta qualidade.",
+      services: ["Obras Residenciais", "Obras Comerciais", "Projetos Especiais"],
+    },
+    {
+      name: "Smart Solution Technology",
+      logo: "/parceiros/smart-solution-white.png",
+      description: "Soluções tecnológicas inovadoras para o setor imobiliário.",
+      services: ["Automação", "Sistemas de Gestão", "Consultoria Tech"],
+    },
+    {
+      name: "Zatz",
+      logo: "/parceiros/zatz-white.png",
+      description: "Escritório de advocacia especializado em direito imobiliário e empresarial.",
+      services: ["Consultoria Jurídica", "Contratos", "Regularização"],
     },
   ]
 
@@ -233,17 +227,18 @@ export default function ParceirosContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                  className="bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-blue-700/50"
                 >
-                  <Image
-                    src={partner.logo || "/placeholder.svg"}
-                    alt={partner.name}
-                    width={120} // Ajustado para um tamanho que se encaixe melhor sem o wrapper
-                    height={80} // Ajustado para um tamanho que se encaixe melhor sem o wrapper
-                    className="mx-auto mb-6 object-contain" // Aplicado mx-auto e mb-6 diretamente
-                  />
-                  <h4 className="text-xl font-bold text-[#1A2D54] mb-3">{partner.name}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{partner.description}</p>
+                  <div className="w-full h-16 flex items-center justify-center mb-4">
+                    <Image
+                      src={partner.logo || "/placeholder.svg"}
+                      alt={partner.name}
+                      width={partner.name === "Itaú" ? 80 : 120}
+                      height={partner.name === "Itaú" ? 40 : 60}
+                      className="object-contain filter brightness-0 invert"
+                    />
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed">{partner.description}</p>
                 </motion.div>
               ))}
             </div>

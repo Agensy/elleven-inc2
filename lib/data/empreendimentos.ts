@@ -14,7 +14,7 @@ export const empreendimentos: Empreendimento[] = [
     nome: "Jade",
     slug: "jade",
     subtitulo: "Lançamento",
-    slogan: "Sofisticação em Cada Detalhe",
+    slogan: "Viva o Extraordinário",
     localizacao: "Bela Vista, São Paulo - SP",
     status: "Lançamento",
     descricao:

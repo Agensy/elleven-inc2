@@ -58,8 +58,8 @@ show_status() {
 git_push() {
     local message="$1"
     
-    # Verificar se há mudanças
-    if git diff --quiet && git diff --cached --quiet; then
+    # Verificar se há mudanças (incluindo arquivos não rastreados)
+    if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
         echo "${YELLOW}⚠️  Nenhuma mudança detectada${NC}"
         return 0
     fi
@@ -101,8 +101,8 @@ git_push() {
 git_save() {
     local message="$1"
     
-    # Verificar se há mudanças
-    if git diff --quiet && git diff --cached --quiet; then
+    # Verificar se há mudanças (incluindo arquivos não rastreados)
+    if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
         echo "${YELLOW}⚠️  Nenhuma mudança detectada${NC}"
         return 0
     fi

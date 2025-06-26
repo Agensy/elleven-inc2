@@ -71,7 +71,6 @@ export function OptimizedImage({
         className={cn("transition-opacity duration-300", isLoading ? "opacity-0" : "opacity-100")}
         onLoad={handleLoad}
         onError={handleError}
-        {...props}
       />
       {isLoading && <div className="absolute inset-0 animate-pulse bg-gray-200" style={{ width, height }} />}
     </div>

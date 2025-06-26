@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, ArrowRight, MapPin, Home, Dumbbell, Sparkles, Coffee } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { empreendimentos } from "@/lib/data/empreendimentos"
 
 // Helper functions
 function getEmpreendimentoUrl(slug: string | null): string {
@@ -18,77 +19,36 @@ function getEmpreendimentoUrl(slug: string | null): string {
 }
 
 // Static banners data
-const staticBanners = [
-  {
-    id: 1,
-    titulo: "Jade",
-    slug: "jade",
-    subtitulo: "Elegância Urbana",
-    slogan: "Viva com Elegância",
-    localizacao: "São Paulo, SP",
-    status: "Lançamento",
-    descricao: "Empreendimento exclusivo com design contemporâneo e acabamentos sofisticados no coração da cidade.",
-    preco: "A partir de R$ 750.000",
-    entrega: "Junho 2026",
-    imagem: "/empreendimentos/jade/fachada.jpg",
-    imagemDestaque: "/empreendimentos/jade/fachada.jpg",
-    video: false,
-    destaque: "LANÇAMENTO",
-    destaqueInfo: "Elegância",
-    diferenciais: ["Design contemporâneo", "Localização central", "Acabamentos premium"],
-    identidadeVisual: {
-      logo: "/empreendimentos/jade/logo.png",
-      corPrimaria: "#4CAF50",
-      imagemBackground: "/empreendimentos/jade/background.png",
-    },
-  },
-  {
-    id: 2,
-    titulo: "Obsidian",
-    slug: "obsidian",
-    subtitulo: "Viva a Exclusividade",
-    slogan: "Viva a Exclusividade",
-    localizacao: "São Paulo, SP",
-    status: "Lançamento",
-    descricao: "Empreendimento exclusivo com arquitetura moderna e acabamentos de luxo.",
-    preco: "A partir de R$ 850.000",
-    entrega: "Dezembro 2025",
-    imagem: "/empreendimentos/obsidian/fachada.png",
-    imagemDestaque: "/empreendimentos/obsidian/fachada.png",
-    video: false,
-    destaque: "LANÇAMENTO",
-    destaqueInfo: "Exclusividade",
-    diferenciais: ["Arquitetura moderna", "Acabamentos premium", "Localização privilegiada"],
-    identidadeVisual: {
-      logo: "/empreendimentos/obsidian/logo.png",
-      corPrimaria: "#D4AF37",
-      imagemBackground: "/empreendimentos/obsidian/background.png",
-    },
-  },
-  {
-    id: 3,
-    titulo: "Icaraí Parque Clube",
-    slug: "icarai-parque-clube",
-    subtitulo: "Parque Clube",
-    slogan: "Viva em Harmonia",
-    localizacao: "Niterói, RJ",
-    status: "Lançamento",
-    descricao: "Residencial com infraestrutura completa de lazer e bem-estar.",
-    preco: "A partir de R$ 650.000",
-    entrega: "Março 2026",
-    imagem: "/empreendimentos/icarai/fachada.jpg",
-    imagemDestaque: "/empreendimentos/icarai/fachada.jpg",
-    video: false,
-    destaque: "LANÇAMENTO",
-    destaqueInfo: "Parque Clube",
-    diferenciais: ["Área de lazer completa", "Piscina aquecida", "Academia"],
-    identidadeVisual: {
-      logo: "/empreendimentos/icarai/logo.png",
-      corPrimaria: "#8BC34A",
-      imagemBackground: "/empreendimentos/icarai/background.jpg",
-    },
-  },
-]
+// Remover o array staticBanners fixo
+
+// Adicionar função para buscar empreendimentos do banner:
+const getBannerEmpreendimentos = () => {
+  return empreendimentos
+    .filter(
+      (emp) =>
+        emp.ativo && (emp.status === "Breve lançamento" || emp.status === "Lançamento" || emp.status === "Em Obras"),
+    )
+    .map((emp) => ({
+      id: emp.id,
+      titulo: emp.nome,
+      slug: emp.slug,
+      subtitulo: emp.subtitulo || emp.status,
+      slogan: emp.slogan || emp.nome,
+      localizacao: emp.localizacao,
+      status: emp.status,
+      descricao: emp.descricao,
+      preco: emp.precoFormatado,
+      entrega: emp.entrega,
+      imagem: emp.imagem, // Esta é a fachada principal
+      imagemDestaque: emp.imagemDestaque || emp.imagem,
+      video: false,
+      destaque: emp.status.toUpperCase(),
+      destaqueInfo: emp.destaque || emp.subtitulo || "",
+      diferenciais: emp.diferenciais.slice(0, 3),
+      identidadeVisual: emp.identidadeVisual,
+    }))
+}
+const bannerEmpreendimentos = getBannerEmpreendimentos()
 
 export default function BannerSlider() {
   const [mounted, setMounted] = useState(false)
@@ -135,7 +95,7 @@ export default function BannerSlider() {
     intervalRef.current = setInterval(() => {
       if (mountedRef.current) {
         setDirection(1)
-        setCurrentSlide((prev) => (prev + 1) % staticBanners.length)
+        setCurrentSlide((prev) => (prev + 1) % bannerEmpreendimentos.length)
       }
     }, 6000)
 
@@ -163,7 +123,7 @@ export default function BannerSlider() {
     if (!mountedRef.current) return
 
     setDirection(1)
-    setCurrentSlide((prev) => (prev + 1) % staticBanners.length)
+    setCurrentSlide((prev) => (prev + 1) % bannerEmpreendimentos.length)
     setIsAutoPlaying(false)
 
     // Clear existing timers
@@ -179,7 +139,7 @@ export default function BannerSlider() {
     if (!mountedRef.current) return
 
     setDirection(-1)
-    setCurrentSlide((prev) => (prev - 1 + staticBanners.length) % staticBanners.length)
+    setCurrentSlide((prev) => (prev - 1 + bannerEmpreendimentos.length) % bannerEmpreendimentos.length)
     setIsAutoPlaying(false)
 
     // Clear existing timers
@@ -222,7 +182,7 @@ export default function BannerSlider() {
     )
   }
 
-  const currentBanner = staticBanners[currentSlide]
+  const currentBanner = bannerEmpreendimentos[currentSlide]
 
   return (
     <section className="relative h-[75vh] md:h-[80vh] overflow-hidden bg-black">
@@ -246,12 +206,21 @@ export default function BannerSlider() {
                 }}
               />
             ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+                style={{
+                  background: currentBanner.identidadeVisual?.corPrimaria
+                    ? `linear-gradient(135deg, ${currentBanner.identidadeVisual.corPrimaria}15 0%, #1a1a1a 50%, ${currentBanner.identidadeVisual.corSecundaria || "#000"}90 100%)`
+                    : undefined,
+                }}
+              >
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(120,119,198,0.3),transparent_50%)]" />
                 </div>
               </div>
             )}
+            {/* Overlay escuro para melhor legibilidade - REMOVIDO PARA OBSIDIAN */}
+            {currentBanner.slug !== "obsidian" && <div className="absolute inset-0 bg-black/40" />}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -271,8 +240,8 @@ export default function BannerSlider() {
             >
               {/* Text Content */}
               <div className="lg:col-span-7 space-y-8">
-                {currentBanner.identidadeVisual?.logo && (
-                  <div>
+                {currentBanner.identidadeVisual?.logo ? (
+                  <div className="mb-6">
                     <img
                       src={currentBanner.identidadeVisual.logo || "/placeholder.svg"}
                       alt={`Logo ${currentBanner.titulo}`}
@@ -282,6 +251,15 @@ export default function BannerSlider() {
                         target.style.display = "none"
                       }}
                     />
+                  </div>
+                ) : (
+                  <div className="mb-6">
+                    <h2
+                      className="text-2xl md:text-3xl font-bold tracking-wider"
+                      style={{ color: currentBanner.identidadeVisual?.corPrimaria || "#D4AF37" }}
+                    >
+                      {currentBanner.titulo}
+                    </h2>
                   </div>
                 )}
 
@@ -319,17 +297,21 @@ export default function BannerSlider() {
               <div className="lg:col-span-5 relative">
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                   <img
-                    src={currentBanner.imagemDestaque || "/placeholder.svg"}
+                    src={
+                      currentBanner.imagem || // Usar a fachada principal
+                      "/placeholder.svg?height=600&width=500&query=luxury apartment building"
+                    }
                     alt={currentBanner.titulo}
                     className="w-full h-[500px] md:h-[600px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
-                      target.src = "/placeholder.svg"
+                      target.src = "/modern-apartment-facade.png"
                     }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/5 to-transparent" />
+                  {/* Background */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
 
                   <div className="absolute top-4 right-4">
                     <div className="bg-white/10 backdrop-blur-lg rounded-lg px-3 py-1.5 border border-white/20 shadow-xl">
@@ -338,7 +320,10 @@ export default function BannerSlider() {
                   </div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    {/* Sobreposição para destaque dos ícones - estendida até o meio */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent pointer-events-none" />
+
+                    <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                       <div className="text-center">
                         <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
                           <Home className="h-5 w-5 text-white" strokeWidth={1} />
@@ -372,7 +357,7 @@ export default function BannerSlider() {
                       </div>
                     </div>
 
-                    <div className="flex items-end justify-between">
+                    <div className="relative z-10 flex items-end justify-between">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <MapPin
@@ -404,7 +389,7 @@ export default function BannerSlider() {
       </div>
 
       {/* Controls */}
-      {staticBanners.length > 1 && (
+      {bannerEmpreendimentos.length > 1 && (
         <>
           <div className="absolute left-8 top-1/2 -translate-y-1/2 z-30">
             <Button
@@ -430,7 +415,7 @@ export default function BannerSlider() {
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
             <div className="flex items-center gap-3">
-              {staticBanners.map((_, index) => (
+              {bannerEmpreendimentos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}

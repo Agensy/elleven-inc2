@@ -3,7 +3,7 @@
 // =============================================================================
 
 export type EmpreendimentoTipo = "Studio" | "1 dormitório" | "2 dormitórios" | "3 dormitórios" | "Cobertura"
-export type EmpreendimentoStatus = "Breve lançamento" | "Lançamento" | "Em Obras" | "Pronto"
+export type EmpreendimentoStatus = "Breve lançamento" | "Lançamento" | "Em Obras" | "Entregues"
 
 // =============================================================================
 // INTERFACES AUXILIARES
@@ -89,14 +89,14 @@ export interface Empreendimento {
   nome: string
   subtitulo?: string
   slogan?: string
-  
+
   // Localização
   localizacao: string
   bairro: string
   endereco?: Endereco
   coordenadas: Coordenadas
   pontos_interesse: PontoInteresse[]
-  
+
   // Características básicas
   tipo: EmpreendimentoTipo
   status: EmpreendimentoStatus
@@ -104,29 +104,29 @@ export interface Empreendimento {
   quartos: number
   banheiros: number
   vagas: number
-  
+
   // Preço e entrega
   preco: number
   precoFormatado: string
   entrega: string
-  
+
   // Conteúdo
   descricao: string
   destaque?: string
   diferenciais: string[]
-  
+
   // Mídia
   imagem: string
   imagemDestaque?: string
   galeria: string[]
-  
+
   // Identidade visual
   identidadeVisual: IdentidadeVisual
-  
+
   // Dados técnicos
   plantas: Planta[]
   especificacoes: EspecificacoesTecnicas
-  
+
   // Metadados
   destacado?: boolean
   ativo: boolean

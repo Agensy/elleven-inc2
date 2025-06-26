@@ -247,8 +247,19 @@ export default function ParceirosContent() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A]">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-20 relative overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/GRAFISMOS%202-JV5guaGGiEfJGUwE62TQYXIxdjwm0m.png')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -267,11 +278,7 @@ export default function ParceirosContent() {
               >
                 Quero Ser Parceiro
               </Button>
-              <Button
-                size="lg"
-                variant="ghost"
-                className="border-2 border-white/30 text-white" // Removido hover:bg-white/10
-              >
+              <Button size="lg" variant="ghost" className="border-2 border-white/30 text-white">
                 Saiba Mais
               </Button>
             </div>

@@ -115,7 +115,6 @@ export default function ObsidianPage() {
                     src={logoImage.url || "/placeholder.svg"}
                     alt="Logo Obsidian"
                     className="h-16 md:h-20 w-auto filter drop-shadow-lg"
-                    priority
                   />
                 </div>
               )}

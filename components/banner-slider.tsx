@@ -63,109 +63,50 @@ export default function BannerSlider() {
 
   // Garantir hidratação
   useEffect(() => {
-    mountedRef.current = true
     setMounted(true)
-
-    return () => {
-      mountedRef.current = false
-    }
   }, [])
 
-  // Auto-play timer - apenas após montagem
+  // Auto-play simples e seguro
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted || bannerEmpreendimentos.length <= 1) return
 
-    autoPlayTimerRef.current = setTimeout(() => {
-      if (mountedRef.current) {
-        setIsAutoPlaying(true)
-      }
+    const timer = setTimeout(() => {
+      setIsAutoPlaying(true)
     }, 3000)
 
-    return () => {
-      if (autoPlayTimerRef.current) {
-        clearTimeout(autoPlayTimerRef.current)
-      }
-    }
+    return () => clearTimeout(timer)
   }, [mounted])
 
-  // Auto-play interval
+  // Interval do auto-play
   useEffect(() => {
-    if (!mounted || !isAutoPlaying) return
+    if (!mounted || !isAutoPlaying || bannerEmpreendimentos.length <= 1) return
 
-    intervalRef.current = setInterval(() => {
-      if (mountedRef.current) {
-        setDirection(1)
-        setCurrentSlide((prev) => (prev + 1) % bannerEmpreendimentos.length)
-      }
+    const interval = setInterval(() => {
+      setDirection(1)
+      setCurrentSlide((prev) => (prev + 1) % bannerEmpreendimentos.length)
     }, 6000)
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
-    }
-  }, [mounted, isAutoPlaying])
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (autoPlayTimerRef.current) {
-        clearTimeout(autoPlayTimerRef.current)
-      }
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
-    }
-  }, [])
+    return () => clearInterval(interval)
+  }, [mounted, isAutoPlaying, bannerEmpreendimentos.length])
 
   // Navigation functions
   const nextSlide = useCallback(() => {
-    if (!mountedRef.current) return
-
     setDirection(1)
     setCurrentSlide((prev) => (prev + 1) % bannerEmpreendimentos.length)
     setIsAutoPlaying(false)
-
-    // Clear existing timers
-    if (autoPlayTimerRef.current) {
-      clearTimeout(autoPlayTimerRef.current)
-    }
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
-  }, [])
+  }, [bannerEmpreendimentos.length])
 
   const prevSlide = useCallback(() => {
-    if (!mountedRef.current) return
-
     setDirection(-1)
     setCurrentSlide((prev) => (prev - 1 + bannerEmpreendimentos.length) % bannerEmpreendimentos.length)
     setIsAutoPlaying(false)
-
-    // Clear existing timers
-    if (autoPlayTimerRef.current) {
-      clearTimeout(autoPlayTimerRef.current)
-    }
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
-  }, [])
+  }, [bannerEmpreendimentos.length])
 
   const goToSlide = useCallback(
     (index: number) => {
-      if (!mountedRef.current) return
-
       setDirection(index > currentSlide ? 1 : -1)
       setCurrentSlide(index)
       setIsAutoPlaying(false)
-
-      // Clear existing timers
-      if (autoPlayTimerRef.current) {
-        clearTimeout(autoPlayTimerRef.current)
-      }
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
     },
     [currentSlide],
   )

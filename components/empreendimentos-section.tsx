@@ -50,9 +50,7 @@ export default function EmpreendimentosSection() {
 
   // Empreendimentos filtrados
   const empreendimentosFiltrados = useMemo(() => {
-    setIsLoading(true)
-    setTimeout(() => setIsLoading(false), 300) // Simular delay
-
+    // Apenas lógica pura, sem side effects
     return empreendimentos.filter((emp) => {
       // Filtro de busca por nome
       if (filtros.busca) {
@@ -74,6 +72,13 @@ export default function EmpreendimentosSection() {
 
       return true
     })
+  }, [filtros])
+
+  // Adicionar useEffect para loading state
+  useEffect(() => {
+    setIsLoading(true)
+    const timer = setTimeout(() => setIsLoading(false), 300)
+    return () => clearTimeout(timer)
   }, [filtros])
 
   // Empreendimentos para exibir (limitados ou todos)

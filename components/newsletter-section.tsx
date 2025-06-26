@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Mail, CheckCircle, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -13,19 +13,31 @@ export default function NewsletterSection() {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
+  // Adicionar refs para timers
+  const timer1Ref = useRef<NodeJS.Timeout>()
+  const timer2Ref = useRef<NodeJS.Timeout>()
+
+  // Refatorar handleSubmit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
       setIsLoading(true)
-      // Simular loading
-      setTimeout(() => {
+      timer1Ref.current = setTimeout(() => {
         setIsLoading(false)
         setIsSubscribed(true)
         setEmail("")
-        setTimeout(() => setIsSubscribed(false), 4000)
+        timer2Ref.current = setTimeout(() => setIsSubscribed(false), 4000)
       }, 1500)
     }
   }
+
+  // Adicionar cleanup no useEffect
+  useEffect(() => {
+    return () => {
+      if (timer1Ref.current) clearTimeout(timer1Ref.current)
+      if (timer2Ref.current) clearTimeout(timer2Ref.current)
+    }
+  }, [])
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -54,7 +66,7 @@ export default function NewsletterSection() {
           {/* Header seguindo padrão documentado */}
           <motion.div variants={fadeInUp} className="text-center mb-16">
             {/* Ícone com padrão documented */}
-            <motion.div 
+            <motion.div
               className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -63,12 +75,12 @@ export default function NewsletterSection() {
             </motion.div>
 
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Fique por Dentro dos{" "}
-              <span className="text-secondary">Lançamentos</span>
+              Fique por Dentro dos <span className="text-secondary">Lançamentos</span>
             </h2>
-            
+
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Receba em primeira mão informações sobre nossos novos empreendimentos, ofertas exclusivas e dicas do mercado imobiliário.
+              Receba em primeira mão informações sobre nossos novos empreendimentos, ofertas exclusivas e dicas do
+              mercado imobiliário.
             </p>
           </motion.div>
 
@@ -80,16 +92,18 @@ export default function NewsletterSection() {
               className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 shadow-lg"
             >
               <motion.div
-                animate={{ 
+                animate={{
                   scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0]
+                  rotate: [0, 5, -5, 0],
                 }}
                 transition={{ duration: 0.6 }}
               >
                 <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
               </motion.div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Inscrição Realizada!</h3>
-              <p className="text-green-600 text-lg">Obrigado por se inscrever. Você receberá nossas novidades em breve.</p>
+              <p className="text-green-600 text-lg">
+                Obrigado por se inscrever. Você receberá nossas novidades em breve.
+              </p>
             </motion.div>
           ) : (
             <motion.div
@@ -114,8 +128,8 @@ export default function NewsletterSection() {
                       disabled={isLoading}
                     />
                   </div>
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={isLoading}
                     size="lg"
                     className="h-14 px-8 bg-secondary hover:bg-secondary/90 shadow-glow-sm group text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-secondary/25 transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none whitespace-nowrap text-lg"
@@ -123,7 +137,7 @@ export default function NewsletterSection() {
                     {isLoading ? (
                       <motion.div
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                         className="flex items-center gap-2"
                       >
                         <Loader2 className="h-5 w-5" />
@@ -139,7 +153,7 @@ export default function NewsletterSection() {
           )}
 
           {/* Disclaimer com elementos decorativos padrão */}
-          <motion.p 
+          <motion.p
             variants={fadeInUp}
             initial="initial"
             whileInView="whileInView"

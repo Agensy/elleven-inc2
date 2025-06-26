@@ -1,7 +1,30 @@
 #!/bin/bash
 
-# 🏢 ELL - Comando Elleven Inc
+# 🏢 ELL - Comando Elleven Inc (3 letras)
 # Shortcut para git-helper.sh
+#
+# 📋 COMANDOS DISPONÍVEIS:
+#
+# 🚀 PRODUÇÃO (vai direto para GitHub + v0):
+#    ./ell push "mensagem"     - Adiciona + commita + push para produção
+#
+# 💾 LOCAL (só salva no computador):
+#    ./ell save "mensagem"     - Adiciona + commita localmente (sem push)
+#
+# ⚠️ RESET (volta versão do GitHub):
+#    ./ell reset               - Descarta mudanças locais (pede confirmação)
+#
+# 📊 VERIFICAÇÕES (só visualizar):
+#    ./ell status              - Ver status atual e commits pendentes
+#    ./ell diff                - Ver diferenças nos arquivos
+#    ./ell log                 - Ver últimos 10 commits
+#    ./ell help                - Mostrar ajuda completa
+#
+# 💡 EXEMPLOS:
+#    ./ell push "Atualizar preços do Jade"
+#    ./ell save "WIP: testando nova funcionalidade"
+#    ./ell reset
+#    ./ell status
 
 # Diretório do script (onde este arquivo está)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

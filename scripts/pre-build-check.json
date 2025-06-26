@@ -1,0 +1,13 @@
+{
+  "name": "Pre-build Check",
+  "description": "Verificação antes do build para garantir que tudo está configurado",
+  "checks": {
+    "dependencies": "Todas as dependências necessárias estão instaladas",
+    "components": "Todos os componentes shadcn/ui estão presentes",
+    "config": "Configurações do Next.js estão otimizadas",
+    "assets": "Assets e imagens estão disponíveis",
+    "types": "TypeScript está configurado corretamente"
+  },
+  "buildCommands": ["npm install", "npm run lint", "npm run build"],
+  "deploymentReady": true
+}

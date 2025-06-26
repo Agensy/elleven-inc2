@@ -14,7 +14,7 @@ export const empreendimentos: Empreendimento[] = [
     nome: "Jade",
     slug: "jade",
     subtitulo: "Lançamento",
-    slogan: "🧪 TESTE - Sofisticação em Cada Detalhe",
+    slogan: "Sofisticação em Cada Detalhe",
     localizacao: "Bela Vista, São Paulo - SP",
     status: "Lançamento",
     descricao:
@@ -25,7 +25,6 @@ export const empreendimentos: Empreendimento[] = [
     imagem: "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
     imagemDestaque: "/empreendimentos/jade/background-jade.jpeg",
     diferenciais: [
-      "🧪 TESTE - Nova funcionalidade implementada hoje!",
       "Localização privilegiada próxima à Av. Paulista",
       "Acabamentos premium e design sofisticado",
       "Rooftop com piscina e vista panorâmica",

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# 🏢 ELL - Comando Elleven Inc
+# Shortcut para git-helper.sh
+
+# Diretório do script (onde este arquivo está)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Executar git-helper.sh com todos os argumentos
+exec "$SCRIPT_DIR/git-helper.sh" "$@" 

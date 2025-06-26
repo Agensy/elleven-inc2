@@ -2,10 +2,23 @@
 
 Script para automatizar operações git comuns no desenvolvimento.
 
+## ⚡ Comando Rápido: `ell`
+
+Use o comando curto **`ell`** (3 letras) da Elleven:
+
+```bash
+./ell push "Sua mensagem"    # Rápido e direto!
+./ell save "Mensagem"        # Commit local
+./ell reset                  # Volta versão GitHub  
+./ell status                 # Ver status
+```
+
 ## 📋 Comandos Disponíveis
 
 ### 🚀 Push Automático
 ```bash
+./ell push "Sua mensagem de commit"
+# OU
 ./git-helper.sh push "Sua mensagem de commit"
 ```
 - Adiciona TODOS os arquivos (incluindo novos)
@@ -15,6 +28,8 @@ Script para automatizar operações git comuns no desenvolvimento.
 
 ### 💾 Save Local
 ```bash
+./ell save "Mensagem do commit"
+# OU
 ./git-helper.sh save "Mensagem do commit"
 ```
 - Adiciona e commita apenas localmente
@@ -23,6 +38,8 @@ Script para automatizar operações git comuns no desenvolvimento.
 
 ### ⚠️ Reset Seguro
 ```bash
+./ell reset
+# OU
 ./git-helper.sh reset
 ```
 - Volta para versão exata do GitHub
@@ -31,9 +48,9 @@ Script para automatizar operações git comuns no desenvolvimento.
 
 ### 📊 Verificações
 ```bash
-./git-helper.sh status   # Ver status atual
-./git-helper.sh diff     # Ver diferenças
-./git-helper.sh log      # Ver últimos commits
+./ell status   # Ver status atual
+./ell diff     # Ver diferenças  
+./ell log      # Ver últimos commits
 ```
 
 ## 🎯 Casos de Uso
@@ -41,25 +58,25 @@ Script para automatizar operações git comuns no desenvolvimento.
 ### Workflow Rápido (Produção)
 ```bash
 # Editar arquivos...
-./git-helper.sh push "Atualizar preços do Jade"
+./ell push "Atualizar preços do Jade"
 # ↑ Vai direto para v0!
 ```
 
 ### Workflow Seguro (Desenvolvimento)
 ```bash
 # Editar arquivos...
-./git-helper.sh save "WIP: testando nova funcionalidade"
-./git-helper.sh save "Corrigir bug X"
-./git-helper.sh save "Finalizar funcionalidade Y"
+./ell save "WIP: testando nova funcionalidade"
+./ell save "Corrigir bug X"
+./ell save "Finalizar funcionalidade Y"
 
 # Quando estiver pronto:
-./git-helper.sh push "Implementar funcionalidade Y completa"
+./ell push "Implementar funcionalidade Y completa"
 ```
 
 ### Workflow de Reversão
 ```bash
 # Se algo deu errado:
-./git-helper.sh reset
+./ell reset
 # ↑ Volta para estado do GitHub
 ```
 
@@ -75,10 +92,10 @@ Editar arquivos → save (local) → save (local) → push (produção)
 
 | Comando | O que faz | Vai para produção? |
 |---------|-----------|-------------------|
-| `push` | Commit + Push | ✅ SIM |
-| `save` | Apenas commit local | ❌ NÃO |
-| `reset` | Volta versão GitHub | ❌ Desfaz tudo |
-| `status` | Ver estado atual | ❌ Só visualiza |
+| `./ell push` | Commit + Push | ✅ SIM |
+| `./ell save` | Apenas commit local | ❌ NÃO |
+| `./ell reset` | Volta versão GitHub | ❌ Desfaz tudo |
+| `./ell status` | Ver estado atual | ❌ Só visualiza |
 
 ## 🛡️ Segurança
 

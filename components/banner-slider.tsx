@@ -2,7 +2,20 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, ArrowRight, MapPin, Home, Dumbbell, Sparkles, Coffee } from "lucide-react"
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  MapPin,
+  Home,
+  Dumbbell,
+  Sparkles,
+  Coffee,
+  Building,
+  Trees,
+  Car,
+  Waves,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { empreendimentos } from "@/lib/data/empreendimentos"
@@ -16,6 +29,39 @@ function getEmpreendimentoUrl(slug: string | null): string {
     "icarai-parque-clube": "/icarai-parque-clube",
   }
   return empreendimentoUrls[slug] || "/empreendimentos"
+}
+
+// Função para obter badges específicos por empreendimento
+function getBadgesPorEmpreendimento(slug: string) {
+  const badgesMap: Record<string, Array<{ icon: any; label: string; description: string }>> = {
+    "icarai-parque-clube": [
+      { icon: Building, label: "Torres", description: "2 Torres" },
+      { icon: Trees, label: "Natureza", description: "Parque Clube" },
+      { icon: Waves, label: "Lazer", description: "Piscina" },
+      { icon: Dumbbell, label: "Saúde", description: "Academia" },
+    ],
+    jade: [
+      { icon: Home, label: "Studios", description: "25 a 40m²" },
+      { icon: Building, label: "Rooftop", description: "Área Externa" },
+      { icon: Coffee, label: "Gourmet", description: "Espaço Gourmet" },
+      { icon: Car, label: "Garagem", description: "Vagas" },
+    ],
+    obsidian: [
+      { icon: Building, label: "Alto Padrão", description: "Luxo" },
+      { icon: Sparkles, label: "Design", description: "Moderno" },
+      { icon: Home, label: "Apartamentos", description: "1 a 3 Dorm" },
+      { icon: MapPin, label: "Localização", description: "Privilegiada" },
+    ],
+  }
+
+  return (
+    badgesMap[slug] || [
+      { icon: Home, label: "Qualidade", description: "Alto Padrão" },
+      { icon: Building, label: "Moderno", description: "Arquitetura" },
+      { icon: Sparkles, label: "Lazer", description: "Completo" },
+      { icon: Car, label: "Garagem", description: "Vagas" },
+    ]
+  )
 }
 
 // Static banners data
@@ -265,37 +311,18 @@ export default function BannerSlider() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent pointer-events-none" />
 
                     <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
-                          <Home className="h-5 w-5 text-white" strokeWidth={1} />
-                        </div>
-                        <div className="text-xs text-white font-medium">STUDIOS</div>
-                        <div className="text-xs text-white/80">25 a 40m²</div>
-                      </div>
-
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
-                          <Dumbbell className="h-5 w-5 text-white" strokeWidth={1} />
-                        </div>
-                        <div className="text-xs text-white font-medium">SAÚDE</div>
-                        <div className="text-xs text-white/80">Academia</div>
-                      </div>
-
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
-                          <Coffee className="h-5 w-5 text-white" strokeWidth={1} />
-                        </div>
-                        <div className="text-xs text-white font-medium">BEM-ESTAR</div>
-                        <div className="text-xs text-white/80">Sauna</div>
-                      </div>
-
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
-                          <Sparkles className="h-5 w-5 text-white" strokeWidth={1} />
-                        </div>
-                        <div className="text-xs text-white font-medium">LAZER</div>
-                        <div className="text-xs text-white/80">Piscina Aquecida</div>
-                      </div>
+                      {getBadgesPorEmpreendimento(currentBanner.slug).map((badge, index) => {
+                        const IconComponent = badge.icon
+                        return (
+                          <div key={index} className="text-center">
+                            <div className="w-12 h-12 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 p-2">
+                              <IconComponent className="h-5 w-5 text-white" strokeWidth={1} />
+                            </div>
+                            <div className="text-xs text-white font-medium">{badge.label}</div>
+                            <div className="text-xs text-white/80">{badge.description}</div>
+                          </div>
+                        )
+                      })}
                     </div>
 
                     <div className="relative z-10 flex items-end justify-between">

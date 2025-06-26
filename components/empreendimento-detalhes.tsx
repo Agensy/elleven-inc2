@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import {
   CheckCircle,
-  Star,
   Shield,
   Leaf,
   Eye,
@@ -21,6 +20,7 @@ import {
   Home,
   Wind,
   Wifi,
+  Building,
 } from "lucide-react"
 
 interface EmpreendimentoDetalhesProps {
@@ -68,23 +68,45 @@ export default function EmpreendimentoDetalhes({ empreendimento }: Empreendiment
 
             {/* Status Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-              <div className="bg-dark-800/30 border border-dark-700 rounded-lg p-4 text-center">
-                <Star className="h-8 w-8 text-secondary mx-auto mb-2" />
-                <div className="text-lg font-bold text-white">Premium</div>
-                <div className="text-sm text-dark-400">Acabamentos</div>
-              </div>
+              {empreendimento.destaques.slice(0, 3).map((destaque: string, index: number) => {
+                const getBadgeInfo = (text: string) => {
+                  const textLower = text.toLowerCase()
+                  let icon = <CheckCircle className="h-8 w-8 text-secondary mx-auto mb-2" />
+                  let description = "Destaque"
 
-              <div className="bg-dark-800/30 border border-dark-700 rounded-lg p-4 text-center">
-                <Shield className="h-8 w-8 text-secondary mx-auto mb-2" />
-                <div className="text-lg font-bold text-white">Segurança</div>
-                <div className="text-sm text-dark-400">24 horas</div>
-              </div>
+                  if (textLower.includes("unidades")) {
+                    icon = <Home className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    description = "Total"
+                  } else if (textLower.includes("torres")) {
+                    icon = <Building className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    description = "No condomínio"
+                  } else if (textLower.includes("dormitórios")) {
+                    icon = <Baby className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    description = "Tipologia"
+                  } else if (textLower.includes("lazer completo") || textLower.includes("lazer")) {
+                    icon = <Sparkles className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    description = "Infraestrutura"
+                  } else if (textLower.includes("segurança")) {
+                    icon = <Shield className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    description = "24 horas"
+                  } else if (textLower.includes("área verde") || textLower.includes("sustentável")) {
+                    icon = <Leaf className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    description = "Natureza"
+                  }
 
-              <div className="bg-dark-800/30 border border-dark-700 rounded-lg p-4 text-center">
-                <Leaf className="h-8 w-8 text-secondary mx-auto mb-2" />
-                <div className="text-lg font-bold text-white">Sustentável</div>
-                <div className="text-sm text-dark-400">Certificado</div>
-              </div>
+                  return { icon, description }
+                }
+
+                const { icon, description } = getBadgeInfo(destaque)
+
+                return (
+                  <div key={index} className="bg-dark-800/30 border border-dark-700 rounded-lg p-4 text-center">
+                    {icon}
+                    <div className="text-lg font-bold text-white">{destaque}</div>
+                    <div className="text-sm text-dark-400">{description}</div>
+                  </div>
+                )
+              })}
             </div>
           </motion.div>
 

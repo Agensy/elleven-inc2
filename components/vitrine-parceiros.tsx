@@ -8,7 +8,7 @@ export default function VitrineParceiros() {
       {/* Seção espaçadora para evitar sobreposição do menu */}
       <div className="h-20 w-full"></div>
 
-      <section className="relative h-screen w-full overflow-hidden">
+      <section id="kabanna" className="relative h-screen w-full overflow-hidden">
         <Image src="/parceiros/kabanna-vitrine.jpeg" alt="Kabanna Real Estate" fill className="object-cover" priority />
       </section>
     </>

@@ -32,7 +32,7 @@ export default function Header() {
     { href: "/#sobre", label: "Sobre" },
     { href: "/servicos", label: "Serviços" },
     { href: "/invista", label: "Invista" },
-    { href: "/parceiros", label: "Parceiros" },
+    { href: "/parceiros#kabanna", label: "Parceiros" },
     { href: "/#contato", label: "Contato" },
   ]
 

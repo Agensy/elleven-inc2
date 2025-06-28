@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "git push origin main && git push tiago main"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

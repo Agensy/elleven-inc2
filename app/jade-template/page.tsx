@@ -40,7 +40,7 @@ const jadeMedia = {
   rooftop: getMediaByCategory("jade", "area-comum")[0]?.url,
 }
 
-// Dados do Jade Template - Estrutura padrão para empreendimentos
+// Dados do Jade - Informações reais do empreendimento
 const jadeTemplate = {
   nome: "Jade",
   subtitulo: "BREVE LANÇAMENTO",
@@ -50,17 +50,18 @@ const jadeTemplate = {
   preco: "A partir de R$ 390.000",
   area: "25 a 40m²",
   entrega: "2025",
-  tipo: "Studio",
+  tipo: "Studios de Alto Padrão",
+  unidades: "118 unidades",
 
   // Descrição principal
   descricao:
-    "No coração da Bela Vista, São Paulo, o Jade representa um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece proximidade com importantes pontos da cidade.",
+    "No coração da Bela Vista, São Paulo, o Jade é um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece ótima proximidade com importantes pontos da cidade, como a Avenida Paulista, o Parque Trianon e os centros comerciais e gastronômicos de renomadas regiões como Vila Madalena e Itaim Bibi.",
 
   // Oportunidade rara - seção premium
   oportunidadeRara: {
     titulo: "Uma oportunidade rara para quem busca distinção",
     descricao:
-      "No Jade, cada detalhe foi pensado para proporcionar uma experiência residencial única. Não se trata apenas de adquirir uma propriedade, mas de investir em um estilo de vida diferenciado no coração de uma das regiões mais cobiçadas de São Paulo.",
+      "O Jade oferece uma oportunidade única de investimento em uma das regiões mais valorizadas da cidade. Apartamentos sofisticados em um dos bairros mais valorizados de São Paulo, com segurança e exclusividade para seu investimento.",
   },
 
   // Imagens organizadas
@@ -72,44 +73,46 @@ const jadeTemplate = {
   informacoes: [
     {
       icon: MapPin,
-      titulo: "localização",
-      subtitulo: "Campo Belo Premium",
-      descricao: "Localização privilegiada no Campo Belo, a 650m do Aeroporto de Congonhas.",
+      titulo: "Localização Privilegiada",
+      subtitulo: "Próximo à Av. Paulista",
+      descricao: "Próximo a hospitais, estações de metrô, shopping centers e à Av. Paulista.",
       cor: "teal",
     },
     {
       icon: Waves,
-      titulo: "lazer",
-      subtitulo: "Espaços Inteligentes",
-      descricao: "Apartamentos funcionais de 25m² a 40m² projetados com design moderno.",
-      cor: "teal",
-    },
-    {
-      icon: Building,
-      titulo: "estrutura",
-      subtitulo: "Tecnologia e Comodidade",
-      descricao: "Infraestrutura completa com lobby elevado e áreas equipadas.",
+      titulo: "Lazer e Comodidades",
+      subtitulo: "Infraestrutura Completa",
+      descricao: "Completa infraestrutura de lazer e comodidades para seu conforto.",
       cor: "teal",
     },
     {
       icon: Shield,
-      titulo: "segurança",
-      subtitulo: "Portaria Exclusiva",
-      descricao: "Portaria completa com piscina, fitness e portaria para moradores oficiais.",
+      titulo: "Segurança e Exclusividade",
+      subtitulo: "Sistema Completo",
+      descricao: "Sistema de segurança completo para sua tranquilidade.",
+      cor: "teal",
+    },
+    {
+      icon: Building,
+      titulo: "Investimento Valorizado",
+      subtitulo: "A partir de R$ 390 mil",
+      descricao: "Investimento em um dos bairros mais valorizados de São Paulo.",
       cor: "teal",
     },
   ],
 
   // Detalhes da localização
   localizacaoDetalhes: {
-    titulo: "Campo Belo Premium",
-    subtitulo: "Localização privilegiada no Campo Belo, a 650m do Aeroporto de Congonhas.",
+    titulo: "Localização Privilegiada",
+    subtitulo: "No coração da Bela Vista, próximo aos principais pontos da cidade.",
     pontos: [
-      "650 metros a pé do Aeroporto de Congonhas",
-      "Próximo à Av. dos Bandeirantes",
-      "Próximo à Av. Washington Luis",
-      "Acesso rápido ao Parque Ibirapuera",
-      "Região com ampla oferta gastronômica",
+      "Hospital Beneficência Portuguesa (190m, 3 min a pé)",
+      "Dona Deola - Hospital BP (200m, 3 min a pé)",
+      "Estação Brigadeiro - Linha Verde (650m, 10 min a pé)",
+      "Shopping Pátio Paulista (280m, 4 min a pé)",
+      "Avenida Paulista (700m, 10 min a pé)",
+      "Estação Vergueiro - Linha Azul (1km, 12 min a pé)",
+      "Estação Paraíso - Linhas Azul e Verde (1,2km, 15 min a pé)",
     ],
     imagemPrincipal: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada.jpg",
   },
@@ -117,74 +120,119 @@ const jadeTemplate = {
   // Galeria expandida
   galeria: [
     {
-      url: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada-jade.webp",
+      url: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
       categoria: "Fachada",
-      titulo: "Vista Externa",
-      descricao: "Arquitetura contemporânea sofisticada",
+      titulo: "Vista Externa Principal",
+      descricao: "Arquitetura contemporânea sofisticada na Bela Vista",
     },
     {
-      url: jadeMedia.rooftop || "/empreendimentos/jade/rooftop.webp",
+      url: jadeMedia.rooftop || "/empreendimentos/jade/galeria/rooftop.jpeg",
       categoria: "Rooftop",
-      titulo: "Rooftop Premium",
-      descricao: "Piscina aquecida com vista panorâmica",
+      titulo: "Rooftop com Piscina",
+      descricao: "Piscina aquecida com vista panorâmica e tela de LED",
     },
     {
-      url: jadeMedia.fachadas[1]?.url || "/empreendimentos/jade/lobby.webp",
-      categoria: "Lobby",
-      titulo: "Lobby Sofisticado",
-      descricao: "Recepção com pé-direito duplo",
+      url: jadeMedia.fachadas[1]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
+      categoria: "Fachada",
+      titulo: "Vista Lateral",
+      descricao: "Design sofisticado com acabamentos premium",
     },
     {
-      url: jadeMedia.planta || "/empreendimentos/jade/plantas/studio-26m2.jpg",
-      categoria: "Studios",
-      titulo: "Studios Inteligentes",
-      descricao: "Espaços otimizados com acabamentos premium",
+      url: jadeMedia.fachadas[2]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
+      categoria: "Perspectiva",
+      titulo: "Vista Aérea",
+      descricao: "Localização privilegiada no coração da Bela Vista",
     },
     {
-      url: "/empreendimentos/jade/fitness.webp",
-      categoria: "Acabamentos",
-      titulo: "Acabamentos Premium",
-      descricao: "Materiais selecionados de alta qualidade",
+      url: "/empreendimentos/jade/academia.webp",
+      categoria: "Lazer",
+      titulo: "Academia Equipada",
+      descricao: "Espaço fitness completo com equipamentos modernos",
     },
     {
-      url: "/empreendimentos/jade/vista.webp",
-      categoria: "Vista",
-      titulo: "Vista Panorâmica",
-      descricao: "Perspectiva privilegiada da cidade",
+      url: "/empreendimentos/jade/lounge.webp",
+      categoria: "Lazer",
+      titulo: "Lounge Gourmet",
+      descricao: "Espaço gourmet para confraternizações",
     },
   ],
 
   // Studio - Espaços Otimizados
   studio: {
     tipo: "Studio 26m²",
-    subtitulo: "Tipologia Única",
+    subtitulo: "Alto Padrão",
     preco: "A partir de R$ 390.000",
     ambientes: [
-      "Sala de Estar e Jantar | Integrada com cozinha gourmet",
-      "Varanda Privativa | Vista privilegiada da cidade",
-      "Banheiro Completo | Acabamentos em mármore",
-      "Aproveitamento Inteligente | Cada metro pensado com precisão",
+      "Ampla sala de estar e jantar | Integrada com cozinha gourmet",
+      "Cozinha integrada | Planejada com acabamentos premium",
+      "Varanda | Vista privilegiada da cidade",
+      "Banheiro completo | Acabamentos em materiais nobres",
     ],
     especificacoes: [
       "Piso em porcelanato de alta qualidade",
-      "Cozinha com bancada em granito",
+      "Cozinha planejada com bancada em granito",
       "Esquadrias em alumínio com vidros duplos",
       "Sistema de automação residencial",
       "Ar-condicionado split instalado",
+      "Acabamentos premium em todos os ambientes",
     ],
     imagem: jadeMedia.planta || "/empreendimentos/jade/plantas/Planta Humanizada_ JADE.jpeg",
   },
 
+  // Lazer e comodidades detalhadas
+  lazer: [
+    "Piscina aquecida com vista panorâmica",
+    "Tela de LED no rooftop",
+    "Academia equipada",
+    "Sauna",
+    "Lounge Gourmet",
+    "Lavanderia compartilhada",
+    "MiniMarket",
+  ],
+
+  // Segurança detalhada
+  seguranca: [
+    "Portaria 24h com equipe treinada",
+    "Sistema de monitoramento completo",
+    "Controle de acesso biométrico",
+    "Elevadores com controle biométrico",
+    "Segurança privativa",
+    "Sensores de movimento",
+    "Cerca eletrônica perimetral",
+  ],
+
+  // Sustentabilidade
+  sustentabilidade: [
+    "Eficiência energética com iluminação LED",
+    "Sensores de presença",
+    "Sistema de reuso de águas pluviais",
+    "Materiais sustentáveis certificados",
+    "Paisagismo com espécies nativas",
+  ],
+
   // Especificações técnicas detalhadas
   especificacoes: {
-    unidades: "48 unidades",
-    andares: "12 andares",
-    vagas: "1 vaga por unidade",
-    area_total: "1.200m²",
+    unidades: "118 unidades",
+    andares: "15 andares",
+    vagas: "Opcionais",
+    area_total: "Studios de 25m² a 40m²",
     elevadores: "2 elevadores",
-    entrega: "Dezembro 2025",
+    entrega: "2025",
     construtora: "Elleven Engenharia",
-    arquiteto: "Studio Gemini",
+    arquiteto: "Projeto arquitetônico diferenciado",
+  },
+
+  // Investimento
+  investimento: {
+    valor_inicial: "R$ 390.000",
+    caracteristicas: [
+      "Valorização constante",
+      "Alta demanda de locação",
+      "Retorno sobre investimento",
+      "Facilidade de revenda",
+      "Localização premium na Bela Vista",
+      "Potencial de valorização acima da média",
+    ],
   },
 }
 

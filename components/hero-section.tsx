@@ -6,16 +6,17 @@ import { ArrowRight } from "lucide-react"
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Video Background */}
+      {/* Video Background - YouTube carregando imediatamente */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <iframe
           className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] -translate-x-1/2 -translate-y-1/2 object-cover"
-          src="https://www.youtube.com/embed/Um-L2ckX2VA?autoplay=1&mute=1&controls=0&loop=1&playlist=Um-L2ckX2VA&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1"
+          src="https://www.youtube.com/embed/Um-L2ckX2VA?autoplay=1&mute=1&controls=0&loop=1&playlist=Um-L2ckX2VA&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&start=0&end=0&showinfo=0&fs=0"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        />
+        
         {/* Overlay for better text readability - now with orange gradient from bottom */}
         <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 via-blue-900/60 to-blue-950/80"></div>
       </div>

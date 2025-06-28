@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 // =============================================================================
 // DADOS DOS PARCEIROS
@@ -314,41 +315,43 @@ function ParceiroCard({
   index: number
 }) {
   return (
-    <motion.div
-      whileHover={{
-        y: -8,
-        scale: 1.02,
-        transition: { duration: 0.2 },
-      }}
-      className="group relative rounded-xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 border border-slate-700 hover:border-orange-400"
-    >
-      {/* Logo centralizada */}
-      <div className="flex items-center justify-center h-16 mb-4">
-        {parceiro.logo ? (
-          <img
-            src={parceiro.logo || "/placeholder.svg"}
-            alt={`Logo ${parceiro.nome}`}
-            className="max-h-12 max-w-full object-contain transition-all duration-300 group-hover:scale-110"
-            loading="lazy"
-          />
-        ) : (
-          <div className="flex items-center justify-center h-12 w-full bg-slate-700 rounded-lg">
-            <span className="text-white font-semibold text-sm">Logo</span>
-          </div>
-        )}
-      </div>
+    <Link href="/parceiros">
+      <motion.div
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+          transition: { duration: 0.2 },
+        }}
+        className="group relative rounded-xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 border border-slate-700 hover:border-orange-400"
+      >
+        {/* Logo centralizada */}
+        <div className="flex items-center justify-center h-16 mb-4">
+          {parceiro.logo ? (
+            <img
+              src={parceiro.logo || "/placeholder.svg"}
+              alt={`Logo ${parceiro.nome}`}
+              className="max-h-12 max-w-full object-contain transition-all duration-300 group-hover:scale-110"
+              loading="lazy"
+            />
+          ) : (
+            <div className="flex items-center justify-center h-12 w-full bg-slate-700 rounded-lg">
+              <span className="text-white font-semibold text-sm">Logo</span>
+            </div>
+          )}
+        </div>
 
-      {/* Nome do parceiro para identificação */}
+        {/* Nome do parceiro para identificação */}
 
-      {/* Descrição centralizada */}
-      <p className="text-xs text-slate-300 text-center leading-relaxed group-hover:text-slate-100 transition-colors duration-300 line-clamp-3">
-        {parceiro.descricao}
-      </p>
+        {/* Descrição centralizada */}
+        <p className="text-xs text-slate-300 text-center leading-relaxed group-hover:text-slate-100 transition-colors duration-300 line-clamp-3">
+          {parceiro.descricao}
+        </p>
 
-      {/* Badge da categoria */}
+        {/* Badge da categoria */}
 
-      {/* Linha decorativa inferior */}
-      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-xl" />
-    </motion.div>
+        {/* Linha decorativa inferior */}
+        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-xl" />
+      </motion.div>
+    </Link>
   )
 }

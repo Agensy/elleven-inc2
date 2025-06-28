@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { CheckCircle, Globe } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function ParceirosContent() {
@@ -221,25 +222,26 @@ export default function ParceirosContent() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8">
               {otherPartners.map((partner, index) => (
-                <motion.div
-                  key={partner.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-blue-700/50"
-                >
-                  <div className="w-full h-16 flex items-center justify-center mb-4">
-                    <Image
-                      src={partner.logo || "/placeholder.svg"}
-                      alt={partner.name}
-                      width={partner.name === "Itaú" ? 80 : 120}
-                      height={partner.name === "Itaú" ? 40 : 60}
-                      className="object-contain filter brightness-0 invert"
-                    />
-                  </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">{partner.description}</p>
-                </motion.div>
+                <Link key={partner.name} href="/parceiros">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-blue-700/50 cursor-pointer"
+                  >
+                    <div className="w-full h-16 flex items-center justify-center mb-4">
+                      <Image
+                        src={partner.logo || "/placeholder.svg"}
+                        alt={partner.name}
+                        width={partner.name === "Itaú" ? 80 : 120}
+                        height={partner.name === "Itaú" ? 40 : 60}
+                        className="object-contain filter brightness-0 invert"
+                      />
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed">{partner.description}</p>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>

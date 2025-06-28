@@ -13,7 +13,7 @@ Site institucional da Elleven Engenharia, desenvolvido em Next.js 15 com TypeScr
 
 ## 📁 Estrutura do Projeto
 
-```
+\`\`\`
 elleven-inc/
 ├── app/                    # App Router (Next.js 13+)
 │   ├── contato/           # Página de contato
@@ -25,13 +25,13 @@ elleven-inc/
 ├── components/            # Componentes reutilizáveis
 ├── lib/                   # Utilitários e configurações
 └── public/               # Arquivos estáticos
-```
+\`\`\`
 
 ## 🛠️ Desenvolvimento
 
 ### Comandos Disponíveis
 
-```bash
+\`\`\`bash
 # Instalar dependências
 npm install
 
@@ -46,7 +46,7 @@ npm start
 
 # Deploy (push para ambos repositórios)
 npm run deploy
-```
+\`\`\`
 
 ## 📤 Deploy
 
@@ -58,17 +58,17 @@ npm run deploy
 ### Como fazer deploy:
 
 **Opção 1 - Usar o script automatizado:**
-```bash
+\`\`\`bash
 npm run deploy
-```
+\`\`\`
 
 **Opção 2 - Fazer manualmente:**
-```bash
+\`\`\`bash
 git add .
 git commit -m "sua mensagem"
 git push origin main
 git push tiago main
-```
+\`\`\`
 
 ### ⚠️ Lembrete para Assistentes IA
 

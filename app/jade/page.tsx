@@ -14,16 +14,19 @@ import {
   CheckCircle,
   Calendar,
   Building,
-  Users,
-  Car,
-  Ruler,
-  Bath,
   Home,
-  Star,
-  ExternalLink,
   MessageCircle,
   Menu,
   X,
+  Shield,
+  Waves,
+  Eye,
+  TrendingUp,
+  Users,
+  Wifi,
+  Dumbbell,
+  Camera,
+  Lock,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -43,8 +46,8 @@ const jadeMedia = {
   rooftop: getMediaByCategory("jade", "area-comum")[0]?.url,
 }
 
-// Dados do Jade - melhorados e expandidos
-const jade = {
+// Dados do Jade - Informações reais do empreendimento
+const jadeTemplate = {
   nome: "Jade",
   subtitulo: "BREVE LANÇAMENTO",
   slogan: "Onde Sofisticação e Exclusividade Se Encontram",
@@ -53,124 +56,279 @@ const jade = {
   preco: "A partir de R$ 390.000",
   area: "25 a 40m²",
   entrega: "2025",
-  tipo: "Studio",
-  descricao:
-    "No coração da Bela Vista, São Paulo, o Jade representa um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece proximidade com importantes pontos da cidade.",
+  tipo: "Studios de Alto Padrão",
+  unidades: "118 unidades",
 
-  // Especificações técnicas detalhadas
-  especificacoes: {
-    unidades: "48 unidades",
-    andares: "12 andares",
-    vagas: "1 vaga por unidade",
-    area_total: "1.200m²",
-    elevadores: "2 elevadores",
-    entrega: "Dezembro 2025",
-    construtora: "Elleven Engenharia",
-    arquiteto: "Studio Gemini",
+  // Descrição principal
+  descricao:
+    "No coração da Bela Vista, São Paulo, o Jade é um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece ótima proximidade com importantes pontos da cidade, como a Avenida Paulista, o Parque Trianon e os centros comerciais e gastronômicos de renomadas regiões como Vila Madalena e Itaim Bibi.",
+
+  // Oportunidade rara - seção premium
+  oportunidadeRara: {
+    titulo: "Uma oportunidade rara para quem busca distinção",
+    descricao:
+      "O Jade oferece uma oportunidade única de investimento em uma das regiões mais valorizadas da cidade. Apartamentos sofisticados em um dos bairros mais valorizados de São Paulo, com segurança e exclusividade para seu investimento.",
   },
 
   // Imagens organizadas
-  imagem: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada-jade.webp",
-  imagemDestaque: jadeMedia.background || "/empreendimentos/jade/background-jade.webp",
+  imagem: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada.jpg",
+  imagemDestaque: jadeMedia.background || "/empreendimentos/jade/background-jade.jpeg",
   logo: jadeMedia.logo || "/empreendimentos/jade/logo-jade.png",
+
+  // Informações do empreendimento - 4 categorias principais com detalhes
+  informacoes: [
+    {
+      id: "localizacao",
+      icon: MapPin,
+      titulo: "Localização Privilegiada",
+      subtitulo: "Próximo à Av. Paulista",
+      descricao: "Próximo a hospitais, estações de metrô, shopping centers e à Av. Paulista.",
+      cor: "blue",
+      detalhes: {
+        titulo: "Localização Privilegiada",
+        subtitulo: "No coração da Bela Vista, próximo aos principais pontos da cidade",
+        imagem: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
+        pontos: [
+          {
+            icon: MapPin,
+            titulo: "Hospital Beneficência Portuguesa",
+            distancia: "190m (3 min a pé)",
+          },
+          {
+            icon: MapPin,
+            titulo: "Shopping Pátio Paulista",
+            distancia: "280m (4 min a pé)",
+          },
+          {
+            icon: MapPin,
+            titulo: "Estação Brigadeiro - Linha Verde",
+            distancia: "650m (10 min a pé)",
+          },
+          {
+            icon: MapPin,
+            titulo: "Avenida Paulista",
+            distancia: "700m (10 min a pé)",
+          },
+          {
+            icon: MapPin,
+            titulo: "Estação Vergueiro - Linha Azul",
+            distancia: "1km (12 min a pé)",
+          },
+          {
+            icon: MapPin,
+            titulo: "Estação Paraíso - Linhas Azul e Verde",
+            distancia: "1,2km (15 min a pé)",
+          },
+        ],
+      },
+    },
+    {
+      id: "lazer",
+      icon: Waves,
+      titulo: "Lazer e Comodidades",
+      subtitulo: "Infraestrutura Completa",
+      descricao: "Completa infraestrutura de lazer e comodidades para seu conforto.",
+      cor: "blue",
+      detalhes: {
+        titulo: "Lazer e Comodidades",
+        subtitulo: "Infraestrutura completa para seu bem-estar e comodidade",
+        imagem: jadeMedia.rooftop || "/empreendimentos/jade/galeria/rooftop.jpeg",
+        pontos: [
+          {
+            icon: Waves,
+            titulo: "Piscina Aquecida",
+            distancia: "Com vista panorâmica da cidade",
+          },
+          {
+            icon: Eye,
+            titulo: "Tela de LED no Rooftop",
+            distancia: "Para entretenimento e eventos",
+          },
+          {
+            icon: Dumbbell,
+            titulo: "Academia Equipada",
+            distancia: "Equipamentos modernos de última geração",
+          },
+          {
+            icon: Waves,
+            titulo: "Sauna",
+            distancia: "Espaço de relaxamento e bem-estar",
+          },
+          {
+            icon: Users,
+            titulo: "Lounge Gourmet",
+            distancia: "Área social para confraternizações",
+          },
+          {
+            icon: Wifi,
+            titulo: "Lavanderia Compartilhada",
+            distancia: "Comodidade e praticidade",
+          },
+        ],
+      },
+    },
+    {
+      id: "seguranca",
+      icon: Shield,
+      titulo: "Segurança e Exclusividade",
+      subtitulo: "Sistema Completo",
+      descricao: "Sistema de segurança completo para sua tranquilidade.",
+      cor: "blue",
+      detalhes: {
+        titulo: "Segurança e Exclusividade",
+        subtitulo: "Sistema de segurança completo para sua total tranquilidade",
+        imagem: jadeMedia.fachadas[1]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
+        pontos: [
+          {
+            icon: Shield,
+            titulo: "Portaria 24h",
+            distancia: "Equipe treinada e qualificada",
+          },
+          {
+            icon: Camera,
+            titulo: "Sistema de Monitoramento",
+            distancia: "CFTV completo em todas as áreas",
+          },
+          {
+            icon: Lock,
+            titulo: "Controle de Acesso Biométrico",
+            distancia: "Tecnologia avançada de segurança",
+          },
+          {
+            icon: Shield,
+            titulo: "Elevadores com Biometria",
+            distancia: "Acesso controlado aos andares",
+          },
+          {
+            icon: Camera,
+            titulo: "Sensores de Movimento",
+            distancia: "Detecção inteligente de presença",
+          },
+          {
+            icon: Shield,
+            titulo: "Cerca Eletrônica Perimetral",
+            distancia: "Proteção completa do perímetro",
+          },
+        ],
+      },
+    },
+    {
+      id: "investimento",
+      icon: Building,
+      titulo: "Investimento Valorizado",
+      subtitulo: "A partir de R$ 390 mil",
+      descricao: "Investimento em um dos bairros mais valorizados de São Paulo.",
+      cor: "blue",
+      detalhes: {
+        titulo: "Investimento Valorizado",
+        subtitulo: "Oportunidade única em uma das regiões mais valorizadas de São Paulo",
+        imagem: jadeMedia.fachadas[2]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
+        pontos: [
+          {
+            icon: TrendingUp,
+            titulo: "Valorização Constante",
+            distancia: "Região com histórico de valorização",
+          },
+          {
+            icon: Home,
+            titulo: "Alta Demanda de Locação",
+            distancia: "Proximidade com centros empresariais",
+          },
+          {
+            icon: Building,
+            titulo: "Retorno sobre Investimento",
+            distancia: "ROI atrativo para investidores",
+          },
+          {
+            icon: TrendingUp,
+            titulo: "Facilidade de Revenda",
+            distancia: "Liquidez garantida pela localização",
+          },
+          {
+            icon: MapPin,
+            titulo: "Localização Premium",
+            distancia: "Bela Vista - coração de São Paulo",
+          },
+          {
+            icon: Calendar,
+            titulo: "Potencial de Valorização",
+            distancia: "Acima da média do mercado",
+          },
+        ],
+      },
+    },
+  ],
 
   // Galeria expandida
   galeria: [
-    jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada-jade.webp",
-    jadeMedia.rooftop || "/empreendimentos/jade/rooftop.webp",
-    "/empreendimentos/jade/lobby.webp",
-    "/empreendimentos/jade/fitness.webp",
-    "/empreendimentos/jade/coworking.webp",
-    "/empreendimentos/jade/terraco.webp",
+    {
+      url: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
+      categoria: "Fachada",
+      titulo: "Vista Externa Principal",
+      descricao: "Arquitetura contemporânea sofisticada na Bela Vista",
+    },
+    {
+      url: jadeMedia.rooftop || "/empreendimentos/jade/galeria/rooftop.jpeg",
+      categoria: "Rooftop",
+      titulo: "Rooftop com Piscina",
+      descricao: "Piscina aquecida com vista panorâmica e tela de LED",
+    },
+    {
+      url: jadeMedia.fachadas[1]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
+      categoria: "Fachada",
+      titulo: "Vista Lateral",
+      descricao: "Design sofisticado com acabamentos premium",
+    },
+    {
+      url: jadeMedia.fachadas[2]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
+      categoria: "Perspectiva",
+      titulo: "Vista Aérea",
+      descricao: "Localização privilegiada no coração da Bela Vista",
+    },
+    {
+      url: "/empreendimentos/jade/academia.webp",
+      categoria: "Lazer",
+      titulo: "Academia Equipada",
+      descricao: "Espaço fitness completo com equipamentos modernos",
+    },
+    {
+      url: "/empreendimentos/jade/lounge.webp",
+      categoria: "Lazer",
+      titulo: "Lounge Gourmet",
+      descricao: "Espaço gourmet para confraternizações",
+    },
   ],
 
-  // Diferenciais reorganizados por categoria
-  diferenciais: {
-    localizacao: [
-      "A 190m do Hospital Beneficência Portuguesa",
-      "A 280m do Shopping Pátio Paulista",
-      "A 650m da Estação Brigadeiro (Metrô)",
-      "A 700m da Avenida Paulista",
+  // Studio - Espaços Otimizados
+  studio: {
+    tipo: "Studio 26m²",
+    subtitulo: "Tipologia Única",
+    preco: "A partir de R$ 390.000",
+    ambientes: [
+      "Sala de Estar e Jantar | Integrada com cozinha gourmet",
+      "Varanda Privativa | Vista privilegiada da cidade",
+      "Banheiro Completo | Acabamentos em materiais nobres",
+      "Aproveitamento Inteligente | Cada metro pensado com precisão",
     ],
-    estrutura: [
-      "Rooftop com piscina e vista panorâmica",
-      "Lobby com pé-direito duplo",
-      "Coworking exclusivo para moradores",
-      "Academia equipada no terraço",
+    especificacoes: [
+      "Piso em porcelanato de alta qualidade",
+      "Cozinha com bancada em granito",
+      "Esquadrias com vidros duplos",
+      "Sistema de automação residencial",
+      "Ar-condicionado split instalado",
+      "Acabamentos premium",
     ],
-    tecnologia: [
-      "Fechadura digital em todas as unidades",
-      "Pontos USB em todos os ambientes",
-      "Pré-instalação para automação residencial",
-      "Sistema de segurança inteligente",
-    ],
-    sustentabilidade: [
-      "Certificação AQUA em processo",
-      "Sistema de reuso de água da chuva",
-      "Iluminação LED em áreas comuns",
-      "Jardins verticais no rooftop",
-    ],
+    imagem: jadeMedia.planta || "/empreendimentos/jade/plantas/Planta Humanizada_ JADE.jpeg",
   },
-
-  pontosInteresse: [
-    { nome: "Hospital Beneficência Portuguesa", distancia: "190m", tipo: "saude", icon: "🏥" },
-    { nome: "Shopping Pátio Paulista", distancia: "280m", tipo: "shopping", icon: "🛍️" },
-    { nome: "Estação Brigadeiro", distancia: "650m", tipo: "transporte", icon: "🚇" },
-    { nome: "Avenida Paulista", distancia: "700m", tipo: "comercial", icon: "🏢" },
-    { nome: "Estação Vergueiro", distancia: "1km", tipo: "transporte", icon: "🚇" },
-    { nome: "Parque Ibirapuera", distancia: "2.5km", tipo: "lazer", icon: "🌳" },
-  ],
-
-  plantas: [
-    {
-      tipo: "Studio 26m²",
-      area: "26m²",
-      preco: "A partir de R$ 390.000",
-      quartos: 0,
-      banheiros: 1,
-      vagas: 1,
-      caracteristicas: [
-        "Cozinha americana integrada",
-        "Varanda com churrasqueira",
-        "Banheiro com box blindex",
-        "Ponto para ar-condicionado",
-        "Fechadura digital",
-      ],
-      imagem: jadeMedia.planta || "/empreendimentos/jade/plantas/studio-26m2.jpg",
-    },
-    {
-      tipo: "Studio 32m²",
-      area: "32m²",
-      preco: "A partir de R$ 450.000",
-      quartos: 0,
-      banheiros: 1,
-      vagas: 1,
-      caracteristicas: [
-        "Ambiente ampliado",
-        "Closet integrado",
-        "Varanda gourmet",
-        "Bancada em granito",
-        "Piso porcelanato",
-      ],
-      imagem: "/empreendimentos/jade/plantas/studio-32m2.jpg",
-    },
-  ],
-
-  // Cronograma de obra
-  cronograma: [
-    { fase: "Fundação", status: "concluido", data: "Mar 2024" },
-    { fase: "Estrutura", status: "em-andamento", data: "Set 2024" },
-    { fase: "Alvenaria", status: "planejado", data: "Jan 2025" },
-    { fase: "Acabamentos", status: "planejado", data: "Jun 2025" },
-    { fase: "Entrega", status: "planejado", data: "Dez 2025" },
-  ],
 }
 
 export default function JadePage() {
-  const [selectedPlanta, setSelectedPlanta] = useState(0)
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState<number | null>(null)
   const [showContact, setShowContact] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [activeSection, setActiveSection] = useState("hero")
+  const [headerOpacity, setHeaderOpacity] = useState(0)
+  const [activeInfo, setActiveInfo] = useState("localizacao") // Estado para controlar qual aba está ativa
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -206,10 +364,14 @@ export default function JadePage() {
     setShowMobileMenu(false)
   }
 
-  // Detectar seção ativa no scroll
+  // Detectar scroll para header e seção ativa
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "sobre", "plantas", "localizacao", "galeria", "cronograma"]
+      const scrollY = window.scrollY
+      const opacity = Math.min(scrollY / 100, 0.95)
+      setHeaderOpacity(opacity)
+
+      const sections = ["hero", "oportunidade", "informacoes", "galeria", "plantas", "contato"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -241,17 +403,35 @@ export default function JadePage() {
   }
 
   const navigationItems = [
-    { id: "sobre", label: "Sobre" },
-    { id: "plantas", label: "Plantas" },
-    { id: "localizacao", label: "Localização" },
+    { id: "oportunidade", label: "Sobre" },
+    { id: "informacoes", label: "Informações" },
     { id: "galeria", label: "Galeria" },
-    { id: "cronograma", label: "Cronograma" },
+    { id: "plantas", label: "Plantas" },
+    { id: "contato", label: "Contato" },
   ]
+
+  // Função para obter os detalhes da informação ativa
+  const getActiveInfoDetails = () => {
+    return jadeTemplate.informacoes.find((info) => info.id === activeInfo)?.detalhes
+  }
+
+  // Função para renderizar ícone de forma segura
+  const renderIcon = (IconComponent: any, className: string) => {
+    if (!IconComponent) return null
+    return <IconComponent className={className} />
+  }
 
   return (
     <div className="min-h-screen bg-white">
       {/* Header com navegação interna */}
-      <header className="bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50 transition-all duration-300">
+      <header
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          backgroundColor: `rgba(255, 255, 255, ${headerOpacity})`,
+          backdropFilter: headerOpacity > 0.1 ? "blur(10px)" : "none",
+          borderBottom: headerOpacity > 0.1 ? "1px solid rgba(0,0,0,0.1)" : "none",
+        }}
+      >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/empreendimentos">
@@ -352,18 +532,24 @@ export default function JadePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* HERO DA JADE */}
       <section id="hero" className="relative h-screen overflow-hidden bg-gray-50">
         <div className="absolute inset-0">
-          <Image src={jade.imagem || "/placeholder.svg"} alt={jade.nome} fill className="object-cover" priority />
+          <Image
+            src={jadeTemplate.imagemDestaque || "/placeholder.svg"}
+            alt={jadeTemplate.nome}
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-2xl text-white">
+        <div className="relative z-10 container mx-auto px-6 h-full flex items-center justify-center">
+          <div className="max-w-4xl text-white text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
               <Badge className="bg-orange-500/90 text-white text-sm px-4 py-2 mb-6 backdrop-blur-sm">
-                {jade.subtitulo}
+                {jadeTemplate.subtitulo}
               </Badge>
             </motion.div>
 
@@ -372,48 +558,33 @@ export default function JadePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {jade.logo && (
+              {jadeTemplate.logo && (
                 <div className="mb-6">
                   <Image
-                    src={jade.logo || "/placeholder.svg"}
+                    src={jadeTemplate.logo || "/placeholder.svg"}
                     alt="Logo Jade"
                     width={140}
                     height={70}
-                    className="filter brightness-0 invert"
+                    className="filter brightness-0 invert mx-auto"
                     priority
                   />
                 </div>
               )}
-              <h1 className="text-5xl md:text-7xl font-light mb-6 leading-tight tracking-wide">JADE</h1>
-              <p className="text-xl md:text-2xl font-light mb-8 opacity-90 leading-relaxed">{jade.slogan}</p>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg uppercase mb-6 tracking-wide">
+                JADE
+              </h1>
+              <p className="text-xl md:text-2xl font-light mb-8 opacity-90 leading-relaxed">{jadeTemplate.slogan}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+              className="text-center mb-8"
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <MapPin className="h-4 w-4 text-orange-400" />
-                  <span className="text-sm font-medium">Localização</span>
-                </div>
-                <p className="text-sm opacity-90">{jade.localizacao}</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Home className="h-4 w-4 text-orange-400" />
-                  <span className="text-sm font-medium">Tipologia</span>
-                </div>
-                <p className="text-sm opacity-90">{jade.area}</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="h-4 w-4 text-orange-400" />
-                  <span className="text-sm font-medium">Entrega</span>
-                </div>
-                <p className="text-sm opacity-90">{jade.entrega}</p>
+              <div className="inline-block bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+                <p className="text-sm text-white/80 mb-1">Investimento a partir de</p>
+                <p className="text-3xl font-bold text-white">{jadeTemplate.preco}</p>
               </div>
             </motion.div>
 
@@ -421,7 +592,7 @@ export default function JadePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Button
                 size="lg"
@@ -442,333 +613,552 @@ export default function JadePage() {
             </motion.div>
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-xl"
-        >
-          <div className="text-center">
-            <p className="text-sm text-gray-600 mb-1">Investimento</p>
-            <p className="text-2xl font-bold text-gray-900">{jade.preco}</p>
-          </div>
-        </motion.div>
       </section>
 
-      {/* Seção Sobre */}
-      <section id="sobre" className="py-20 bg-white">
+      {/* SEÇÃO 2 - Conheça o Jade */}
+      <section id="oportunidade" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeIn}>
-              <span className="text-sm text-orange-500 font-medium tracking-wider uppercase mb-4 block">
-                Sobre o empreendimento
-              </span>
-              <h2 className="text-4xl font-light text-gray-900 mb-8 leading-tight">
-                Luxo e <span className="text-orange-500">Comodidade</span> no Centro de São Paulo
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">{jade.descricao}</p>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Com design contemporâneo e espaços otimizados, cada unidade foi pensada para proporcionar máximo
-                conforto em um ambiente urbano dinâmico.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Building className="h-4 w-4 text-orange-500" />
-                    Unidades
-                  </h3>
-                  <p className="text-gray-600">{jade.especificacoes.unidades}</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-orange-500" />
-                    Entrega
-                  </h3>
-                  <p className="text-gray-600">{jade.especificacoes.entrega}</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Users className="h-4 w-4 text-orange-500" />
-                    Arquiteto
-                  </h3>
-                  <p className="text-gray-600">{jade.especificacoes.arquiteto}</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Ruler className="h-4 w-4 text-orange-500" />
-                    Área Total
-                  </h3>
-                  <p className="text-gray-600">{jade.especificacoes.area_total}</p>
-                </div>
+            {/* Conteúdo de Texto */}
+            <motion.div {...fadeIn} className="space-y-8">
+              <div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">Conheça o Jade</h2>
+                <p className="text-lg text-gray-600 leading-relaxed">{jadeTemplate.descricao}</p>
               </div>
 
-              <Button
-                size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white"
-                onClick={() => setShowContact(true)}
-              >
-                Solicitar Informações
-              </Button>
+              {/* Grid de Informações */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Características */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Características</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-1">Tipo</p>
+                      <p className="text-gray-900">
+                        {jadeTemplate.tipo} ({jadeTemplate.area})
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-1">Lazer</p>
+                      <p className="text-gray-900">Infraestrutura Completa</p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-1">Tecnologia</p>
+                      <p className="text-gray-900">Acesso inteligente</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Localização */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Localização</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-gray-900 font-medium">{jadeTemplate.endereco}</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-900">Bela Vista</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-900">São Paulo, SP</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
 
+            {/* Imagem */}
             <motion.div {...fadeIn} className="relative">
-              <Image
-                src={jadeMedia.rooftop || jade.imagemDestaque}
-                alt="Interior do Jade"
-                width={600}
-                height={500}
-                className="rounded-lg object-cover w-full h-[500px] shadow-xl"
-              />
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-1">Rooftop Exclusivo</h3>
-                <p className="text-sm text-gray-600">Piscina, fitness e área de convivência com vista panorâmica</p>
+              <div className="relative overflow-hidden rounded-lg shadow-xl">
+                <Image
+                  src={jadeMedia.rooftop || "/placeholder.svg?height=500&width=600&text=Jade+Rooftop"}
+                  alt="Jade - Rooftop com Piscina"
+                  width={600}
+                  height={400}
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Diferenciais */}
-      <section className="py-20 bg-gray-50">
+      {/* Informações do Empreendimento - ABAS HORIZONTAIS */}
+      <section id="informacoes" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
+          {/* Header da seção */}
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Diferenciais</span>
-            <h2 className="text-4xl font-light text-gray-900 mt-4 mb-6">
-              Por que escolher o <span className="text-orange-500">Jade</span>
-            </h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Informações do Empreendimento</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Conheça os principais diferenciais que fazem do Jade um investimento único
+              Descubra o que torna o JADE um empreendimento moderno, inteligente e sofisticado no coração da Bela Vista.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Object.entries(jade.diferenciais).map(([categoria, items], index) => (
-              <motion.div key={categoria} {...fadeIn} transition={{ delay: index * 0.1 }}>
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4 capitalize flex items-center gap-2">
-                      {categoria === "localizacao" && <MapPin className="h-5 w-5 text-orange-500" />}
-                      {categoria === "estrutura" && <Building className="h-5 w-5 text-orange-500" />}
-                      {categoria === "tecnologia" && <Star className="h-5 w-5 text-orange-500" />}
-                      {categoria === "sustentabilidade" && <CheckCircle className="h-5 w-5 text-orange-500" />}
-                      {categoria}
-                    </h3>
-                    <ul className="space-y-3">
-                      {items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start gap-2 text-sm text-gray-600">
-                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Navegação por Abas */}
+          <div className="max-w-6xl mx-auto">
+            <div className="border-b border-gray-200 mb-8">
+              <nav className="flex space-x-8 overflow-x-auto">
+                {[
+                  { id: "localizacao", label: "Localização", icon: MapPin },
+                  { id: "investimento", label: "Investimento", icon: TrendingUp },
+                  { id: "sustentabilidade", label: "Sustentabilidade", icon: Waves },
+                  { id: "seguranca", label: "Segurança", icon: Shield },
+                  { id: "cronograma", label: "Cronograma", icon: Calendar },
+                  { id: "apartamentos", label: "Apartamentos", icon: Home },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveInfo(tab.id)}
+                    className={`flex items-center gap-2 py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
+                      activeInfo === tab.id
+                        ? "border-green-500 text-green-600"
+                        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    }`}
+                  >
+                    {renderIcon(tab.icon, "h-5 w-5")}
+                    {tab.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
 
-      {/* Seção Plantas */}
-      <section id="plantas" className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Plantas</span>
-            <h2 className="text-4xl font-light text-gray-900 mt-4 mb-6">
-              Nossos <span className="text-orange-500">Studios</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Espaços inteligentes e funcionais, projetados para otimizar cada metro quadrado
-            </p>
-          </motion.div>
-
-          <div className="flex justify-center gap-4 mb-12">
-            {jade.plantas.map((planta, index) => (
-              <Button
-                key={index}
-                variant={selectedPlanta === index ? "default" : "outline"}
-                className={selectedPlanta === index ? "bg-orange-500 hover:bg-orange-600" : "bg-transparent"}
-                onClick={() => setSelectedPlanta(index)}
+            {/* Conteúdo das Abas */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeInfo}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="min-h-[600px]"
               >
-                {planta.tipo}
-              </Button>
-            ))}
-          </div>
+                {/* Aba Localização */}
+                {activeInfo === "localizacao" && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Endereço Privilegiado</h3>
+                      <p className="text-gray-600 mb-8 leading-relaxed">
+                        No coração da Bela Vista (SP), em São Paulo, é um endereço privilegiado que combina
+                        sofisticação, tradição e conveniência.
+                      </p>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedPlanta}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto"
-            >
-              <div className="relative">
-                <div className="bg-gray-50 rounded-lg p-8 shadow-lg">
-                  <Image
-                    src={jade.plantas[selectedPlanta].imagem || "/placeholder.svg"}
-                    alt={jade.plantas[selectedPlanta].tipo}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto rounded-lg"
-                  />
-                </div>
-              </div>
+                      <ul className="space-y-4 mb-8">
+                        <li className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <span className="font-medium text-gray-900">Próximo à Av. Paulista:</span>
+                            <span className="text-gray-600 ml-1">
+                              Apenas 800m do principal centro financeiro da cidade
+                            </span>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <span className="font-medium text-gray-900">Estações de Metrô:</span>
+                            <span className="text-gray-600 ml-1">A 500m da estação mais próxima</span>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <span className="font-medium text-gray-900">Hospitais:</span>
+                            <span className="text-gray-600 ml-1">A 600m dos principais hospitais da região</span>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <span className="font-medium text-gray-900">Shopping:</span>
+                            <span className="text-gray-600 ml-1">A 1,2km de centros comerciais</span>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <span className="font-medium text-gray-900">Instituto Tomie Ohtake:</span>
+                            <span className="text-gray-600 ml-1">
+                              A 700m, um dos principais centros culturais da cidade
+                            </span>
+                          </div>
+                        </li>
+                      </ul>
 
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-3xl font-light text-gray-900 mb-2">{jade.plantas[selectedPlanta].tipo}</h3>
-                  <div className="text-3xl font-bold text-orange-500 mb-6">{jade.plantas[selectedPlanta].preco}</div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <Ruler className="h-6 w-6 text-orange-500 mx-auto mb-2" />
-                    <div className="text-lg font-bold text-gray-900">{jade.plantas[selectedPlanta].area}</div>
-                    <div className="text-sm text-gray-600">Área Total</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <Bath className="h-6 w-6 text-orange-500 mx-auto mb-2" />
-                    <div className="text-lg font-bold text-gray-900">{jade.plantas[selectedPlanta].banheiros}</div>
-                    <div className="text-sm text-gray-600">Banheiro</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <Car className="h-6 w-6 text-orange-500 mx-auto mb-2" />
-                    <div className="text-lg font-bold text-gray-900">{jade.plantas[selectedPlanta].vagas}</div>
-                    <div className="text-sm text-gray-600">Vaga</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <Home className="h-6 w-6 text-orange-500 mx-auto mb-2" />
-                    <div className="text-lg font-bold text-gray-900">Studio</div>
-                    <div className="text-sm text-gray-600">Tipologia</div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Características</h4>
-                  <ul className="space-y-2">
-                    {jade.plantas[selectedPlanta].caracteristicas.map((caracteristica, index) => (
-                      <li key={index} className="flex items-center gap-3">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700">{caracteristica}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    size="lg"
-                    className="bg-orange-500 hover:bg-orange-600 text-white flex-1"
-                    onClick={() => setShowContact(true)}
-                  >
-                    Tenho Interesse
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-gray-300 hover:bg-gray-50 flex-1 bg-transparent"
-                  >
-                    <Download className="mr-2 h-4 w-4" />
-                    Baixar Planta
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* Seção Localização */}
-      <section id="localizacao" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div {...fadeIn}>
-              <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Localização</span>
-              <h2 className="text-4xl font-light text-gray-900 mt-4 mb-8">
-                Coração da <span className="text-orange-500">Bela Vista</span>
-              </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                Estrategicamente localizado na Bela Vista, oferece acesso privilegiado aos principais pontos da cidade.
-                Um endereço que combina tradição, cultura e modernidade.
-              </p>
-
-              <div className="space-y-4">
-                {jade.pontosInteresse.map((ponto, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center justify-between py-4 px-4 bg-white rounded-lg hover:shadow-sm transition-shadow"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="text-2xl">{ponto.icon}</span>
-                      <div>
-                        <span className="text-gray-900 font-medium">{ponto.nome}</span>
-                        <div className="text-sm text-gray-500 capitalize">{ponto.tipo}</div>
+                      <div className="bg-gray-100 rounded-lg p-4">
+                        <h4 className="font-semibold text-gray-900 mb-2">Rua Maestro Cardim, 1028</h4>
+                        <p className="text-gray-600">Bela Vista, São Paulo - SP</p>
                       </div>
                     </div>
-                    <Badge variant="outline" className="text-orange-600 border-orange-200">
-                      {ponto.distancia}
-                    </Badge>
-                  </motion.div>
-                ))}
-              </div>
 
-              <div className="mt-8 p-6 bg-orange-50 rounded-lg border border-orange-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-orange-500" />
-                  Endereço
-                </h3>
-                <p className="text-gray-700 mb-1">{jade.endereco}</p>
-                <p className="text-gray-600">{jade.localizacao}</p>
-              </div>
-            </motion.div>
+                    <div>
+                      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div className="h-96 bg-gray-200 flex items-center justify-center">
+                          <div className="text-center">
+                            <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                            <p className="text-gray-500">Mapa Interativo</p>
+                            <p className="text-sm text-gray-400 mt-2">Bela Vista, São Paulo - SP</p>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-green-50">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span className="text-sm font-medium text-green-700">Bela Vista</span>
+                          </div>
+                          <p className="text-xs text-green-600 mt-1">Bela Vista, São Paulo - SP, 01404-100</p>
+                          <button className="text-xs text-blue-600 hover:underline mt-2">Ver mapa ampliado</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
-            <motion.div {...fadeIn}>
-              <div className="bg-gray-100 rounded-lg h-[600px] flex items-center justify-center relative overflow-hidden">
-                <div className="text-center z-10">
-                  <MapPin className="h-16 w-16 text-orange-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mapa Interativo</h3>
-                  <p className="text-gray-600 mb-4">{jade.endereco}</p>
-                  <Button
-                    variant="outline"
-                    className="border-orange-200 text-orange-600 hover:bg-orange-50 bg-transparent"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Ver no Google Maps
-                  </Button>
-                </div>
+                {/* Aba Investimento */}
+                {activeInfo === "investimento" && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Oportunidade de Investimento</h3>
+                      <p className="text-gray-600 mb-8 leading-relaxed">
+                        O Jade representa uma oportunidade única de investimento em uma das regiões mais valorizadas de
+                        São Paulo.
+                      </p>
 
-                <div className="absolute top-1/4 left-1/3 w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
-                <div className="absolute top-1/2 right-1/3 w-2 h-2 bg-blue-500 rounded-full"></div>
-                <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-green-500 rounded-full"></div>
-              </div>
-            </motion.div>
+                      <div className="space-y-6">
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <div className="flex items-center gap-3 mb-4">
+                            <TrendingUp className="h-6 w-6 text-green-600" />
+                            <h4 className="font-semibold text-gray-900">Valorização Histórica</h4>
+                          </div>
+                          <p className="text-gray-600">
+                            A Bela Vista apresenta valorização constante acima da média do mercado paulistano.
+                          </p>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <div className="flex items-center gap-3 mb-4">
+                            <Home className="h-6 w-6 text-blue-600" />
+                            <h4 className="font-semibold text-gray-900">Alta Demanda</h4>
+                          </div>
+                          <p className="text-gray-600">
+                            Proximidade com centros empresariais garante alta demanda para locação.
+                          </p>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <div className="flex items-center gap-3 mb-4">
+                            <Building className="h-6 w-6 text-orange-600" />
+                            <h4 className="font-semibold text-gray-900">ROI Atrativo</h4>
+                          </div>
+                          <p className="text-gray-600">
+                            Retorno sobre investimento competitivo para o mercado premium.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg p-8">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">Valores de Investimento</h4>
+                        <div className="space-y-4">
+                          <div>
+                            <p className="text-sm text-gray-600">Studios a partir de</p>
+                            <p className="text-3xl font-bold text-green-600">R$ 390.000</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-600">Área útil</p>
+                            <p className="text-xl font-semibold text-gray-900">25 a 40m²</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-600">Entrega prevista</p>
+                            <p className="text-xl font-semibold text-gray-900">2025</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-6 shadow-sm border">
+                        <h4 className="font-semibold text-gray-900 mb-4">Facilidades de Pagamento</h4>
+                        <ul className="space-y-2 text-gray-600">
+                          <li>• Financiamento bancário disponível</li>
+                          <li>• Parcelamento direto com a construtora</li>
+                          <li>• Subsídio habitacional (quando aplicável)</li>
+                          <li>• Consultoria especializada</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Aba Sustentabilidade */}
+                {activeInfo === "sustentabilidade" && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Compromisso Sustentável</h3>
+                      <p className="text-gray-600 mb-8 leading-relaxed">
+                        O Jade foi projetado com foco na sustentabilidade e eficiência energética, contribuindo para um
+                        futuro mais verde.
+                      </p>
+
+                      <div className="space-y-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Waves className="h-6 w-6 text-green-600" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Gestão de Água</h4>
+                            <p className="text-gray-600">
+                              Sistema de reuso de água e captação de água pluvial para irrigação.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Eye className="h-6 w-6 text-yellow-600" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Eficiência Energética</h4>
+                            <p className="text-gray-600">
+                              Iluminação LED em todas as áreas comuns e sistema de automação inteligente.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Users className="h-6 w-6 text-blue-600" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Materiais Sustentáveis</h4>
+                            <p className="text-gray-600">Uso de materiais certificados e de baixo impacto ambiental.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <Image
+                        src="/placeholder.svg?height=400&width=600&text=Sustentabilidade"
+                        alt="Sustentabilidade Jade"
+                        width={600}
+                        height={400}
+                        className="w-full h-80 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="mt-6 bg-green-50 rounded-lg p-6">
+                        <h4 className="font-semibold text-green-900 mb-4">Certificações Ambientais</h4>
+                        <ul className="space-y-2 text-green-700">
+                          <li>• Projeto com foco em eficiência energética</li>
+                          <li>• Gestão sustentável de resíduos</li>
+                          <li>• Paisagismo com espécies nativas</li>
+                          <li>• Redução do consumo de água</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Aba Segurança */}
+                {activeInfo === "seguranca" && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Segurança Total</h3>
+                      <p className="text-gray-600 mb-8 leading-relaxed">
+                        Sistema de segurança completo com tecnologia de ponta para garantir sua tranquilidade e de sua
+                        família.
+                      </p>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <Shield className="h-8 w-8 text-blue-600 mb-4" />
+                          <h4 className="font-semibold text-gray-900 mb-2">Portaria 24h</h4>
+                          <p className="text-sm text-gray-600">Equipe treinada e qualificada</p>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <Camera className="h-8 w-8 text-green-600 mb-4" />
+                          <h4 className="font-semibold text-gray-900 mb-2">CFTV Completo</h4>
+                          <p className="text-sm text-gray-600">Monitoramento em todas as áreas</p>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <Lock className="h-8 w-8 text-purple-600 mb-4" />
+                          <h4 className="font-semibold text-gray-900 mb-2">Acesso Biométrico</h4>
+                          <p className="text-sm text-gray-600">Tecnologia avançada de segurança</p>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-6 shadow-sm border">
+                          <Shield className="h-8 w-8 text-red-600 mb-4" />
+                          <h4 className="font-semibold text-gray-900 mb-2">Cerca Eletrônica</h4>
+                          <p className="text-sm text-gray-600">Proteção perimetral completa</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <Image
+                        src={jadeMedia.fachadas[1]?.url || "/placeholder.svg"}
+                        alt="Segurança Jade"
+                        width={600}
+                        height={400}
+                        className="w-full h-80 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="mt-6 bg-blue-50 rounded-lg p-6">
+                        <h4 className="font-semibold text-blue-900 mb-4">Recursos Adicionais</h4>
+                        <ul className="space-y-2 text-blue-700">
+                          <li>• Elevadores com biometria</li>
+                          <li>• Sensores de movimento</li>
+                          <li>• Central de monitoramento</li>
+                          <li>• Controle de acesso por aplicativo</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Aba Cronograma */}
+                {activeInfo === "cronograma" && (
+                  <div className="space-y-8">
+                    <div className="text-center">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Cronograma de Obra</h3>
+                      <p className="text-gray-600 max-w-2xl mx-auto">
+                        Acompanhe o progresso da construção do Jade e saiba quando seu investimento estará pronto.
+                      </p>
+                    </div>
+
+                    <div className="max-w-4xl mx-auto">
+                      <div className="relative">
+                        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+
+                        <div className="space-y-8">
+                          <div className="relative flex items-center">
+                            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center relative z-10">
+                              <CheckCircle className="h-8 w-8 text-green-600" />
+                            </div>
+                            <div className="ml-8">
+                              <h4 className="text-lg font-semibold text-gray-900">Projeto Aprovado</h4>
+                              <p className="text-gray-600">Licenças e aprovações concluídas</p>
+                              <p className="text-sm text-green-600 font-medium">✓ Concluído - 2024</p>
+                            </div>
+                          </div>
+
+                          <div className="relative flex items-center">
+                            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center relative z-10">
+                              <Building className="h-8 w-8 text-blue-600" />
+                            </div>
+                            <div className="ml-8">
+                              <h4 className="text-lg font-semibold text-gray-900">Início da Construção</h4>
+                              <p className="text-gray-600">Fundação e estrutura</p>
+                              <p className="text-sm text-blue-600 font-medium">Em andamento - 2024</p>
+                            </div>
+                          </div>
+
+                          <div className="relative flex items-center">
+                            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center relative z-10">
+                              <Home className="h-8 w-8 text-orange-600" />
+                            </div>
+                            <div className="ml-8">
+                              <h4 className="text-lg font-semibold text-gray-900">Acabamentos</h4>
+                              <p className="text-gray-600">Instalações e acabamentos finais</p>
+                              <p className="text-sm text-orange-600 font-medium">Previsto - 2º sem 2025</p>
+                            </div>
+                          </div>
+
+                          <div className="relative flex items-center">
+                            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center relative z-10">
+                              <Calendar className="h-8 w-8 text-purple-600" />
+                            </div>
+                            <div className="ml-8">
+                              <h4 className="text-lg font-semibold text-gray-900">Entrega das Chaves</h4>
+                              <p className="text-gray-600">Conclusão e entrega aos proprietários</p>
+                              <p className="text-sm text-purple-600 font-medium">Previsto - Dezembro 2025</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Aba Apartamentos */}
+                {activeInfo === "apartamentos" && (
+                  <div className="space-y-8">
+                    <div className="text-center">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Studios Inteligentes</h3>
+                      <p className="text-gray-600 max-w-2xl mx-auto">
+                        Espaços otimizados com design inteligente e acabamentos premium para máximo aproveitamento.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                      <div>
+                        <div className="bg-gray-900 rounded-lg p-8 shadow-lg">
+                          <Image
+                            src={jadeTemplate.studio.imagem || "/placeholder.svg"}
+                            alt="Planta Studio Jade"
+                            width={600}
+                            height={400}
+                            className="w-full h-auto rounded-lg"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-xl font-semibold text-gray-900 mb-2">Studio 26m² - Tipologia Única</h4>
+                          <p className="text-2xl font-bold text-green-600 mb-4">A partir de R$ 390.000</p>
+                        </div>
+
+                        <div className="space-y-4">
+                          <h5 className="font-semibold text-gray-900">Ambientes:</h5>
+                          {jadeTemplate.studio.ambientes.map((ambiente, index) => (
+                            <div key={index} className="flex items-start gap-3">
+                              <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <span className="text-gray-700">{ambiente}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="space-y-4">
+                          <h5 className="font-semibold text-gray-900">Especificações Premium:</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {jadeTemplate.studio.especificacoes.map((spec, index) => (
+                              <div key={index} className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0"></div>
+                                <span className="text-sm text-gray-700">{spec}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <Button
+                          size="lg"
+                          variant="outline"
+                          className="border-green-200 text-green-600 hover:bg-green-50 bg-transparent w-full"
+                        >
+                          <Download className="mr-2 h-4 w-4" />
+                          Baixar Planta Técnica
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>
 
-      {/* Seção Galeria */}
+      {/* SEÇÃO GALERIA */}
       <section id="galeria" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Galeria</span>
-            <h2 className="text-4xl font-light text-gray-900 mt-4 mb-6">
-              Conheça o <span className="text-orange-500">Jade</span>
-            </h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Galeria</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore cada detalhe através de nossa galeria exclusiva
+              Conheça cada detalhe através de nossa galeria exclusiva
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {jade.galeria.map((imagem, index) => (
+            {jadeTemplate.galeria.map((imagem, index) => (
               <motion.div
                 key={index}
                 {...fadeIn}
@@ -776,10 +1166,11 @@ export default function JadePage() {
                 className={`relative group cursor-pointer overflow-hidden rounded-lg ${
                   index === 0 ? "md:col-span-2 md:row-span-2" : ""
                 }`}
+                onClick={() => setSelectedGalleryImage(index)}
               >
                 <Image
-                  src={imagem || "/placeholder.svg"}
-                  alt={`${jade.nome} - Imagem ${index + 1}`}
+                  src={imagem.url || "/placeholder.svg"}
+                  alt={`${jadeTemplate.nome} - Imagem ${index + 1}`}
                   width={index === 0 ? 800 : 400}
                   height={index === 0 ? 600 : 300}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -787,159 +1178,172 @@ export default function JadePage() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                      <Play className="h-6 w-6 text-white" />
+                      <Eye className="h-6 w-6 text-white" />
                     </div>
                   </div>
                 </div>
 
                 <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-sm font-medium text-gray-900">
-                    {index === 0
-                      ? "Fachada Principal"
-                      : index === 1
-                        ? "Rooftop"
-                        : index === 2
-                          ? "Lobby"
-                          : index === 3
-                            ? "Fitness"
-                            : index === 4
-                              ? "Coworking"
-                              : "Terraço"}
-                  </p>
+                  <p className="text-sm font-medium text-gray-900">{imagem.titulo}</p>
                 </div>
               </motion.div>
             ))}
           </div>
-
-          <motion.div {...fadeIn} className="text-center mt-12">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-orange-200 text-orange-600 hover:bg-orange-50 bg-transparent"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Fazer Tour Virtual 360°
-            </Button>
-          </motion.div>
         </div>
       </section>
 
-      {/* Seção Cronograma */}
-      <section id="cronograma" className="py-20 bg-gray-50">
+      {/* Espaços Otimizados, Acabamentos Exclusivos */}
+      <section id="plantas" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
+          {/* Header da seção */}
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">Cronograma</span>
-            <h2 className="text-4xl font-light text-gray-900 mt-4 mb-6">
-              Acompanhe o <span className="text-orange-500">Progresso</span>
+            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
+              STUDIOS INTELIGENTES & ESPECIFICAÇÕES
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-4 mb-6">
+              Espaços Otimizados, <span className="text-orange-500">Acabamentos Exclusivos</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Transparência total no desenvolvimento do seu investimento
-            </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200"></div>
+          {/* Grid duas colunas */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div {...fadeIn}>
+              <div className="bg-gray-900 rounded-lg p-8 shadow-lg">
+                <Image
+                  src={jadeTemplate.studio.imagem || "/placeholder.svg"}
+                  alt={jadeTemplate.studio.tipo}
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+            </motion.div>
 
-              {jade.cronograma.map((fase, index) => (
-                <motion.div
-                  key={index}
-                  {...fadeIn}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative flex items-center mb-8 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
-                >
-                  <div className={`w-1/2 ${index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"}`}>
-                    <div className="bg-white rounded-lg p-6 shadow-sm border hover:shadow-md transition-shadow">
-                      <h3 className="font-semibold text-gray-900 text-lg mb-2">{fase.fase}</h3>
-                      <p className="text-gray-600 mb-3">{fase.data}</p>
-                      <Badge
-                        className={`${
-                          fase.status === "concluido"
-                            ? "bg-green-100 text-green-800"
-                            : fase.status === "em-andamento"
-                              ? "bg-orange-100 text-orange-800"
-                              : "bg-gray-100 text-gray-800"
-                        }`}
-                      >
-                        {fase.status === "concluido"
-                          ? "✓ Concluído"
-                          : fase.status === "em-andamento"
-                            ? "🔄 Em Andamento"
-                            : "📅 Planejado"}
-                      </Badge>
-                    </div>
+            <motion.div {...fadeIn} className="space-y-6">
+              <div>
+                <h3 className="text-3xl font-light text-gray-900 mb-2">
+                  {jadeTemplate.studio.tipo} - {jadeTemplate.studio.subtitulo}
+                </h3>
+                <div className="text-3xl font-bold text-orange-500 mb-6">{jadeTemplate.studio.preco}</div>
+              </div>
+
+              <div className="space-y-3">
+                {jadeTemplate.studio.ambientes.map((ambiente, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">{ambiente}</span>
                   </div>
+                ))}
+              </div>
 
-                  <div
-                    className={`absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white shadow-lg ${
-                      fase.status === "concluido"
-                        ? "bg-green-500"
-                        : fase.status === "em-andamento"
-                          ? "bg-orange-500"
-                          : "bg-gray-300"
-                    }`}
-                  ></div>
-                </motion.div>
-              ))}
-            </div>
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Especificações Premium:</h4>
+                <ul className="space-y-2">
+                  {jadeTemplate.studio.especificacoes.map((spec, index) => (
+                    <li key={index} className="flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 bg-orange-500 rounded-full flex-shrink-0"></div>
+                      <span className="text-gray-700">{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-orange-200 text-orange-600 hover:bg-orange-50 bg-transparent w-full"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Baixar Planta Técnica
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 to-gray-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/graphics/grafismos-1.png')] bg-repeat opacity-20"></div>
-        </div>
+      {/* FALE COM ESPECIALISTA */}
+      <section id="contato" className="py-20 bg-orange-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto">
+            <motion.div {...fadeIn} className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Fale com Especialista</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Entre em contato conosco e saiba mais sobre este empreendimento exclusivo.
+              </p>
+            </motion.div>
 
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <motion.div {...fadeIn}>
-            <h2 className="text-4xl md:text-5xl font-light mb-6">
-              Realize o sonho do seu <span className="text-orange-500">primeiro imóvel</span>
-            </h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90 leading-relaxed">
-              O Jade oferece a oportunidade perfeita para quem busca um imóvel moderno, bem localizado e com excelente
-              custo-benefício no centro de São Paulo.
-            </p>
+            <motion.div {...fadeIn}>
+              <Card className="shadow-xl border-0">
+                <CardContent className="p-8">
+                  <form onSubmit={handleFormSubmit} className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
+                      <Input
+                        type="text"
+                        name="nome"
+                        value={formData.nome}
+                        onChange={handleInputChange}
+                        placeholder="Seu nome completo"
+                        required
+                        className="w-full h-12"
+                      />
+                    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-500 mb-2">48</div>
-                <div className="text-sm opacity-75">Unidades Exclusivas</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-500 mb-2">190m</div>
-                <div className="text-sm opacity-75">do Hospital Beneficência</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-500 mb-2">2025</div>
-                <div className="text-sm opacity-75">Entrega Prevista</div>
-              </div>
-            </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                      <Input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="seu@email.com"
+                        required
+                        className="w-full h-12"
+                      />
+                    </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300"
-                onClick={() => setShowContact(true)}
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Falar com Consultor
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-transparent"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Baixar Material Completo
-              </Button>
-            </div>
-          </motion.div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                      <Input
+                        type="tel"
+                        name="telefone"
+                        value={formData.telefone}
+                        onChange={handleInputChange}
+                        placeholder="(11) 99999-9999"
+                        required
+                        className="w-full h-12"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Mensagem (opcional)</label>
+                      <Textarea
+                        name="mensagem"
+                        value={formData.mensagem}
+                        onChange={handleInputChange}
+                        placeholder="Conte-nos sobre seu interesse..."
+                        rows={4}
+                        className="w-full"
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-orange-500 hover:bg-orange-600 text-white h-12 text-lg"
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      Enviar Mensagem
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Footer padrão do site */}
+      {/* FOOTER PADRÃO DO SITE */}
       <Footer />
 
       {/* Modal de contato */}
@@ -965,56 +1369,9 @@ export default function JadePage() {
               </div>
 
               <form onSubmit={handleFormSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
-                  <Input
-                    type="text"
-                    name="nome"
-                    value={formData.nome}
-                    onChange={handleInputChange}
-                    placeholder="Seu nome completo"
-                    required
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="seu@email.com"
-                    required
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
-                  <Input
-                    type="tel"
-                    name="telefone"
-                    value={formData.telefone}
-                    onChange={handleInputChange}
-                    placeholder="(11) 99999-9999"
-                    required
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Mensagem (opcional)</label>
-                  <Textarea
-                    name="mensagem"
-                    value={formData.mensagem}
-                    onChange={handleInputChange}
-                    placeholder="Conte-nos sobre seu interesse..."
-                    rows={3}
-                    className="w-full"
-                  />
-                </div>
+                <Input type="text" placeholder="Nome completo" required className="w-full" />
+                <Input type="email" placeholder="E-mail" required className="w-full" />
+                <Input type="tel" placeholder="Telefone" required className="w-full" />
 
                 <div className="flex gap-3 pt-4">
                   <Button
@@ -1031,19 +1388,46 @@ export default function JadePage() {
                   </Button>
                 </div>
               </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <p className="text-sm text-gray-600 text-center mb-4">Ou entre em contato diretamente:</p>
-                <div className="flex justify-center gap-4">
-                  <Button size="sm" variant="outline" className="flex-1 bg-transparent">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Ligar
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1 bg-transparent">
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    WhatsApp
-                  </Button>
-                </div>
+      {/* Lightbox da Galeria */}
+      <AnimatePresence>
+        {selectedGalleryImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedGalleryImage(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="relative max-w-4xl max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={jadeTemplate.galeria[selectedGalleryImage].url || "/placeholder.svg"}
+                alt={jadeTemplate.galeria[selectedGalleryImage].titulo}
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
+              />
+              <Button
+                variant="ghost"
+                size="sm"
+                className="absolute top-4 right-4 text-white hover:bg-white/20"
+                onClick={() => setSelectedGalleryImage(null)}
+              >
+                <X className="h-6 w-6" />
+              </Button>
+              <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 text-white">
+                <h3 className="font-semibold mb-1">{jadeTemplate.galeria[selectedGalleryImage].titulo}</h3>
+                <p className="text-sm opacity-90">{jadeTemplate.galeria[selectedGalleryImage].descricao}</p>
               </div>
             </motion.div>
           </motion.div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 // =============================================================================
 // DADOS DOS PARCEIROS
@@ -166,37 +167,39 @@ export default function ParceirosSection() {
             >
               {parceiros.map((parceiro) => (
                 <div key={parceiro.id} className="px-2 md:px-3" style={{ width: `${100 / parceiros.length}%` }}>
-                  <div className="bg-slate-800 border border-slate-600 rounded-lg p-6 h-28 md:h-32 flex items-center justify-center hover:border-secondary/50 transition-all duration-300 group cursor-pointer hover:scale-105 hover:-translate-y-1">
-                    <div className="relative w-full h-full flex items-center justify-center bg-slate-700 rounded-md p-3">
-                      <img
-                        src={parceiro.logo || "/placeholder.svg"}
-                        alt={`Logo ${parceiro.nome}`}
-                        className="max-h-6 md:max-h-8 max-w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
-                        loading="lazy"
-                        style={{
-                          filter: "grayscale(100%)",
-                        }}
-                        onError={(e) => {
-                          const img = e.currentTarget
-                          const fallback = img.nextElementSibling as HTMLElement
-                          img.style.display = "none"
-                          if (fallback) {
-                            fallback.style.display = "flex"
-                          }
-                        }}
-                      />
-                      {/* Fallback para logos que não carregam */}
-                      <div className="hidden absolute inset-0 flex items-center justify-center bg-slate-600 rounded text-white text-xs font-medium border-2 border-dashed border-slate-400">
-                        {parceiro.nome}
-                      </div>
+                  <Link href="/parceiros">
+                    <div className="bg-slate-800 border border-slate-600 rounded-lg p-6 h-28 md:h-32 flex items-center justify-center hover:border-secondary/50 transition-all duration-300 group cursor-pointer hover:scale-105 hover:-translate-y-1">
+                      <div className="relative w-full h-full flex items-center justify-center bg-slate-700 rounded-md p-3">
+                        <img
+                          src={parceiro.logo || "/placeholder.svg"}
+                          alt={`Logo ${parceiro.nome}`}
+                          className="max-h-6 md:max-h-8 max-w-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+                          loading="lazy"
+                          style={{
+                            filter: "grayscale(100%)",
+                          }}
+                          onError={(e) => {
+                            const img = e.currentTarget
+                            const fallback = img.nextElementSibling as HTMLElement
+                            img.style.display = "none"
+                            if (fallback) {
+                              fallback.style.display = "flex"
+                            }
+                          }}
+                        />
+                        {/* Fallback para logos que não carregam */}
+                        <div className="hidden absolute inset-0 flex items-center justify-center bg-slate-600 rounded text-white text-xs font-medium border-2 border-dashed border-slate-400">
+                          {parceiro.nome}
+                        </div>
 
-                      {/* Tooltip */}
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
-                        {parceiro.nome}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                        {/* Tooltip */}
+                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
+                          {parceiro.nome}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>

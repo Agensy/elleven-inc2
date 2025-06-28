@@ -33,7 +33,7 @@ export default function Header() {
     { href: "/servicos", label: "Serviços" },
     { href: "/invista", label: "Invista" },
     { href: "/parceiros#kabanna", label: "Parceiros" },
-    { href: "/#contato", label: "Contato" },
+    { href: "/contato", label: "Contato" },
   ]
 
   const empreendimentosStatus = [
@@ -175,33 +175,27 @@ export default function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Button
-              size="sm"
-              // Modifique as classes do botão "Fale Conosco" no desktop
-              // Substitua a linha:
-              // className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
-              //   isScrolled
-              //     ? "text-white"
-              //     : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
-              // }`}
-              // Por:
-              className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
-                isParceirosPage
-                  ? "text-white"
-                  : isScrolled
+            <Link href="/contato">
+              <Button
+                size="sm"
+                className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
+                  isParceirosPage
                     ? "text-white"
-                    : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
-              }`}
-              style={isScrolled ? { backgroundColor: "#1A2D54" } : {}}
-              onMouseEnter={(e) => {
-                if (isScrolled) e.currentTarget.style.backgroundColor = "#152444"
-              }}
-              onMouseLeave={(e) => {
-                if (isScrolled) e.currentTarget.style.backgroundColor = "#1A2D54"
-              }}
-            >
-              Fale Conosco
-            </Button>
+                    : isScrolled
+                      ? "text-white"
+                      : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
+                }`}
+                style={isScrolled ? { backgroundColor: "#1A2D54" } : {}}
+                onMouseEnter={(e) => {
+                  if (isScrolled) e.currentTarget.style.backgroundColor = "#152444"
+                }}
+                onMouseLeave={(e) => {
+                  if (isScrolled) e.currentTarget.style.backgroundColor = "#1A2D54"
+                }}
+              >
+                Fale Conosco
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -255,15 +249,17 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex items-center gap-4 pt-4 mt-4 border-t border-border/50">
-                <Button
-                  size="sm"
-                  className="text-white text-base px-6 py-3 flex-1 shadow-none transition-all duration-200"
-                  style={{ backgroundColor: "#1A2D54" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#152444")}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1A2D54")}
-                >
-                  Fale Conosco
-                </Button>
+                <Link href="/contato" className="flex-1">
+                  <Button
+                    size="sm"
+                    className="text-white text-base px-6 py-3 w-full shadow-none transition-all duration-200"
+                    style={{ backgroundColor: "#1A2D54" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#152444")}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1A2D54")}
+                  >
+                    Fale Conosco
+                  </Button>
+                </Link>
               </div>
             </nav>
           </motion.div>

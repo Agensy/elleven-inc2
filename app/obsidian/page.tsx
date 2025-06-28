@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, MapPin, Calendar, Home, Phone, Download, Shield, Wifi } from "lucide-react"
@@ -60,6 +61,18 @@ export default function ObsidianPage() {
     viewport: { once: true },
   }
 
+  // Scroll automático para a hero section se a URL contiver #hero
+  useEffect(() => {
+    if (window.location.hash === '#hero') {
+      setTimeout(() => {
+        const heroSection = document.getElementById('hero')
+        if (heroSection) {
+          heroSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [])
+
   // Buscar imagens do catálogo
   const backgroundImage = getMediaByCategory("obsidian", "background")[0]
   const logoImage = getMediaByCategory("obsidian", "logo")[0]
@@ -93,7 +106,7 @@ export default function ObsidianPage() {
       </header>
 
       {/* Hero Section Minimalista */}
-      <section className="relative h-[80vh] overflow-hidden bg-gray-50">
+      <section id="hero" className="relative h-[80vh] overflow-hidden bg-gray-50">
         <div className="absolute inset-0">
           <Image
             src={obsidian.imagem || "/placeholder.svg"}

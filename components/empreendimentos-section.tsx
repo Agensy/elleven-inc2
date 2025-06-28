@@ -593,7 +593,7 @@ function EmpreendimentoCard({ empreendimento }: { empreendimento: any }) {
         )}
 
         <div className="flex items-center justify-end">
-          <Link href={getEmpreendimentoUrl(empreendimento.slug)}>
+          <Link href={`${getEmpreendimentoUrl(empreendimento.slug)}#hero`}>
             <Button
               size="sm"
               className="text-white group text-xs"

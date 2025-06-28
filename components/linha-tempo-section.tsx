@@ -122,7 +122,9 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
             src={projeto.imagem || "/placeholder.svg"}
             alt={`Projeto ${projeto.nome}`}
             className={`w-full object-cover rounded-xl transition-all duration-500 ${
-              isActive ? "brightness-110 contrast-110 saturate-110" : "brightness-75 saturate-50 grayscale-[0.3]"
+              isActive 
+                ? "brightness-110 contrast-110 saturate-110" 
+                : "brightness-75 saturate-50 grayscale"
             }`}
           />
 

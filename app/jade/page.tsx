@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, MapPin, Phone, Download } from "lucide-react"
@@ -72,6 +73,18 @@ export default function JadePage() {
     viewport: { once: true },
   }
 
+  // Scroll automático para a hero section se a URL contiver #hero
+  useEffect(() => {
+    if (window.location.hash === '#hero') {
+      setTimeout(() => {
+        const heroSection = document.getElementById('hero')
+        if (heroSection) {
+          heroSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header minimalista */}
@@ -100,7 +113,7 @@ export default function JadePage() {
       </header>
 
       {/* Hero Section Minimalista */}
-      <section className="relative h-[80vh] overflow-hidden bg-gray-50">
+      <section id="hero" className="relative h-[80vh] overflow-hidden bg-gray-50">
         <div className="absolute inset-0">
           <Image src={jade.imagem || "/placeholder.svg"} alt={jade.nome} fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/30" />

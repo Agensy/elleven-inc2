@@ -226,29 +226,25 @@ export default function ParceirosGrid() {
         </motion.div>
 
         {/* Carrossel de Parceiros */}
-        <div className="relative max-w-7xl mx-auto">
-          {/* Navigation Buttons */}
-          {totalSlides > 1 && (
-            <>
-              <button
-                onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-12 h-12 bg-slate-800/90 backdrop-blur-sm border border-slate-600 rounded-full hover:bg-slate-700 hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center"
-                aria-label="Slide anterior"
-              >
-                <ChevronLeft className="h-5 w-5 text-white" />
-              </button>
+        <div className="relative">
+          {/* Arrow Navigation */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-12 h-12 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-full hover:bg-white hover:border-orange-500/50 shadow-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={currentSlide === 0}
+          >
+            <ChevronLeft className="h-5 w-5 text-foreground" />
+          </button>
 
-              <button
-                onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-12 h-12 bg-slate-800/90 backdrop-blur-sm border border-slate-600 rounded-full hover:bg-slate-700 hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center"
-                aria-label="Próximo slide"
-              >
-                <ChevronRight className="h-5 w-5 text-white" />
-              </button>
-            </>
-          )}
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-12 h-12 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-full hover:bg-white hover:border-orange-500/50 shadow-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={currentSlide === totalSlides - 1}
+          >
+            <ChevronRight className="h-5 w-5 text-foreground" />
+          </button>
 
-          {/* Carrossel Container */}
+          {/* Slides Container */}
           <div className="relative h-80 overflow-hidden rounded-xl">
             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
               <div
@@ -301,31 +297,6 @@ export default function ParceirosGrid() {
             </div>
           )}
         </div>
-
-        {/* Categorias dos Parceiros */}
-        <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="flex flex-wrap justify-center gap-4">
-            {["financeira", "construtora", "imobiliaria", "tecnologia", "investimento", "juridica"].map((categoria) => (
-              <span
-                key={categoria}
-                className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium capitalize"
-              >
-                {categoria === "financeira" && "Instituições Financeiras"}
-                {categoria === "construtora" && "Construtoras"}
-                {categoria === "imobiliaria" && "Imobiliárias"}
-                {categoria === "tecnologia" && "Tecnologia"}
-                {categoria === "investimento" && "Investimentos"}
-                {categoria === "juridica" && "Jurídico"}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

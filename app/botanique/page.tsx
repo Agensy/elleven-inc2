@@ -1,4 +1,6 @@
-import type { Metadata } from "next"
+"use client"
+
+import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Home, Shield, ArrowLeft, Building, TreePine } from "lucide-react"
@@ -33,13 +35,19 @@ const botanique = {
   ],
 }
 
-export const metadata: Metadata = {
-  title: "Botanique - Condomínio Clube em Cotia | Elleven Engenharia",
-  description:
-    "Botanique - Condomínio com área verde de 4.500m² em Cotia. 150 unidades, 2 e 3 dormitórios. Piscina, playground e área gourmet. Projeto Studio Gemini.",
-}
-
 export default function BotaniquePage() {
+  // Scroll automático para a hero section se a URL contiver #hero
+  useEffect(() => {
+    if (window.location.hash === '#hero') {
+      setTimeout(() => {
+        const heroSection = document.getElementById('hero')
+        if (heroSection) {
+          heroSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header com botão voltar */}
@@ -55,7 +63,7 @@ export default function BotaniquePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section id="hero" className="relative h-[70vh] overflow-hidden">
         <Image
           src={botanique.imagem || "/placeholder.svg"}
           alt={botanique.nome}

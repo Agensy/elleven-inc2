@@ -1,4 +1,6 @@
-import { Metadata } from "next"
+"use client"
+
+import { useEffect } from "react"
 import Image from 'next/image'
 import Link from "next/link"
 import { MapPin, Home, Shield, Diamond, ArrowLeft, Calendar, Building, Bath, Car, Ruler, Phone, Download, Play, CheckCircle } from "lucide-react"
@@ -8,33 +10,8 @@ import { Badge } from '@/components/ui/badge'
 import { empreendimentos } from "@/lib/data/empreendimentos"
 import { notFound } from "next/navigation"
 
-type Props = {
+interface Props {
   params: { slug: string }
-}
-
-// Função para gerar as páginas estáticas durante o build
-export async function generateStaticParams() {
-  return empreendimentos
-    .filter(emp => emp.ativo)
-    .map((empreendimento) => ({
-      slug: empreendimento.slug,
-    }))
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const empreendimento = empreendimentos.find(emp => emp.slug === params.slug)
-  
-  if (!empreendimento) {
-    return {
-      title: 'Empreendimento não encontrado | Elleven Engenharia'
-    }
-  }
-
-  return {
-    title: `${empreendimento.nome} - ${empreendimento.tipo} | Elleven Engenharia`,
-    description: `${empreendimento.nome} - ${empreendimento.descricao}. ${empreendimento.precoFormatado}. Localização: ${empreendimento.localizacao}`,
-    keywords: `${empreendimento.nome}, ${empreendimento.localizacao}, apartamento, ${empreendimento.tipo}, Elleven Engenharia`,
-  }
 }
 
 export default function EmpreendimentoPage({ params }: Props) {
@@ -43,6 +20,18 @@ export default function EmpreendimentoPage({ params }: Props) {
   if (!empreendimento) {
     notFound()
   }
+
+  // Scroll automático para a hero section se a URL contiver #hero
+  useEffect(() => {
+    if (window.location.hash === '#hero') {
+      setTimeout(() => {
+        const heroSection = document.getElementById('hero')
+        if (heroSection) {
+          heroSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-white">
@@ -60,7 +49,7 @@ export default function EmpreendimentoPage({ params }: Props) {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section id="hero" className="relative h-[70vh] overflow-hidden">
         <Image
           src={empreendimento.imagemDestaque || empreendimento.imagem}
           alt={empreendimento.nome}

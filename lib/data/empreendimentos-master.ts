@@ -1,6 +1,7 @@
 import type { Empreendimento, EmpreendimentoTipo, EmpreendimentoStatus, OpcoesFilter } from "@/lib/types/empreendimento"
 import { botaniqueData } from "./botanique-data"
 import { leMontData } from "./le-mont-data"
+import { leMont2Data } from "./le-mont-2-data"
 
 /**
  * ============================================================================= 
@@ -24,6 +25,7 @@ import { leMontData } from "./le-mont-data"
 export function getEmpreendimentoUrl(slug: string): string {
   const routeMap: Record<string, string> = {
     "le-mont": "/le-mont",
+    "le-mont-2": "/le-mont-2",
     "botanique": "/botanique", 
     "jade": "/jade",
     "obsidian": "/obsidian",
@@ -311,6 +313,12 @@ export const empreendimentosMaster: Empreendimento[] = [
     destacado: true,
     tags: ["natureza", "salto", "clube"],
     categoria: ["residencial", "condomínio clube"],
+  },
+
+  // LE MONT 2 - NOVO EMPREENDIMENTO
+  {
+    ...leMont2Data,
+    destacado: true,
   },
 ]
 

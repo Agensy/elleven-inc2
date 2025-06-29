@@ -87,12 +87,45 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
     },
   ]
 
-  // Converter galeria para o formato esperado pelo componente
-  const galeriaFormatada = (data.galeria || []).map((src, index) => ({
-    url: src,
-    titulo: `${data.nome} - Imagem ${index + 1}`,
-    descricao: `Vista do empreendimento ${data.nome}`,
-  }))
+  // ADAPTADOR UNIVERSAL - Normaliza qualquer formato de galeria
+  const normalizarGaleria = (data: any) => {
+    // Formato EmpreendimentoData completo (ex: Grand Club Cotia)
+    if (data.galeria?.titulo && data.galeria?.imagens) {
+      return data.galeria
+    }
+    
+    // Formato EmpreendimentoData simples (ex: Essence, Vert, etc.)
+    if (Array.isArray(data.galeria) && data.galeria.length > 0) {
+      // Verifica se o primeiro item é string (URLs simples) ou objeto (ImagemGaleria)
+      const firstItem = data.galeria[0]
+      
+      if (typeof firstItem === 'string') {
+        // Array de URLs simples
+        return {
+          titulo: `Conheça o ${data.nome}`,
+          imagens: data.galeria.map((src: string, index: number) => ({
+            src: src,
+            alt: `${data.nome} - Imagem ${index + 1}`,
+            titulo: `${data.nome} - Vista ${index + 1}`,
+          }))
+        }
+      } else if (firstItem?.src) {
+        // Array de objetos ImagemGaleria já formatados
+        return {
+          titulo: `Conheça o ${data.nome}`,
+          imagens: data.galeria
+        }
+      }
+    }
+    
+    // Fallback seguro - sem galeria
+    return {
+      titulo: `Conheça o ${data.nome}`,
+      imagens: []
+    }
+  }
+
+  const galeriaFormatada = normalizarGaleria(data)
 
   return (
     <div className="min-h-screen bg-white">
@@ -115,9 +148,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         descricao={data.descricao}
         tipo={data.tipo}
         area={data.area}
-        endereco={
-          data.endereco ? `${data.endereco.rua}, ${data.endereco.numero} - ${data.endereco.bairro}` : data.localizacao
-        }
+        endereco={data.localizacao}
         localizacao={data.localizacao}
         imagemPrincipal={data.imagemDestaque || data.galeria?.[0] || data.imagem || "/placeholder.svg"}
       />
@@ -126,11 +157,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       <EmpreendimentoInformacoes
         nome={data.nome}
         informacoes={informacoesData}
-        endereco={
-          data.endereco
-            ? `${data.endereco.rua}, ${data.endereco.numero} - ${data.endereco.bairro}, ${data.endereco.cidade} - ${data.endereco.estado}`
-            : data.localizacao
-        }
+        endereco={data.localizacao}
       />
 
       {/* Galeria de Imagens */}

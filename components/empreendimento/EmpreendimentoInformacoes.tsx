@@ -4,7 +4,6 @@ import { useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { MapPin, Waves, Shield, TrendingUp } from "lucide-react"
-import { JadeEmpreendimentoInformacao } from "@/lib/types/jade-template"
 
 // Mapeamento de ícones para strings
 const iconMap = {
@@ -14,9 +13,16 @@ const iconMap = {
   TrendingUp,
 } as const
 
+// Interface simplificada para informações
+interface InformacaoSimples {
+  id: string
+  titulo: string
+  icon: keyof typeof iconMap
+}
+
 interface EmpreendimentoInformacoesProps {
   nome: string
-  informacoes: JadeEmpreendimentoInformacao[]
+  informacoes: InformacaoSimples[]
   endereco?: string
 }
 
@@ -34,14 +40,19 @@ export default function EmpreendimentoInformacoes({
     viewport: { once: true },
   }
 
-  // Função para obter os detalhes da informação ativa
-  const getActiveInfoDetails = () => {
-    return informacoes.find((info) => info.id === activeInfo)?.detalhes
-  }
+  // Dados padrão quando informações não estão disponíveis
+  const informacoesPadrao: InformacaoSimples[] = [
+    { id: "localizacao", titulo: "Localização", icon: "MapPin" },
+    { id: "lazer", titulo: "Lazer", icon: "Waves" },
+    { id: "seguranca", titulo: "Segurança", icon: "Shield" },
+    { id: "investimento", titulo: "Investimento", icon: "TrendingUp" }
+  ]
+
+  const informacoesAtivas = informacoes.length > 0 ? informacoes : informacoesPadrao
 
   // Função para renderizar ícone de forma segura
-  const renderIcon = (iconName: string, className: string) => {
-    const IconComponent = iconMap[iconName as keyof typeof iconMap]
+  const renderIcon = (iconName: keyof typeof iconMap, className: string) => {
+    const IconComponent = iconMap[iconName]
     if (!IconComponent) return null
     return <IconComponent className={className} />
   }
@@ -61,7 +72,7 @@ export default function EmpreendimentoInformacoes({
         <div className="max-w-6xl mx-auto">
           <div className="border-b border-gray-200 mb-8">
             <nav className="flex space-x-8 overflow-x-auto">
-              {informacoes.map((tab) => (
+              {informacoesAtivas.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveInfo(tab.id)}
@@ -86,67 +97,57 @@ export default function EmpreendimentoInformacoes({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="min-h-[600px]"
+              className="min-h-[400px]"
             >
-              {(() => {
-                const activeDetails = getActiveInfoDetails()
-                if (!activeDetails) return null
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                    {informacoesAtivas.find(info => info.id === activeInfo)?.titulo}
+                  </h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">
+                    Informações sobre {informacoesAtivas.find(info => info.id === activeInfo)?.titulo.toLowerCase()} do {nome}.
+                  </p>
 
-                return (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-6">{activeDetails.titulo}</h3>
-                      <p className="text-gray-600 mb-8 leading-relaxed">{activeDetails.subtitulo}</p>
-
-                      <ul className="space-y-4 mb-8">
-                        {activeDetails.pontos.map((ponto, index) => (
-                          <li key={index} className="flex items-start gap-3">
-                            <div className="w-2 h-2 bg-[#192849] rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                              <span className="font-medium text-gray-900">{ponto.titulo}:</span>
-                              <span className="text-gray-600 ml-1">{ponto.distancia}</span>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                        {activeInfo === "localizacao" && endereco ? (
-                          <div className="w-full h-96">
-                            <iframe
-                              src={`https://www.google.com/maps/embed/v1/place?key=&q=${encodeURIComponent(endereco)}`}
-                              width="100%"
-                              height="100%"
-                              style={{ border: 0 }}
-                              allowFullScreen
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"
-                              title={`Localização do ${nome} - ${endereco}`}
-                            />
-                          </div>
-                        ) : (
-                          <Image
-                            src={activeDetails.imagem || "/placeholder.svg"}
-                            alt={activeDetails.titulo}
-                            width={600}
-                            height={400}
-                            className="w-full h-96 object-cover"
-                          />
-                        )}
-                        <div className="p-4 bg-[#192849]/5">
-                          <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 bg-[#192849] rounded-full"></div>
-                            <span className="text-sm font-medium text-[#192849]">{activeDetails.titulo}</span>
-                          </div>
-                          <p className="text-xs text-[#192849] mt-1">{activeDetails.subtitulo}</p>
-                        </div>
-                      </div>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#192849] rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-600">Informações detalhadas disponíveis em breve.</span>
                     </div>
                   </div>
-                )
-              })()}
+                </div>
+
+                <div>
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                    {activeInfo === "localizacao" && endereco ? (
+                      <div className="w-full h-96">
+                        <iframe
+                          src={`https://www.google.com/maps/embed/v1/place?key=&q=${encodeURIComponent(endereco)}`}
+                          width="100%"
+                          height="100%"
+                          style={{ border: 0 }}
+                          allowFullScreen
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          title={`Localização do ${nome} - ${endereco}`}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full h-96 bg-gray-100 flex items-center justify-center">
+                        <p className="text-gray-500">Imagem em breve</p>
+                      </div>
+                    )}
+                    <div className="p-4 bg-[#192849]/5">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 bg-[#192849] rounded-full"></div>
+                        <span className="text-sm font-medium text-[#192849]">
+                          {informacoesAtivas.find(info => info.id === activeInfo)?.titulo}
+                        </span>
+                      </div>
+                      <p className="text-xs text-[#192849] mt-1">{nome}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

@@ -1,8 +1,8 @@
 /**
- * EXEMPLO PRÁTICO DE USO DO TEMPLATE
+ * EXEMPLO PRÁTICO DE USO DO TEMPLATE ATUALIZADO
  *
  * Este arquivo mostra como usar o template para criar um novo empreendimento
- * seguindo todos os padrões defensivos identificados.
+ * seguindo a nova estrutura com páginas -novo (completas e componentizadas).
  */
 
 import {
@@ -25,8 +25,8 @@ const exemploEmpreendimento: NovoEmpreendimentoInput = {
     cep: "01234-567",
   },
   descricao:
-    "Um empreendimento moderno e completo, pensado para oferecer qualidade de vida e conforto para toda a família. Com áreas de lazer diversificadas e localização privilegiada.",
-  status: "Em Obras",
+    "Um empreendimento moderno e completo, pensado para oferecer qualidade de vida e conforto para toda a família. Com áreas de lazer diversificadas e localização privilegiada próxima aos principais centros urbanos.",
+  status: "Lançamento",
   entrega: "2025",
   area: "15.000 m²",
   unidades: "120",
@@ -67,7 +67,7 @@ const exemploEmpreendimento: NovoEmpreendimentoInput = {
     { nome: "Shopping Center", distancia: "1,2km", tipo: "comercio" },
     { nome: "Hospital", distancia: "2km", tipo: "saude" },
     { nome: "Escola Municipal", distancia: "500m", tipo: "educacao" },
-    { nome: "Parque Municipal", distancia: "1km", tipo: "lazer" },
+    { nome: "Parque Municipal", distancia: "1km", tipo: "parque" },
   ],
 
   plantas: [
@@ -106,7 +106,6 @@ const exemploEmpreendimento: NovoEmpreendimentoInput = {
   tema: {
     corPrimaria: "#1E3A8A",
     corSecundaria: "#3B82F6",
-    corDestaque: "#F59E0B",
     logo: "/empreendimentos/logos/logo-exemplo.png",
   },
 }
@@ -122,15 +121,41 @@ console.log("Dados gerados:", exemploData)
 console.log("Código da página:", exemploCodigoPagina.paginaTsx)
 console.log("Código dos dados:", exemploCodigoPagina.dataTs)
 console.log("Caminhos dos arquivos:", exemploCodigoPagina.caminhos)
+console.log("Instruções:", exemploCodigoPagina.instrucoes)
 
 /**
- * INSTRUÇÕES DE USO:
+ * 🎯 INSTRUÇÕES DE USO ATUALIZADAS:
  *
- * 1. Copie este exemplo
- * 2. Substitua os dados pelos dados reais do empreendimento
- * 3. Execute criarEmpreendimentoDoTemplate() para gerar os dados
- * 4. Execute gerarCodigoPagina() para gerar o código
- * 5. Crie os arquivos nos caminhos indicados
- * 6. Salve as imagens na estrutura correta
- * 7. Teste a página
+ * 1. ✅ Copie este exemplo
+ * 2. ✅ Substitua os dados pelos dados reais do empreendimento
+ * 3. ✅ Execute criarEmpreendimentoDoTemplate() para gerar os dados
+ * 4. ✅ Execute gerarCodigoPagina() para gerar o código
+ * 5. ✅ Crie os arquivos nos caminhos indicados:
+ *    - app/residencial-exemplo-novo/page.tsx (página completa)
+ *    - lib/data/residencial-exemplo-data.ts (dados)
+ * 6. ✅ Adicione ao master (empreendimentos-master.ts):
+ *    - Importe os dados
+ *    - Adicione ao routeMap
+ *    - Inclua no array empreendimentosMaster
+ * 7. ✅ Teste a página em /residencial-exemplo-novo
+ * 8. ✅ Verifique se aparece na listagem /empreendimentos
+ */
+
+/**
+ * 🏗️ ESTRUTURA GERADA:
+ * 
+ * ✅ PÁGINA COMPLETA: /residencial-exemplo-novo
+ * - Usa EmpreendimentoPage (componentizada)
+ * - SEO otimizado automaticamente
+ * - Funcionalidades completas (abas, modal, etc.)
+ * 
+ * ✅ DADOS: lib/data/residencial-exemplo-data.ts
+ * - Interface Empreendimento compatível
+ * - Dados convertidos automaticamente
+ * - Pronto para import no master
+ * 
+ * ✅ INTEGRAÇÃO: 
+ * - Aparece automaticamente na listagem
+ * - Filtros funcionam perfeitamente
+ * - URL gerada automaticamente
  */

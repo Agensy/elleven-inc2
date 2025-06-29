@@ -8,16 +8,13 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { empreendimentos, opcoesFiltros } from "@/lib/data/empreendimentos"
 import type { FiltrosEmpreendimento } from "@/lib/types/empreendimento"
+import { getEmpreendimentoUrl } from "@/lib/data/empreendimentos-master"
 import Link from "next/link"
 
 // =============================================================================
 // FUNÇÕES AUXILIARES
 // =============================================================================
-
-function getEmpreendimentoUrl(slug: string): string {
-  // Usar sempre a rota dinâmica para todos os empreendimentos
-  return `/empreendimento/${slug}`
-}
+// getEmpreendimentoUrl importado do empreendimentos-master
 
 // =============================================================================
 // COMPONENTE PRINCIPAL

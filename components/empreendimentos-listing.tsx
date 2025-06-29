@@ -19,17 +19,12 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { empreendimentos, opcoesFiltros } from "@/lib/data/empreendimentos"
+import { empreendimentos, opcoesFiltros, getEmpreendimentoUrl } from "@/lib/data/empreendimentos-master"
 import type { FiltrosEmpreendimento } from "@/lib/types/empreendimento"
 
 // =============================================================================
 // FUNÇÕES AUXILIARES
 // =============================================================================
-
-function getEmpreendimentoUrl(slug: string): string {
-  // Usar sempre a rota dinâmica para todos os empreendimentos
-  return `/empreendimento/${slug}`
-}
 
 // =============================================================================
 // TIPOS
@@ -174,6 +169,7 @@ export default function EmpreendimentosListing() {
           setOrdenacao={setOrdenacao}
           dropdownAberto={dropdownAberto}
           setDropdownAberto={setDropdownAberto}
+          filtros={filtros}
         />
 
         {/* Painel de Filtros */}
@@ -245,6 +241,7 @@ interface ControlsBarProps {
   setOrdenacao: (value: OrdenacaoTipo) => void
   dropdownAberto: string | null
   setDropdownAberto: (value: string | null) => void
+  filtros: FiltrosEmpreendimento
 }
 
 function ControlsBar(props: ControlsBarProps) {
@@ -259,6 +256,7 @@ function ControlsBar(props: ControlsBarProps) {
     setOrdenacao,
     dropdownAberto,
     setDropdownAberto,
+    filtros,
   } = props
 
   const opcoesOrdenacao = [
@@ -287,7 +285,7 @@ function ControlsBar(props: ControlsBarProps) {
             Filtros
             {temFiltrosAtivos && (
               <Badge className="ml-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 text-xs px-1.5 py-0.5 shadow-lg">
-                {Object.values(props).filter((f: any) => f !== "").length}
+                {Object.values(filtros).filter((f) => f !== "").length}
               </Badge>
             )}
           </Button>

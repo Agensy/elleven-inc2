@@ -24,7 +24,7 @@ export interface NovoEmpreendimentoInput {
     cep?: string
   }
   descricao: string
-  status: "Em Obras" | "Concluído" | "Lançamento" | "Vendido"
+  status: "Em Obras" | "Lançamento" | "Breve lançamento" | "Entregues"
   entrega: string
 
   // Imagens (URLs das blobs fornecidas)
@@ -46,7 +46,7 @@ export interface NovoEmpreendimentoInput {
   pontosInteresse: Array<{
     nome: string
     distancia: string
-    tipo: "educacao" | "saude" | "comercio" | "lazer" | "transporte"
+    tipo: "educacao" | "saude" | "comercio" | "parque" | "transporte" | "shopping"
   }>
 
   // Plantas (opcional - pode ser adicionado depois)
@@ -65,7 +65,6 @@ export interface NovoEmpreendimentoInput {
   tema: {
     corPrimaria: string
     corSecundaria: string
-    corDestaque?: string
     logo?: string
   }
 }
@@ -77,7 +76,7 @@ export interface NovoEmpreendimentoInput {
 export function criarEmpreendimentoDoTemplate(input: NovoEmpreendimentoInput): Empreendimento {
   return {
     // ✅ PADRÃO DEFENSIVO: IDs e slugs seguros
-    id: input.slug,
+    id: 1, // ID numérico será ajustado no master
     slug: input.slug,
     nome: input.nome,
     subtitulo: "CONDOMÍNIO RESIDENCIAL",
@@ -85,6 +84,7 @@ export function criarEmpreendimentoDoTemplate(input: NovoEmpreendimentoInput): E
 
     // ✅ PADRÃO DEFENSIVO: Localização completa
     localizacao: input.localizacao,
+    bairro: input.endereco.bairro,
     endereco: {
       rua: input.endereco.rua,
       numero: input.endereco.numero,
@@ -93,14 +93,17 @@ export function criarEmpreendimentoDoTemplate(input: NovoEmpreendimentoInput): E
       estado: input.endereco.estado,
       cep: input.endereco.cep || "",
     },
+    coordenadas: { lat: -23.5505, lng: -46.6333 }, // Coordenadas padrão SP
 
     // ✅ PADRÃO DEFENSIVO: Características com fallbacks
-    tipo: "Residencial",
-    status: input.status,
+    tipo: "2 dormitórios" as any, // Será ajustado para EmpreendimentoTipo
+    status: "Lançamento" as any, // Será ajustado para EmpreendimentoStatus
     entrega: input.entrega,
     area: input.area || "Consulte",
-    quartos: 3, // Valor padrão seguro
+    quartos: 2, // Valor padrão seguro
+    banheiros: 2, // Valor padrão seguro
     vagas: 1, // Valor padrão seguro
+    preco: 500000, // Valor numérico para filtros
 
     // ✅ PADRÃO DEFENSIVO: Preços seguros
     precoFormatado: "Consulte valores",
@@ -119,7 +122,6 @@ export function criarEmpreendimentoDoTemplate(input: NovoEmpreendimentoInput): E
       imagemBackground: input.imagemPrincipal,
       corPrimaria: input.tema.corPrimaria,
       corSecundaria: input.tema.corSecundaria,
-      corDestaque: input.tema.corDestaque || input.tema.corPrimaria,
     },
 
     // ✅ PADRÃO DEFENSIVO: Arrays sempre válidos
@@ -132,7 +134,7 @@ export function criarEmpreendimentoDoTemplate(input: NovoEmpreendimentoInput): E
     pontos_interesse: input.pontosInteresse.map((ponto) => ({
       nome: ponto.nome,
       distancia: ponto.distancia,
-      tipo: ponto.tipo,
+      tipo: ponto.tipo as any,
     })),
 
     // ✅ PADRÃO DEFENSIVO: Plantas com fallback
@@ -172,6 +174,12 @@ export function criarEmpreendimentoDoTemplate(input: NovoEmpreendimentoInput): E
       elevadores: "Consulte",
       entrega: input.entrega,
     },
+
+    // ✅ METADADOS OBRIGATÓRIOS
+    ativo: true,
+    destacado: false,
+    tags: [],
+    categoria: ["residencial"],
   }
 }
 
@@ -184,10 +192,10 @@ export function gerarCodigoPagina(input: NovoEmpreendimentoInput) {
   const dataVarName = `${input.slug.replace(/-/g, "")}Data`
 
   return {
-    // Arquivo da página
+    // Arquivo da página - SEMPRE usar -novo para páginas completas
     paginaTsx: `import type { Metadata } from "next"
 import EmpreendimentoPage from "@/components/empreendimento/EmpreendimentoPage"
-import { ${dataVarName} } from "@/lib/data/${slugKebab}-data"
+import { buscarEmpreendimentoPorSlug } from "@/lib/data/empreendimentos-master"
 
 export const metadata: Metadata = {
   title: "${nomeCapitalizado} - ${input.localizacao} | Elleven Engenharia",
@@ -208,31 +216,41 @@ export const metadata: Metadata = {
 }
 
 export default function ${nomeCapitalizado.replace(/\s+/g, "")}Page() {
-  return <EmpreendimentoPage data={${dataVarName}} />
+  const empreendimentoData = buscarEmpreendimentoPorSlug("${slugKebab}")
+  
+  if (!empreendimentoData) {
+    return <div>Empreendimento não encontrado</div>
+  }
+  
+  return <EmpreendimentoPage data={empreendimentoData} />
 }`,
 
-    // Arquivo de dados
+    // Arquivo de dados - mantido para compatibilidade mas será importado no master
     dataTs: `import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const ${dataVarName}: Empreendimento = {
   // Dados gerados automaticamente pelo template
-  // Edite conforme necessário
+  // Este arquivo será importado no empreendimentos-master.ts
   
-  id: "${input.slug}",
+  id: 1, // Ajustar ID numérico no master
   slug: "${slugKebab}",
   nome: "${input.nome}",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",
   slogan: "${input.nome} - Onde cada detalhe foi pensado para você",
   
   localizacao: "${input.localizacao}",
+  bairro: "${input.endereco.bairro}",
   endereco: ${JSON.stringify(input.endereco, null, 4)},
+  coordenadas: { lat: -23.5505, lng: -46.6333 }, // Ajustar coordenadas reais
   
-  tipo: "Residencial",
-  status: "${input.status}",
+  tipo: "2 dormitórios", // Tipo compatível com EmpreendimentoTipo
+  status: "Lançamento", // Status compatível com EmpreendimentoStatus  
   entrega: "${input.entrega}",
   area: "${input.area || "Consulte"}",
-  quartos: 3,
+  quartos: 2,
+  banheiros: 2,
   vagas: 1,
+  preco: 500000, // Valor numérico para filtros
   
   precoFormatado: "Consulte valores",
   
@@ -247,7 +265,6 @@ export const ${dataVarName}: Empreendimento = {
     imagemBackground: "${input.imagemPrincipal}",
     corPrimaria: "${input.tema.corPrimaria}",
     corSecundaria: "${input.tema.corSecundaria}",
-    corDestaque: "${input.tema.corDestaque || input.tema.corPrimaria}",
   },
   
   diferenciais: ${JSON.stringify(input.diferenciais, null, 4)},
@@ -275,12 +292,39 @@ export const ${dataVarName}: Empreendimento = {
     elevadores: "Consulte",
     entrega: "${input.entrega}",
   },
+  
+  // Metadados obrigatórios
+  ativo: true,
+  destacado: false,
+  tags: [],
+  categoria: ["residencial"],
 }`,
 
-    // Caminhos dos arquivos
+    // Caminhos dos arquivos - SEMPRE criar páginas -novo (completas)
     caminhos: {
-      pagina: `app/${slugKebab}/page.tsx`,
+      pagina: `app/${slugKebab}-novo/page.tsx`,
       dados: `lib/data/${slugKebab}-data.ts`,
     },
+    
+    // Instrução importante para adicionar ao master
+    instrucoes: `
+🎯 PRÓXIMOS PASSOS APÓS GERAR OS ARQUIVOS:
+
+1. ✅ Criar arquivos gerados:
+   - ${`app/${slugKebab}-novo/page.tsx`}
+   - ${`lib/data/${slugKebab}-data.ts`}
+
+2. ✅ Adicionar ao master:
+   - Importar ${dataVarName} em lib/data/empreendimentos-master.ts
+   - Adicionar entrada no routeMap da função getEmpreendimentoUrl
+   - Incluir no array empreendimentosMaster
+
+3. ✅ Testar:
+   - Página acessível em /${slugKebab}-novo
+   - Empreendimento aparece na listagem (/empreendimentos)
+   - Filtros funcionando corretamente
+   
+IMPORTANTE: A página criada usa EmpreendimentoPage (componentizada e completa)!
+`,
   }
 }

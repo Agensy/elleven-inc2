@@ -5,19 +5,19 @@ export const grandClubCotiaData: EmpreendimentoData = {
   id: "grand-club-cotia",
   slug: "grand-club-cotia",
   nome: "Grand Club Cotia",
-  subtitulo: "EM OBRAS",
-  slogan: "Conforto, lazer e exclusividade em um só lugar",
+  subtitulo: "BREVE LANÇAMENTO",
+  slogan: "Espaço, sofisticação e qualidade de vida em um só lugar",
 
   // SEO
   seo: {
-    title: "Grand Club Cotia - Lazer completo e segurança para sua família",
+    title: "Grand Club Cotia - Condomínio Clube Exclusivo em Cotia",
     description:
-      "Conheça o Grand Club Cotia. Apartamentos de 1 e 2 dormitórios, áreas de lazer incríveis, bosque, mini golf, salão de festas e mais. Qualidade de vida em Cotia!",
-    keywords: "grand club cotia, apartamentos cotia, condomínio clube cotia, lazer completo cotia, investir em cotia",
-    ogTitle: "Grand Club Cotia - Viva com exclusividade",
+      "Conheça o Grand Club Cotia. Apartamentos de 1 e 2 dormitórios com lazer completo, segurança e localização privilegiada. Seu novo lar com alto padrão!",
+    keywords: "grand club cotia, apartamentos cotia, condomínio clube sp, lazer completo cotia",
+    ogTitle: "Grand Club Cotia - Viva com exclusividade e conforto",
     ogDescription:
-      "Condomínio com lazer completo, segurança e áreas verdes para toda a família. Apartamentos inteligentes em Cotia.",
-    ogImage: "/empreendimentos/grand-club-cotia/og-image.jpg",
+      "O Grand Club Cotia oferece o que há de melhor em lazer, segurança e localização. Apartamentos de 1 e 2 dormitórios esperando por você.",
+    ogImage: "/empreendimentos/grand-club-cotia/og-image.png",
   },
 
   // Hero Section
@@ -25,11 +25,11 @@ export const grandClubCotiaData: EmpreendimentoData = {
     backgroundImage: "/empreendimentos/grand-club-cotia/fachada-principal.webp",
     logo: "/empreendimentos/logos/logo-grand-club-cotia.png",
     titulo: "Grand Club Cotia",
-    subtitulo: "Um novo padrão de viver bem",
+    subtitulo: "Seu clube residencial exclusivo",
     ctas: [
       { texto: "Saiba Mais", tipo: "primary", acao: "#sobre" },
-      { texto: "Agende sua Visita", tipo: "secondary", acao: "#contato" },
-      { texto: "Fale com um Consultor", tipo: "outline", acao: "#contato" },
+      { texto: "Agendar Visita", tipo: "secondary", acao: "#contato" },
+      { texto: "Receber Material Completo", tipo: "outline", acao: "#contato" },
     ],
   },
 
@@ -37,7 +37,7 @@ export const grandClubCotiaData: EmpreendimentoData = {
   sobre: {
     titulo: "Conheça o Grand Club Cotia",
     descricao:
-      "O Grand Club Cotia foi planejado para proporcionar um estilo de vida único, onde a flexibilidade e o conforto são prioridades. Suas plantas inteligentes otimizam a distribuição dos ambientes, equilibrando praticidade e sofisticação.\n\nAqui, sua família encontrará ambientes amplos e bem iluminados, além de um terraço especial, criando um espaço perfeito para o convívio diário. O destaque fica para o pet place e para as áreas de lazer cuidadosamente decoradas, que tornam a experiência ainda mais acolhedora.\n\nLocalizado em Cotia, o Grand Club Cotia está próximo de tudo que você precisa, em um ambiente seguro, cercado de verde e projetado para garantir total bem-estar.",
+      "O Grand Club Cotia foi cuidadosamente projetado para proporcionar um estilo de vida único, onde a flexibilidade e o conforto são prioridades.\n\nCom plantas inteligentes que otimizam o espaço, o Grand Club oferece o equilíbrio perfeito entre sofisticação e praticidade. Aqui, sua família encontra a tranquilidade que merece, com ambientes amplos, bem iluminados e áreas externas ideais para o convívio diário.\n\nO grande destaque é o terraço, pensado para ser o refúgio favorito de todos, com vistas deslumbrantes e total privacidade. Além disso, o empreendimento conta com uma estrutura completa de lazer e diversão para todas as idades, garantindo momentos inesquecíveis o ano todo.",
     imagem: "/empreendimentos/grand-club-cotia/vitrine-grand-club.jpeg",
     destaques: [
       { numero: "198", texto: "Apartamentos" },
@@ -59,14 +59,14 @@ export const grandClubCotiaData: EmpreendimentoData = {
         conteudo: {
           titulo: "Localização Privilegiada",
           descricao:
-            "R. Geraldo Otaviano de Almeida, 1025 - Bairro Nakamura Park, Cotia - SP. Uma localização estratégica com fácil acesso a tudo que você precisa no dia a dia.",
+            "Situado em Cotia, uma cidade em constante crescimento e valorização. R. Geraldo Otaviano de Almeida, 1025 - Bairro Nakamura Park, Cotia - SP. Uma localização estratégica com fácil acesso a tudo que você precisa no dia a dia.",
           imagem: "/empreendimentos/grand-club-cotia/fachada-principal.webp",
           lista: [
-            "🏫 Escolas próximas",
-            "🛒 Supermercados e comércios",
+            "🏫 Escolas e centros educacionais",
+            "🛍️ Supermercados e shoppings",
             "🏥 Hospitais e clínicas",
-            "🍽️ Restaurantes e gastronomia",
-            "💪 Academias e esportes",
+            "🍽️ Restaurantes e bares",
+            "💪 Academias",
             "🏦 Bancos e serviços",
             "🚌 Transporte público",
             "🛣️ Acesso às principais vias",
@@ -78,23 +78,23 @@ export const grandClubCotiaData: EmpreendimentoData = {
         titulo: "Lazer",
         icone: "Waves",
         conteudo: {
-          titulo: "Lazer Completo para Toda Família",
+          titulo: "Lazer e Comodidades Completas",
           descricao:
-            "Mais de 12 opções de lazer em um condomínio clube completo. Diversão garantida para todas as idades em ambientes cuidadosamente planejados.",
+            "O Grand Club Cotia conta com uma infraestrutura completa de lazer e diversão para todas as idades em ambientes cuidadosamente planejados.",
           imagem: "/empreendimentos/grand-club-cotia/galeria/piscina.webp",
           lista: [
-            "🏊 Piscina com deck",
-            "🎉 Salão de festas",
-            "💪 Estação fitness ao ar livre",
-            "🔥 Churrasqueiras",
-            "🎮 Playground",
+            "🏊 Piscina ampla",
+            "🎯 Salão de festas decorado",
+            "🏋 Estação fitness",
+            "🍖 Churrasqueiras ao ar livre",
             "⚽ Quadra recreativa",
-            "⛳ Mini golf",
-            "☀️ Solarium",
-            "🌳 Bosque privativo",
-            "🍽️ Espaço gourmet",
+            "🏌 Mini golf",
+            "🏞 Solarium e bosque para relaxar",
+            "🧒 Playground",
             "🚲 Bicicletário",
-            "🛏️ Redário",
+            "🪢 Redário",
+            "🍽 Espaço gourmet",
+            "🌳 Bosque privativo",
           ],
         },
       },
@@ -105,16 +105,16 @@ export const grandClubCotiaData: EmpreendimentoData = {
         conteudo: {
           titulo: "Segurança e Exclusividade",
           descricao:
-            "Condomínio fechado com sistema completo de segurança, proporcionando tranquilidade total para você e sua família.",
+            "Condomínio fechado com sistema completo de segurança, proporcionando tranquilidade total para você e sua família. Ambiente tranquilo e familiar, pensado para sua paz.",
           imagem: "/empreendimentos/grand-club-cotia/galeria/bosque.jpeg",
           lista: [
-            "🛡️ Portaria com segurança 24 horas",
-            "📹 Monitoramento por câmeras",
-            "🚪 Controle de acesso",
-            "🏘️ Condomínio fechado",
+            "🛡️ Condomínio fechado com portaria 24h",
+            "🚪 Acesso controlado para veículos e pedestres",
+            "📹 Monitoramento por câmeras nas áreas comuns",
+            "🏘️ Ambiente tranquilo e familiar",
             "🌿 Paisagismo planejado",
             "🚗 Estacionamento privativo",
-            "🔐 Acesso controlado",
+            "🔐 Controle de acesso total",
             "👮 Rondas de segurança",
           ],
         },
@@ -126,12 +126,12 @@ export const grandClubCotiaData: EmpreendimentoData = {
         conteudo: {
           titulo: "Investimento Valorizado",
           descricao:
-            "Localização estratégica em Cotia, região com forte expansão imobiliária e alta demanda. Ideal para morar ou investir com segurança.",
+            "Localização estratégica em Cotia, com alta demanda e constante expansão. Garantia de valorização patrimonial em uma das regiões mais promissoras de SP.",
           imagem: "/empreendimentos/grand-club-cotia/vitrine-grand-club.jpeg",
           lista: [
             "📈 Alta liquidez no mercado",
-            "🏗️ Região em expansão",
-            "💰 Potencial de valorização",
+            "🏗️ Região em constante expansão",
+            "💰 Potencial de valorização garantido",
             "🎯 Ideal para investimento",
             "🏠 Perfeito para moradia",
             "📊 VGV de R$ 32,67 milhões",
@@ -153,43 +153,18 @@ export const grandClubCotiaData: EmpreendimentoData = {
     imagens: [
       {
         src: "/empreendimentos/grand-club-cotia/fachada-principal.webp",
-        alt: "Fachada Grand Club Cotia",
+        alt: "Entrada e fachada moderna",
         titulo: "Fachada Principal",
       },
       {
         src: "/empreendimentos/grand-club-cotia/galeria/salao-festas-interior.jpeg",
-        alt: "Salão de Festas Interior",
+        alt: "Salão de festas equipado",
         titulo: "Salão de Festas",
       },
       {
-        src: "/empreendimentos/grand-club-cotia/galeria/fitness.jpeg",
-        alt: "Estação Fitness",
-        titulo: "Academia ao Ar Livre",
-      },
-      {
         src: "/empreendimentos/grand-club-cotia/galeria/piscina.webp",
-        alt: "Piscina",
+        alt: "Piscina com deck",
         titulo: "Piscina com Deck",
-      },
-      {
-        src: "/empreendimentos/grand-club-cotia/galeria/piscina-deck.webp",
-        alt: "Deck da Piscina",
-        titulo: "Área de Relaxamento",
-      },
-      {
-        src: "/empreendimentos/grand-club-cotia/galeria/churrasqueira.jpeg",
-        alt: "Churrasqueiras",
-        titulo: "Área Gourmet",
-      },
-      {
-        src: "/empreendimentos/grand-club-cotia/galeria/quadra.jpeg",
-        alt: "Quadra Recreativa",
-        titulo: "Quadra Esportiva",
-      },
-      {
-        src: "/empreendimentos/grand-club-cotia/galeria/mini-golf.webp",
-        alt: "Mini Golf",
-        titulo: "Campo de Mini Golf",
       },
       {
         src: "/empreendimentos/grand-club-cotia/galeria/playground.jpeg",
@@ -197,9 +172,34 @@ export const grandClubCotiaData: EmpreendimentoData = {
         titulo: "Playground Infantil",
       },
       {
+        src: "/empreendimentos/grand-club-cotia/galeria/fitness.jpeg",
+        alt: "Estação fitness",
+        titulo: "Academia ao Ar Livre",
+      },
+      {
+        src: "/empreendimentos/grand-club-cotia/galeria/churrasqueira.jpeg",
+        alt: "Churrasqueiras e bosque",
+        titulo: "Área Gourmet",
+      },
+      {
+        src: "/empreendimentos/grand-club-cotia/galeria/quadra.jpeg",
+        alt: "Quadra recreativa",
+        titulo: "Quadra Esportiva",
+      },
+      {
+        src: "/empreendimentos/grand-club-cotia/galeria/mini-golf.webp",
+        alt: "Mini golf",
+        titulo: "Campo de Mini Golf",
+      },
+      {
         src: "/empreendimentos/grand-club-cotia/galeria/bosque.jpeg",
-        alt: "Bosque Privativo",
+        alt: "Bosque privativo",
         titulo: "Área de Contemplação",
+      },
+      {
+        src: "/empreendimentos/grand-club-cotia/galeria/piscina-deck.webp",
+        alt: "Deck da Piscina",
+        titulo: "Área de Relaxamento",
       },
     ],
   },
@@ -208,14 +208,14 @@ export const grandClubCotiaData: EmpreendimentoData = {
   plantas: {
     titulo: "Plantas Inteligentes",
     especificacoes: [
-      { label: "Torres", valor: "8 torres" },
-      { label: "Total de unidades", valor: "198 apartamentos" },
-      { label: "Tipologias", valor: "1 e 2 dormitórios + Garden" },
-      { label: "Metragens", valor: "31,06m² a 46,32m²" },
+      { label: "Número de Torres", valor: "8 torres" },
+      { label: "Total de Unidades", valor: "198 apartamentos" },
+      { label: "Tipos de Unidades", valor: "1 e 2 dormitórios" },
+      { label: "Metragens", valor: "31,06 m² • 43,05 m² • 46,32 m²" },
       { label: "Vagas", valor: "1 vaga por unidade" },
-      { label: "Áreas comuns", valor: "12 itens de lazer" },
-      { label: "Segurança", valor: "Portaria 24h" },
-      { label: "Entrega", valor: "Em obras" },
+      { label: "Estrutura de Lazer", valor: "Piscina, fitness, salão de festas, quadra etc." },
+      { label: "Segurança", valor: "Portaria 24h e controle de acesso" },
+      { label: "Status", valor: "Breve Lançamento" },
     ],
     tipologias: [
       {
@@ -288,11 +288,11 @@ export const grandClubCotiaData: EmpreendimentoData = {
 
   // Contato
   contato: {
-    titulo: "Garanta seu espaço no Grand Club Cotia",
-    subtitulo: "Viva com mais qualidade e bem-estar. Entre em contato conosco!",
+    titulo: "Garanta o melhor para sua família",
+    subtitulo: "Fale com um especialista e receba as condições especiais de lançamento.",
     formulario: {
       campos: [
-        { nome: "nome", tipo: "text", label: "Nome completo", placeholder: "Seu nome completo", obrigatorio: true },
+        { nome: "nome", tipo: "text", label: "Nome Completo", placeholder: "Seu nome completo", obrigatorio: true },
         { nome: "telefone", tipo: "tel", label: "Telefone", placeholder: "(11) 99999-9999", obrigatorio: true },
         { nome: "email", tipo: "email", label: "E-mail", placeholder: "seu@email.com", obrigatorio: true },
         {

@@ -22,14 +22,14 @@ export const essenceData: EmpreendimentoData = {
   tipo: "Residencial",
   status: "Em Obras",
   area: "40m² a 112m²",
-  quartos: 3,
-  vagas: 1,
+  quartos: 4,
+  vagas: 2,
   entrega: "2026",
   precoFormatado: "A partir de R$ 350.000",
 
   // Conteúdo principal
   descricao:
-    "O Essence é um empreendimento exclusivo em Cotia, projetado para oferecer o equilíbrio perfeito entre design moderno, praticidade e qualidade de vida. Com apartamentos de 2 a 4 dormitórios, incluindo coberturas duplex com terraços amplos, o Essence traz espaços planejados para você viver com conforto e estilo.",
+    "O Essence é um empreendimento exclusivo em Cotia, projetado para oferecer o equilíbrio perfeito entre design moderno, praticidade e qualidade de vida. Com 180 apartamentos distribuídos em 6 torres (Aspen, Bromus, Vetiver, Vitis e Verbena), o Essence oferece apartamentos de 2 a 4 dormitórios, incluindo coberturas duplex com terraços amplos.",
 
   // Diferenciais
   diferenciais: [
@@ -38,6 +38,10 @@ export const essenceData: EmpreendimentoData = {
     "Coberturas duplex com terraços",
     "Piscina adulto e infantil",
     "Academia equipada",
+    "Salão de festas com cozinha integrada",
+    "Espaço gourmet com churrasqueira",
+    "Quadra poliesportiva",
+    "Área de convivência",
     "Localização privilegiada em Cotia",
   ],
 
@@ -46,21 +50,21 @@ export const essenceData: EmpreendimentoData = {
     { nome: "Centro de Cotia", distancia: "3km", tipo: "comercio" },
     { nome: "Escolas", distancia: "800m", tipo: "educacao" },
     { nome: "Supermercados", distancia: "1km", tipo: "comercio" },
-    { nome: "Shopping", distancia: "2km", tipo: "comercio" },
+    { nome: "Shopping Granja Viana", distancia: "5km", tipo: "comercio" },
+    { nome: "Estação Granja Viana", distancia: "4km", tipo: "transporte" },
   ],
 
   // Mídia
-  imagem: "/empreendimentos/essence/galeria/fachada.png",
-  imagemDestaque: "/empreendimentos/essence/hero-background.png",
+  imagem: "/empreendimentos/essence/galeria/fachada.webp",
+  imagemDestaque: "/empreendimentos/essence/hero-background.webp",
   galeria: [
-    "/empreendimentos/essence/galeria/fachada.png",
-    "/empreendimentos/essence/galeria/condominio.png",
-    "/empreendimentos/essence/galeria/piscina.png",
-    "/empreendimentos/essence/galeria/salao-festas.png",
-    "/empreendimentos/essence/galeria/academia.png",
-    "/empreendimentos/essence/galeria/playground.png",
-    "/empreendimentos/essence/galeria/espaco-grill.png",
-    "/empreendimentos/essence/galeria/quadra.png",
+    "/empreendimentos/essence/galeria/fachada.webp",
+    "/empreendimentos/essence/galeria/piscina.webp",
+    "/empreendimentos/essence/galeria/deck-piscina.webp",
+    "/empreendimentos/essence/galeria/salao-festas.webp",
+    "/empreendimentos/essence/galeria/espaco-grill.webp",
+    "/empreendimentos/essence/galeria/quadra.webp",
+    "/empreendimentos/essence/galeria/area-convivencia.webp",
   ],
 
   // Identidade visual
@@ -68,10 +72,10 @@ export const essenceData: EmpreendimentoData = {
     logo: "/empreendimentos/logos/logo-essence.png",
     corPrimaria: "#F97316", // Orange-500
     corSecundaria: "#3B82F6", // Blue-500
-    imagemBackground: "/empreendimentos/essence/hero-background.png",
+    imagemBackground: "/empreendimentos/essence/hero-background.webp",
   },
 
-  // Plantas
+  // Plantas (baseadas na implantação real)
   plantas: [
     {
       id: 1,
@@ -80,7 +84,7 @@ export const essenceData: EmpreendimentoData = {
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/essence/plantas/planta-2dorm-1.png",
+      imagem: "/placeholder.svg?height=400&width=600",
       preco: "A partir de R$ 350.000",
       descricao: "Apartamento compacto e funcional",
     },
@@ -91,7 +95,7 @@ export const essenceData: EmpreendimentoData = {
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/essence/plantas/planta-2dorm-2.png",
+      imagem: "/placeholder.svg?height=400&width=600",
       preco: "A partir de R$ 380.000",
       descricao: "Apartamento com melhor distribuição",
     },
@@ -102,7 +106,7 @@ export const essenceData: EmpreendimentoData = {
       quartos: 3,
       banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/essence/plantas/planta-3dorm.png",
+      imagem: "/placeholder.svg?height=400&width=600",
       preco: "A partir de R$ 450.000",
       descricao: "Apartamento ideal para famílias",
       destaque: true,
@@ -114,7 +118,7 @@ export const essenceData: EmpreendimentoData = {
       quartos: 3,
       banheiros: 2,
       vagas: 2,
-      imagem: "/empreendimentos/essence/plantas/planta-duplex-3dorm.png",
+      imagem: "/placeholder.svg?height=400&width=600",
       preco: "A partir de R$ 650.000",
       descricao: "Cobertura duplex com terraço",
     },
@@ -125,7 +129,7 @@ export const essenceData: EmpreendimentoData = {
       quartos: 4,
       banheiros: 2,
       vagas: 2,
-      imagem: "/empreendimentos/essence/plantas/planta-duplex-4dorm.png",
+      imagem: "/placeholder.svg?height=400&width=600",
       preco: "A partir de R$ 850.000",
       descricao: "Cobertura duplex premium com terraço amplo",
     },
@@ -134,7 +138,7 @@ export const essenceData: EmpreendimentoData = {
   // Especificações técnicas
   especificacoes: {
     unidades: "180 apartamentos",
-    andares: "6 torres",
+    andares: "6 torres (Aspen, Bromus, Vetiver, Vitis, Verbena)",
     elevadores: "2 elevadores por torre",
     entrega: "2026",
   },
@@ -144,47 +148,47 @@ export const essenceData: EmpreendimentoData = {
     hero: {
       titulo: "Viva a tranquilidade de estar em casa",
       subtitulo: "O Essence é o espaço ideal para quem busca lazer, conforto e bem-estar em Cotia.",
-      imagem: "/empreendimentos/essence/hero-background.png",
+      imagem: "/empreendimentos/essence/hero-background.webp",
       ctas: ["Quero Saber Mais", "Agende sua Visita", "Baixar Catálogo"],
     },
     sobre: {
       titulo: "Conheça o Essence",
       conteudo:
-        "O Essence é um empreendimento exclusivo em Cotia, projetado para oferecer o equilíbrio perfeito entre design moderno, praticidade e qualidade de vida. Com apartamentos de 2 a 4 dormitórios, incluindo coberturas duplex com terraços amplos, o Essence traz espaços planejados para você viver com conforto e estilo.",
-      imagem: "/empreendimentos/essence/sobre-image.png",
+        "O Essence é um empreendimento exclusivo em Cotia, projetado para oferecer o equilíbrio perfeito entre design moderno, praticidade e qualidade de vida. Com 180 apartamentos distribuídos em 6 torres, o Essence oferece apartamentos de 2 a 4 dormitórios, incluindo coberturas duplex com terraços amplos.",
+      imagem: "/empreendimentos/essence/galeria/fachada.webp",
     },
     informacoes: {
       localizacao: {
         titulo: "Localização Privilegiada",
         descricao:
           "Rua dos Sonetos, 26 - Cotia/SP. Próximo a escolas, hospitais, supermercados, shoppings e muito mais.",
-        imagem: "/empreendimentos/essence/localizacao.png",
+        imagem: "/empreendimentos/essence/galeria/area-convivencia.webp",
       },
       lazer: {
         titulo: "Lazer Completo",
         descricao:
-          "Piscina adulto e infantil, salão de festas, academia equipada, playground, espaço grill e quadra recreativa.",
-        imagem: "/empreendimentos/essence/lazer.png",
+          "Piscina adulto e infantil, salão de festas, espaço gourmet, quadra poliesportiva e área de convivência.",
+        imagem: "/empreendimentos/essence/galeria/piscina.webp",
         itens: [
           "Piscina adulto e infantil",
-          "Salão de festas",
-          "Academia equipada",
-          "Playground",
-          "Espaço grill",
-          "Quadra recreativa",
+          "Salão de festas com cozinha integrada",
+          "Espaço gourmet com churrasqueira",
+          "Quadra poliesportiva",
+          "Área de convivência",
+          "Deck com espreguiçadeiras",
         ],
       },
       seguranca: {
         titulo: "Segurança e Exclusividade",
         descricao:
           "Condomínio fechado com controle de acesso, portaria 24h e projeto paisagístico que garante privacidade.",
-        imagem: "/empreendimentos/essence/seguranca.png",
+        imagem: "/empreendimentos/essence/galeria/fachada.webp",
       },
       investimento: {
         titulo: "Investimento Valorizado",
         descricao:
           "Localização estratégica em Cotia, com alta demanda imobiliária. Ideal para morar ou investir com retorno garantido.",
-        imagem: "/empreendimentos/essence/investimento.png",
+        imagem: "/empreendimentos/essence/implantacao.webp",
       },
     },
   },
@@ -193,12 +197,12 @@ export const essenceData: EmpreendimentoData = {
   seo: {
     title: "Essence Cotia - Condomínio exclusivo com lazer completo",
     description:
-      "Conheça o Essence em Cotia. Apartamentos de 2 a 4 dormitórios, lazer completo com piscina, quadra, salão de festas e academia. Perfeito para sua família!",
+      "Conheça o Essence em Cotia. 180 apartamentos de 2 a 4 dormitórios em 6 torres, lazer completo com piscina, quadra, salão de festas e espaço gourmet. Perfeito para sua família!",
     keywords:
-      "essence cotia, apartamentos cotia, condomínio com lazer cotia, morar em cotia sp, cobertura duplex cotia",
+      "essence cotia, apartamentos cotia, condomínio com lazer cotia, morar em cotia sp, cobertura duplex cotia, 6 torres cotia",
     ogTitle: "Essence Cotia - Viva o equilíbrio entre lazer e conforto",
     ogDescription:
-      "Apartamentos em Cotia com 2 a 4 dormitórios, coberturas duplex, piscina, salão de festas e muito mais. Segurança e comodidade para toda a família.",
-    ogImage: "/empreendimentos/essence/og-image.png",
+      "180 apartamentos em Cotia com 2 a 4 dormitórios, coberturas duplex, piscina, salão de festas, espaço gourmet e muito mais. Segurança e comodidade para toda a família.",
+    ogImage: "/empreendimentos/essence/vitrine-essence.webp",
   },
 }

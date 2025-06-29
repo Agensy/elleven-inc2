@@ -44,17 +44,19 @@ export const grandParcData: EmpreendimentoData = {
   ],
 
   // Mídia
-  imagem: "/empreendimentos/grand-parc/galeria/fachada.png",
-  imagemDestaque: "/empreendimentos/grand-parc/hero-background.png",
+  imagem: "/empreendimentos/grand-parc/galeria/fachada.webp",
+  imagemDestaque: "/empreendimentos/grand-parc/hero-background.webp",
   galeria: [
-    "/empreendimentos/grand-parc/galeria/fachada.png",
-    "/empreendimentos/grand-parc/galeria/portaria.png",
-    "/empreendimentos/grand-parc/galeria/piscina.png",
-    "/empreendimentos/grand-parc/galeria/salao-festas.png",
-    "/empreendimentos/grand-parc/galeria/quadra.png",
-    "/empreendimentos/grand-parc/galeria/playground.png",
-    "/empreendimentos/grand-parc/galeria/espaco-grill.png",
-    "/empreendimentos/grand-parc/galeria/pista-caminhada.png",
+    "/empreendimentos/grand-parc/galeria/fachada.webp",
+    "/empreendimentos/grand-parc/galeria/portaria.webp",
+    "/empreendimentos/grand-parc/galeria/piscina.webp",
+    "/empreendimentos/grand-parc/galeria/salao-festas.webp",
+    "/empreendimentos/grand-parc/galeria/quadra.webp",
+    "/empreendimentos/grand-parc/galeria/pista-caminhada.webp",
+    "/empreendimentos/grand-parc/galeria/espaco-grill.webp",
+    "/empreendimentos/grand-parc/galeria/playground.webp",
+    "/empreendimentos/grand-parc/galeria/varanda.webp",
+    "/empreendimentos/grand-parc/galeria/suite.webp",
   ],
 
   // Identidade visual
@@ -62,32 +64,32 @@ export const grandParcData: EmpreendimentoData = {
     logo: "/empreendimentos/logos/logo-grand-parc.png",
     corPrimaria: "#059669", // Verde esmeralda
     corSecundaria: "#065F46", // Verde escuro
-    imagemBackground: "/empreendimentos/grand-parc/hero-background.png",
+    imagemBackground: "/empreendimentos/grand-parc/hero-background.webp",
   },
 
   // Plantas
   plantas: [
     {
       id: 1,
-      tipo: "2 Dormitórios",
+      tipo: "2 Dormitórios - Tipo A",
       area: "40m²",
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/grand-parc/plantas/2-dormitorios.png",
+      imagem: "/empreendimentos/grand-parc/plantas/tipo-a.webp",
       preco: "A partir de R$ 380.000",
-      descricao: "Apartamento compacto e funcional",
+      descricao: "Apartamento compacto com sala integrada",
     },
     {
       id: 2,
-      tipo: "3 Dormitórios",
-      area: "55m²",
-      quartos: 3,
-      banheiros: 2,
+      tipo: "2 Dormitórios - Tipo B",
+      area: "45m²",
+      quartos: 2,
+      banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/grand-parc/plantas/3-dormitorios.png",
-      preco: "A partir de R$ 450.000",
-      descricao: "Apartamento amplo para famílias",
+      imagem: "/empreendimentos/grand-parc/plantas/tipo-b.webp",
+      preco: "A partir de R$ 420.000",
+      descricao: "Apartamento com layout otimizado",
       destaque: true,
     },
     {
@@ -97,7 +99,7 @@ export const grandParcData: EmpreendimentoData = {
       quartos: 3,
       banheiros: 2,
       vagas: 2,
-      imagem: "/empreendimentos/grand-parc/plantas/cobertura-duplex.png",
+      imagem: "/empreendimentos/grand-parc/plantas/duplex-superior.webp",
       preco: "A partir de R$ 650.000",
       descricao: "Cobertura duplex com varanda espaçosa",
     },
@@ -124,7 +126,7 @@ export const grandParcData: EmpreendimentoData = {
     hero: {
       titulo: "Você não mora, você vive melhor!",
       subtitulo: "Espaço, sofisticação e qualidade de vida para toda a sua família.",
-      imagem: "/empreendimentos/grand-parc/hero-background.png",
+      imagem: "/empreendimentos/grand-parc/hero-background.webp",
       ctas: ["Quero Conhecer", "Agende uma Visita", "Fale com um Consultor"],
     },
 
@@ -132,14 +134,14 @@ export const grandParcData: EmpreendimentoData = {
       titulo: "Conheça o Grand Parc",
       conteudo:
         "O Grand Parc foi projetado para oferecer o equilíbrio perfeito entre conforto, segurança e praticidade, em um ambiente exclusivo e cercado por áreas verdes. Localizado em Itu, o condomínio conta com portaria 24h, ampla infraestrutura de lazer e apartamentos com plantas inteligentes que garantem bem-estar para toda a família. Além disso, o empreendimento conta com poço artesiano, reforçando o compromisso com sustentabilidade e economia.",
-      imagem: "/empreendimentos/grand-parc/sobre-image.png",
+      imagem: "/empreendimentos/grand-parc/galeria/suite.webp",
     },
 
     informacoes: {
       localizacao: {
         titulo: "Localização Privilegiada",
         descricao: "Rua Luiz Carlos Boni, 336 - Rancho Grande - Itu/SP",
-        imagem: "/empreendimentos/grand-parc/localizacao.png",
+        imagem: "/empreendimentos/grand-parc/implantacao.webp",
         pontos: [
           "Shopping",
           "Escolas",
@@ -154,7 +156,7 @@ export const grandParcData: EmpreendimentoData = {
 
       lazer: {
         titulo: "Lazer e Comodidades",
-        imagem: "/empreendimentos/grand-parc/lazer.png",
+        imagem: "/empreendimentos/grand-parc/galeria/piscina.webp",
         itens: [
           "Piscina com deck e espaço relax",
           "Salão de festas amplo e climatizado",
@@ -168,7 +170,7 @@ export const grandParcData: EmpreendimentoData = {
 
       seguranca: {
         titulo: "Segurança e Exclusividade",
-        imagem: "/empreendimentos/grand-parc/seguranca.png",
+        imagem: "/empreendimentos/grand-parc/galeria/portaria.webp",
         itens: [
           "Portaria 24 horas com controle rigoroso de acesso",
           "Condomínio totalmente fechado",
@@ -179,7 +181,7 @@ export const grandParcData: EmpreendimentoData = {
 
       investimento: {
         titulo: "Investimento Valorizado",
-        imagem: "/empreendimentos/grand-parc/investimento.png",
+        imagem: "/empreendimentos/grand-parc/galeria/varanda.webp",
         itens: [
           "Empreendimento em área de crescimento em Itu",
           "Ideal para famílias e investidores",
@@ -199,6 +201,6 @@ export const grandParcData: EmpreendimentoData = {
     ogTitle: "Grand Parc Itu - Viva com exclusividade e tranquilidade",
     ogDescription:
       "Conheça o Grand Parc. Condomínio fechado em Itu com piscina, espaço grill, pista de caminhada e muito mais. Segurança e bem-estar.",
-    ogImage: "/empreendimentos/grand-parc/og-image.png",
+    ogImage: "/empreendimentos/grand-parc/vitrine-grand-parc.webp",
   },
 }

@@ -116,7 +116,7 @@ export default function EmpreendimentoInformacoes({
                         {activeInfo === "localizacao" && endereco ? (
                           <div className="w-full h-96">
                             <iframe
-                              src={`https://www.google.com/maps/embed/v1/place?key=&q=${encodeURIComponent(endereco)}`}
+                              src={`https://maps.google.com/maps?q=${encodeURIComponent(endereco)}&output=embed`}
                               width="100%"
                               height="100%"
                               style={{ border: 0 }}

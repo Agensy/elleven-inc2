@@ -56,47 +56,6 @@
 
 /* Components Layer - Classes de Componentes */
 @layer components {
-  /* Tipografia Elleven */
-  .text-display {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
-  }
-
-  .text-h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
-  }
-
-  .text-h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight;
-  }
-
-  .text-h3 {
-    @apply text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight;
-  }
-
-  .text-h4 {
-    @apply text-lg md:text-xl lg:text-2xl font-semibold tracking-tight;
-  }
-
-  .text-body-large {
-    @apply text-lg md:text-xl leading-relaxed;
-  }
-
-  .text-body {
-    @apply text-base md:text-lg leading-relaxed;
-  }
-
-  .text-body-small {
-    @apply text-sm md:text-base leading-relaxed;
-  }
-
-  .text-muted {
-    @apply text-sm text-muted-foreground;
-  }
-
-  .text-caption {
-    @apply text-xs text-muted-foreground;
-  }
-
   /* Botões Elleven */
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;

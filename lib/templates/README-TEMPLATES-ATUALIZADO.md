@@ -39,7 +39,7 @@ A estrutura de templates foi completamente atualizada para usar **páginas compl
 ## 🎯 **COMO USAR OS TEMPLATES**
 
 ### **1. TEMPLATE PRINCIPAL**
-```typescript
+\`\`\`typescript
 // lib/templates/novo-empreendimento-template.ts
 
 import { NovoEmpreendimentoInput, gerarCodigoPagina } from "./novo-empreendimento-template"
@@ -52,38 +52,38 @@ const novoEmpreendimento: NovoEmpreendimentoInput = {
 
 const codigo = gerarCodigoPagina(novoEmpreendimento)
 // Gera automaticamente página -novo completa
-```
+\`\`\`
 
 ### **2. EXEMPLO PRÁTICO**
-```typescript
+\`\`\`typescript
 // lib/templates/exemplo-uso-template.ts
 
 // Exemplo completo e funcional
 // Copie e adapte para seus dados
 import { exemploEmpreendimento } from "./exemplo-uso-template"
-```
+\`\`\`
 
 ### **3. PROCESSO COMPLETO**
-```markdown
+\`\`\`markdown
 # lib/templates/processo-novo-empreendimento.md
 
 # Documentação completa do processo
 # Inclui checklist e validações
-```
+\`\`\`
 
 ---
 
 ## 🏗️ **ESTRUTURA GERADA**
 
 ### **SEMPRE GERA PÁGINAS -NOVO:**
-```
+\`\`\`
 app/
 ├── le-mont-novo/page.tsx         ✅ Página completa
 ├── botanique-novo/page.tsx       ✅ Página completa  
 ├── jade-novo/page.tsx            ✅ Página completa
 └── novo-empreendimento-novo/     ✅ Padrão para novos
     └── page.tsx
-```
+\`\`\`
 
 ### **COMPONENTE UNIFICADO:**
 Todas as páginas usam `EmpreendimentoPage`:
@@ -99,7 +99,7 @@ Todas as páginas usam `EmpreendimentoPage`:
 ## 🔄 **FLUXO DE TRABALHO**
 
 ### **PASSO 1: Preparar Dados**
-```typescript
+\`\`\`typescript
 const input: NovoEmpreendimentoInput = {
   nome: "Empreendimento Exemplo",
   slug: "empreendimento-exemplo",
@@ -109,25 +109,25 @@ const input: NovoEmpreendimentoInput = {
   status: "Lançamento",
   // ... demais campos
 }
-```
+\`\`\`
 
 ### **PASSO 2: Gerar Código**
-```typescript
+\`\`\`typescript
 const codigo = gerarCodigoPagina(input)
 console.log(codigo.instrucoes) // Instruções completas
-```
+\`\`\`
 
 ### **PASSO 3: Criar Arquivos**
 - `app/empreendimento-exemplo-novo/page.tsx`
 - `lib/data/empreendimento-exemplo-data.ts`
 
 ### **PASSO 4: Integrar no Master**
-```typescript
+\`\`\`typescript
 // lib/data/empreendimentos-master.ts
 import { empreendimentoExemploData } from "./empreendimento-exemplo-data"
 
 // Adicionar ao routeMap e array principal
-```
+\`\`\`
 
 ### **PASSO 5: Testar**
 - ✅ `/empreendimento-exemplo-novo` carrega
@@ -139,7 +139,7 @@ import { empreendimentoExemploData } from "./empreendimento-exemplo-data"
 ## 📋 **TIPOS E INTERFACES**
 
 ### **INPUT DO TEMPLATE:**
-```typescript
+\`\`\`typescript
 interface NovoEmpreendimentoInput {
   nome: string
   slug: string
@@ -157,10 +157,10 @@ interface NovoEmpreendimentoInput {
   plantas?: Planta[]
   tema: Tema
 }
-```
+\`\`\`
 
 ### **OUTPUT GERADO:**
-```typescript
+\`\`\`typescript
 interface ResultadoTemplate {
   paginaTsx: string      // Código da página -novo
   dataTs: string         // Arquivo de dados
@@ -170,7 +170,7 @@ interface ResultadoTemplate {
   }
   instrucoes: string     // Instruções completas
 }
-```
+\`\`\`
 
 ---
 
@@ -259,4 +259,4 @@ Com esta estrutura atualizada, você consegue:
 
 ---
 
-*Documentação atualizada - Janeiro 2025* 
+*Documentação atualizada - Janeiro 2025*

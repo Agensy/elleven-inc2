@@ -5,17 +5,17 @@
 ### **🎯 PÁGINAS COMPLETAS COMO PADRÃO**
 Todas as páginas de empreendimentos agora usam a **estrutura componentizada completa**:
 
-```
+\`\`\`
 app/
 ├── le-mont-novo/page.tsx         ✅ Completa (EmpreendimentoPage)
 ├── botanique-novo/page.tsx       ✅ Completa (EmpreendimentoPage)
 ├── jade-novo/page.tsx            ✅ Completa (EmpreendimentoPage)
 ├── obsidian-novo/page.tsx        ✅ Completa (EmpreendimentoPage)
 └── icarai-novo/page.tsx          ✅ Completa (EmpreendimentoPage)
-```
+\`\`\`
 
 ### **🔗 ROTEAMENTO ATUALIZADO**
-```typescript
+\`\`\`typescript
 // lib/data/empreendimentos-master.ts
 export function getEmpreendimentoUrl(slug: string): string {
   const routeMap: Record<string, string> = {
@@ -28,7 +28,7 @@ export function getEmpreendimentoUrl(slug: string): string {
   
   return routeMap[slug] || `/${slug}-novo`
 }
-```
+\`\`\`
 
 ### **📋 COMPONENTE UNIFICADO**
 Todas as páginas usam o **mesmo componente** (`EmpreendimentoPage`):
@@ -47,16 +47,16 @@ Todas as páginas usam o **mesmo componente** (`EmpreendimentoPage`):
 ## 🚀 **COMO FUNCIONA AGORA**
 
 ### **1. LISTAGEM DE EMPREENDIMENTOS**
-```typescript
+\`\`\`typescript
 // components/empreendimentos-listing.tsx
 import { getEmpreendimentoUrl } from "@/lib/data/empreendimentos-master"
 
 // Os links agora apontam para páginas completas (-novo)
 <Link href={getEmpreendimentoUrl(empreendimento.slug)}>
-```
+\`\`\`
 
 ### **2. TEMPLATE ATUALIZADO**
-```typescript
+\`\`\`typescript
 // lib/templates/novo-empreendimento-template.ts
 
 // ✅ SEMPRE gera páginas -novo (completas)
@@ -67,11 +67,11 @@ caminhos: {
 
 // ✅ SEMPRE usa EmpreendimentoPage
 return <EmpreendimentoPage data={empreendimentoData} />
-```
+\`\`\`
 
 ### **3. PÁGINAS GERADAS**
 Todas seguem o mesmo padrão:
-```typescript
+\`\`\`typescript
 import EmpreendimentoPage from "@/components/empreendimento/EmpreendimentoPage"
 import { buscarEmpreendimentoPorSlug } from "@/lib/data/empreendimentos-master"
 
@@ -79,14 +79,14 @@ export default function EmpreendimentoPage() {
   const data = buscarEmpreendimentoPorSlug("slug")
   return <EmpreendimentoPage data={data} />
 }
-```
+\`\`\`
 
 ---
 
 ## 📝 **PROCESSO PARA NOVO EMPREENDIMENTO**
 
 ### **Passo 1: Usar o Template**
-```typescript
+\`\`\`typescript
 const novoEmpreendimento: NovoEmpreendimentoInput = {
   nome: "Novo Empreendimento",
   slug: "novo-empreendimento", 
@@ -95,17 +95,17 @@ const novoEmpreendimento: NovoEmpreendimentoInput = {
 }
 
 const codigo = gerarCodigoPagina(novoEmpreendimento)
-```
+\`\`\`
 
 ### **Passo 2: Criar Arquivos**
-```bash
+\`\`\`bash
 # O template gera automaticamente:
 app/novo-empreendimento-novo/page.tsx
 lib/data/novo-empreendimento-data.ts
-```
+\`\`\`
 
 ### **Passo 3: Adicionar ao Master**
-```typescript
+\`\`\`typescript
 // lib/data/empreendimentos-master.ts
 
 // 1. Importar os dados
@@ -126,7 +126,7 @@ export const empreendimentosMaster: Empreendimento[] = [
     destacado: true,
   },
 ]
-```
+\`\`\`
 
 ### **Passo 4: Testar**
 - ✅ Página acessível em `/novo-empreendimento-novo`
@@ -138,7 +138,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
 ## 🔄 **FLUXO COMPLETO**
 
-```mermaid
+\`\`\`mermaid
 graph TD
     A[Template Input] --> B[gerarCodigoPagina]
     B --> C[Arquivo -novo/page.tsx]
@@ -157,7 +157,7 @@ graph TD
     G --> K[Listagem]
     K --> L[getEmpreendimentoUrl]
     L --> J
-```
+\`\`\`
 
 ---
 
@@ -211,10 +211,10 @@ graph TD
 4. **✅ Listagem atualizada** - Aponta para páginas corretas
 
 ### **Opcional - Limpeza:**
-```bash
+\`\`\`bash
 # Remover páginas antigas se necessário
 rm -rf app/empreendimento  # rota dinâmica antiga
-```
+\`\`\`
 
 ---
 
@@ -227,4 +227,4 @@ rm -rf app/empreendimento  # rota dinâmica antiga
 - ✅ Funcionalidades avançadas
 - ✅ Experiência consistente
 
-**As páginas `-novo` são o futuro da estrutura de empreendimentos!** 🎯 
+**As páginas `-novo` são o futuro da estrutura de empreendimentos!** 🎯

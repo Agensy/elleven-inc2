@@ -44,7 +44,7 @@
 ## 🔧 PROCESSO DE CRIAÇÃO ATUALIZADO
 
 ### **PASSO 1: Preparar os Dados**
-```typescript
+\`\`\`typescript
 const novoEmpreendimento: NovoEmpreendimentoInput = {
   nome: "Nome do Empreendimento",
   slug: "nome-do-empreendimento",
@@ -73,10 +73,10 @@ const novoEmpreendimento: NovoEmpreendimentoInput = {
     corSecundaria: "#6B8E23"
   }
 }
-```
+\`\`\`
 
 ### **PASSO 2: Gerar os Arquivos**
-```typescript
+\`\`\`typescript
 import { criarEmpreendimentoDoTemplate, gerarCodigoPagina } from "@/lib/templates/novo-empreendimento-template"
 
 const dadosEmpreendimento = criarEmpreendimentoDoTemplate(novoEmpreendimento)
@@ -84,7 +84,7 @@ const codigoPagina = gerarCodigoPagina(novoEmpreendimento)
 
 // O template automaticamente gera instruções completas
 console.log(codigoPagina.instrucoes)
-```
+\`\`\`
 
 ### **PASSO 3: Criar os Arquivos** ⚡ **NOVO PADRÃO**
 1. **Página Completa:** `app/[slug]-novo/page.tsx` ← **SEMPRE -novo**
@@ -92,7 +92,7 @@ console.log(codigoPagina.instrucoes)
 3. **Imagens:** Salvar todas as blobs na estrutura correta
 
 ### **PASSO 4: Adicionar ao Master** ⚡ **OBRIGATÓRIO**
-```typescript
+\`\`\`typescript
 // lib/data/empreendimentos-master.ts
 
 // 1. Importar os dados
@@ -113,7 +113,7 @@ export const empreendimentosMaster: Empreendimento[] = [
     destacado: true,
   },
 ]
-```
+\`\`\`
 
 ### **PASSO 5: Testar** ⚡ **VALIDAÇÃO COMPLETA**
 - [ ] Página carrega em `/[slug]-novo` ← **NOVA URL**
@@ -128,7 +128,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
 ## 🎯 EXEMPLO DE USO ATUALIZADO
 
-```typescript
+\`\`\`typescript
 // Dados de entrada
 const leMontInput: NovoEmpreendimentoInput = {
   nome: "Le Mont",
@@ -163,13 +163,13 @@ const leMontData = criarEmpreendimentoDoTemplate(leMontInput)
 const codigoGerado = gerarCodigoPagina(leMontInput)
 
 // RESULTADO: Página acessível em /le-mont-novo
-```
+\`\`\`
 
 ---
 
 ## 📁 ESTRUTURA DE ARQUIVOS ATUALIZADA
 
-```
+\`\`\`
 app/
   [slug]-novo/                   ← SEMPRE -novo (páginas completas)
     page.tsx                     ← Usa EmpreendimentoPage
@@ -188,7 +188,7 @@ public/
         imagem-1.webp           ← Galeria
         imagem-2.webp
         ...
-```
+\`\`\`
 
 ---
 

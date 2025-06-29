@@ -30,4 +30,4 @@ export default function JadePage() {
   }
   
   return <EmpreendimentoPage data={jadeData} />
-} 
+}

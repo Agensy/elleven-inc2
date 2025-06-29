@@ -30,4 +30,4 @@ export default function ObsidianPage() {
   }
   
   return <EmpreendimentoPage data={obsidianData} />
-} 
+}

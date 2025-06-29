@@ -11,9 +11,9 @@ Antes tínhamos:
 ## ✅ **SOLUÇÃO IMPLEMENTADA**
 
 ### **1. FONTE ÚNICA DA VERDADE**
-```typescript
+\`\`\`typescript
 // lib/data/empreendimentos-master.ts
-```
+\`\`\`
 
 Este arquivo centraliza **TODOS** os empreendimentos:
 - Dados dos templates (Le Mont, etc.)
@@ -22,9 +22,9 @@ Este arquivo centraliza **TODOS** os empreendimentos:
 
 ### **2. ROTEAMENTO UNIFICADO**
 **Todas as rotas** agora seguem o padrão:
-```
+\`\`\`
 /empreendimento/[slug]
-```
+\`\`\`
 
 **Exemplos:**
 - `/empreendimento/le-mont`
@@ -35,9 +35,9 @@ Este arquivo centraliza **TODOS** os empreendimentos:
 ### **3. COMPATIBILIDADE DE INTERFACES**
 Foi criada uma função de conversão que adapta dados do template (`EmpreendimentoData`) para a interface padrão (`Empreendimento`):
 
-```typescript
+\`\`\`typescript
 function converterTemplateParaEmpreendimento(templateData: any, id: number): Empreendimento
-```
+\`\`\`
 
 ## 🔧 **COMO USAR A NOVA ESTRUTURA**
 
@@ -55,7 +55,7 @@ function converterTemplateParaEmpreendimento(templateData: any, id: number): Emp
 
 ### **Para buscar empreendimentos:**
 
-```typescript
+\`\`\`typescript
 // Buscar por slug
 import { buscarEmpreendimentoPorSlug } from "@/lib/data/empreendimentos-master"
 const empreendimento = buscarEmpreendimentoPorSlug("le-mont")
@@ -67,7 +67,7 @@ const ativos = buscarEmpreendimentosAtivos()
 // Buscar destaques
 import { buscarEmpreendimentosDestaque } from "@/lib/data/empreendimentos-master"
 const destaques = buscarEmpreendimentosDestaque()
-```
+\`\`\`
 
 ## 📁 **ARQUIVOS ATUALIZADOS**
 
@@ -110,7 +110,7 @@ const destaques = buscarEmpreendimentosDestaque()
 ## 🔄 **PROCESSO PARA NOVOS EMPREENDIMENTOS**
 
 ### **Opção 1: Via Template (Recomendado)**
-```typescript
+\`\`\`typescript
 // 1. Preencher dados do template
 const novoEmpreendimento: NovoEmpreendimentoInput = { ... }
 
@@ -119,10 +119,10 @@ const codigo = gerarCodigoPagina(novoEmpreendimento)
 
 // 3. Adicionar ao master
 // Importar e incluir em empreendimentos-master.ts
-```
+\`\`\`
 
 ### **Opção 2: Manual (Direto)**
-```typescript
+\`\`\`typescript
 // Adicionar diretamente no array empreendimentosMaster
 {
   id: 6,
@@ -130,7 +130,7 @@ const codigo = gerarCodigoPagina(novoEmpreendimento)
   slug: "novo-empreendimento",
   // ... demais campos
 }
-```
+\`\`\`
 
 ## ⚡ **PRÓXIMOS PASSOS**
 
@@ -158,4 +158,4 @@ const codigo = gerarCodigoPagina(novoEmpreendimento)
 
 **Use sempre o arquivo `empreendimentos-master.ts` como referência principal.**
 
-Todos os outros arquivos são secundários ou de compatibilidade. A fonte única da verdade é o arquivo master. 
+Todos os outros arquivos são secundários ou de compatibilidade. A fonte única da verdade é o arquivo master.

@@ -119,7 +119,7 @@ export default function Header() {
                 }`}
               >
                 Empreendimentos
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-secondary transition-all duration-200 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#ea580c] transition-all duration-200 group-hover:w-full"></span>
               </Link>
 
               {/* Dropdown Menu */}
@@ -168,7 +168,7 @@ export default function Header() {
                 }`}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-secondary transition-all duration-200 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#ea580c] transition-all duration-200 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>

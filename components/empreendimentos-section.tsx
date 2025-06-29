@@ -6,9 +6,8 @@ import { MapPin, Bed, Bath, Car, ArrowRight, Filter, X, ChevronDown, Search } fr
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { empreendimentos, opcoesFiltros } from "@/lib/data/empreendimentos"
+import { empreendimentosMaster as empreendimentos, opcoesFiltros, getEmpreendimentoUrl } from "@/lib/data/empreendimentos-master"
 import type { FiltrosEmpreendimento } from "@/lib/types/empreendimento"
-import { getEmpreendimentoUrl } from "@/lib/data/empreendimentos-master"
 import Link from "next/link"
 
 // =============================================================================

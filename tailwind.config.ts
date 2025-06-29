@@ -112,6 +112,27 @@ const config = {
           "primary-dark": "#152444",
           "secondary-dark": "#141E3A",
         },
+        // Elleven button patterns
+        buttons: {
+          // Padrão Azul - Botões gerais da marca
+          blue: {
+            DEFAULT: "#1A2D54",
+            hover: "#152444",
+            glow: "rgba(26, 45, 84, 0.3)",
+          },
+          // Padrão Laranja - "Ver Empreendimentos" hero
+          orange: {
+            DEFAULT: "#ea580c",
+            hover: "#c2410c", 
+            glow: "rgba(234, 88, 12, 0.3)",
+          },
+          // Padrão Vidro - "Invista" hero
+          glass: {
+            DEFAULT: "rgba(255, 255, 255, 0.1)",
+            hover: "rgba(255, 255, 255, 0.2)",
+            border: "rgba(255, 255, 255, 0.3)",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

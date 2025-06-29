@@ -75,7 +75,7 @@ function ConteudoTexto({ fadeInLeft }: { fadeInLeft: any }) {
       </div>
 
       {/* CTA */}
-      <Button size="lg" className="mt-4 bg-secondary hover:bg-secondary/90 shadow-glow-sm group text-white">
+      <Button size="lg" className="mt-4 bg-[#1A2D54] hover:bg-[#152444] text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105 group">
         Conheça Nossa História
         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
       </Button>

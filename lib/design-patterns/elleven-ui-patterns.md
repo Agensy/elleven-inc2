@@ -400,6 +400,51 @@ function CTASection({ fadeInUp }) { /* ... */ }
 - [ ] Hover effects nos inputs
 - [ ] Botões com gradientes e shadows
 
+## 🔘 **3 Padrões de Botão Padrão**
+
+### **1. 🔵 Padrão Azul - Botões Gerais**
+Para todos os botões principais do site (marca Elleven)
+```jsx
+<Button 
+  size="lg" 
+  className="bg-[#1A2D54] hover:bg-[#152444] text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105"
+>
+  Texto do Botão
+</Button>
+```
+
+### **2. 🟠 Padrão Laranja - "Ver Empreendimentos"**
+Exclusivo para botão "Ver Empreendimentos" na hero section
+```jsx
+<Button
+  size="lg"
+  className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
+>
+  <span className="relative z-10 flex items-center">
+    Ver Empreendimentos
+    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+  </span>
+  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 via-white/10 to-orange-400/30 blur-md"></div>
+  </div>
+</Button>
+```
+
+### **3. 💎 Padrão Vidro - "Invista"**
+Exclusivo para botão "Invista" na hero section
+```jsx
+<Button
+  size="lg"
+  variant="outline"
+  className="relative overflow-hidden bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
+>
+  <span className="relative z-10">Invista</span>
+  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/20 to-white/5 blur-sm"></div>
+  </div>
+</Button>
+```
+
 ---
 
 **Este documento serve como referência para manter a consistência visual e de UX em todo o site da Elleven Engenharia.**

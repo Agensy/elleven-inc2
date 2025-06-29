@@ -59,9 +59,14 @@ export default function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105"
+              className="relative overflow-hidden bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
             >
-              Invista
+              <span className="relative z-10">Invista</span>
+              
+              {/* Glass shimmer effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/20 to-white/5 blur-sm"></div>
+              </div>
             </Button>
           </div>
         </div>

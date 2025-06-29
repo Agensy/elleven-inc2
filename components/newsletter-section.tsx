@@ -89,7 +89,7 @@ export default function NewsletterSection() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", damping: 15, stiffness: 100 }}
-              className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 shadow-lg"
+              className="bg-gradient-to-r from-[#1A2D54]/10 to-[#192849]/10 backdrop-blur-sm border border-[#1A2D54]/20 rounded-2xl p-8 shadow-lg"
             >
               <motion.div
                 animate={{
@@ -98,10 +98,10 @@ export default function NewsletterSection() {
                 }}
                 transition={{ duration: 0.6 }}
               >
-                <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                <CheckCircle className="h-16 w-16 text-[#1A2D54] mx-auto mb-4" />
               </motion.div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Inscrição Realizada!</h3>
-              <p className="text-green-600 text-lg">
+              <p className="text-[#1A2D54] text-lg">
                 Obrigado por se inscrever. Você receberá nossas novidades em breve.
               </p>
             </motion.div>

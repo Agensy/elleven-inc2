@@ -43,7 +43,7 @@ export default function EmpreendimentoLocalizacao({ endereco, coordenadas, ponto
       case "shopping":
         return "text-blue-500"
       case "transporte":
-        return "text-green-500"
+        return "text-primary"
       case "educacao":
         return "text-purple-500"
       case "saude":

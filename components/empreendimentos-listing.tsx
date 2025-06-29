@@ -640,6 +640,6 @@ function getStatusColor(status: string): string {
     case "100% vendido":
       return "bg-red-600"
     default:
-      return "bg-green-600"
+      return "bg-primary"
   }
 }

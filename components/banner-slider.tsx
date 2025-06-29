@@ -69,11 +69,11 @@ function getBadgesPorEmpreendimento(slug: string) {
 
 // Adicionar função para buscar empreendimentos do banner:
 const getBannerEmpreendimentos = () => {
+  // Apenas JADE, OBSIDIAN E ICARAÍ no slider
+  const slugsPermitidos = ["jade", "obsidian", "icarai-parque-clube"]
+  
   return empreendimentos
-    .filter(
-      (emp) =>
-        emp.ativo && (emp.status === "Breve lançamento" || emp.status === "Lançamento" || emp.status === "Em Obras"),
-    )
+    .filter((emp) => emp.ativo && slugsPermitidos.includes(emp.slug))
     .map((emp) => ({
       id: emp.id,
       titulo: emp.nome,

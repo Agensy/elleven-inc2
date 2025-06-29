@@ -186,11 +186,11 @@ export default function BotaniquePage() {
             <p className="text-xl md:text-2xl mb-6 font-light">{botanique.slogan}</p>
             <p className="text-lg mb-8 opacity-90">{botanique.subtitulo}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-[#1A2D54] hover:bg-[#152444] text-white px-8 py-4 text-lg">
                 <Phone className="h-5 w-5 mr-2" />
                 Quero saber mais
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#1A2D54] px-8 py-4 text-lg">
                 Agendar visita
               </Button>
             </div>
@@ -203,7 +203,7 @@ export default function BotaniquePage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6 text-gray-900">
+              <h2 className="text-4xl font-bold mb-6 text-[#192849]">
                 Conheça o {botanique.nome}
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
@@ -211,20 +211,20 @@ export default function BotaniquePage() {
               </p>
 
               <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">{botanique.unidades}</div>
+                <div className="text-center p-4 bg-[#192849]/5 rounded-lg">
+                  <div className="text-2xl font-bold text-[#192849]">{botanique.unidades}</div>
                   <div className="text-sm text-gray-600">Unidades</div>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">{botanique.torres}</div>
+                <div className="text-center p-4 bg-[#192849]/5 rounded-lg">
+                  <div className="text-2xl font-bold text-[#192849]">{botanique.torres}</div>
                   <div className="text-sm text-gray-600">Torres</div>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">{botanique.areaVerde}</div>
+                <div className="text-center p-4 bg-[#192849]/5 rounded-lg">
+                  <div className="text-2xl font-bold text-[#192849]">{botanique.areaVerde}</div>
                   <div className="text-sm text-gray-600">Área Verde</div>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">24h</div>
+                <div className="text-center p-4 bg-[#192849]/5 rounded-lg">
+                  <div className="text-2xl font-bold text-[#192849]">24h</div>
                   <div className="text-sm text-gray-600">Segurança</div>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function BotaniquePage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+            <h2 className="text-4xl font-bold mb-4 text-[#192849]">
               Informações do Empreendimento
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -285,7 +285,7 @@ export default function BotaniquePage() {
                   <div className="space-y-3">
                     {botanique.pontosInteresse.map((ponto, index) => (
                       <div key={index} className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-[#192849] rounded-full"></div>
                         <span className="text-gray-700">{ponto}</span>
                       </div>
                     ))}
@@ -313,7 +313,7 @@ export default function BotaniquePage() {
                   <div className="grid grid-cols-1 gap-4">
                     {botanique.lazer.map((item, index) => (
                       <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
-                        <CheckCircle className="h-5 w-5 text-green-500" />
+                        <CheckCircle className="h-5 w-5 text-[#192849]" />
                         <span className="text-gray-700">{item}</span>
                       </div>
                     ))}
@@ -343,8 +343,8 @@ export default function BotaniquePage() {
                   </p>
                   <div className="space-y-4">
                     {botanique.seguranca.map((item, index) => (
-                      <div key={index} className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg">
-                        <Shield className="h-6 w-6 text-blue-600" />
+                      <div key={index} className="flex items-center gap-3 p-4 bg-[#192849]/10 rounded-lg">
+                        <Shield className="h-6 w-6 text-[#192849]" />
                         <span className="text-gray-700 font-medium">{item}</span>
                       </div>
                     ))}
@@ -371,13 +371,13 @@ export default function BotaniquePage() {
                   </p>
                   <div className="space-y-4">
                     {botanique.investimento.map((item, index) => (
-                      <div key={index} className="flex items-center gap-3 p-4 bg-yellow-50 rounded-lg">
-                        <Building className="h-6 w-6 text-yellow-600" />
+                      <div key={index} className="flex items-center gap-3 p-4 bg-[#192849]/10 rounded-lg">
+                        <Building className="h-6 w-6 text-[#192849]" />
                         <span className="text-gray-700 font-medium">{item}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-8 p-6 bg-gradient-to-r from-green-600 to-green-700 rounded-lg text-white">
+                  <div className="mt-8 p-6 bg-gradient-to-r from-[#1A2D54] to-[#192849] rounded-lg text-white">
                     <h4 className="text-xl font-bold mb-2">VGV do Projeto</h4>
                     <p className="text-3xl font-bold">{botanique.vgv}</p>
                   </div>
@@ -400,7 +400,7 @@ export default function BotaniquePage() {
       {/* Galeria do Empreendimento */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+          <h2 className="text-4xl font-bold text-center mb-12 text-[#192849]">
             Galeria do Empreendimento
           </h2>
 
@@ -426,7 +426,7 @@ export default function BotaniquePage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+            <h2 className="text-4xl font-bold text-center mb-12 text-[#192849]">
               Ficha Técnica
             </h2>
             
@@ -476,13 +476,13 @@ export default function BotaniquePage() {
       </section>
 
       {/* Formulário de Contato */}
-      <section className="py-20 bg-green-600">
+      <section className="py-20 bg-[#1A2D54]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6 text-white">
               Garanta sua unidade no Botanique
             </h2>
-            <p className="text-xl mb-8 text-green-100">
+            <p className="text-xl mb-8 text-white/90">
               Preencha abaixo e nosso consultor entrará em contato para apresentar todas as condições especiais.
             </p>
             
@@ -495,7 +495,7 @@ export default function BotaniquePage() {
                     </label>
                     <input 
                       type="text" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2D54] focus:border-transparent"
                       placeholder="Seu nome completo"
                     />
                   </div>
@@ -505,7 +505,7 @@ export default function BotaniquePage() {
                     </label>
                     <input 
                       type="tel" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2D54] focus:border-transparent"
                       placeholder="(11) 99999-9999"
                     />
                   </div>
@@ -517,7 +517,7 @@ export default function BotaniquePage() {
                   </label>
                   <input 
                     type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2D54] focus:border-transparent"
                     placeholder="seu@email.com"
                   />
                 </div>
@@ -528,7 +528,7 @@ export default function BotaniquePage() {
                   </label>
                   <textarea 
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2D54] focus:border-transparent"
                     placeholder="Conte-nos sobre seu interesse..."
                   />
                 </div>
@@ -536,7 +536,7 @@ export default function BotaniquePage() {
                 <div className="flex items-center">
                   <input 
                     type="checkbox" 
-                    className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-[#1A2D54] focus:ring-[#1A2D54] border-gray-300 rounded"
                   />
                   <label className="ml-2 block text-sm text-gray-700">
                     Aceito receber novidades por e-mail e WhatsApp
@@ -546,7 +546,7 @@ export default function BotaniquePage() {
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 text-lg"
+                  className="w-full bg-[#1A2D54] hover:bg-[#152444] text-white py-4 text-lg"
                 >
                   Enviar e agendar visita
                 </Button>

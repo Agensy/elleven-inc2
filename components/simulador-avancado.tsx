@@ -188,7 +188,7 @@ export default function SimuladorAvancado() {
                         <div className="flex justify-between">
                           <span className="text-dark-400">Comprometimento da Renda</span>
                           <span
-                            className={`font-bold ${resultadoFinanciamento.comprometimentoRenda <= 30 ? "text-green-500" : "text-red-500"}`}
+                            className={`font-bold ${resultadoFinanciamento.comprometimentoRenda <= 30 ? "text-[#1A2D54]" : "text-red-500"}`}
                           >
                             {resultadoFinanciamento.comprometimentoRenda.toFixed(1)}%
                           </span>
@@ -198,11 +198,11 @@ export default function SimuladorAvancado() {
                   </Card>
 
                   <Card
-                    className={`border-2 ${resultadoFinanciamento.aprovado ? "border-green-600 bg-green-600/10" : "border-red-600 bg-red-600/10"}`}
+                    className={`border-2 ${resultadoFinanciamento.aprovado ? "border-[#1A2D54] bg-[#1A2D54]/10" : "border-red-600 bg-red-600/10"}`}
                   >
                     <CardContent className="p-6 text-center">
                       <h3
-                        className={`text-lg font-bold mb-2 ${resultadoFinanciamento.aprovado ? "text-green-500" : "text-red-500"}`}
+                        className={`text-lg font-bold mb-2 ${resultadoFinanciamento.aprovado ? "text-[#1A2D54]" : "text-red-500"}`}
                       >
                         {resultadoFinanciamento.aprovado ? "Financiamento Aprovado!" : "Financiamento Negado"}
                       </h3>
@@ -289,7 +289,7 @@ export default function SimuladorAvancado() {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-dark-400">Retorno Total</span>
-                          <span className="text-green-500 font-bold text-lg">
+                          <span className="text-[#1A2D54] font-bold text-lg">
                             {resultadoInvestimento.retornoTotal.toFixed(2)}%
                           </span>
                         </div>
@@ -303,9 +303,9 @@ export default function SimuladorAvancado() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-2 border-green-600 bg-green-600/10">
+                  <Card className="border-2 border-[#1A2D54] bg-[#1A2D54]/10">
                     <CardContent className="p-6 text-center">
-                      <h3 className="text-lg font-bold text-green-500 mb-2">Excelente Oportunidade!</h3>
+                      <h3 className="text-lg font-bold text-[#1A2D54] mb-2">Excelente Oportunidade!</h3>
                       <p className="text-dark-300 text-sm">
                         Retorno superior à poupança e outros investimentos tradicionais.
                       </p>

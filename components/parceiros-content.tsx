@@ -144,7 +144,7 @@ export default function ParceirosContent() {
                     "Acompanhamento personalizado",
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
                       <span className="text-gray-700">{item}</span>
                     </div>
                   ))}

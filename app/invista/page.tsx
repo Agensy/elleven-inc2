@@ -38,7 +38,7 @@ export default function InvistaPage() {
 
             {/* Card Satisfação */}
             <div className="floating-card rounded-2xl p-6 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#1A2D54] to-[#192849] rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-white" />
               </div>
               <div className="text-3xl font-bold text-gray-900 mb-2">98%</div>

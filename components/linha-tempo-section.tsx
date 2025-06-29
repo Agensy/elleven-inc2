@@ -374,9 +374,9 @@ export default function LinhaTempoSection() {
                     </span>
                   </div>
 
-                  {/* Botão Ver Detalhes com link simples */}
+                  {/* Botão Ver Detalhes com link direto para hero section */}
                   <Link
-                    href={`/${todosOsProjetos[activeProject]?.slug}`}
+                    href={`/${todosOsProjetos[activeProject]?.slug}#hero`}
                     className="inline-block bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 border border-orange-400/30"
                   >
                     Ver Detalhes

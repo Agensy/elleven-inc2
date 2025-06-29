@@ -26,6 +26,16 @@
   - Placeholders organizados
   - Estrutura das 9 seções
 
+### 🤖 **INSTRUÇÕES PARA V0**
+- [`prompt-v0-padrao.md`](./prompt-v0-padrao.md) ⭐
+  - **PROMPT PADRÃO** para copiar/colar
+  - Use sempre antes de criar empreendimentos
+  - Evita erros de compatibilidade
+- [`instrucoes-v0-novo-empreendimento.md`](./instrucoes-v0-novo-empreendimento.md)
+  - Instruções completas para V0
+  - Exemplos detalhados
+  - Checklist de validação
+
 ---
 
 ## 🎯 **FLUXO DE TRABALHO**

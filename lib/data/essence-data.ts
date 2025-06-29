@@ -75,7 +75,7 @@ export const essenceData: EmpreendimentoData = {
     imagemBackground: "/empreendimentos/essence/hero-background.webp",
   },
 
-  // Plantas (baseadas na implantação real)
+  // Plantas atualizadas com as imagens reais
   plantas: [
     {
       id: 1,
@@ -84,9 +84,9 @@ export const essenceData: EmpreendimentoData = {
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=600",
+      imagem: "/empreendimentos/essence/plantas/planta-2-dormitorios-alt.webp",
       preco: "A partir de R$ 350.000",
-      descricao: "Apartamento compacto e funcional",
+      descricao: "Apartamento compacto e funcional com sala integrada",
     },
     {
       id: 2,
@@ -95,9 +95,9 @@ export const essenceData: EmpreendimentoData = {
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=600",
+      imagem: "/empreendimentos/essence/plantas/planta-2-dormitorios.webp",
       preco: "A partir de R$ 380.000",
-      descricao: "Apartamento com melhor distribuição",
+      descricao: "Apartamento com melhor distribuição e varanda",
     },
     {
       id: 3,
@@ -106,9 +106,9 @@ export const essenceData: EmpreendimentoData = {
       quartos: 3,
       banheiros: 1,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=600",
+      imagem: "/empreendimentos/essence/plantas/planta-3-dormitorios.webp",
       preco: "A partir de R$ 450.000",
-      descricao: "Apartamento ideal para famílias",
+      descricao: "Apartamento ideal para famílias com 3 quartos",
       destaque: true,
     },
     {
@@ -118,20 +118,31 @@ export const essenceData: EmpreendimentoData = {
       quartos: 3,
       banheiros: 2,
       vagas: 2,
-      imagem: "/placeholder.svg?height=400&width=600",
+      imagem: "/empreendimentos/essence/plantas/planta-duplex-3-dormitorios.webp",
       preco: "A partir de R$ 650.000",
-      descricao: "Cobertura duplex com terraço",
+      descricao: "Cobertura duplex com terraço e área gourmet",
     },
     {
       id: 5,
       tipo: "Cobertura Duplex 4 Dorm",
-      area: "112m²",
+      area: "95m²",
       quartos: 4,
       banheiros: 2,
       vagas: 2,
-      imagem: "/placeholder.svg?height=400&width=600",
+      imagem: "/empreendimentos/essence/plantas/planta-duplex-4-dormitorios.webp",
+      preco: "A partir de R$ 750.000",
+      descricao: "Cobertura duplex premium com 4 dormitórios",
+    },
+    {
+      id: 6,
+      tipo: "Cobertura Duplex 5 Dorm",
+      area: "112m²",
+      quartos: 5,
+      banheiros: 3,
+      vagas: 2,
+      imagem: "/empreendimentos/essence/plantas/planta-duplex-5-dormitorios.webp",
       preco: "A partir de R$ 850.000",
-      descricao: "Cobertura duplex premium com terraço amplo",
+      descricao: "Cobertura duplex exclusiva com terraço amplo e 5 dormitórios",
     },
   ],
 

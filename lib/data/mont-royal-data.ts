@@ -47,15 +47,17 @@ Localizado em Porto Feliz, o Mont Royal garante fácil acesso a comércios, esco
   ],
 
   // Mídia
-  imagem: "/empreendimentos/mont-royal/fachada-principal.webp",
-  imagemDestaque: "/empreendimentos/mont-royal/hero-background.webp",
+  imagem: "/empreendimentos/mont-royal/galeria/fachada.png",
+  imagemDestaque: "/empreendimentos/mont-royal/hero-background.png",
   galeria: [
-    "/empreendimentos/mont-royal/galeria/fachada.webp",
-    "/empreendimentos/mont-royal/galeria/piscina.webp",
-    "/empreendimentos/mont-royal/galeria/salao-festas.jpeg",
-    "/empreendimentos/mont-royal/galeria/espaco-grill.jpeg",
-    "/empreendimentos/mont-royal/galeria/quadra.jpeg",
-    "/empreendimentos/mont-royal/galeria/deck-solario.jpeg",
+    "/empreendimentos/mont-royal/galeria/fachada.png",
+    "/empreendimentos/mont-royal/galeria/salao-festas.png",
+    "/empreendimentos/mont-royal/galeria/quadra.png",
+    "/empreendimentos/mont-royal/galeria/piscinas.png",
+    "/empreendimentos/mont-royal/galeria/espaco-grill.png",
+    "/empreendimentos/mont-royal/galeria/playground.png",
+    "/empreendimentos/mont-royal/galeria/praca.png",
+    "/empreendimentos/mont-royal/galeria/espaco-zen.png",
   ],
 
   // Identidade visual
@@ -63,33 +65,33 @@ Localizado em Porto Feliz, o Mont Royal garante fácil acesso a comércios, esco
     logo: "/empreendimentos/logos/logo-mont-royal.png",
     corPrimaria: "#1F2937", // Preto elegante
     corSecundaria: "#10B981", // Verde
-    imagemBackground: "/empreendimentos/mont-royal/hero-background.webp",
+    imagemBackground: "/empreendimentos/mont-royal/hero-background.png",
   },
 
   // Plantas
   plantas: [
     {
       id: 1,
-      tipo: "2 Dormitórios - Tipo 1",
+      tipo: "2 Dormitórios",
       area: "45m²",
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/mont-royal/plantas/planta-tipo-1.jpeg",
+      imagem: "/empreendimentos/mont-royal/plantas/planta-final1.png",
       preco: "A partir de R$ 380.000",
       descricao: "Apartamento com 2 dormitórios, sala, cozinha e área de serviço",
       destaque: true,
     },
     {
       id: 2,
-      tipo: "2 Dormitórios - Tipo 2",
+      tipo: "2 Dormitórios - Opção 2",
       area: "47m²",
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/empreendimentos/mont-royal/plantas/planta-tipo-2.jpeg",
+      imagem: "/empreendimentos/mont-royal/plantas/planta-final2.png",
       preco: "A partir de R$ 390.000",
-      descricao: "Apartamento com layout otimizado e sacada",
+      descricao: "Apartamento com layout otimizado e varanda",
     },
   ],
 
@@ -114,7 +116,7 @@ Localizado em Porto Feliz, o Mont Royal garante fácil acesso a comércios, esco
     hero: {
       titulo: "Aqui, sua família encontra o equilíbrio perfeito",
       subtitulo: "Viva a felicidade todos os dias com modernidade, conforto e bem-estar",
-      imagem: "/empreendimentos/mont-royal/hero-background.webp",
+      imagem: "/empreendimentos/mont-royal/hero-background.png",
       ctas: ["Quero Conhecer", "Agende uma Visita", "Baixar Folder"],
     },
 
@@ -123,7 +125,7 @@ Localizado em Porto Feliz, o Mont Royal garante fácil acesso a comércios, esco
       conteudo: `O Mont Royal foi pensado em cada detalhe para priorizar o bem-estar da sua família. Desde a escolha do terreno até o projeto arquitetônico das unidades e áreas comuns, tudo foi cuidadosamente planejado para oferecer conforto, segurança e praticidade.
 
 Os apartamentos possuem plantas inteligentes, proporcionando espaço, funcionalidade e aconchego, sempre com o foco principal na qualidade de vida. Além disso, o condomínio oferece uma ampla área de lazer com mais de 3.000 m², perfeita para reunir amigos, descansar ou brincar com as crianças.`,
-      imagem: "/empreendimentos/mont-royal/galeria/piscina.webp",
+      imagem: "/empreendimentos/mont-royal/sobre-image.png",
     },
 
     informacoes: [
@@ -132,7 +134,7 @@ Os apartamentos possuem plantas inteligentes, proporcionando espaço, funcionali
         titulo: "Localização",
         conteudo:
           "Porto Feliz/SP - Próximo a escolas, shopping, supermercados, farmácias, hospitais, academias, restaurantes e bancos.",
-        imagem: "/empreendimentos/mont-royal/galeria/fachada.webp",
+        imagem: "/empreendimentos/mont-royal/localizacao.png",
         icone: "MapPin",
       },
       {
@@ -140,7 +142,7 @@ Os apartamentos possuem plantas inteligentes, proporcionando espaço, funcionali
         titulo: "Lazer e Comodidades",
         conteudo:
           "Deck solário com piscina adulto e infantil, quadra recreativa, salão de festas climatizado, espaço grill mobiliado, playground, praça de convivência, espaço zen para leitura e relaxamento, redário.",
-        imagem: "/empreendimentos/mont-royal/galeria/deck-solario.jpeg",
+        imagem: "/empreendimentos/mont-royal/lazer.png",
         icone: "Waves",
       },
       {
@@ -148,7 +150,7 @@ Os apartamentos possuem plantas inteligentes, proporcionando espaço, funcionali
         titulo: "Segurança e Exclusividade",
         conteudo:
           "Condomínio fechado com portaria 24h, controle rigoroso de acesso e monitoramento, projeto paisagístico que reforça privacidade e exclusividade.",
-        imagem: "/empreendimentos/mont-royal/galeria/salao-festas.jpeg",
+        imagem: "/empreendimentos/mont-royal/seguranca.png",
         icone: "Shield",
       },
       {
@@ -156,7 +158,7 @@ Os apartamentos possuem plantas inteligentes, proporcionando espaço, funcionali
         titulo: "Investimento Valorizado",
         conteudo:
           "Excelente localização em Porto Feliz, região em expansão. Potencial de valorização com infraestrutura completa. Ideal para famílias e investidores que buscam liquidez e retorno garantido.",
-        imagem: "/empreendimentos/mont-royal/galeria/espaco-grill.jpeg",
+        imagem: "/empreendimentos/mont-royal/investimento.png",
         icone: "TrendingUp",
       },
     ],
@@ -168,6 +170,6 @@ Os apartamentos possuem plantas inteligentes, proporcionando espaço, funcionali
     description:
       "Conheça o Mont Royal em Porto Feliz. Apartamentos com 2 dormitórios, piscina, quadra, salão de festas e mais de 3.000 m² de lazer. Viva com conforto e segurança!",
     keywords: ["mont royal porto feliz", "apartamentos porto feliz", "condomínio fechado sp", "morar em porto feliz"],
-    ogImage: "/empreendimentos/mont-royal/vitrine-mont-royal.webp",
+    ogImage: "/empreendimentos/mont-royal/og-image.png",
   },
 }

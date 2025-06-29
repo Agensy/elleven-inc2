@@ -70,9 +70,9 @@ const jadeTemplate = {
   },
 
   // Imagens organizadas
-  imagem: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachada.jpg",
-  imagemDestaque: jadeMedia.background || "/empreendimentos/jade/background-jade.jpeg",
-  logo: jadeMedia.logo || "/empreendimentos/jade/logo-jade.png",
+  imagem: "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
+  imagemDestaque: "/empreendimentos/jade/background-jade.jpeg",
+  logo: "/empreendimentos/jade/logo-jade.png",
 
   // Informações do empreendimento - 4 categorias principais com detalhes
   informacoes: [
@@ -86,7 +86,7 @@ const jadeTemplate = {
       detalhes: {
         titulo: "Localização Privilegiada",
         subtitulo: "No coração da Bela Vista, próximo aos principais pontos da cidade",
-        imagem: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
+        imagem: "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
         pontos: [
           {
             icon: MapPin,
@@ -131,7 +131,7 @@ const jadeTemplate = {
       detalhes: {
         titulo: "Lazer e Comodidades",
         subtitulo: "Infraestrutura completa para seu bem-estar e comodidade",
-        imagem: jadeMedia.rooftop || "/empreendimentos/jade/galeria/rooftop.jpeg",
+        imagem: "/empreendimentos/jade/galeria/rooftop.jpeg",
         pontos: [
           {
             icon: Waves,
@@ -176,7 +176,7 @@ const jadeTemplate = {
       detalhes: {
         titulo: "Segurança e Exclusividade",
         subtitulo: "Sistema de segurança completo para sua total tranquilidade",
-        imagem: jadeMedia.fachadas[1]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
+        imagem: "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
         pontos: [
           {
             icon: Shield,
@@ -221,7 +221,7 @@ const jadeTemplate = {
       detalhes: {
         titulo: "Investimento Valorizado",
         subtitulo: "Oportunidade única em uma das regiões mais valorizadas de São Paulo",
-        imagem: jadeMedia.fachadas[2]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
+        imagem: "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
         pontos: [
           {
             icon: TrendingUp,
@@ -261,40 +261,40 @@ const jadeTemplate = {
   // Galeria expandida
   galeria: [
     {
-      url: jadeMedia.fachadas[0]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
+      url: "/empreendimentos/jade/fachadas/JADE_Cardim 01.jpeg",
       categoria: "Fachada",
       titulo: "Vista Externa Principal",
       descricao: "Arquitetura contemporânea sofisticada na Bela Vista",
     },
     {
-      url: jadeMedia.rooftop || "/empreendimentos/jade/galeria/rooftop.jpeg",
+      url: "/empreendimentos/jade/galeria/rooftop.jpeg",
       categoria: "Rooftop",
       titulo: "Rooftop com Piscina",
       descricao: "Piscina aquecida com vista panorâmica e tela de LED",
     },
     {
-      url: jadeMedia.fachadas[1]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
+      url: "/empreendimentos/jade/fachadas/JADE_Cardim 02.jpeg",
       categoria: "Fachada",
       titulo: "Vista Lateral",
       descricao: "Design sofisticado com acabamentos premium",
     },
     {
-      url: jadeMedia.fachadas[2]?.url || "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
+      url: "/empreendimentos/jade/fachadas/JADE_Cardim 03.jpeg",
       categoria: "Perspectiva",
       titulo: "Vista Aérea",
       descricao: "Localização privilegiada no coração da Bela Vista",
     },
     {
-      url: "/empreendimentos/jade/academia.webp",
-      categoria: "Lazer",
-      titulo: "Academia Equipada",
-      descricao: "Espaço fitness completo com equipamentos modernos",
+      url: "/empreendimentos/jade/background-jade.jpeg",
+      categoria: "Vista Geral",
+      titulo: "Vista do Empreendimento",
+      descricao: "Perspectiva geral do projeto na Bela Vista",
     },
     {
-      url: "/empreendimentos/jade/lounge.webp",
-      categoria: "Lazer",
-      titulo: "Lounge Gourmet",
-      descricao: "Espaço gourmet para confraternizações",
+      url: "/empreendimentos/jade/plantas/Planta Humanizada_ JADE.jpeg",
+      categoria: "Plantas",
+      titulo: "Planta Humanizada",
+      descricao: "Layout otimizado do studio de 26m²",
     },
   ],
 
@@ -317,7 +317,7 @@ const jadeTemplate = {
       "Ar-condicionado split instalado",
       "Acabamentos premium",
     ],
-    imagem: jadeMedia.planta || "/empreendimentos/jade/plantas/Planta Humanizada_ JADE.jpeg",
+    imagem: "/empreendimentos/jade/plantas/Planta Humanizada_ JADE.jpeg",
   },
 }
 
@@ -536,7 +536,7 @@ export default function JadePage() {
       <section id="hero" className="relative h-screen overflow-hidden bg-gray-50">
         <div className="absolute inset-0">
           <Image
-            src={jadeTemplate.imagemDestaque || "/placeholder.svg"}
+            src="/empreendimentos/jade/background-jade.jpeg"
             alt={jadeTemplate.nome}
             fill
             className="object-cover"
@@ -560,18 +560,16 @@ export default function JadePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {jadeTemplate.logo && (
-                <div className="mb-6">
-                  <Image
-                    src={jadeTemplate.logo || "/placeholder.svg"}
-                    alt="Logo Jade"
-                    width={140}
-                    height={70}
-                    className="filter brightness-0 invert mx-auto"
-                    priority
-                  />
-                </div>
-              )}
+              <div className="mb-8">
+                <Image
+                  src="/empreendimentos/jade/logo-jade.png"
+                  alt="Logo Jade"
+                  width={180}
+                  height={90}
+                  className="filter brightness-0 invert mx-auto drop-shadow-lg"
+                  priority
+                />
+              </div>
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-lg uppercase mb-6 tracking-wide">
                 JADE
               </h1>
@@ -670,13 +668,19 @@ export default function JadePage() {
             <motion.div {...fadeIn} className="relative">
               <div className="relative overflow-hidden rounded-lg shadow-xl">
                 <Image
-                  src={jadeMedia.rooftop || "/placeholder.svg?height=500&width=600&text=Jade+Rooftop"}
+                  src="/empreendimentos/jade/galeria/rooftop.jpeg"
                   alt="Jade - Rooftop com Piscina"
                   width={600}
                   height={400}
                   className="w-full h-[500px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4">
+                    <h3 className="font-bold text-gray-900 mb-1">Rooftop com Piscina</h3>
+                    <p className="text-sm text-gray-600">Piscina aquecida com vista panorâmica da cidade</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -755,13 +759,28 @@ export default function JadePage() {
 
                       <div>
                         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                          <Image
-                            src={activeDetails.imagem || "/placeholder.svg"}
-                            alt={activeDetails.titulo}
-                            width={600}
-                            height={400}
-                            className="w-full h-96 object-cover"
-                          />
+                          {activeInfo === "localizacao" ? (
+                            <div className="w-full h-96">
+                              <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1944659046!2d-46.6508!3d-23.5594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0x33cae9def37d8d89!2sRua%20Maestro%20Cardim%2C%201028%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt!2sbr!4v1699999999999!5m2!1spt!2sbr"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Localização do Jade - Rua Maestro Cardim, 1028"
+                              />
+                            </div>
+                          ) : (
+                            <Image
+                              src={activeDetails.imagem || "/placeholder.svg"}
+                              alt={activeDetails.titulo}
+                              width={600}
+                              height={400}
+                              className="w-full h-96 object-cover"
+                            />
+                          )}
                           <div className="p-4 bg-[#192849]/5">
                             <div className="flex items-center gap-2">
                               <div className="w-3 h-3 bg-[#192849] rounded-full"></div>
@@ -846,7 +865,7 @@ export default function JadePage() {
         <div className="container mx-auto px-6">
           {/* Header da seção */}
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
+            <span className="text-sm text-gray-500 font-medium tracking-wider uppercase">
               TIPOLOGIA & ESPECIFICAÇÕES
             </span>
             <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mt-4 mb-6">
@@ -859,7 +878,7 @@ export default function JadePage() {
             <motion.div {...fadeIn}>
               <div className="bg-gray-900 rounded-lg p-8 shadow-lg">
                 <Image
-                  src={jadeTemplate.studio.imagem || "/placeholder.svg"}
+                  src="/empreendimentos/jade/plantas/Planta Humanizada_ JADE.jpeg"
                   alt={jadeTemplate.studio.tipo}
                   width={600}
                   height={400}

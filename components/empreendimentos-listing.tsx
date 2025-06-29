@@ -78,7 +78,7 @@ export default function EmpreendimentosListing() {
         const termo = filtros.busca.toLowerCase()
         const matchNome = emp.nome.toLowerCase().includes(termo)
         const matchLocalizacao = emp.localizacao.toLowerCase().includes(termo)
-        const matchTags = emp.tags.some((tag) => tag.toLowerCase().includes(termo))
+        const matchTags = emp.tags?.some((tag) => tag && typeof tag === 'string' && tag.toLowerCase().includes(termo)) || false
         if (!matchNome && !matchLocalizacao && !matchTags) return false
       }
 

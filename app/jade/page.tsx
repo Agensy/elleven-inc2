@@ -10,7 +10,6 @@ import {
   MapPin,
   Phone,
   Download,
-  Play,
   CheckCircle,
   Calendar,
   Building,
@@ -329,6 +328,7 @@ export default function JadePage() {
   const [activeSection, setActiveSection] = useState("hero")
   const [headerOpacity, setHeaderOpacity] = useState(0)
   const [activeInfo, setActiveInfo] = useState("localizacao") // Estado para controlar qual aba está ativa
+  const [showAllImages, setShowAllImages] = useState(false) // Estado para controlar quantas imagens mostrar
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -481,7 +481,7 @@ export default function JadePage() {
               </Button>
               <Button
                 size="sm"
-                className="bg-[#192849] hover:bg-[#192849]/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-[#1A2D54] hover:bg-[#152444] text-white shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => setShowContact(true)}
               >
                 <Phone className="h-4 w-4 mr-2" />
@@ -518,7 +518,7 @@ export default function JadePage() {
                     </Button>
                     <Button
                       size="sm"
-                      className="flex-1 bg-[#192849] hover:bg-[#192849]/90 text-white"
+                      className="flex-1 bg-[#1A2D54] hover:bg-[#152444] text-white"
                       onClick={() => setShowContact(true)}
                     >
                       <Phone className="h-4 w-4 mr-2" />
@@ -576,17 +576,7 @@ export default function JadePage() {
               <p className="text-xl md:text-2xl font-light mb-8 opacity-90 leading-relaxed">{jadeTemplate.slogan}</p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-center mb-8"
-            >
-              <div className="inline-block bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
-                <p className="text-sm text-white/80 mb-1">Investimento a partir de</p>
-                <p className="text-3xl font-bold text-white">{jadeTemplate.preco}</p>
-              </div>
-            </motion.div>
+
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -596,7 +586,7 @@ export default function JadePage() {
             >
               <Button
                 size="lg"
-                className="bg-[#192849] hover:bg-[#192849]/90 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-[#1A2D54] hover:bg-[#152444] text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                 onClick={() => setShowContact(true)}
               >
                 Tenho Interesse
@@ -606,9 +596,10 @@ export default function JadePage() {
                 size="lg"
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 bg-transparent"
+                onClick={() => setShowContact(true)}
               >
-                <Play className="mr-2 h-5 w-5" />
-                Ver Tour Virtual
+                <TrendingUp className="mr-2 h-5 w-5" />
+                Quero Investir
               </Button>
             </motion.div>
           </div>
@@ -622,7 +613,7 @@ export default function JadePage() {
             {/* Conteúdo de Texto */}
             <motion.div {...fadeIn} className="space-y-8">
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">Conheça o Jade</h2>
+                <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mb-6 leading-tight">CONHEÇA O JADE</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">{jadeTemplate.descricao}</p>
               </div>
 
@@ -689,7 +680,7 @@ export default function JadePage() {
         <div className="container mx-auto px-6">
           {/* Header da seção */}
           <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Informações do Empreendimento</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mb-6">INFORMAÇÕES DO EMPREENDIMENTO</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Descubra o que torna o JADE um empreendimento moderno, inteligente e sofisticado no coração da Bela Vista.
             </p>
@@ -785,44 +776,60 @@ export default function JadePage() {
       <section id="galeria" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Galeria</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mb-6">GALERIA</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Conheça cada detalhe através de nossa galeria exclusiva
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {jadeTemplate.galeria.map((imagem, index) => (
-              <motion.div
-                key={index}
-                {...fadeIn}
-                transition={{ delay: index * 0.1 }}
-                className={`relative group cursor-pointer overflow-hidden rounded-lg ${
-                  index === 0 ? "md:col-span-2 md:row-span-2" : ""
-                }`}
-                onClick={() => setSelectedGalleryImage(index)}
-              >
-                <Image
-                  src={imagem.url || "/placeholder.svg"}
-                  alt={`${jadeTemplate.nome} - Imagem ${index + 1}`}
-                  width={index === 0 ? 800 : 400}
-                  height={index === 0 ? 600 : 300}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                      <Eye className="h-6 w-6 text-white" />
+          {/* Grid 3x2 - Padrão 6 imagens iniciais */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {jadeTemplate.galeria
+              .slice(0, showAllImages ? jadeTemplate.galeria.length : 6)
+              .map((imagem, index) => (
+                <motion.div
+                  key={index}
+                  {...fadeIn}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative group cursor-pointer overflow-hidden rounded-lg h-64"
+                  onClick={() => setSelectedGalleryImage(index)}
+                >
+                  <Image
+                    src={imagem.url || "/placeholder.svg"}
+                    alt={`${jadeTemplate.nome} - Imagem ${index + 1}`}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Eye className="h-6 w-6 text-white" />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-sm font-medium text-gray-900">{imagem.titulo}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm font-medium text-gray-900">{imagem.titulo}</p>
+                  </div>
+                </motion.div>
+              ))}
           </div>
+
+          {/* Botão Mostrar Mais - só aparece se houver mais de 6 imagens */}
+          {jadeTemplate.galeria.length > 6 && (
+            <div className="text-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setShowAllImages(!showAllImages)}
+                className="border-[#192849] text-[#192849] hover:bg-[#192849]/10 bg-transparent"
+              >
+                {showAllImages ? "Mostrar Menos" : "Mostrar Mais"}
+                <ArrowLeft className={`ml-2 h-4 w-4 transition-transform ${showAllImages ? "rotate-90" : "-rotate-90"}`} />
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -834,8 +841,8 @@ export default function JadePage() {
             <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
               STUDIOS INTELIGENTES & ESPECIFICAÇÕES
             </span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-4 mb-6">
-              Espaços Otimizados, <span className="text-orange-500">Acabamentos Exclusivos</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mt-4 mb-6">
+              FICHA TÉCNICA
             </h2>
           </motion.div>
 
@@ -900,7 +907,7 @@ export default function JadePage() {
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             <motion.div {...fadeIn} className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Fale com Especialista</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mb-6">FALE COM ESPECIALISTA</h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Entre em contato conosco e saiba mais sobre este empreendimento exclusivo.
               </p>
@@ -964,7 +971,7 @@ export default function JadePage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-[#192849] hover:bg-[#192849]/90 text-white h-12 text-lg"
+                      className="w-full bg-[#1A2D54] hover:bg-[#152444] text-white h-12 text-lg"
                     >
                       <MessageCircle className="mr-2 h-5 w-5" />
                       Enviar Mensagem
@@ -1016,7 +1023,7 @@ export default function JadePage() {
                   >
                     Cancelar
                   </Button>
-                  <Button type="submit" className="flex-1 bg-[#192849] hover:bg-[#192849]/90 text-white">
+                  <Button type="submit" className="flex-1 bg-[#1A2D54] hover:bg-[#152444] text-white">
                     <MessageCircle className="mr-2 h-4 w-4" />
                     Enviar
                   </Button>

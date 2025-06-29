@@ -15,19 +15,8 @@ import Link from "next/link"
 // =============================================================================
 
 function getEmpreendimentoUrl(slug: string): string {
-  // Mapeamento de slugs para páginas específicas
-  const paginasEspecificas: Record<string, string> = {
-    jade: "/jade",
-    obsidian: "/obsidian",
-    botanique: "/botanique",
-    icarai: "/icarai",
-    "grand-club-cotia": "/grand-club-cotia",
-    "le-mont": "/le-mont",
-    "le-mont-2": "/le-mont-2",
-    "icarai-parque-clube": "/icarai-parque-clube",
-  }
-
-  return paginasEspecificas[slug] || `/empreendimento/${slug}`
+  // Usar sempre a rota dinâmica para todos os empreendimentos
+  return `/empreendimento/${slug}`
 }
 
 // =============================================================================
@@ -57,7 +46,8 @@ export default function EmpreendimentosSection() {
         const termo = filtros.busca.toLowerCase()
         const matchNome = emp.nome.toLowerCase().includes(termo)
         const matchLocalizacao = emp.localizacao.toLowerCase().includes(termo)
-        const matchTags = emp.tags?.some((tag) => tag && typeof tag === 'string' && tag.toLowerCase().includes(termo)) || false
+        const matchTags =
+          emp.tags?.some((tag) => tag && typeof tag === "string" && tag.toLowerCase().includes(termo)) || false
         if (!matchNome && !matchLocalizacao && !matchTags) return false
       }
 
@@ -261,7 +251,7 @@ export default function EmpreendimentosSection() {
                     <Button
                       variant="outline"
                       size="default"
-                      className="border-border/50 hover:border-secondary hover:bg-muted h-10 px-6 hover:shadow-md transition-all duration-300"
+                      className="border-border/50 hover:border-secondary hover:bg-muted h-10 px-6 hover:shadow-md transition-all duration-300 bg-transparent"
                     >
                       Página Dedicada
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -470,7 +460,7 @@ function FilterDropdown({ label, value, placeholder, options, isOpen, onToggle, 
       <label className="block text-sm font-medium text-foreground mb-3">{label}</label>
       <Button
         variant="outline"
-        className="w-full justify-between border-border/30 hover:border-secondary hover:bg-white/80 relative z-50 text-sm h-11 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+        className="w-full justify-between border-border/30 hover:border-secondary hover:bg-white/80 relative z-50 text-sm h-11 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 bg-transparent"
         onClick={onToggle}
       >
         <span className={value ? "text-foreground font-medium" : "text-muted-foreground"}>{value || placeholder}</span>

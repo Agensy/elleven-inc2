@@ -27,19 +27,8 @@ import type { FiltrosEmpreendimento } from "@/lib/types/empreendimento"
 // =============================================================================
 
 function getEmpreendimentoUrl(slug: string): string {
-  // Mapeamento de slugs para páginas específicas
-  const paginasEspecificas: Record<string, string> = {
-    jade: "/jade",
-    obsidian: "/obsidian",
-    botanique: "/botanique",
-    icarai: "/icarai",
-    "grand-club-cotia": "/grand-club-cotia",
-    "le-mont": "/le-mont",
-    "le-mont-2": "/le-mont-2",
-    "icarai-parque-clube": "/icarai-parque-clube",
-  }
-
-  return paginasEspecificas[slug] || `/empreendimento/${slug}`
+  // Usar sempre a rota dinâmica para todos os empreendimentos
+  return `/empreendimento/${slug}`
 }
 
 // =============================================================================
@@ -78,7 +67,8 @@ export default function EmpreendimentosListing() {
         const termo = filtros.busca.toLowerCase()
         const matchNome = emp.nome.toLowerCase().includes(termo)
         const matchLocalizacao = emp.localizacao.toLowerCase().includes(termo)
-        const matchTags = emp.tags?.some((tag) => tag && typeof tag === 'string' && tag.toLowerCase().includes(termo)) || false
+        const matchTags =
+          emp.tags?.some((tag) => tag && typeof tag === "string" && tag.toLowerCase().includes(termo)) || false
         if (!matchNome && !matchLocalizacao && !matchTags) return false
       }
 
@@ -429,7 +419,7 @@ function FilterDropdown({
   return (
     <div className="relative dropdown-container">
       <label className="block text-sm font-medium text-muted-foreground mb-2">{label}</label>
-      <Button variant="outline" className="w-full justify-between" onClick={onToggle}>
+      <Button variant="outline" className="w-full justify-between bg-transparent" onClick={onToggle}>
         <span>{value || placeholder}</span>
         <ChevronDown className="h-4 w-4" />
       </Button>

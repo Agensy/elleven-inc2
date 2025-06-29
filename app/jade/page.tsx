@@ -586,11 +586,18 @@ export default function JadePage() {
             >
               <Button
                 size="lg"
-                className="bg-[#1A2D54] hover:bg-[#152444] text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
                 onClick={() => setShowContact(true)}
               >
-                Tenho Interesse
-                <ArrowLeft className="ml-2 h-5 w-5 rotate-180" />
+                <span className="relative z-10 flex items-center">
+                  Tenho Interesse
+                  <ArrowLeft className="ml-2 h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+                </span>
+
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 via-white/10 to-orange-400/30 blur-md"></div>
+                </div>
               </Button>
               <Button
                 size="lg"

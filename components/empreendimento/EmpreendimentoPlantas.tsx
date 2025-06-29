@@ -4,10 +4,10 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { CheckCircle, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Planta } from "@/lib/types/empreendimento"
+import { JadeEmpreendimentoTipologia } from "@/lib/types/jade-template"
 
 interface EmpreendimentoPlantasProps {
-  tipologia: Planta
+  tipologia: JadeEmpreendimentoTipologia
 }
 
 export default function EmpreendimentoPlantas({ tipologia }: EmpreendimentoPlantasProps) {
@@ -48,33 +48,30 @@ export default function EmpreendimentoPlantas({ tipologia }: EmpreendimentoPlant
           <motion.div {...fadeIn} className="space-y-6">
             <div>
               <h3 className="text-3xl font-light text-gray-900 mb-2">
-                {tipologia.tipo} - {tipologia.area}
+                {tipologia.tipo} - {tipologia.subtitulo}
               </h3>
               <div className="text-3xl font-bold text-[#192849] mb-6">{tipologia.preco}</div>
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">{tipologia.quartos} dormitório(s)</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">{tipologia.banheiros} banheiro(s)</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">{tipologia.vagas} vaga(s) de garagem</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Área: {tipologia.area}</span>
-              </div>
+              {tipologia.ambientes.map((ambiente, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">{ambiente}</span>
+                </div>
+              ))}
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">Descrição:</h4>
-              <p className="text-gray-700">{tipologia.descricao}</p>
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">Especificações Premium:</h4>
+              <ul className="space-y-2">
+                {tipologia.especificacoes.map((spec, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-[#192849] rounded-full flex-shrink-0"></div>
+                    <span className="text-gray-700">{spec}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <Button
@@ -90,4 +87,4 @@ export default function EmpreendimentoPlantas({ tipologia }: EmpreendimentoPlant
       </div>
     </section>
   )
-} 
+}

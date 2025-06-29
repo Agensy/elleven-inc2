@@ -174,4 +174,4 @@ export default function EmpreendimentoHeader({ nome, onShowContact }: Empreendim
       </div>
     </header>
   )
-} 
+}

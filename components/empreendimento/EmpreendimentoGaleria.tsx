@@ -5,9 +5,11 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowLeft, Eye, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { JadeEmpreendimentoGaleriaItem } from "@/lib/types/jade-template"
+
 interface EmpreendimentoGaleriaProps {
   nome: string
-  galeria: string[]
+  galeria: JadeEmpreendimentoGaleriaItem[]
 }
 
 export default function EmpreendimentoGaleria({ nome, galeria }: EmpreendimentoGaleriaProps) {
@@ -45,7 +47,7 @@ export default function EmpreendimentoGaleria({ nome, galeria }: EmpreendimentoG
                   onClick={() => setSelectedGalleryImage(index)}
                 >
                   <Image
-                    src={imagem || "/placeholder.svg"}
+                    src={imagem.url || "/placeholder.svg"}
                     alt={`${nome} - Imagem ${index + 1}`}
                     width={400}
                     height={300}
@@ -60,7 +62,7 @@ export default function EmpreendimentoGaleria({ nome, galeria }: EmpreendimentoG
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm font-medium text-gray-900">Imagem {index + 1}</p>
+                    <p className="text-sm font-medium text-gray-900">{imagem.titulo}</p>
                   </div>
                 </motion.div>
               ))}
@@ -101,8 +103,8 @@ export default function EmpreendimentoGaleria({ nome, galeria }: EmpreendimentoG
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={galeria[selectedGalleryImage] || "/placeholder.svg"}
-                alt={`${nome} - Imagem ${selectedGalleryImage + 1}`}
+                src={galeria[selectedGalleryImage].url || "/placeholder.svg"}
+                alt={galeria[selectedGalleryImage].titulo}
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-lg"
@@ -116,8 +118,8 @@ export default function EmpreendimentoGaleria({ nome, galeria }: EmpreendimentoG
                 <X className="h-6 w-6" />
               </Button>
               <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 text-white">
-                <h3 className="font-semibold mb-1">Imagem {selectedGalleryImage + 1}</h3>
-                <p className="text-sm opacity-90">{nome} - Galeria</p>
+                <h3 className="font-semibold mb-1">{galeria[selectedGalleryImage].titulo}</h3>
+                <p className="text-sm opacity-90">{galeria[selectedGalleryImage].descricao}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -125,4 +127,4 @@ export default function EmpreendimentoGaleria({ nome, galeria }: EmpreendimentoG
       </AnimatePresence>
     </>
   )
-} 
+}

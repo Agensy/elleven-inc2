@@ -33,24 +33,24 @@
 ## 📝 **DESCRIÇÃO PRINCIPAL**
 
 ### **Texto Descritivo (2-3 parágrafos)**
-```
+\`\`\`
 _________________________________________________________________
 _________________________________________________________________
 _________________________________________________________________
 _________________________________________________________________
 _________________________________________________________________
-```
+\`\`\`
 
 *Dica: Mencione localização, características do bairro, diferenciais do empreendimento*
 
 ### **Oportunidade Rara (Seção Premium)**
 - [ ] **Título:** `_________________________`
 - [ ] **Descrição:**
-```
+\`\`\`
 _________________________________________________________________
 _________________________________________________________________
 _________________________________________________________________
-```
+\`\`\`
 
 ---
 
@@ -74,7 +74,7 @@ _________________________________________________________________
 - [ ] **Vista Externa 2:** `fachada-04.jpg`
 
 ### **Organização das Pastas:**
-```
+\`\`\`
 public/empreendimentos/[nome-empreendimento]/
 ├── background.jpg
 ├── logo.png
@@ -88,7 +88,7 @@ public/empreendimentos/[nome-empreendimento]/
 │   └── salao-festas.jpg
 └── plantas/
     └── planta-humanizada.jpg
-```
+\`\`\`
 
 ---
 
@@ -342,7 +342,7 @@ public/empreendimentos/[nome-empreendimento]/
 
 ## 🎯 **EXEMPLO DE PREENCHIMENTO**
 
-```markdown
+\`\`\`markdown
 **Nome do Empreendimento:** OBSIDIAN
 **Subtítulo/Status:** LANÇAMENTO EXCLUSIVO
 **Slogan Principal:** Onde o Luxo Encontra a Sofisticação
@@ -351,7 +351,7 @@ public/empreendimentos/[nome-empreendimento]/
 **Tipo de Imóvel:** Apartamentos de 1 e 2 Dormitórios
 **Área dos Imóveis:** 40 a 80m²
 **Preço Inicial:** A partir de R$ 650.000
-```
+\`\`\`
 
 ---
 
@@ -368,4 +368,4 @@ public/empreendimentos/[nome-empreendimento]/
 
 ---
 
-*✨ Com este template, criar páginas premium nunca foi tão organizado e eficiente!* 
+*✨ Com este template, criar páginas premium nunca foi tão organizado e eficiente!*

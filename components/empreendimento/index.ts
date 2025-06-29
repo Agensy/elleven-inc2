@@ -7,4 +7,4 @@ export { default as EmpreendimentoInformacoes } from './EmpreendimentoInformacoe
 export { default as EmpreendimentoGaleria } from './EmpreendimentoGaleria'
 export { default as EmpreendimentoPlantas } from './EmpreendimentoPlantas'
 export { default as EmpreendimentoContato } from './EmpreendimentoContato'
-export { default as EmpreendimentoModalContato } from './EmpreendimentoModalContato' 
+export { default as EmpreendimentoModalContato } from './EmpreendimentoModalContato'

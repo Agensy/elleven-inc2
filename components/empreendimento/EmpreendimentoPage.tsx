@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Empreendimento } from "@/lib/types/empreendimento"
+import { JadeEmpreendimentoData } from "@/lib/types/jade-template"
 import Footer from "@/components/footer"
 
 // Importar todos os componentes de seção
@@ -15,7 +15,7 @@ import EmpreendimentoContato from "./EmpreendimentoContato"
 import EmpreendimentoModalContato from "./EmpreendimentoModalContato"
 
 interface EmpreendimentoPageProps {
-  data: Empreendimento
+  data: JadeEmpreendimentoData
 }
 
 export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
@@ -23,11 +23,6 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
 
   const handleShowContact = () => setShowContact(true)
   const handleCloseContact = () => setShowContact(false)
-
-  // Adaptar dados para a estrutura esperada pelos componentes
-  const enderecoCompleto = data.endereco 
-    ? `${data.endereco.rua}, ${data.endereco.numero} - ${data.endereco.bairro}`
-    : data.localizacao
 
   return (
     <div className="min-h-screen bg-white">
@@ -40,10 +35,10 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       {/* Hero Section */}
       <EmpreendimentoHero
         nome={data.nome}
-        subtitulo={data.subtitulo || data.status}
-        slogan={data.slogan || data.destaque || ""}
-        imagemBackground={data.identidadeVisual.imagemBackground}
-        logo={data.identidadeVisual.logo}
+        subtitulo={data.subtitulo}
+        slogan={data.slogan}
+        imagemBackground={data.imagens.background}
+        logo={data.imagens.logo}
         onShowContact={handleShowContact}
       />
 
@@ -53,16 +48,16 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         descricao={data.descricao}
         tipo={data.tipo}
         area={data.area}
-        endereco={enderecoCompleto}
+        endereco={data.endereco}
         localizacao={data.localizacao}
-        imagemPrincipal={data.galeria[0] || data.imagem}
+        imagemPrincipal={data.imagens.rooftop || data.imagens.fachadas[0]?.url || ""}
       />
 
       {/* Informações com Sistema de Abas */}
       <EmpreendimentoInformacoes
         nome={data.nome}
-        informacoes={[]} // TODO: Mapear pontos_interesse para estrutura de abas
-        endereco={enderecoCompleto}
+        informacoes={data.informacoes}
+        endereco={data.endereco}
       />
 
       {/* Galeria de Imagens */}
@@ -73,7 +68,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
 
       {/* Plantas e Ficha Técnica */}
       <EmpreendimentoPlantas
-        tipologia={data.plantas[0]} // TODO: Adaptar estrutura de plantas
+        tipologia={data.tipologia}
       />
 
       {/* Seção de Contato */}
@@ -92,4 +87,4 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       />
     </div>
   )
-} 
+}

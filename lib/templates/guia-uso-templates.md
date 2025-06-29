@@ -45,11 +45,11 @@
 ## 📋 **Como Usar o Template Completo**
 
 ### **1. Informações Básicas**
-```markdown
+\`\`\`markdown
 ✅ Nome do Empreendimento: VILLA MODERNA
 ✅ Subtítulo/Status: LANÇAMENTO EXCLUSIVO
 ✅ Slogan Principal: Onde Luxo e Natureza se Encontram
-```
+\`\`\`
 
 ### **2. Imagens Necessárias**
 - Organize ANTES de preencher o template
@@ -102,14 +102,14 @@ Use o checklist para garantir que nada foi esquecido.
 - ❌ **Evitar** - HEIC, RAW, TIF
 
 ### **Organização:**
-```
+\`\`\`
 📁 [nome-empreendimento]/
 ├── 🖼️ background.jpg
 ├── 🏷️ logo.png
 ├── 📁 fachadas/
 ├── 📁 galeria/
 └── 📁 plantas/
-```
+\`\`\`
 
 ---
 
@@ -137,22 +137,22 @@ Use o checklist para garantir que nada foi esquecido.
 ## 💡 **Exemplos Práticos**
 
 ### **✅ Bom Preenchimento:**
-```
+\`\`\`
 Nome: GRAND RESIDENCES
 Localização: Jardins, São Paulo - SP
 Hospital Sírio-Libanês - 300m (4 min a pé)
 Shopping Iguatemi - 500m (7 min a pé)
 Estação Consolação - 800m (10 min a pé)
-```
+\`\`\`
 
 ### **❌ Preenchimento Ruim:**
-```
+\`\`\`
 Nome: Empreendimento X
 Localização: São Paulo
 Hospital próximo
 Shopping na região
 Metrô perto
-```
+\`\`\`
 
 ---
 
@@ -241,4 +241,4 @@ Metrô perto
 - `/obsidian-componentizado` - Exemplo completo
 - `/exemplo-v0` - Exemplo simplificado
 
-**✨ Com estes templates, criar páginas premium nunca foi tão organizado!** 
+**✨ Com estes templates, criar páginas premium nunca foi tão organizado!**

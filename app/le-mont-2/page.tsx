@@ -1,4 +1,4 @@
-import EmpreendimentoPage from "@/components/empreendimento/EmpreendimentoPage"
+import { EmpreendimentoPage } from "@/components/empreendimento"
 import { leMont2Data } from "@/lib/data/le-mont-2-data"
 import type { Metadata } from "next"
 

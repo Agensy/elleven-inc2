@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import EmpreendimentoPage from "@/components/empreendimento/EmpreendimentoPage"
+import { EmpreendimentoPage } from "@/components/empreendimento"
 import { JadeEmpreendimentoData } from "@/lib/types/jade-template"
 
 // Dados do Obsidian usando a estrutura componentizada

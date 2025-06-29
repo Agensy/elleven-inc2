@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import EmpreendimentoPage from "@/components/empreendimento/EmpreendimentoPage"
+import { EmpreendimentoPage } from "@/components/empreendimento"
 import { leMontData } from "@/lib/data/le-mont-data"
 
 export const metadata: Metadata = {

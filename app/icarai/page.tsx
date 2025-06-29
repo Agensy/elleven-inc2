@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import EmpreendimentoPage from "@/components/empreendimento/EmpreendimentoPage"
+import { EmpreendimentoPage } from "@/components/empreendimento"
 import { buscarEmpreendimentoPorSlug } from "@/lib/data/empreendimentos-master"
 
 export const metadata: Metadata = {

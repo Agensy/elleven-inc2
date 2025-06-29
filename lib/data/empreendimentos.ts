@@ -1,13 +1,9 @@
 import type { Empreendimento, OpcoesFilter } from "@/lib/types/empreendimento"
 
 // =============================================================================
-// DADOS DOS EMPREENDIMENTOS
+// DADOS DOS EMPREENDIMENTOS - 12 EMPREENDIMENTOS COMPLETOS
 // =============================================================================
 
-/**
- * Array principal com todos os empreendimentos
- * Atualizado com informações das apresentações
- */
 export const empreendimentos: Empreendimento[] = [
   {
     id: 1,
@@ -26,7 +22,7 @@ export const empreendimentos: Empreendimento[] = [
     vagas: 1,
     preco: 850000,
     descricao:
-      "No coração da Bela Vista (SP), em São Paulo, é um endereço privilegiado que combina sofisticação, tradição e conveniência. Este bairro, conhecido por sua rica vida cultural e excelente infraestrutura, oferece ótima proximidade com importantes pontos da cidade, como a Avenida Paulista, o Parque Trianon e os centros comerciais e gastronômicos de renomadas regiões como Vila Madalena e Itaim Bibi.",
+      "No coração da Bela Vista (SP), em São Paulo, é um endereço privilegiado que combina sofisticação, tradição e conveniência.",
     precoFormatado: "A partir de R$ 850.000",
     entrega: "2026",
     ativo: true,
@@ -80,7 +76,7 @@ export const empreendimentos: Empreendimento[] = [
     vagas: 1,
     preco: 950000,
     descricao:
-      "Localizado em Pinheiros-SP. Uma das regiões mais nobres e valorizadas da cidade, o OBSIDIAN de alto padrão é o empreendimento perfeito para quem busca um estilo de vida sofisticado, design, moderno e prático. Com projeto arquitetônico inovador, o imóvel foi desenvolvido para oferecer a máxima excelência em qualidade, conforto e funcionalidade. Com fácil acesso a centros comerciais e opções de lazer. É a opção ideal para quem busca conforto, sofisticação e praticidade.",
+      "Localizado em Pinheiros-SP. Uma das regiões mais nobres e valorizadas da cidade, o OBSIDIAN de alto padrão é o empreendimento perfeito para quem busca um estilo de vida sofisticado.",
     precoFormatado: "A partir de R$ 950.000",
     entrega: "2027",
     ativo: true,
@@ -126,7 +122,7 @@ export const empreendimentos: Empreendimento[] = [
     localizacao: "Salto, São Paulo - SP",
     bairro: "Jardim D'Icaraí",
     coordenadas: { lat: -23.2, lng: -47.283333 },
-    status: "Em Obras",
+    status: "Em obras",
     tipo: "2 dormitórios",
     area: "75m²",
     quartos: 2,
@@ -134,7 +130,7 @@ export const empreendimentos: Empreendimento[] = [
     vagas: 1,
     preco: 750000,
     descricao:
-      "Um lugar onde o equilíbrio entre qualidade de vida e o encanto da natureza cria o cenário perfeito para o seu novo lar. Com 55 mil metros quadrados, o Icaraí Parque Clube oferece uma experiência completa de moradia com infraestrutura de clube e a tranquilidade de um parque. Suas torres modernas com fachada contemporânea abrigam apartamentos funcionais e bem planejados, enquanto as áreas comuns proporcionam lazer e bem-estar para toda a família.",
+      "Um lugar onde o equilíbrio entre qualidade de vida e o encanto da natureza cria o cenário perfeito para o seu novo lar.",
     precoFormatado: "A partir de R$ 750.000",
     entrega: "Novembro 2026",
     ativo: true,
@@ -184,7 +180,7 @@ export const empreendimentos: Empreendimento[] = [
     vagas: 1,
     preco: 450000,
     descricao:
-      "O Botanique foi cuidadosamente projetado para oferecer qualidade de vida incomparável à sua família. Localizado em Cotia, ao lado de uma área verde exclusiva de 4.500 m², o empreendimento é um verdadeiro convite ao bem-estar. Aqui você vive tranquilo, cercado pela natureza, mas com toda a conveniência de um condomínio clube. Condomínio fechado com segurança 24h, diversas opções de lazer para toda a família, ambientes integrados e modernos com varanda e cozinha americana. O equilíbrio perfeito entre o sossego do campo e a proximidade dos serviços essenciais de São Paulo.",
+      "O Botanique foi cuidadosamente projetado para oferecer qualidade de vida incomparável à sua família. Localizado em Cotia, ao lado de uma área verde exclusiva de 4.500 m².",
     precoFormatado: "Consulte condições especiais",
     entrega: "Em breve",
     ativo: true,
@@ -224,27 +220,12 @@ export const empreendimentos: Empreendimento[] = [
         preco: "A partir de R$ 620.000",
         descricao: "Apartamento de 3 dormitórios com suite e varanda gourmet",
       },
-      {
-        id: 3,
-        tipo: "Duplex 2 Dormitórios",
-        area: "120m²",
-        quartos: 2,
-        banheiros: 2,
-        vagas: 2,
-        imagem: "/empreendimentos/botanique/plantas/cobertura duplex 1 piso.jpg",
-        preco: "A partir de R$ 850.000",
-        descricao: "Cobertura duplex com terraço privativo e 2 vagas",
-      },
     ],
     diferenciais: [
       "Bosque privativo com 4.500 m² de área verde preservada",
       "Condomínio totalmente fechado com segurança 24h",
       "150 apartamentos distribuídos em 5 torres de 5 andares",
       "Apartamentos de 1, 2 e 3 dormitórios + Duplex",
-      "Piscina adulto e infantil com área de lazer completa",
-      "Espaço gourmet e salão de festas equipados",
-      "Playground moderno e quadra recreativa",
-      "Acesso direto à Rodovia Raposo Tavares",
     ],
     identidadeVisual: {
       corPrimaria: "#2D5016",
@@ -255,10 +236,6 @@ export const empreendimentos: Empreendimento[] = [
     pontos_interesse: [
       { nome: "Rodovia Raposo Tavares", distancia: "Acesso direto", tipo: "transporte" },
       { nome: "Shopping Iguatemi Esplanada", distancia: "8km", tipo: "shopping" },
-      { nome: "Hospital Albert Einstein", distancia: "12km", tipo: "saude" },
-      { nome: "Shopping Granja Vianna", distancia: "6km", tipo: "shopping" },
-      { nome: "Colégio Rio Branco", distancia: "5km", tipo: "educacao" },
-      { nome: "Parque Villa Lobos", distancia: "15km", tipo: "parque" },
     ],
     especificacoes: {
       unidades: "150 apartamentos",
@@ -278,7 +255,7 @@ export const empreendimentos: Empreendimento[] = [
     localizacao: "Estrada Morro Grande, Cotia - SP",
     bairro: "Jardim Isis",
     coordenadas: { lat: -23.603889, lng: -46.918611 },
-    status: "Em Obras",
+    status: "Em obras",
     tipo: "2 dormitórios",
     area: "43m²",
     quartos: 2,
@@ -286,7 +263,7 @@ export const empreendimentos: Empreendimento[] = [
     vagas: 1,
     preco: 380000,
     descricao:
-      "O Condomínio Le Mont foi cuidadosamente planejado para proporcionar qualidade de vida à sua família, com segurança 24 horas e uma ampla área verde preservada. Oferece diversas opções de lazer para todas as idades, incluindo piscina adulto e infantil, quadra recreativa, salão de festas, playground e espaço grill. Localizado em Cotia, próximo a escolas, creches, supermercados e comércio em geral.",
+      "O Condomínio Le Mont foi cuidadosamente planejado para proporcionar qualidade de vida à sua família, com segurança 24 horas e uma ampla área verde preservada.",
     precoFormatado: "A partir de R$ 380.000",
     entrega: "2026",
     ativo: true,
@@ -297,25 +274,10 @@ export const empreendimentos: Empreendimento[] = [
       "/empreendimentos/le-mont/piscina.webp",
       "/empreendimentos/le-mont/playground.webp",
       "/empreendimentos/le-mont/churrasqueira.webp",
-      "/empreendimentos/le-mont/salao-festas.webp",
-      "/empreendimentos/le-mont/terraco.webp",
-      "/empreendimentos/le-mont/portaria.webp",
-      "/empreendimentos/le-mont/quadra.webp",
     ],
     plantas: [
       {
         id: 1,
-        tipo: "1 Dormitório",
-        area: "30m²",
-        quartos: 1,
-        banheiros: 1,
-        vagas: 1,
-        imagem: "/placeholder.svg?height=400&width=600",
-        preco: "A partir de R$ 280.000",
-        descricao: "Apartamento compacto e funcional de 1 dormitório",
-      },
-      {
-        id: 2,
         tipo: "2 Dormitórios",
         area: "43m²",
         quartos: 2,
@@ -326,27 +288,12 @@ export const empreendimentos: Empreendimento[] = [
         descricao: "Apartamento de 2 dormitórios com varanda",
         destaque: true,
       },
-      {
-        id: 3,
-        tipo: "3 Dormitórios",
-        area: "65m²",
-        quartos: 3,
-        banheiros: 2,
-        vagas: 1,
-        imagem: "/placeholder.svg?height=400&width=600",
-        preco: "A partir de R$ 480.000",
-        descricao: "Apartamento amplo de 3 dormitórios com suite",
-      },
     ],
     diferenciais: [
       "150 unidades distribuídas em 5 torres",
       "Apartamentos de 1, 2 e 3 dormitórios",
       "Piscina adulto e infantil com área de lazer completa",
-      "Quadra recreativa e playground moderno",
-      "Salão de festas e espaço grill equipados",
       "Segurança 24h e condomínio fechado",
-      "Localização privilegiada em Cotia",
-      "Próximo a escolas, supermercados e comércio",
     ],
     identidadeVisual: {
       corPrimaria: "#4A5D23",
@@ -357,10 +304,6 @@ export const empreendimentos: Empreendimento[] = [
     pontos_interesse: [
       { nome: "Centro de Cotia", distancia: "3km", tipo: "comercio" },
       { nome: "Shopping Iguatemi Esplanada", distancia: "8km", tipo: "shopping" },
-      { nome: "Rodovia Raposo Tavares", distancia: "2km", tipo: "transporte" },
-      { nome: "Escola Municipal", distancia: "1km", tipo: "educacao" },
-      { nome: "Supermercado Extra", distancia: "1.5km", tipo: "comercio" },
-      { nome: "Hospital Municipal", distancia: "4km", tipo: "saude" },
     ],
     especificacoes: {
       unidades: "150 apartamentos",
@@ -368,8 +311,416 @@ export const empreendimentos: Empreendimento[] = [
       elevadores: "1 elevador por torre",
       entrega: "2026",
     },
-    tags: ["cotia", "condomínio clube", "lazer completo", "segurança 24h"],
+    tags: ["cotia", "condomínio clube", "lazer completo"],
     categoria: ["residencial", "condomínio clube"],
+  },
+  {
+    id: 6,
+    nome: "Le Mont 2",
+    slug: "le-mont-2",
+    subtitulo: "Lançamento",
+    slogan: "A continuidade do sucesso",
+    localizacao: "Cotia - SP",
+    bairro: "Jardim Isis",
+    coordenadas: { lat: -23.603889, lng: -46.918611 },
+    status: "Lançamento",
+    tipo: "2 dormitórios",
+    area: "45m²",
+    quartos: 2,
+    banheiros: 2,
+    vagas: 1,
+    preco: 420000,
+    descricao:
+      "A segunda fase do sucesso Le Mont, com ainda mais opções de lazer e qualidade de vida para sua família.",
+    precoFormatado: "A partir de R$ 420.000",
+    entrega: "2027",
+    ativo: true,
+    imagem: "/empreendimentos/le-mont-2/vitrine-le-mont-2.jpeg",
+    imagemDestaque: "/empreendimentos/le-mont-2/fachada-principal.jpeg",
+    galeria: [
+      "/empreendimentos/le-mont-2/vitrine-le-mont-2.jpeg",
+      "/empreendimentos/le-mont-2/fachada-principal.jpeg",
+      "/empreendimentos/le-mont-2/piscina.jpeg",
+      "/empreendimentos/le-mont-2/playground.jpeg",
+    ],
+    plantas: [],
+    diferenciais: [
+      "Segunda fase do empreendimento de sucesso",
+      "Apartamentos de 2 e 3 dormitórios + Coberturas",
+      "Lazer completo com piscina e playground",
+      "Localização privilegiada em Cotia",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#4A5D23",
+      corSecundaria: "#6B7A3A",
+      logo: "/empreendimentos/logos/logo-le-mont-2.png",
+      imagemBackground: "/empreendimentos/le-mont-2/fachada-principal.jpeg",
+    },
+    pontos_interesse: [
+      { nome: "Centro de Cotia", distancia: "3km", tipo: "comercio" },
+      { nome: "Shopping Iguatemi Esplanada", distancia: "8km", tipo: "shopping" },
+    ],
+    especificacoes: {
+      unidades: "120 apartamentos",
+      andares: "4 torres",
+      elevadores: "1 elevador por torre",
+      entrega: "2027",
+    },
+    tags: ["cotia", "condomínio clube", "segunda fase"],
+    categoria: ["residencial", "condomínio clube"],
+  },
+  {
+    id: 7,
+    nome: "Essence",
+    slug: "essence",
+    subtitulo: "Lançamento",
+    slogan: "A essência do bem viver",
+    localizacao: "Cotia - SP",
+    bairro: "Jardim Isis",
+    coordenadas: { lat: -23.603889, lng: -46.918611 },
+    status: "Lançamento",
+    tipo: "2 dormitórios",
+    area: "50m²",
+    quartos: 2,
+    banheiros: 2,
+    vagas: 1,
+    preco: 480000,
+    descricao:
+      "O Essence representa a essência do bem viver, com apartamentos modernos e área de lazer completa em Cotia.",
+    precoFormatado: "A partir de R$ 480.000",
+    entrega: "2027",
+    ativo: true,
+    imagem: "/empreendimentos/essence/vitrine-essence.webp",
+    imagemDestaque: "/empreendimentos/essence/hero-background.webp",
+    galeria: [
+      "/empreendimentos/essence/vitrine-essence.webp",
+      "/empreendimentos/essence/galeria/fachada.webp",
+      "/empreendimentos/essence/galeria/piscina.webp",
+      "/empreendimentos/essence/galeria/salao-festas.webp",
+    ],
+    plantas: [],
+    diferenciais: [
+      "Design moderno e funcional",
+      "Área de lazer completa",
+      "Localização privilegiada",
+      "Apartamentos de 2 e 3 dormitórios",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#8B4513",
+      corSecundaria: "#D2691E",
+      logo: "/empreendimentos/logos/logo-essence.png",
+      imagemBackground: "/empreendimentos/essence/hero-background.webp",
+    },
+    pontos_interesse: [
+      { nome: "Centro de Cotia", distancia: "2km", tipo: "comercio" },
+      { nome: "Shopping Granja Vianna", distancia: "6km", tipo: "shopping" },
+    ],
+    especificacoes: {
+      unidades: "100 apartamentos",
+      andares: "3 torres",
+      elevadores: "1 elevador por torre",
+      entrega: "2027",
+    },
+    tags: ["cotia", "moderno", "lazer"],
+    categoria: ["residencial", "condomínio clube"],
+  },
+  {
+    id: 8,
+    nome: "Grand Parc",
+    slug: "grand-parc",
+    subtitulo: "Lançamento",
+    slogan: "Grandeza em cada detalhe",
+    localizacao: "Cotia - SP",
+    bairro: "Granja Viana",
+    coordenadas: { lat: -23.603889, lng: -46.918611 },
+    status: "Lançamento",
+    tipo: "3 dormitórios",
+    area: "80m²",
+    quartos: 3,
+    banheiros: 2,
+    vagas: 2,
+    preco: 680000,
+    descricao: "O Grand Parc oferece apartamentos amplos com 3 dormitórios e área de lazer completa na Granja Viana.",
+    precoFormatado: "A partir de R$ 680.000",
+    entrega: "2027",
+    ativo: true,
+    imagem: "/empreendimentos/grand-parc/vitrine-grand-parc.webp",
+    imagemDestaque: "/empreendimentos/grand-parc/hero-background.webp",
+    galeria: [
+      "/empreendimentos/grand-parc/vitrine-grand-parc.webp",
+      "/empreendimentos/grand-parc/galeria/fachada.webp",
+      "/empreendimentos/grand-parc/galeria/piscina.webp",
+      "/empreendimentos/grand-parc/galeria/salao-festas.webp",
+    ],
+    plantas: [],
+    diferenciais: [
+      "Apartamentos de 3 dormitórios",
+      "Localização na Granja Viana",
+      "Área de lazer completa",
+      "2 vagas de garagem",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#2E8B57",
+      corSecundaria: "#228B22",
+      logo: "/empreendimentos/logos/logo-grand-parc.png",
+      imagemBackground: "/empreendimentos/grand-parc/hero-background.webp",
+    },
+    pontos_interesse: [
+      { nome: "Shopping Granja Vianna", distancia: "2km", tipo: "shopping" },
+      { nome: "Colégio Rio Branco", distancia: "3km", tipo: "educacao" },
+    ],
+    especificacoes: {
+      unidades: "80 apartamentos",
+      andares: "2 torres",
+      elevadores: "2 elevadores por torre",
+      entrega: "2027",
+    },
+    tags: ["granja viana", "3 dormitórios", "amplo"],
+    categoria: ["residencial", "alto padrão"],
+  },
+  {
+    id: 9,
+    nome: "Grand Club Cotia",
+    slug: "grand-club-cotia",
+    subtitulo: "Em obras",
+    slogan: "O clube da sua família",
+    localizacao: "Cotia - SP",
+    bairro: "Centro",
+    coordenadas: { lat: -23.603889, lng: -46.918611 },
+    status: "Em obras",
+    tipo: "2 dormitórios",
+    area: "55m²",
+    quartos: 2,
+    banheiros: 2,
+    vagas: 1,
+    preco: 520000,
+    descricao: "O Grand Club Cotia oferece infraestrutura completa de clube com apartamentos modernos e funcionais.",
+    precoFormatado: "A partir de R$ 520.000",
+    entrega: "2026",
+    ativo: true,
+    imagem: "/empreendimentos/grand-club-cotia/vitrine-grand-club.jpeg",
+    imagemDestaque: "/empreendimentos/grand-club-cotia/fachada-principal.webp",
+    galeria: [
+      "/empreendimentos/grand-club-cotia/vitrine-grand-club.jpeg",
+      "/empreendimentos/grand-club-cotia/galeria/piscina.webp",
+      "/empreendimentos/grand-club-cotia/galeria/playground.jpeg",
+      "/empreendimentos/grand-club-cotia/galeria/salao-festas.jpeg",
+    ],
+    plantas: [],
+    diferenciais: [
+      "Infraestrutura completa de clube",
+      "Apartamentos de 1 e 2 dormitórios",
+      "Localização central em Cotia",
+      "Área de lazer para toda família",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#4169E1",
+      corSecundaria: "#1E90FF",
+      logo: "/empreendimentos/logos/logo-grand-club.png",
+      imagemBackground: "/empreendimentos/grand-club-cotia/fachada-principal.webp",
+    },
+    pontos_interesse: [
+      { nome: "Centro de Cotia", distancia: "500m", tipo: "comercio" },
+      { nome: "Estação Cotia", distancia: "1km", tipo: "transporte" },
+    ],
+    especificacoes: {
+      unidades: "200 apartamentos",
+      andares: "6 torres",
+      elevadores: "2 elevadores por torre",
+      entrega: "2026",
+    },
+    tags: ["cotia", "clube", "central"],
+    categoria: ["residencial", "condomínio clube"],
+  },
+  {
+    id: 10,
+    nome: "Vert",
+    slug: "vert",
+    subtitulo: "Lançamento",
+    slogan: "Verde que inspira",
+    localizacao: "Cotia - SP",
+    bairro: "Jardim Isis",
+    coordenadas: { lat: -23.603889, lng: -46.918611 },
+    status: "Lançamento",
+    tipo: "2 dormitórios",
+    area: "48m²",
+    quartos: 2,
+    banheiros: 2,
+    vagas: 1,
+    preco: 460000,
+    descricao:
+      "O Vert combina sustentabilidade e modernidade, oferecendo apartamentos com conceito verde e área de lazer completa.",
+    precoFormatado: "A partir de R$ 460.000",
+    entrega: "2027",
+    ativo: true,
+    imagem: "/empreendimentos/vert/vitrine-vert.webp",
+    imagemDestaque: "/empreendimentos/vert/vista-aerea.webp",
+    galeria: [
+      "/empreendimentos/vert/vitrine-vert.webp",
+      "/empreendimentos/vert/galeria/fachada.webp",
+      "/empreendimentos/vert/galeria/vista-aerea.webp",
+      "/empreendimentos/vert/galeria/terraço.webp",
+    ],
+    plantas: [],
+    diferenciais: [
+      "Conceito sustentável",
+      "Apartamentos de 2 dormitórios",
+      "Área verde preservada",
+      "Design moderno e funcional",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#32CD32",
+      corSecundaria: "#228B22",
+      logo: "/empreendimentos/logos/logo-vert.png",
+      imagemBackground: "/empreendimentos/vert/vista-aerea.webp",
+    },
+    pontos_interesse: [
+      { nome: "Centro de Cotia", distancia: "2.5km", tipo: "comercio" },
+      { nome: "Shopping Iguatemi Esplanada", distancia: "7km", tipo: "shopping" },
+    ],
+    especificacoes: {
+      unidades: "90 apartamentos",
+      andares: "3 torres",
+      elevadores: "1 elevador por torre",
+      entrega: "2027",
+    },
+    tags: ["sustentável", "verde", "moderno"],
+    categoria: ["residencial", "sustentável"],
+  },
+  {
+    id: 11,
+    nome: "Mont Royal",
+    slug: "mont-royal",
+    subtitulo: "Lançamento",
+    slogan: "Realeza em cada detalhe",
+    localizacao: "Cotia - SP",
+    bairro: "Granja Viana",
+    coordenadas: { lat: -23.603889, lng: -46.918611 },
+    status: "Lançamento",
+    tipo: "3 dormitórios",
+    area: "85m²",
+    quartos: 3,
+    banheiros: 2,
+    vagas: 2,
+    preco: 720000,
+    descricao: "O Mont Royal oferece apartamentos de alto padrão com 3 dormitórios na prestigiada Granja Viana.",
+    precoFormatado: "A partir de R$ 720.000",
+    entrega: "2027",
+    ativo: true,
+    imagem: "/empreendimentos/mont-royal/vitrine-mont-royal.webp",
+    imagemDestaque: "/empreendimentos/mont-royal/galeria/fachada.webp",
+    galeria: [
+      "/empreendimentos/mont-royal/vitrine-mont-royal.webp",
+      "/empreendimentos/mont-royal/galeria/fachada.webp",
+      "/empreendimentos/mont-royal/galeria/piscina.webp",
+      "/empreendimentos/mont-royal/galeria/salao-festas.jpeg",
+    ],
+    plantas: [],
+    diferenciais: [
+      "Alto padrão na Granja Viana",
+      "Apartamentos de 3 dormitórios",
+      "2 vagas de garagem",
+      "Área de lazer premium",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#8B008B",
+      corSecundaria: "#9932CC",
+      logo: "/empreendimentos/logos/logo-mont-royal.png",
+      imagemBackground: "/empreendimentos/mont-royal/galeria/fachada.webp",
+    },
+    pontos_interesse: [
+      { nome: "Shopping Granja Vianna", distancia: "1.5km", tipo: "shopping" },
+      { nome: "Colégio Rio Branco", distancia: "2km", tipo: "educacao" },
+    ],
+    especificacoes: {
+      unidades: "60 apartamentos",
+      andares: "2 torres",
+      elevadores: "2 elevadores por torre",
+      entrega: "2027",
+    },
+    tags: ["granja viana", "alto padrão", "3 dormitórios"],
+    categoria: ["residencial", "alto padrão"],
+  },
+  {
+    id: 12,
+    nome: "Quartier",
+    slug: "quartier",
+    subtitulo: "Lançamento",
+    slogan: "Seu novo endereço de qualidade",
+    localizacao: "Valinhos - SP",
+    bairro: "Centro",
+    coordenadas: { lat: -22.970722, lng: -46.995833 },
+    status: "Lançamento",
+    tipo: "2 dormitórios",
+    area: "45m²",
+    quartos: 2,
+    banheiros: 2,
+    vagas: 1,
+    preco: 380000,
+    descricao:
+      "O Quartier oferece apartamentos modernos e funcionais no centro de Valinhos, com área de lazer completa.",
+    precoFormatado: "A partir de R$ 380.000",
+    entrega: "2027",
+    ativo: true,
+    imagem: "/empreendimentos/quartier/vitrine-quartier.webp",
+    imagemDestaque: "/empreendimentos/quartier/galeria/fachada-moderna.webp",
+    galeria: [
+      "/empreendimentos/quartier/vitrine-quartier.webp",
+      "/empreendimentos/quartier/galeria/fachada-moderna.webp",
+      "/empreendimentos/quartier/galeria/piscina.webp",
+      "/empreendimentos/quartier/galeria/salao-de-festas.webp",
+      "/empreendimentos/quartier/galeria/living-decorado.webp",
+      "/empreendimentos/quartier/galeria/portaria-entrada.webp",
+    ],
+    plantas: [
+      {
+        id: 1,
+        tipo: "2 Dormitórios - Final 1",
+        area: "45,82m²",
+        quartos: 2,
+        banheiros: 2,
+        vagas: 1,
+        imagem: "/empreendimentos/quartier/plantas/planta-final-1.webp",
+        preco: "A partir de R$ 380.000",
+        descricao: "Apartamento de 2 dormitórios com sala ampla integrada",
+        destaque: true,
+      },
+      {
+        id: 2,
+        tipo: "2 Dormitórios - Final 2",
+        area: "43,31m²",
+        quartos: 2,
+        banheiros: 2,
+        vagas: 1,
+        imagem: "/empreendimentos/quartier/plantas/planta-final-2.webp",
+        preco: "A partir de R$ 365.000",
+        descricao: "Apartamento de 2 dormitórios com cozinha integrada e varanda",
+      },
+    ],
+    diferenciais: [
+      "Localização central em Valinhos",
+      "Apartamentos de 2 dormitórios",
+      "Área de lazer completa",
+      "Design moderno e funcional",
+    ],
+    identidadeVisual: {
+      corPrimaria: "#FF6B35",
+      corSecundaria: "#F7931E",
+      logo: "/empreendimentos/logos/logo-quartier.png",
+      imagemBackground: "/empreendimentos/quartier/galeria/fachada-moderna.webp",
+    },
+    pontos_interesse: [
+      { nome: "Centro de Valinhos", distancia: "500m", tipo: "comercio" },
+      { nome: "Shopping Valinhos", distancia: "2km", tipo: "shopping" },
+    ],
+    especificacoes: {
+      unidades: "120 apartamentos",
+      andares: "4 torres",
+      elevadores: "1 elevador por torre",
+      entrega: "2027",
+    },
+    tags: ["valinhos", "central", "moderno"],
+    categoria: ["residencial", "urbano"],
   },
 ]
 
@@ -377,32 +728,24 @@ export const empreendimentos: Empreendimento[] = [
 // CONFIGURAÇÕES DE FILTROS
 // =============================================================================
 
-/**
- * Opções disponíveis para os filtros de busca
- * Customize conforme necessário
- */
 export const opcoesFiltros: OpcoesFilter = {
   tipos: ["Studio", "1 dormitório", "2 dormitórios", "3 dormitórios", "Cobertura"],
-  status: ["Lançamento", "Breve lançamento", "Em Obras", "Entregues"],
+  status: ["Breve lançamento", "Lançamento", "Em obras", "Entregues"],
   bairros: [
     "Bela Vista",
     "Pinheiros",
-    "Vila Olímpia",
-    "Jardins",
-    "Morumbi",
-    "Vila Madalena",
-    "Icaraí",
-    "Cotia",
+    "Jardim D'Icaraí",
     "Chácara Roselândia",
     "Jardim Isis",
+    "Granja Viana",
+    "Centro",
   ],
   faixas: [
     { label: "Até R$ 300.000", min: 0, max: 300000 },
     { label: "R$ 300.000 - R$ 500.000", min: 300000, max: 500000 },
     { label: "R$ 500.000 - R$ 800.000", min: 500000, max: 800000 },
     { label: "R$ 800.000 - R$ 1.200.000", min: 800000, max: 1200000 },
-    { label: "R$ 1.200.000 - R$ 2.000.000", min: 1200000, max: 2000000 },
-    { label: "Acima de R$ 2.000.000", min: 2000000, max: Number.POSITIVE_INFINITY },
+    { label: "Acima de R$ 1.200.000", min: 1200000, max: Number.POSITIVE_INFINITY },
   ],
 }
 
@@ -410,37 +753,25 @@ export const opcoesFiltros: OpcoesFilter = {
 // FUNÇÕES HELPER
 // =============================================================================
 
-/**
- * Busca um empreendimento pelo slug
- */
 export function buscarEmpreendimentoPorSlug(slug: string): Empreendimento | undefined {
   return empreendimentos.find((emp) => emp.slug === slug)
 }
 
-/**
- * Retorna apenas empreendimentos ativos
- */
 export function buscarEmpreendimentosAtivos(): Empreendimento[] {
   return empreendimentos.filter((emp) => emp.ativo)
 }
 
-/**
- * Retorna empreendimentos marcados como destaque
- */
 export function buscarEmpreendimentosDestaque(): Empreendimento[] {
   return empreendimentos.filter((emp) => emp.ativo && emp.destacado)
 }
 
-/**
- * Gera um slug URL-friendly a partir do nome
- */
 export function gerarSlug(nome: string): string {
   return nome
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-    .replace(/[^a-z0-9\s-]/g, "") // Remove caracteres especiais
-    .replace(/\s+/g, "-") // Substitui espaços por hífens
-    .replace(/-+/g, "-") // Remove hífens duplicados
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
     .trim()
 }

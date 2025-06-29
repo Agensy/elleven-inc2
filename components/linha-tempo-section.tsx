@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { ChevronLeft, ChevronRight, Calendar } from "lucide-react"
+import Link from "next/link"
 
 // Dados dos projetos para a linha do tempo
 const todosOsProjetos = [
@@ -13,6 +14,7 @@ const todosOsProjetos = [
     mesEntrega: "Setembro",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "botanique",
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ const todosOsProjetos = [
     mesEntrega: "Setembro",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "essence",
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ const todosOsProjetos = [
     mesEntrega: "Julho",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "le-mont",
   },
   {
     id: 4,
@@ -40,6 +44,7 @@ const todosOsProjetos = [
     mesEntrega: "Abril",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "vert",
   },
   {
     id: 5,
@@ -49,6 +54,7 @@ const todosOsProjetos = [
     mesEntrega: "Outubro",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "grand-parc",
   },
   {
     id: 6,
@@ -58,6 +64,7 @@ const todosOsProjetos = [
     mesEntrega: "Março",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "mont-royal",
   },
   {
     id: 7,
@@ -67,6 +74,7 @@ const todosOsProjetos = [
     mesEntrega: "Julho",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "le-mont-2",
   },
   {
     id: 8,
@@ -76,6 +84,7 @@ const todosOsProjetos = [
     mesEntrega: "Maio",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "quartier",
   },
   {
     id: 9,
@@ -85,6 +94,7 @@ const todosOsProjetos = [
     mesEntrega: "Janeiro",
     status: "Entregue",
     categoria: "Realizado",
+    slug: "grand-club-cotia",
   },
   {
     id: 10,
@@ -94,6 +104,7 @@ const todosOsProjetos = [
     mesEntrega: "Novembro",
     status: "Em Andamento",
     categoria: "Em Andamento",
+    slug: "icarai",
   },
 ]
 
@@ -122,9 +133,7 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
             src={projeto.imagem || "/placeholder.svg"}
             alt={`Projeto ${projeto.nome}`}
             className={`w-full object-cover rounded-xl transition-all duration-500 ${
-              isActive 
-                ? "brightness-110 contrast-110 saturate-110" 
-                : "brightness-75 saturate-50 grayscale"
+              isActive ? "brightness-110 contrast-110 saturate-110" : "brightness-75 saturate-50 grayscale"
             }`}
           />
 
@@ -136,13 +145,6 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
             </div>
           )}
         </div>
-
-        {/* Nome do projeto abaixo da imagem para projeto ativo */}
-        {/* {isActive && (
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500/90 to-orange-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap border border-orange-400/30">
-            {projeto.nome}
-          </div>
-        )} */}
       </div>
     </div>
   )
@@ -372,10 +374,13 @@ export default function LinhaTempoSection() {
                     </span>
                   </div>
 
-                  {/* Botão Ver Detalhes simplificado */}
-                  <button className="bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 border border-orange-400/30">
+                  {/* Botão Ver Detalhes com link simples */}
+                  <Link
+                    href={`/${todosOsProjetos[activeProject]?.slug}`}
+                    className="inline-block bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 border border-orange-400/30"
+                  >
                     Ver Detalhes
-                  </button>
+                  </Link>
                 </div>
               </div>
 

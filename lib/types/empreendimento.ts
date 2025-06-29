@@ -2,8 +2,14 @@
 // TIPOS BÁSICOS
 // =============================================================================
 
-export type EmpreendimentoTipo = "Studio" | "1 dormitório" | "2 dormitórios" | "3 dormitórios" | "Cobertura"
-export type EmpreendimentoStatus = "Breve lançamento" | "Lançamento" | "Em Obras" | "Entregues"
+export type EmpreendimentoTipo =
+  | "Studio"
+  | "1 dormitório"
+  | "2 dormitórios"
+  | "3 dormitórios"
+  | "Cobertura"
+  | "Comercial"
+export type EmpreendimentoStatus = "Breve lançamento" | "Lançamento" | "Em obras" | "Entregues"
 
 // =============================================================================
 // INTERFACES AUXILIARES
@@ -29,7 +35,7 @@ export interface Coordenadas {
 export interface PontoInteresse {
   nome: string
   distancia: string
-  tipo: "saude" | "shopping" | "transporte" | "comercio" | "parque" | "educacao"
+  tipo: "transporte" | "comercio" | "shopping" | "saude" | "educacao" | "parque" | "lazer"
 }
 
 // Interface para faixas de preço nos filtros
@@ -63,10 +69,10 @@ export interface EspecificacoesTecnicas {
 
 // Interface para identidade visual do empreendimento
 export interface IdentidadeVisual {
-  logo: string
   corPrimaria: string
-  corSecundaria?: string
-  imagemBackground: string
+  corSecundaria: string
+  logo?: string
+  imagemBackground?: string
 }
 
 // Interface para filtros de busca
@@ -252,43 +258,27 @@ export interface Empreendimento {
   // Localização
   localizacao: string
   bairro: string
-  endereco?: Endereco
   coordenadas: Coordenadas
-  pontos_interesse: PontoInteresse[]
-
-  // Características básicas
-  tipo: EmpreendimentoTipo
   status: EmpreendimentoStatus
+  tipo: string
   area: string
   quartos: number
   banheiros: number
   vagas: number
-
-  // Preço e entrega
   preco: number
+  descricao: string
   precoFormatado: string
   entrega: string
-
-  // Conteúdo
-  descricao: string
-  destaque?: string
-  diferenciais: string[]
-
-  // Mídia
+  ativo: boolean
+  destacado?: boolean
   imagem: string
   imagemDestaque?: string
   galeria: string[]
-
-  // Identidade visual
-  identidadeVisual: IdentidadeVisual
-
-  // Dados técnicos
   plantas: Planta[]
+  diferenciais: string[]
+  identidadeVisual: IdentidadeVisual
+  pontos_interesse: PontoInteresse[]
   especificacoes: EspecificacoesTecnicas
-
-  // Metadados
-  destacado?: boolean
-  ativo: boolean
   tags: string[]
   categoria: string[]
 }
@@ -298,7 +288,7 @@ export interface Empreendimento {
 // =============================================================================
 
 export interface OpcoesFilter {
-  tipos: EmpreendimentoTipo[]
+  tipos: string[]
   status: EmpreendimentoStatus[]
   bairros: string[]
   faixas: FaixaPreco[]

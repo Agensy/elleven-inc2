@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 }
 
 export default function GrandClubCotiaPage() {
-  return <EmpreendimentoPage empreendimento={grandClubCotiaData} />
+  return <EmpreendimentoPage data={grandClubCotiaData} />
 }

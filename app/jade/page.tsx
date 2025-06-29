@@ -548,9 +548,11 @@ export default function JadePage() {
         <div className="relative z-10 container mx-auto px-6 h-full flex items-center justify-center">
           <div className="max-w-4xl text-white text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <Badge className="bg-orange-500/90 text-white text-sm px-4 py-2 mb-6 backdrop-blur-sm">
-                {jadeTemplate.subtitulo}
-              </Badge>
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
+                  <span className="text-xs font-normal text-white/70">{jadeTemplate.subtitulo}</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -602,10 +604,9 @@ export default function JadePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 bg-transparent"
+                className="bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105"
                 onClick={() => setShowContact(true)}
               >
-                <TrendingUp className="mr-2 h-5 w-5" />
                 Quero Investir
               </Button>
             </motion.div>
@@ -846,7 +847,7 @@ export default function JadePage() {
           {/* Header da seção */}
           <motion.div {...fadeIn} className="text-center mb-16">
             <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
-              STUDIOS INTELIGENTES & ESPECIFICAÇÕES
+              TIPOLOGIA & ESPECIFICAÇÕES
             </span>
             <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mt-4 mb-6">
               FICHA TÉCNICA

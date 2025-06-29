@@ -1,0 +1,10 @@
+// Componentes de Empreendimento - Sistema Componentizado
+export { default as EmpreendimentoPage } from './EmpreendimentoPage'
+export { default as EmpreendimentoHeader } from './EmpreendimentoHeader'
+export { default as EmpreendimentoHero } from './EmpreendimentoHero'
+export { default as EmpreendimentoSobre } from './EmpreendimentoSobre'
+export { default as EmpreendimentoInformacoes } from './EmpreendimentoInformacoes'
+export { default as EmpreendimentoGaleria } from './EmpreendimentoGaleria'
+export { default as EmpreendimentoPlantas } from './EmpreendimentoPlantas'
+export { default as EmpreendimentoContato } from './EmpreendimentoContato'
+export { default as EmpreendimentoModalContato } from './EmpreendimentoModalContato' 

@@ -133,12 +133,12 @@ function DiferencialCard({
       className="bg-card/50 border border-border/30 rounded-lg p-6 text-center hover:border-border/60 hover:bg-card/80 transition-all duration-300 group"
     >
       {/* Icon com padrão documentado */}
-      <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary/20 transition-colors duration-300">
-        <Icon className="h-8 w-8 text-secondary group-hover:scale-110 transition-transform duration-300" />
+      <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-500/20 transition-colors duration-300">
+        <Icon className="h-8 w-8 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
       </div>
 
       {/* Content */}
-      <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-secondary transition-colors duration-300">
+      <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-orange-500 transition-colors duration-300">
         {diferencial.titulo}
       </h3>
       <p className="text-muted-foreground leading-relaxed" style={{ fontSize: "0.875rem" }}>
@@ -177,9 +177,9 @@ function PropostoSection({ fadeInUp }: { fadeInUp: any }) {
 
         {/* Decorative Elements padrão */}
         <div className="flex justify-center items-center gap-2">
-          <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-border rounded-full"></div>
-          <div className="w-2 h-2 bg-secondary rounded-full"></div>
-          <div className="w-8 h-0.5 bg-gradient-to-r from-border to-transparent rounded-full"></div>
+          <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-orange-500/50 rounded-full"></div>
+          <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+          <div className="w-8 h-0.5 bg-gradient-to-r from-orange-500/50 to-transparent rounded-full"></div>
         </div>
       </div>
     </motion.div>

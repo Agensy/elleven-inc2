@@ -155,9 +155,9 @@ export default function EmpreendimentosSection() {
           {/* Barra de Busca */}
           <div className="max-w-xl mx-auto mb-8">
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-white/80 backdrop-blur-sm border border-border/30 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground group-hover:text-secondary transition-colors" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground group-hover:text-orange-500 transition-colors" />
                 <Input
                   placeholder="Buscar empreendimentos por nome ou localização..."
                   value={filtros.busca}
@@ -177,8 +177,8 @@ export default function EmpreendimentosSection() {
               onClick={() => setMostrarFiltros(!mostrarFiltros)}
               className={`h-11 px-6 transition-all duration-300 ${
                 mostrarFiltros
-                  ? "bg-secondary hover:bg-secondary/90 text-white shadow-lg"
-                  : "border-border/50 hover:border-secondary hover:bg-muted hover:shadow-md"
+                  ? "bg-orange-500 hover:bg-orange-600 text-white shadow-lg"
+                  : "border-border/50 hover:border-orange-500 hover:bg-muted hover:shadow-md"
               }`}
             >
               <Filter className="h-4 w-4 mr-2" />
@@ -189,7 +189,7 @@ export default function EmpreendimentosSection() {
             {temFiltrosAtivos && (
               <Badge
                 variant="secondary"
-                className="bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1"
+                className="bg-orange-500/10 text-orange-500 border border-orange-500/20 px-3 py-1"
               >
                 {Object.values(filtros).filter(Boolean).length} filtro
                 {Object.values(filtros).filter(Boolean).length > 1 ? "s" : ""} ativo
@@ -225,12 +225,12 @@ export default function EmpreendimentosSection() {
               <div className="flex items-center gap-4">
                 {isLoading ? (
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 border-2 border-secondary/30 border-t-secondary rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-orange-500/30 border-t-orange-500 rounded-full animate-spin"></div>
                     <span className="text-foreground font-medium">Filtrando empreendimentos...</span>
                   </div>
                 ) : (
                   <div className="flex items-center gap-3">
-                    <div className="bg-secondary/10 text-secondary px-3 py-1.5 rounded-full font-semibold text-sm">
+                    <div className="bg-orange-500/10 text-orange-500 px-3 py-1.5 rounded-full font-semibold text-sm">
                       {empreendimentosFiltrados.length}{" "}
                       {empreendimentosFiltrados.length === 1 ? "empreendimento" : "empreendimentos"}
                     </div>

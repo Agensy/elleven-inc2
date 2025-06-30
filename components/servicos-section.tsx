@@ -49,7 +49,7 @@ const servicos = [
 
 export default function ServicosSection() {
   return (
-    <section className="py-20 bg-background">
+    <section id="servicos" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Header Moderno */}
         <div className="text-center mb-12">

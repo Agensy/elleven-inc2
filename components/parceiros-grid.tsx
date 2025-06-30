@@ -315,7 +315,7 @@ function ParceiroCard({
   index: number
 }) {
   return (
-    <Link href="/parceiros">
+    <Link href="/parceiros#kabanna">
       <motion.div
         whileHover={{
           y: -8,

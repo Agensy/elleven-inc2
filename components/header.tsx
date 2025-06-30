@@ -30,7 +30,7 @@ export default function Header() {
   const navItems = [
     { href: "/empreendimentos", label: "Empreendimentos" },
     { href: "/#sobre", label: "Sobre" },
-    { href: "/servicos", label: "Serviços" },
+    { href: "/#servicos", label: "Serviços" },
     { href: "/invista", label: "Invista" },
     { href: "/parceiros#kabanna", label: "Parceiros" },
     { href: "/contato", label: "Contato" },

@@ -6,7 +6,7 @@ const CustomIcon = ({ src, alt = "Ícone" }: { src: string; alt?: string }) => (
 )
 
 // =============================================================================
-// DADOS DOS SERVIÇOS - MANTIDOS EXATAMENTE COMO ESTAVAM
+// DADOS DOS SERVIÇOS - ATUALIZADOS COM OS ÍCONES CORRETOS
 // =============================================================================
 
 const servicos = [

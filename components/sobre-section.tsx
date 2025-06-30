@@ -75,7 +75,10 @@ function ConteudoTexto({ fadeInLeft }: { fadeInLeft: any }) {
       </div>
 
       {/* CTA */}
-      <Button size="lg" className="mt-4 bg-[#1A2D54] hover:bg-[#152444] text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105 group">
+      <Button
+        size="lg"
+        className="mt-4 bg-[#1A2D54] hover:bg-[#152444] text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105 group"
+      >
         Conheça Nossa História
         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
       </Button>
@@ -96,7 +99,7 @@ function ImagemStats({ fadeInRight }: { fadeInRight: any }) {
       <div className="relative overflow-hidden rounded-lg shadow-light-lg dark:shadow-2xl">
         <img
           src="/images/elleven-engenharia-about.webp"
-          alt="Capacete de engenharia e plantas com skyline ao pôr do sol"
+          alt="Capacete de engenharia da Elleven com plantas arquitetônicas e skyline ao pôr do sol"
           className="w-full h-[500px] object-cover"
         />
       </div>

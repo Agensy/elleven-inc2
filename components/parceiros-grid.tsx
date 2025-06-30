@@ -315,7 +315,7 @@ function ParceiroCard({
   index: number
 }) {
   return (
-    <Link href="/parceiros#kabanna">
+    <Link href="/parceiros#kabanna" scroll={true}>
       <motion.div
         whileHover={{
           y: -8,

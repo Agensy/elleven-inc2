@@ -1,15 +1,16 @@
-import type React from "react"
+"use client"
 
-interface VitrineParceirosProps {
-  children: React.ReactNode
-}
+import Image from "next/image"
 
-const VitrineParceiros: React.FC<VitrineParceirosProps> = ({ children }) => {
+export default function VitrineParceiros() {
   return (
-    <section id="kabanna" className="bg-gray-100 py-12">
-      <div className="container mx-auto">{children}</div>
-    </section>
+    <>
+      {/* Seção espaçadora para evitar sobreposição do menu */}
+      <div className="h-20 w-full"></div>
+
+      <section id="kabanna" className="relative h-screen w-full overflow-hidden">
+        <Image src="/parceiros/kabanna-vitrine.jpeg" alt="Kabanna Real Estate" fill className="object-cover" priority />
+      </section>
+    </>
   )
 }
-
-export default VitrineParceiros

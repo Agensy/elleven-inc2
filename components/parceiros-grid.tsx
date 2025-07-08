@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import Link from "next/link"
 
 // =============================================================================
 // DADOS DOS PARCEIROS
@@ -314,8 +313,13 @@ function ParceiroCard({
   parceiro: Parceiro
   index: number
 }) {
+  const handleClick = () => {
+    // Navegar para a página de parceiros e depois rolar para a seção kabanna
+    window.location.href = "/parceiros#kabanna"
+  }
+
   return (
-    <Link href="/parceiros#kabanna" scroll={true}>
+    <div onClick={handleClick} className="cursor-pointer">
       <motion.div
         whileHover={{
           y: -8,
@@ -340,18 +344,14 @@ function ParceiroCard({
           )}
         </div>
 
-        {/* Nome do parceiro para identificação */}
-
         {/* Descrição centralizada */}
         <p className="text-xs text-slate-300 text-center leading-relaxed group-hover:text-slate-100 transition-colors duration-300 line-clamp-3">
           {parceiro.descricao}
         </p>
 
-        {/* Badge da categoria */}
-
         {/* Linha decorativa inferior */}
         <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-xl" />
       </motion.div>
-    </Link>
+    </div>
   )
 }

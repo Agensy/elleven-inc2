@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { ChevronLeft, ChevronRight, Calendar } from "lucide-react"
 import Link from "next/link"
+import { getEmpreendimentoUrl } from "@/lib/utils/empreendimento-urls"
 
 // Dados dos projetos para a linha do tempo
 const todosOsProjetos = [
@@ -104,7 +105,7 @@ const todosOsProjetos = [
     mesEntrega: "Novembro",
     status: "Em Andamento",
     categoria: "Em Andamento",
-    slug: "icarai",
+    slug: "icarai-parque-clube", // Usando slug completo para mapeamento correto
   },
 ]
 
@@ -374,9 +375,9 @@ export default function LinhaTempoSection() {
                     </span>
                   </div>
 
-                  {/* Botão Ver Detalhes com link direto para hero section */}
+                  {/* Botão Ver Detalhes com função centralizada - CORRIGIDO */}
                   <Link
-                    href={`/${todosOsProjetos[activeProject]?.slug}#hero`}
+                    href={getEmpreendimentoUrl(todosOsProjetos[activeProject]?.slug)}
                     className="inline-block bg-orange-500/80 hover:bg-orange-500 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 border border-orange-400/30"
                   >
                     Ver Detalhes

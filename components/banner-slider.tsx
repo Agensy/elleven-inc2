@@ -19,38 +19,34 @@ import {
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { empreendimentos } from "@/lib/data/empreendimentos"
-
-// Helper functions
-function getEmpreendimentoUrl(slug: string | null): string {
-  if (!slug) return "/empreendimentos"
-  const empreendimentoUrls: Record<string, string> = {
-    jade: "/jade",
-    obsidian: "/obsidian",
-    "icarai-parque-clube": "/icarai-parque-clube",
-  }
-  return empreendimentoUrls[slug] || "/empreendimentos"
-}
+import { getEmpreendimentoUrl } from "@/lib/utils/empreendimento-urls"
 
 // Função para obter badges específicos por empreendimento
 function getBadgesPorEmpreendimento(slug: string) {
   const badgesMap: Record<string, Array<{ icon: any; label: string; description: string }>> = {
     "icarai-parque-clube": [
-      { icon: Building, label: "Torres", description: "2 Torres" },
+      { icon: Building, label: "Torres", description: "4 Torres" },
+      { icon: Trees, label: "Natureza", description: "Parque Clube" },
+      { icon: Waves, label: "Lazer", description: "Piscina" },
+      { icon: Dumbbell, label: "Saúde", description: "Academia" },
+    ],
+    icarai: [
+      { icon: Building, label: "Torres", description: "4 Torres" },
       { icon: Trees, label: "Natureza", description: "Parque Clube" },
       { icon: Waves, label: "Lazer", description: "Piscina" },
       { icon: Dumbbell, label: "Saúde", description: "Academia" },
     ],
     jade: [
       { icon: Home, label: "Studios", description: "25 a 40m²" },
-      { icon: Building, label: "Rooftop", description: "Área Externa" },
-      { icon: Coffee, label: "Gourmet", description: "Espaço Gourmet" },
-      { icon: Car, label: "Garagem", description: "Vagas" },
+      { icon: Building, label: "Rooftop", description: "Vista Panorâmica" },
+      { icon: Coffee, label: "Gourmet", description: "Lounge" },
+      { icon: Sparkles, label: "Premium", description: "Acabamentos" },
     ],
     obsidian: [
       { icon: Building, label: "Alto Padrão", description: "Luxo" },
       { icon: Sparkles, label: "Design", description: "Moderno" },
-      { icon: Home, label: "Apartamentos", description: "1 a 3 Dorm" },
-      { icon: MapPin, label: "Localização", description: "Privilegiada" },
+      { icon: Home, label: "Apartamentos", description: "2 Dorm" },
+      { icon: MapPin, label: "Pinheiros", description: "Localização" },
     ],
   }
 
@@ -64,14 +60,11 @@ function getBadgesPorEmpreendimento(slug: string) {
   )
 }
 
-// Static banners data
-// Remover o array staticBanners fixo
-
-// Adicionar função para buscar empreendimentos do banner:
+// Função para buscar empreendimentos do banner
 const getBannerEmpreendimentos = () => {
   // Apenas JADE, OBSIDIAN E ICARAÍ no slider
   const slugsPermitidos = ["jade", "obsidian", "icarai-parque-clube"]
-  
+
   return empreendimentos
     .filter((emp) => emp.ativo && slugsPermitidos.includes(emp.slug))
     .map((emp) => ({
@@ -85,7 +78,7 @@ const getBannerEmpreendimentos = () => {
       descricao: emp.descricao,
       preco: emp.precoFormatado,
       entrega: emp.entrega,
-      imagem: emp.imagem, // Esta é a fachada principal
+      imagem: emp.imagem,
       imagemDestaque: emp.imagemDestaque || emp.imagem,
       video: false,
       destaque: emp.status.toUpperCase(),
@@ -94,13 +87,14 @@ const getBannerEmpreendimentos = () => {
       identidadeVisual: emp.identidadeVisual,
     }))
 }
-const bannerEmpreendimentos = getBannerEmpreendimentos()
 
 export default function BannerSlider() {
   const [mounted, setMounted] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(false)
   const [direction, setDirection] = useState(0)
+
+  const bannerEmpreendimentos = getBannerEmpreendimentos()
 
   // Refs para cleanup
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null)
@@ -121,7 +115,7 @@ export default function BannerSlider() {
     }, 3000)
 
     return () => clearTimeout(timer)
-  }, [mounted])
+  }, [mounted, bannerEmpreendimentos.length])
 
   // Interval do auto-play
   useEffect(() => {
@@ -164,6 +158,17 @@ export default function BannerSlider() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-white text-xl">Carregando...</div>
+        </div>
+      </section>
+    )
+  }
+
+  if (bannerEmpreendimentos.length === 0) {
+    return (
+      <section className="relative h-[75vh] md:h-[80vh] overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+        <div className="relative z-20 h-full flex items-center justify-center">
+          <div className="text-white text-xl">Nenhum empreendimento encontrado</div>
         </div>
       </section>
     )
@@ -285,8 +290,7 @@ export default function BannerSlider() {
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                   <img
                     src={
-                      currentBanner.imagem || // Usar a fachada principal
-                      "/placeholder.svg?height=600&width=500&query=luxury apartment building"
+                      currentBanner.imagem || "/placeholder.svg?height=600&width=500&query=luxury apartment building"
                     }
                     alt={currentBanner.titulo}
                     className="w-full h-[500px] md:h-[600px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -307,7 +311,7 @@ export default function BannerSlider() {
                   </div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    {/* Sobreposição para destaque dos ícones - estendida até o meio */}
+                    {/* Sobreposição para destaque dos ícones */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent pointer-events-none" />
 
                     <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
@@ -363,7 +367,7 @@ export default function BannerSlider() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={nextSlide}
+              onClick={prevSlide}
               className="h-14 w-14 md:h-12 md:w-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -374,7 +378,7 @@ export default function BannerSlider() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={prevSlide}
+              onClick={nextSlide}
               className="h-14 w-14 md:h-12 md:w-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
               <ChevronRight className="h-5 w-5" />

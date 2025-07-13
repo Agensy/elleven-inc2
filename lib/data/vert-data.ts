@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const vertData: EmpreendimentoData = {
+export const vertData: any = {
   // Identificação
   slug: "vert",
   nome: "Vert Condomínio Residencial",
@@ -20,7 +20,7 @@ export const vertData: EmpreendimentoData = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   area: "42m² a 85m²",
   quartos: 2,
   vagas: 1,

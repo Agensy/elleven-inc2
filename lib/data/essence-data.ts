@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const essenceData: EmpreendimentoData = {
+export const essenceData: any = {
   // Identificação
   nome: "Essence",
   slug: "essence",
@@ -20,7 +20,7 @@ export const essenceData: EmpreendimentoData = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   area: "40m² a 112m²",
   quartos: 4,
   vagas: 2,

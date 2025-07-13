@@ -22,7 +22,7 @@ export const leMontData = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Entregues",
+  status: "Entregue",
   entrega: "2016",
   area: "18.000 m²",
   quartos: 3,

@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const quartierData: EmpreendimentoData = {
+export const quartierData: any = {
   // Informações básicas
   nome: "Quartier Residencial Clube",
   slug: "quartier",
@@ -20,7 +20,7 @@ export const quartierData: EmpreendimentoData = {
 
   // Características do imóvel
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   entrega: "2026",
   area: "36,60m² a 45,82m²",
   quartos: 2,

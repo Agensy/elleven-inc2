@@ -2,7 +2,7 @@ export const obsidianData = {
   slug: "obsidian",
   nome: "Obsidian",
   slogan: "Exclusividade e design contemporâneo em Pinheiros",
-  status: "Breve lançamento",
+  status: "Lançamento",
   tipo: "Residencial",
   localizacao: "Pinheiros, São Paulo, SP",
   endereco: {

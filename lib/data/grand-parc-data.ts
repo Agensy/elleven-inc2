@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const grandParcData: EmpreendimentoData = {
+export const grandParcData: any = {
   // Identificação
   slug: "grand-parc",
   nome: "Grand Parc",
@@ -20,7 +20,7 @@ export const grandParcData: EmpreendimentoData = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   area: "40m² a 85m²",
   quartos: 3,
   vagas: 2,

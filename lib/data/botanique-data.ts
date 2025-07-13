@@ -1,6 +1,4 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
-
-export const botaniqueData: EmpreendimentoData = {
+export const botaniqueData = {
   // Identificação básica
   id: 1,
   slug: "botanique",
@@ -14,7 +12,7 @@ export const botaniqueData: EmpreendimentoData = {
 
   // Características básicas
   tipo: "2 e 3 dormitórios",
-  status: "Concluído",
+  status: "Entregue",
   area: "60 a 120m²",
   quartos: 3,
   banheiros: 2,

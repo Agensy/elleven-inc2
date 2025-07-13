@@ -15,7 +15,7 @@ export const grandClubCotiaData: Empreendimento = {
 
   // Características básicas
   tipo: "2 dormitórios",
-  status: "Breve lançamento",
+  status: "Entregues",
   area: "31,06m² a 46,32m²",
   quartos: 2,
   banheiros: 1,

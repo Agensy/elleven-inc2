@@ -8,7 +8,7 @@ export const icaraiData = {
   slug: "icarai-parque-clube",
   nome: "Icaraí Parque Clube",
   slogan: "A natureza exuberante encontra o conforto de um clube completo",
-  status: "Em Obras",
+  status: "Em obras",
   tipo: "Residencial",
   localizacao: "Salto, SP",
   endereco: {

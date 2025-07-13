@@ -100,7 +100,7 @@ const todosOsProjetos = [
   {
     id: 10,
     nome: "Icaraí Parque Clube",
-    imagem: "/linha-tempo/icarai.jpg",
+    imagem: "/linha-tempo/icarai.png",
     entrega: "2026",
     mesEntrega: "Novembro",
     status: "Em Andamento",
@@ -119,7 +119,7 @@ function ProjetoCard({ projeto, isActive, isAbove }: ProjetoCardProps) {
   return (
     <div
       className={`flex-shrink-0 w-72 mx-6 transition-all duration-500 relative ${
-        isActive ? "opacity-100 scale-125" : "opacity-100 scale-95"
+        isActive ? "opacity-100 scale-125" : "opacity-100 scale-75"
       } ${isAbove ? "self-start" : "self-end"}`}
       style={{
         marginTop: isAbove ? "0" : "140px",

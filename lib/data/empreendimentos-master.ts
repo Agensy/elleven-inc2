@@ -7,6 +7,9 @@ import { essenceData } from "./essence-data"
 import { grandParcData } from "./grand-parc-data"
 import { montRoyalData } from "./mont-royal-data"
 import { quartierData } from "./quartier-data"
+import { icaraiData } from "./icarai-data"
+import { jadeData } from "./jade-data"
+import { obsidianData } from "./obsidian-data"
 
 /**
  * =============================================================================
@@ -480,58 +483,37 @@ export const empreendimentosMaster: Empreendimento[] = [
     categoria: ["residencial", "alto padrão"],
   },
 
-  // ICARAÍ PARQUE CLUBE
+  // ICARAÍ PARQUE CLUBE - NOVO
   {
-    id: 5,
-    nome: "Icaraí Parque Clube",
+    ...converterTemplateParaEmpreendimento(icaraiData, 12),
     slug: "icarai-parque-clube",
-    subtitulo: "Em Obras",
-    slogan: "Onde Natureza e Qualidade de Vida se Encontram",
-    localizacao: "Salto, São Paulo - SP",
-    bairro: "Jardim D'Icaraí",
+    destacado: false, // Em obras, não é destaque de venda ainda
+    tags: ["salto", "parque clube", "natureza"],
+    preco: 600000, // Estimativa
+    bairro: "Centro",
+    coordenadas: { lat: -23.2031, lng: -47.2881 }, // Salto, SP
+  },
 
-    coordenadas: { lat: -23.2, lng: -47.283333 },
-    tipo: "2 dormitórios" as EmpreendimentoTipo,
-    status: "Em obras" as EmpreendimentoStatus,
-    entrega: "Novembro 2026",
-    area: "75m²",
-    quartos: 2,
-    banheiros: 2,
-    vagas: 1,
-    preco: 750000,
-    precoFormatado: "A partir de R$ 750.000",
-    descricao:
-      "Um lugar onde o equilíbrio entre qualidade de vida e o encanto da natureza cria o cenário perfeito para o seu novo lar. Com 55 mil metros quadrados, o Icaraí Parque Clube oferece uma experiência completa de moradia com infraestrutura de clube e a tranquilidade de um parque.",
-    imagem: "/empreendimentos/icarai-parque-clube/fachadas/ICARAI_TORRES DO ICARAI - FACHADA.jpeg",
-    imagemDestaque: "/empreendimentos/icarai-parque-clube/background-icarai-abstract.png",
-    galeria: ["/empreendimentos/icarai-parque-clube/fachadas/ICARAI_TORRES DO ICARAI - FACHADA.jpeg"],
-    identidadeVisual: {
-      logo: "/empreendimentos/icarai-parque-clube/logo-icarai.png",
-      corPrimaria: "#10B981",
-      corSecundaria: "#065F46",
-      imagemBackground: "/empreendimentos/icarai-parque-clube/background-icarai-abstract.png",
-    },
-    diferenciais: [
-      "408 unidades distribuídas em 4 torres",
-      "Apartamentos de 2 e 3 dormitórios",
-      "Lazer completo com infraestrutura de clube",
-      "55.000m² de área total preservada",
-    ],
-    pontos_interesse: [
-      { nome: "Centro de Salto", distancia: "3km", tipo: "comercio" },
-      { nome: "Estação Salto", distancia: "5km", tipo: "transporte" },
-    ],
-    plantas: [],
-    especificacoes: {
-      unidades: "408 unidades",
-      andares: "4 torres",
-      elevadores: "2 elevadores por torre",
-      entrega: "Novembro 2026",
-    },
-    ativo: true,
+  // JADE - NOVO
+  {
+    ...converterTemplateParaEmpreendimento(jadeData, 13),
+    slug: "jade",
     destacado: true,
-    tags: ["natureza", "salto", "clube"],
-    categoria: ["residencial", "condomínio clube"],
+    tags: ["bela vista", "são paulo", "rooftop"],
+    preco: 950000, // Estimativa
+    bairro: "Bela Vista",
+    coordenadas: { lat: -23.559, lng: -46.649 }, // Bela Vista, SP
+  },
+
+  // OBSIDIAN - NOVO
+  {
+    ...converterTemplateParaEmpreendimento(obsidianData, 14),
+    slug: "obsidian",
+    destacado: true,
+    tags: ["pinheiros", "alto padrão", "oscar freire"],
+    preco: 1800000, // Estimativa
+    bairro: "Pinheiros",
+    coordenadas: { lat: -23.565, lng: -46.685 }, // Pinheiros, SP
   },
 ]
 

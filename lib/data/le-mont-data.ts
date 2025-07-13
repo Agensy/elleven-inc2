@@ -1,12 +1,13 @@
 import type { Empreendimento } from "@/lib/types/empreendimento"
 
-export const leMontData: Empreendimento = {
+export const leMontData = {
   // Identificação básica
   id: "le-mont",
   slug: "le-mont-novo",
   nome: "Le Mont",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",
   slogan: "Um novo conceito de morar bem",
+  heroType: "banner",
 
   // Localização
   localizacao: "Cotia - SP",
@@ -21,14 +22,14 @@ export const leMontData: Empreendimento = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Concluído",
+  status: "Entregues",
   entrega: "2016",
   area: "18.000 m²",
   quartos: 3,
   vagas: 1,
 
   // Preços
-  precoFormatado: "Consulte valores",
+  precoFormatado: "100% vendido",
 
   // Descrição
   descricao:
@@ -57,7 +58,6 @@ export const leMontData: Empreendimento = {
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1%20-%20VITRINE_LE%20MONT%201-tpzwlGlJbz53ZZYI1khTDNV2R5Dxe7.jpeg",
     corPrimaria: "#2F4F2F",
     corSecundaria: "#6B8E23",
-    corDestaque: "#D4AF37",
   },
 
   // Diferenciais
@@ -111,7 +111,7 @@ export const leMontData: Empreendimento = {
       quartos: 1,
       banheiros: 1,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=300",
+      imagem: "/empreendimentos/botanique/plantas/Planta 2 dormi.jpg",
       preco: "Consulte valores",
       descricao: "Apartamento compacto com sala integrada, cozinha americana e área de serviço",
       destaque: false,
@@ -123,7 +123,7 @@ export const leMontData: Empreendimento = {
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=300",
+      imagem: "/empreendimentos/botanique/plantas/Planta 3 dormi.jpg",
       preco: "Consulte valores",
       descricao: "Apartamento com 2 dormitórios, sala de estar, cozinha e área de serviço",
       destaque: true,
@@ -135,7 +135,7 @@ export const leMontData: Empreendimento = {
       quartos: 2,
       banheiros: 1,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=300",
+      imagem: "/empreendimentos/botanique/plantas/Planta 3 dormi 2.jpg",
       preco: "Consulte valores",
       descricao: "Apartamento ampliado com 2 dormitórios e sacada com churrasqueira",
       destaque: false,
@@ -147,7 +147,7 @@ export const leMontData: Empreendimento = {
       quartos: 2,
       banheiros: 2,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=300",
+      imagem: "/empreendimentos/botanique/plantas/cobertura duplex 1 piso.jpg",
       preco: "Consulte valores",
       descricao: "Unidade garden com acesso exclusivo ao jardim e área externa privativa",
       destaque: true,
@@ -159,7 +159,7 @@ export const leMontData: Empreendimento = {
       quartos: 2,
       banheiros: 2,
       vagas: 1,
-      imagem: "/placeholder.svg?height=400&width=300",
+      imagem: "/empreendimentos/botanique/plantas/cobertura duplex 2 piso.jpg",
       preco: "Consulte valores",
       descricao: "Garden ampliado com suíte master e área externa generosa",
       destaque: false,

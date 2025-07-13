@@ -112,6 +112,7 @@ export interface HeroData {
   titulo: string
   subtitulo: string
   ctas: CTA[]
+  heroType?: "video" | "image" | "banner"
 }
 
 // Interface para Seção Sobre
@@ -254,6 +255,7 @@ export interface Empreendimento {
   nome: string
   subtitulo?: string
   slogan?: string
+  heroType?: "video" | "image" | "banner"
 
   // Localização
   localizacao: string

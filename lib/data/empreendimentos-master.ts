@@ -1,9 +1,4 @@
-import type {
-  Empreendimento,
-  EmpreendimentoTipo,
-  EmpreendimentoStatus,
-  OpcoesFilter,
-} from "@/lib/types/empreendimento"
+import type { Empreendimento, EmpreendimentoTipo, EmpreendimentoStatus, OpcoesFilter } from "@/lib/types/empreendimento"
 import { botaniqueData } from "./botanique-data"
 import { leMontData } from "./le-mont-data"
 import { leMont2Data } from "./le-mont-2-data"
@@ -62,10 +57,7 @@ export function getEmpreendimentoUrl(slug: string): string {
 /**
  * Converte dados do template (EmpreendimentoData) para interface padrão (Empreendimento)
  */
-function converterTemplateParaEmpreendimento(
-  templateData: any,
-  id: number,
-): Empreendimento {
+function converterTemplateParaEmpreendimento(templateData: any, id: number): Empreendimento {
   return {
     id: id,
     slug: templateData.slug || `empreendimento-${id}`,
@@ -79,9 +71,7 @@ function converterTemplateParaEmpreendimento(
     coordenadas: { lat: -23.5505, lng: -46.6333 }, // SP como padrão
 
     // Características básicas
-    tipo: (
-      templateData.tipo === "Residencial" ? "2 dormitórios" : templateData.tipo
-    ) as EmpreendimentoTipo,
+    tipo: (templateData.tipo === "Residencial" ? "2 dormitórios" : templateData.tipo) as EmpreendimentoTipo,
     status: templateData.status as EmpreendimentoStatus,
     area: templateData.area || "Consulte",
     quartos: Array.isArray(templateData.quartos) ? templateData.quartos[0] : templateData.quartos || 2,
@@ -225,13 +215,13 @@ export const empreendimentosMaster: Empreendimento[] = [
     ...converterTemplateParaEmpreendimento(icaraiData, 3),
     slug: "icarai-parque-clube", // Para usar getEmpreendimentoUrl
     destacado: false,
-    tags: ["salto", "clube completo", "natureza"],
+    tags: ["salto", "parque clube", "natureza"],
     preco: 300000,
     bairro: "Centro",
-    coordenadas: { lat: -23.201, lng: -47.288 }, // Salto, SP
+    coordenadas: { lat: -23.2031, lng: -47.2881 }, // Salto, SP
   },
 
-  // JADE - NOVO EMPREENDIMENTO
+  // JADE - NOVO
   {
     ...converterTemplateParaEmpreendimento(jadeData, 4),
     slug: "jade", // Para usar getEmpreendimentoUrl
@@ -239,10 +229,10 @@ export const empreendimentosMaster: Empreendimento[] = [
     tags: ["são paulo", "bela vista", "avenida paulista", "rooftop", "studios"],
     preco: 390000,
     bairro: "Bela Vista",
-    coordenadas: { lat: -23.557, lng: -46.646 }, // Bela Vista, SP
+    coordenadas: { lat: -23.559, lng: -46.649 }, // Bela Vista, SP
   },
 
-  // OBSIDIAN - NOVO EMPREENDIMENTO
+  // OBSIDIAN - NOVO
   {
     ...converterTemplateParaEmpreendimento(obsidianData, 5),
     slug: "obsidian", // Para usar getEmpreendimentoUrl
@@ -261,9 +251,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 /**
  * Busca um empreendimento pelo slug
  */
-export function buscarEmpreendimentoPorSlug(
-  slug: string,
-): Empreendimento | undefined {
+export function buscarEmpreendimentoPorSlug(slug: string): Empreendimento | undefined {
   return empreendimentosMaster.find((e) => e.slug === slug)
 }
 
@@ -285,9 +273,7 @@ export function buscarEmpreendimentosDestaque(): Empreendimento[] {
  * Adiciona um novo empreendimento à lista mestra
  * Útil para testes ou adições dinâmicas
  */
-export function adicionarEmpreendimento(
-  novoEmpreendimento: Empreendimento,
-): void {
+export function adicionarEmpreendimento(novoEmpreendimento: Empreendimento): void {
   empreendimentosMaster.push(novoEmpreendimento)
 }
 
@@ -317,7 +303,37 @@ export function getOpcoesFiltro(): OpcoesFilter {
       { label: "Até R$300.000", min: 0, max: 300000 },
       { label: "R$300.001 a R$500.000", min: 300001, max: 500000 },
       { label: "R$500.001 a R$800.000", min: 500001, max: 800000 },
-      { label: "Acima de R$800.000", min: 800001, max: Infinity },
+      { label: "Acima de R$800.000", min: 800001, max: Number.POSITIVE_INFINITY },
     ],
   }
-} 
+}
+
+// =============================================================================
+// CONFIGURAÇÕES DE FILTROS
+// =============================================================================
+
+/**
+ * Opções disponíveis para os filtros de busca
+ * Baseadas nos empreendimentos disponíveis
+ */
+export const opcoesFiltros: OpcoesFilter = {
+  tipos: ["Studio", "1 dormitório", "2 dormitórios", "3 dormitórios", "Cobertura"],
+  status: ["Breve lançamento", "Lançamento", "Em obras", "Entregues"],
+  bairros: [
+    "Bela Vista",
+    "Pinheiros",
+    "Jardim D'Icaraí",
+    "Chácara Roselândia",
+    "Jardim Isis",
+    "Granja Viana",
+    "Centro",
+  ],
+  faixas: [
+    { label: "Até R$ 300.000", min: 0, max: 300000 },
+    { label: "R$ 300.000 - R$ 500.000", min: 300000, max: 500000 },
+    { label: "R$ 500.000 - R$ 800.000", min: 500000, max: 800000 },
+    { label: "R$ 800.000 - R$ 1.200.000", min: 800000, max: 1200000 },
+    { label: "R$ 1.200.000 - R$ 2.000.000", min: 1200000, max: 2000000 },
+    { label: "Acima de R$ 2.000.000", min: 2000000, max: Number.POSITIVE_INFINITY },
+  ],
+}

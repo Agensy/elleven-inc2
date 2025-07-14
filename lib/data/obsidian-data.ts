@@ -98,4 +98,4 @@ export const obsidianData = {
       tipo: "lazer",
     },
   ],
-} 
+}

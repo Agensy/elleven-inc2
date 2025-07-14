@@ -44,4 +44,4 @@ export default function EmpreendimentoPlantaModal({ isOpen, onClose, planta }: E
       </DialogContent>
     </Dialog>
   )
-} 
+}

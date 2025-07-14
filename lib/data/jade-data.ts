@@ -97,4 +97,4 @@ export const jadeData = {
       tipo: "transporte",
     },
   ],
-} 
+}

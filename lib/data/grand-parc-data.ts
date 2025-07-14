@@ -27,7 +27,8 @@ export const grandParcData: any = {
   entrega: "2026",
 
   // Preço
-  precoFormatado: "A partir de R$ 380.000",
+  preco: 0,
+  precoFormatado: "100% Vendido",
 
   // Descrição
   descricao:
@@ -77,7 +78,7 @@ export const grandParcData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-parc/plantas/tipo-a.webp",
-      preco: "A partir de R$ 380.000",
+      preco: "100% Vendido",
       descricao: "Apartamento compacto com sala integrada",
     },
     {
@@ -88,7 +89,7 @@ export const grandParcData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-parc/plantas/tipo-b.webp",
-      preco: "A partir de R$ 420.000",
+      preco: "100% Vendido",
       descricao: "Apartamento com layout otimizado",
       destaque: true,
     },
@@ -100,7 +101,7 @@ export const grandParcData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/grand-parc/plantas/duplex-superior.webp",
-      preco: "A partir de R$ 650.000",
+      preco: "100% Vendido",
       descricao: "Cobertura duplex com varanda espaçosa",
     },
   ],

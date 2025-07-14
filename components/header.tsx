@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { getEllevenLogo } from "@/lib/brand/elleven"
 // Adicione o import para `usePathname`
 import { usePathname } from "next/navigation"
+import { EMPREENDIMENTO_ROUTES } from "@/lib/utils/empreendimento-urls"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -17,6 +18,15 @@ export default function Header() {
   // Dentro do componente Header, adicione a linha para obter o pathname
   const pathname = usePathname()
   const isParceirosPage = pathname === "/parceiros"
+  const empreendimentoUrls = Object.values(EMPREENDIMENTO_ROUTES)
+  const isEmpreendimentoPage = empreendimentoUrls.includes(pathname)
+
+  // Adicionando logs para depuração
+  useEffect(() => {
+    console.log("Pathname atual:", pathname)
+    console.log("URLs de Empreendimento:", empreendimentoUrls)
+    console.log("É página de Empreendimento?", isEmpreendimentoPage)
+  }, [pathname, isEmpreendimentoPage, empreendimentoUrls])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,16 +59,12 @@ export default function Header() {
       animate={{ y: 0 }}
       // Modifique a classe do `motion.header` para forçar o fundo escuro na página /parceiros
       // Substitua a linha:
-      // className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      //   isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border/50" : "bg-transparent"
-      // }`}
-      // Por:
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isParceirosPage
+        isParceirosPage || isEmpreendimentoPage
           ? "bg-background/95 backdrop-blur-md border-b border-border/50"
           : isScrolled
-            ? "bg-background/95 backdrop-blur-md border-b border-border/50"
-            : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md border-b border-border/50"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6">
@@ -68,14 +74,12 @@ export default function Header() {
             <img
               // Modifique a src da imagem do logo para sempre ser "header-dark" na página /parceiros
               // Substitua a linha:
-              // src={isScrolled ? getEllevenLogo("header-dark") : getEllevenLogo("header-light")}
-              // Por:
               src={
-                isParceirosPage
+                isParceirosPage || isEmpreendimentoPage
                   ? getEllevenLogo("header-dark")
                   : isScrolled
-                    ? getEllevenLogo("header-dark")
-                    : getEllevenLogo("header-light")
+                  ? getEllevenLogo("header-dark")
+                  : getEllevenLogo("header-light")
               }
               alt="Elleven Engenharia"
               className="h-11 w-auto transition-all duration-300"
@@ -108,12 +112,8 @@ export default function Header() {
                 href="/empreendimentos"
                 // Modifique as classes de texto para os itens de navegação no desktop
                 // Substitua a linha:
-                // className={`relative transition-colors duration-200 group text-lg font-normal ${
-                //   isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
-                // }`}
-                // Por:
                 className={`relative transition-colors duration-200 group text-lg font-normal ${
-                  isParceirosPage || isScrolled
+                  isParceirosPage || isEmpreendimentoPage || isScrolled
                     ? "text-foreground/80 hover:text-foreground"
                     : "text-white/80 hover:text-white"
                 }`}
@@ -157,12 +157,8 @@ export default function Header() {
                 href={item.href}
                 // Modifique as classes de texto para os itens de navegação no desktop
                 // Substitua a linha:
-                // className={`relative transition-colors duration-200 group text-lg font-normal ${
-                //   isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
-                // }`}
-                // Por:
                 className={`relative transition-colors duration-200 group text-lg font-normal ${
-                  isParceirosPage || isScrolled
+                  isParceirosPage || isEmpreendimentoPage || isScrolled
                     ? "text-foreground/80 hover:text-foreground"
                     : "text-white/80 hover:text-white"
                 }`}
@@ -179,7 +175,7 @@ export default function Header() {
               <Button
                 size="sm"
                 className={`text-base px-6 py-3 shadow-none transition-all duration-300 ${
-                  isParceirosPage
+                  isParceirosPage || isEmpreendimentoPage
                     ? "text-white"
                     : isScrolled
                       ? "text-white"
@@ -204,14 +200,8 @@ export default function Header() {
             size="icon"
             // Modifique as classes do botão do menu mobile
             // Substitua a linha:
-            // className={`md:hidden transition-colors duration-200 ${
-            //   isScrolled
-            //     ? "text-foreground/80 hover:text-foreground hover:bg-muted"
-            //     : "text-white/80 hover:text-white hover:bg-white/10"
-            // }`}
-            // Por:
             className={`md:hidden transition-colors duration-200 ${
-              isParceirosPage || isScrolled
+              isParceirosPage || isEmpreendimentoPage || isScrolled
                 ? "text-foreground/80 hover:text-foreground hover:bg-muted"
                 : "text-white/80 hover:text-white hover:bg-white/10"
             }`}
@@ -236,10 +226,8 @@ export default function Header() {
                   href={item.href}
                   // Modifique as classes de texto para os itens de navegação no mobile
                   // Substitua a linha:
-                  // className="text-foreground/80 hover:text-foreground transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted text-lg font-normal"
-                  // Por:
                   className={`transition-colors duration-200 py-3 px-2 rounded-md text-lg font-normal ${
-                    isParceirosPage || isScrolled
+                    isParceirosPage || isEmpreendimentoPage || isScrolled
                       ? "text-foreground/80 hover:text-foreground hover:bg-muted"
                       : "text-foreground/80 hover:text-foreground hover:bg-muted"
                   }`}

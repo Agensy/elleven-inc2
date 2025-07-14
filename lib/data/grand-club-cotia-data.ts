@@ -5,7 +5,7 @@ export const grandClubCotiaData: Empreendimento = {
   id: 6,
   slug: "grand-club-cotia",
   nome: "Grand Club Cotia",
-  subtitulo: "BREVE LANÇAMENTO",
+  subtitulo: "100% VENDIDO",
   slogan: "Espaço, sofisticação e qualidade de vida em um só lugar",
 
   // Localização
@@ -20,9 +20,9 @@ export const grandClubCotiaData: Empreendimento = {
   quartos: 2,
   banheiros: 1,
   vagas: 1,
-  entrega: "2025",
-  preco: 220000,
-  precoFormatado: "A partir de R$ 165.000",
+  entrega: "",
+  preco: 0,
+  precoFormatado: "100% Vendido",
 
   // Descrição completa
   descricao:
@@ -82,7 +82,7 @@ export const grandClubCotiaData: Empreendimento = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-club-cotia/plantas/1-dormitorio-tipo2.jpeg",
-      preco: "A partir de R$ 165.000",
+      preco: "100% Vendido",
       descricao: "Sala integrada, cozinha americana, dormitório com armário",
       destaque: false,
     },
@@ -94,7 +94,7 @@ export const grandClubCotiaData: Empreendimento = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-club-cotia/plantas/2-dormitorios-tipo1.jpeg",
-      preco: "A partir de R$ 220.000",
+      preco: "100% Vendido",
       descricao: "Sala de estar, cozinha planejada, 2 dormitórios",
       destaque: true,
     },
@@ -106,7 +106,7 @@ export const grandClubCotiaData: Empreendimento = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-club-cotia/plantas/2-dormitorios-tipo2.jpeg",
-      preco: "A partir de R$ 245.000",
+      preco: "100% Vendido",
       descricao: "Sala ampla, cozinha com área gourmet, sacada com churrasqueira",
       destaque: false,
     },
@@ -118,7 +118,7 @@ export const grandClubCotiaData: Empreendimento = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-club-cotia/plantas/2-dormitorios-giardino.jpeg",
-      preco: "A partir de R$ 265.000",
+      preco: "100% Vendido",
       descricao: "Jardim privativo, área externa exclusiva",
       destaque: false,
     },
@@ -129,7 +129,7 @@ export const grandClubCotiaData: Empreendimento = {
     unidades: "198 apartamentos",
     andares: "8 torres",
     elevadores: "2 por torre",
-    entrega: "2025",
+    entrega: "",
   },
 
   // Identidade visual
@@ -143,6 +143,6 @@ export const grandClubCotiaData: Empreendimento = {
   // Metadados
   ativo: true,
   destacado: true,
-  tags: ["cotia", "condomínio clube", "breve lançamento", "lazer completo", "terraço"],
+  tags: ["cotia", "condomínio clube", "lazer completo", "terraço"],
   categoria: ["residencial", "condomínio clube"],
 }

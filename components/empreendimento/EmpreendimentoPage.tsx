@@ -11,6 +11,7 @@ import EmpreendimentoSobre from "./EmpreendimentoSobre"
 import EmpreendimentoInformacoes from "./EmpreendimentoInformacoes"
 import EmpreendimentoGaleria from "./EmpreendimentoGaleria"
 import EmpreendimentoPlantas from "./EmpreendimentoPlantas"
+import EmpreendimentoDiferenciais from "./EmpreendimentoDiferenciais"
 import EmpreendimentoContato from "./EmpreendimentoContato"
 import EmpreendimentoModalContato from "./EmpreendimentoModalContato"
 
@@ -90,7 +91,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
   ]
 
   // Se o empreendimento já foi entregue, remove a aba de "Investimento"
-  if (data.status === "Entregues") {
+  if (data.status === "Entregue") {
     informacoesData = informacoesData.filter((aba) => aba.id !== "investimento")
   }
 
@@ -109,7 +110,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       if (typeof firstItem === 'string') {
         // Array de URLs simples
         return {
-          titulo: `Conheça o ${data.nome}`,
+          titulo: `GALERIA`,
           imagens: data.galeria.map((src: string, index: number) => ({
             src: src,
             alt: `${data.nome} - Imagem ${index + 1}`,
@@ -119,7 +120,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       } else if (firstItem?.src) {
         // Array de objetos ImagemGaleria já formatados
         return {
-          titulo: `Conheça o ${data.nome}`,
+          titulo: `GALERIA`,
           imagens: data.galeria
         }
       }
@@ -127,7 +128,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
     
     // Fallback seguro - sem galeria
     return {
-      titulo: `Conheça o ${data.nome}`,
+      titulo: `GALERIA`,
       imagens: []
     }
   }
@@ -157,8 +158,8 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         descricao={data.descricao}
         tipo={data.tipo}
         area={data.area}
-        endereco={data.localizacao}
-        localizacao={data.localizacao}
+        endereco={`${data.endereco.rua}, ${data.endereco.numero}`}
+        localizacao={`${data.endereco.bairro}, ${data.endereco.cidade} - ${data.endereco.estado}`}
         imagemPrincipal={data.imagemDestaque || data.galeria?.[0] || data.imagem || "/placeholder.svg"}
       />
 
@@ -166,7 +167,7 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       <EmpreendimentoInformacoes
         nome={data.nome}
         informacoes={informacoesData}
-        endereco={data.localizacao}
+        endereco={`${data.endereco.rua}, ${data.endereco.numero} - ${data.endereco.bairro}, ${data.endereco.cidade} - ${data.endereco.estado}, ${data.endereco.cep}`}
       />
 
       {/* Galeria de Imagens */}
@@ -181,10 +182,19 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         corPrimaria={data.identidadeVisual?.corPrimaria || "#192849"}
       />
 
+      {/* Diferenciais - apenas para empreendimentos em lançamento */}
+      {data.status === "Lançamento" && (
+        <EmpreendimentoDiferenciais
+          nome={data.nome}
+          diferenciais={data.diferenciais || []}
+          corPrimaria={data.identidadeVisual?.corPrimaria || "#192849"}
+        />
+      )}
+
       {/* Renderiza a seção e o modal de contato apenas se o empreendimento não foi entregue */}
-      {data.status !== "Entregues" && (
+      {data.status !== "Entregue" && (
         <>
-          <EmpreendimentoContato nome={data.nome} />
+          <EmpreendimentoContato nome={data.nome} status={data.status} />
           <EmpreendimentoModalContato nome={data.nome} showContact={showContact} onClose={handleCloseContact} />
         </>
       )}

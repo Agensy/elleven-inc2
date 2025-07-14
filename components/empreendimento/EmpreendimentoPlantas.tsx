@@ -49,7 +49,7 @@ interface EmpreendimentoPlantasProps {
     entrega: string
   }
   nome?: string
-  status?: "Breve lançamento" | "Lançamento" | "Em obras" | "Entregues"
+  status?: "Breve lançamento" | "Lançamento" | "Em Obra" | "Entregue"
   corPrimaria?: string
 }
 
@@ -85,18 +85,7 @@ export default function EmpreendimentoPlantas({
   const plantasParaExibir = plantas.length > 0 ? plantas : []
   const tipologiasParaExibir = tipologia?.tipologias || []
 
-  // Combinar especificações
-  const especificacoesParaExibir = [
-    ...(tipologia?.especificacoes || []),
-    ...(especificacoes
-      ? [
-          { label: "Unidades", valor: especificacoes.unidades },
-          { label: "Andares", valor: especificacoes.andares },
-          { label: "Elevadores", valor: especificacoes.elevadores },
-          { label: "Entrega", valor: especificacoes.entrega },
-        ]
-      : []),
-  ]
+
 
   // Pegar a primeira planta disponível para exibir
   const plantaPrincipal =
@@ -116,8 +105,8 @@ export default function EmpreendimentoPlantas({
         }
       : null)
 
-  if (!plantaPrincipal && especificacoesParaExibir.length === 0) {
-    return null // Não renderiza nada se não houver plantas ou especificações
+  if (!plantaPrincipal) {
+    return null // Não renderiza nada se não houver plantas
   }
 
   return (
@@ -126,46 +115,44 @@ export default function EmpreendimentoPlantas({
         <div className="container mx-auto px-6">
           {/* Header da seção */}
           <motion.div {...fadeIn} className="text-center mb-16">
-            <span className="text-sm text-orange-500 font-medium tracking-wider uppercase">
+            <span className="text-sm text-gray-500 font-medium tracking-wider uppercase">
               TIPOLOGIA & ESPECIFICAÇÕES
             </span>
             <h2 className="text-3xl lg:text-4xl font-bold text-[#192849] mt-4 mb-6">FICHA TÉCNICA</h2>
           </motion.div>
 
           {/* Grid duas colunas */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <motion.div {...fadeIn}>
-              <div className="bg-gray-900 rounded-lg p-8 shadow-lg relative group">
-                <Image
-                  src={plantaPrincipal.imagem || "/placeholder.svg?height=400&width=600"}
-                  alt={plantaPrincipal.tipo}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded-lg"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button
-                    onClick={() => handleOpenModal({ nome: plantaPrincipal.tipo, imagem: plantaPrincipal.imagem })}
-                    className="bg-white text-gray-900 hover:bg-gray-200"
-                  >
-                    <ZoomIn className="mr-2 h-4 w-4" />
-                    Ver Planta Completa
-                  </Button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+            {plantaPrincipal && (
+              <motion.div {...fadeIn}>
+                <div className="bg-gray-900 rounded-lg p-8 shadow-lg relative group">
+                  <Image
+                    src={plantaPrincipal.imagem || "/placeholder.svg?height=400&width=600"}
+                    alt={plantaPrincipal.tipo}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Button
+                      onClick={() => handleOpenModal({ nome: plantaPrincipal.tipo, imagem: plantaPrincipal.imagem })}
+                      className="bg-white text-gray-900 hover:bg-gray-200"
+                    >
+                      <ZoomIn className="mr-2 h-4 w-4" />
+                      Ver Planta Completa
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            )}
 
             <motion.div {...fadeIn} className="space-y-6">
-              <div>
-                <h3 className="text-3xl font-light text-gray-900 mb-2">{plantaPrincipal.tipo}</h3>
-                {status !== "Entregues" && (
-                  <div className="text-3xl font-bold text-[#192849] mb-6">{plantaPrincipal.preco || "Consulte valores"}</div>
-                )}
-              </div>
-
-              {/* Características da planta */}
               {plantaPrincipal && (
-                <>
+                <div>
+                  <h3 className="text-3xl font-light text-gray-900 mb-2">{plantaPrincipal.tipo}</h3>
+                  {status !== "Entregue" && (
+                    <div className="text-3xl font-bold text-[#192849] mb-6">{plantaPrincipal.preco || "Consulte valores"}</div>
+                  )}
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
@@ -181,7 +168,11 @@ export default function EmpreendimentoPlantas({
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Vagas: {plantaPrincipal.vagas}</span>
+                      <span className="text-gray-700">
+                        {plantaPrincipal.tipo.toLowerCase().includes('studio') 
+                          ? 'Varanda: Sim' 
+                          : `Vagas: ${plantaPrincipal.vagas}`}
+                      </span>
                     </div>
                     {plantaPrincipal.descricao && (
                       <div className="flex items-start gap-3">
@@ -190,34 +181,21 @@ export default function EmpreendimentoPlantas({
                       </div>
                     )}
                   </div>
-                </>
-              )}
-
-              {/* Especificações do empreendimento */}
-              {especificacoesParaExibir.length > 0 && (
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Especificações do Empreendimento:</h4>
-                  <ul className="space-y-2">
-                    {especificacoesParaExibir.map((spec, index) => (
-                      <li key={index} className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 bg-[#192849] rounded-full flex-shrink-0"></div>
-                        <span className="text-gray-700">
-                          {spec.label}: {spec.valor}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               )}
 
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#192849]/20 text-[#192849] hover:bg-[#192849]/10 bg-transparent w-full"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Baixar Planta Técnica
-              </Button>
+
+
+              {plantaPrincipal && (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#192849]/20 text-[#192849] hover:bg-[#192849]/10 bg-transparent w-full"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Baixar Planta Técnica
+                </Button>
+              )}
             </motion.div>
           </div>
 
@@ -259,7 +237,7 @@ export default function EmpreendimentoPlantas({
                       <p>Banheiros: {tipologia.banheiros}</p>
                       <p>Vagas: {tipologia.vagas}</p>
                     </div>
-                    {status !== "Entregues" && (
+                    {status !== "Entregue" && (
                       <div className="mt-4 text-lg font-bold" style={{ color: corPrimaria }}>
                         Consulte valores
                       </div>

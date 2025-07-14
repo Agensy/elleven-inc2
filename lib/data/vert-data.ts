@@ -25,7 +25,8 @@ export const vertData: any = {
   quartos: 2,
   vagas: 1,
   entrega: "2026",
-  precoFormatado: "A partir de R$ 280.000",
+  preco: 0,
+  precoFormatado: "100% Vendido",
 
   // Conteúdo principal
   descricao:
@@ -72,7 +73,7 @@ export const vertData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/vert/plantas/2-dormitorios.webp",
-      preco: "A partir de R$ 320.000",
+      preco: "100% Vendido",
       descricao: "Apartamento com boa distribuição e aproveitamento de espaços",
     },
     {
@@ -83,7 +84,7 @@ export const vertData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/vert/plantas/duplex-inferior.webp",
-      preco: "A partir de R$ 420.000",
+      preco: "100% Vendido",
       descricao: "Pavimento inferior do duplex com sala ampla e cozinha integrada",
     },
     {
@@ -94,7 +95,7 @@ export const vertData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/vert/plantas/duplex-superior.webp",
-      preco: "A partir de R$ 420.000",
+      preco: "100% Vendido",
       descricao: "Pavimento superior do duplex com dormitórios e banheiro",
     },
     {
@@ -105,7 +106,7 @@ export const vertData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/vert/plantas/cobertura-superior.webp",
-      preco: "A partir de R$ 480.000",
+      preco: "100% Vendido",
       descricao: "Cobertura duplex com terraço gourmet e área de lazer privativa",
       destaque: true,
     },

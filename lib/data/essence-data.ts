@@ -25,7 +25,8 @@ export const essenceData: any = {
   quartos: 4,
   vagas: 2,
   entrega: "2026",
-  precoFormatado: "A partir de R$ 350.000",
+  preco: 0,
+  precoFormatado: "100% Vendido",
 
   // Conteúdo principal
   descricao:
@@ -85,7 +86,7 @@ export const essenceData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/essence/plantas/planta-2-dormitorios-alt.webp",
-      preco: "A partir de R$ 350.000",
+      preco: "100% Vendido",
       descricao: "Apartamento compacto e funcional com sala integrada",
     },
     {
@@ -96,7 +97,7 @@ export const essenceData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/essence/plantas/planta-2-dormitorios.webp",
-      preco: "A partir de R$ 380.000",
+      preco: "100% Vendido",
       descricao: "Apartamento com melhor distribuição e varanda",
     },
     {
@@ -107,7 +108,7 @@ export const essenceData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/essence/plantas/planta-3-dormitorios.webp",
-      preco: "A partir de R$ 450.000",
+      preco: "100% Vendido",
       descricao: "Apartamento ideal para famílias com 3 quartos",
       destaque: true,
     },
@@ -119,7 +120,7 @@ export const essenceData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/essence/plantas/planta-duplex-3-dormitorios.webp",
-      preco: "A partir de R$ 650.000",
+      preco: "100% Vendido",
       descricao: "Cobertura duplex com terraço e área gourmet",
     },
     {
@@ -130,7 +131,7 @@ export const essenceData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/essence/plantas/planta-duplex-4-dormitorios.webp",
-      preco: "A partir de R$ 750.000",
+      preco: "100% Vendido",
       descricao: "Cobertura duplex premium com 4 dormitórios",
     },
     {
@@ -141,7 +142,7 @@ export const essenceData: any = {
       banheiros: 3,
       vagas: 2,
       imagem: "/empreendimentos/essence/plantas/planta-duplex-5-dormitorios.webp",
-      preco: "A partir de R$ 850.000",
+      preco: "100% Vendido",
       descricao: "Cobertura duplex exclusiva com terraço amplo e 5 dormitórios",
     },
   ],

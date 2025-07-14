@@ -13,7 +13,7 @@ interface EmpreendimentoHeroProps {
   imagemBackground: string
   logo?: string
   heroType?: "video" | "image" | "banner"
-  status: "Breve lançamento" | "Lançamento" | "Em obras" | "Entregues"
+  status: "Breve lançamento" | "Lançamento" | "Em Obra" | "Entregue"
   onShowContact: () => void
 }
 
@@ -82,7 +82,7 @@ export default function EmpreendimentoHero({
             </motion.div>
 
             {/* Renderiza os botões apenas se não for um banner e o empreendimento não foi entregue */}
-            {status !== "Entregues" && (
+            {status !== "Entregue" && (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -15,7 +15,6 @@ interface EmpreendimentoHeaderProps {
 export default function EmpreendimentoHeader({ nome, onShowContact }: EmpreendimentoHeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [activeSection, setActiveSection] = useState("hero")
-  const [headerOpacity, setHeaderOpacity] = useState(0)
 
   // Navegação suave para seções
   const scrollToSection = (sectionId: string) => {
@@ -34,10 +33,6 @@ export default function EmpreendimentoHeader({ nome, onShowContact }: Empreendim
   // Detectar scroll para header e seção ativa
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY
-      const opacity = Math.min(scrollY / 100, 0.95)
-      setHeaderOpacity(opacity)
-
       const sections = ["hero", "oportunidade", "informacoes", "galeria", "plantas", "contato"]
       const scrollPosition = window.scrollY + 100
 
@@ -67,11 +62,12 @@ export default function EmpreendimentoHeader({ nome, onShowContact }: Empreendim
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      className="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 bg-white border-b shadow-sm empreendimento-header"
       style={{
-        backgroundColor: `rgba(255, 255, 255, ${headerOpacity})`,
-        backdropFilter: headerOpacity > 0.1 ? "blur(10px)" : "none",
-        borderBottom: headerOpacity > 0.1 ? "1px solid rgba(0,0,0,0.1)" : "none",
+        backgroundColor: "#ffffff !important",
+        borderBottom: "1px solid #e5e7eb !important",
+        boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important",
+        backdropFilter: "none !important"
       }}
     >
       <div className="container mx-auto px-6 py-4">

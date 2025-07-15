@@ -241,14 +241,6 @@ img {
   border: 0;
 }
 
-/* Header específico dos empreendimentos */
-.empreendimento-header {
-  background-color: #ffffff !important;
-  backdrop-filter: none !important;
-  border-bottom: 1px solid #e5e7eb !important;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
-}
-
 /* Focus styles para acessibilidade */
 .focus-visible:focus {
   outline: 2px solid #3b82f6;

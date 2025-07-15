@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const quartierData: any = {
+export const quartierData: EmpreendimentoData = {
   // Informações básicas
   nome: "Quartier Residencial Clube",
   slug: "quartier",
@@ -20,13 +20,12 @@ export const quartierData: any = {
 
   // Características do imóvel
   tipo: "Residencial",
-  status: "Entregues",
+  status: "Em Obras",
   entrega: "2026",
   area: "36,60m² a 45,82m²",
   quartos: 2,
   vagas: 1,
-  preco: 0,
-  precoFormatado: "100% Vendido",
+  precoFormatado: "A partir de R$ 280.000",
 
   // Descrição principal
   descricao: `O Quartier é um residencial clube planejado para oferecer qualidade de vida, conforto e praticidade, com arquitetura contemporânea, traços retos e cores suaves.
@@ -73,7 +72,7 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/quartier/plantas/planta-final-1.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 345.000",
       descricao: "Apartamento com sala ampla integrada e dois dormitórios bem distribuídos",
       destaque: true,
     },
@@ -85,7 +84,7 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/quartier/plantas/planta-final-2.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 320.000",
       descricao: "Apartamento funcional com cozinha integrada e varanda",
     },
     {
@@ -96,7 +95,7 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
       banheiros: 1,
       vagas: 1,
       imagem: "/placeholder.svg?height=400&width=600",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 280.000",
       descricao: "Apartamento compacto e funcional na Torre 1",
     },
     {
@@ -107,7 +106,7 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
       banheiros: 1,
       vagas: 1,
       imagem: "/placeholder.svg?height=400&width=600",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 340.000",
       descricao: "Apartamento mais amplo na Torre 1",
     },
     {
@@ -118,7 +117,7 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
       banheiros: 1,
       vagas: 1,
       imagem: "/placeholder.svg?height=400&width=600",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 315.000",
       descricao: "Apartamento funcional na Torre 2",
     },
     {
@@ -129,7 +128,7 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
       banheiros: 1,
       vagas: 1,
       imagem: "/placeholder.svg?height=400&width=600",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 345.000",
       descricao: "Apartamento premium na Torre 2",
     },
   ],

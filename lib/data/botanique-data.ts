@@ -1,34 +1,26 @@
-export const botaniqueData = {
+import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+
+export const botaniqueData: EmpreendimentoData = {
   // Identificação básica
   id: 1,
   slug: "botanique",
-  nome: "Botanique",
+  nome: "BOTANIQUE",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",
   slogan: "Viva em harmonia com a natureza",
 
-  // Localização (texto simples)
+  // Localização
   localizacao: "Jardim Ísis, Cotia - SP",
   bairro: "Jardim Ísis",
 
-  // ENDEREÇO COMPLETO — ✅ NOVO BLOCO
-  endereco: {
-    rua: "Rua Bosque das Flores", // <-- A chave 'rua' evita o TypeError
-    numero: "100",
-    bairro: "Jardim Ísis",
-    cidade: "Cotia",
-    estado: "SP",
-    cep: "06700-000",
-  },
-
   // Características básicas
   tipo: "2 e 3 dormitórios",
-  status: "Entregue",
+  status: "Concluído",
   area: "60 a 120m²",
   quartos: 3,
   banheiros: 2,
   vagas: 2,
-  preco: 0,
-  precoFormatado: "100% Vendido",
+  preco: 650000,
+  precoFormatado: "A partir de R$ 650.000",
   entrega: "2020",
 
   // Descrição
@@ -68,7 +60,7 @@ export const botaniqueData = {
       banheiros: 2,
       vagas: 1,
       imagem: "/empreendimentos/botanique/plantas/Planta 2 dormi.jpg",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 550.000",
       descricao: "Apartamento funcional com 2 dormitórios, sala integrada e varanda",
       destaque: false,
     },
@@ -80,7 +72,7 @@ export const botaniqueData = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/botanique/plantas/Planta 3 dormi.jpg",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 650.000",
       descricao: "Apartamento espaçoso com 3 dormitórios, suíte e varanda gourmet",
       destaque: true,
     },
@@ -92,7 +84,7 @@ export const botaniqueData = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/botanique/plantas/Planta 3 dormi 2.jpg",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 680.000",
       descricao: "Apartamento premium com 3 dormitórios e layout otimizado",
       destaque: false,
     },
@@ -104,7 +96,7 @@ export const botaniqueData = {
       banheiros: 3,
       vagas: 2,
       imagem: "/empreendimentos/botanique/plantas/cobertura duplex 1 piso.jpg",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 850.000",
       descricao: "Cobertura duplex com terraço privativo - Piso inferior",
       destaque: true,
     },
@@ -116,7 +108,7 @@ export const botaniqueData = {
       banheiros: 1,
       vagas: 0,
       imagem: "/empreendimentos/botanique/plantas/cobertura duplex 2 piso.jpg",
-      preco: "100% Vendido",
+      preco: "Área privativa da cobertura",
       descricao: "Cobertura duplex com terraço privativo - Piso superior",
       destaque: false,
     },
@@ -138,10 +130,26 @@ export const botaniqueData = {
 
   // Pontos de interesse próximos
   pontos_interesse: [
-    { nome: "Shopping Granja Vianna", distancia: "5 km", tipo: "shopping" },
-    { nome: "Colégio Rio Branco", distancia: "3 km", tipo: "educacao" },
-    { nome: "Hospital Albert Einstein", distancia: "8 km", tipo: "saude" },
-    { nome: "Rodoanel Mário Covas", distancia: "2 km", tipo: "transporte" },
+    {
+      nome: "Shopping Granja Vianna",
+      distancia: "5 km",
+      tipo: "shopping",
+    },
+    {
+      nome: "Colégio Rio Branco",
+      distancia: "3 km",
+      tipo: "educacao",
+    },
+    {
+      nome: "Hospital Albert Einstein",
+      distancia: "8 km",
+      tipo: "saude",
+    },
+    {
+      nome: "Rodoanel Mário Covas",
+      distancia: "2 km",
+      tipo: "transporte",
+    },
   ],
 
   // Diferenciais do empreendimento

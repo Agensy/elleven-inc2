@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const essenceData: any = {
+export const essenceData: EmpreendimentoData = {
   // Identificação
   nome: "Essence",
   slug: "essence",
@@ -20,13 +20,12 @@ export const essenceData: any = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Entregues",
+  status: "Em Obras",
   area: "40m² a 112m²",
   quartos: 4,
   vagas: 2,
   entrega: "2026",
-  preco: 0,
-  precoFormatado: "100% Vendido",
+  precoFormatado: "A partir de R$ 350.000",
 
   // Conteúdo principal
   descricao:
@@ -86,7 +85,7 @@ export const essenceData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/essence/plantas/planta-2-dormitorios-alt.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 350.000",
       descricao: "Apartamento compacto e funcional com sala integrada",
     },
     {
@@ -97,7 +96,7 @@ export const essenceData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/essence/plantas/planta-2-dormitorios.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 380.000",
       descricao: "Apartamento com melhor distribuição e varanda",
     },
     {
@@ -108,7 +107,7 @@ export const essenceData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/essence/plantas/planta-3-dormitorios.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 450.000",
       descricao: "Apartamento ideal para famílias com 3 quartos",
       destaque: true,
     },
@@ -120,7 +119,7 @@ export const essenceData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/essence/plantas/planta-duplex-3-dormitorios.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 650.000",
       descricao: "Cobertura duplex com terraço e área gourmet",
     },
     {
@@ -131,7 +130,7 @@ export const essenceData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/essence/plantas/planta-duplex-4-dormitorios.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 750.000",
       descricao: "Cobertura duplex premium com 4 dormitórios",
     },
     {
@@ -142,7 +141,7 @@ export const essenceData: any = {
       banheiros: 3,
       vagas: 2,
       imagem: "/empreendimentos/essence/plantas/planta-duplex-5-dormitorios.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 850.000",
       descricao: "Cobertura duplex exclusiva com terraço amplo e 5 dormitórios",
     },
   ],

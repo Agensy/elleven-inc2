@@ -9,7 +9,7 @@ export type EmpreendimentoTipo =
   | "3 dormitórios"
   | "Cobertura"
   | "Comercial"
-export type EmpreendimentoStatus = "Breve lançamento" | "Lançamento" | "Em Obra" | "Entregue"
+export type EmpreendimentoStatus = "Breve lançamento" | "Lançamento" | "Em obras" | "Entregues"
 
 // =============================================================================
 // INTERFACES AUXILIARES
@@ -259,7 +259,6 @@ export interface Empreendimento {
 
   // Localização
   localizacao: string
-  endereco: Endereco
   bairro: string
   coordenadas: Coordenadas
   status: EmpreendimentoStatus

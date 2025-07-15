@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const vertData: any = {
+export const vertData: EmpreendimentoData = {
   // Identificação
   slug: "vert",
   nome: "Vert Condomínio Residencial",
@@ -20,13 +20,12 @@ export const vertData: any = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Entregues",
+  status: "Em Obras",
   area: "42m² a 85m²",
   quartos: 2,
   vagas: 1,
   entrega: "2026",
-  preco: 0,
-  precoFormatado: "100% Vendido",
+  precoFormatado: "A partir de R$ 280.000",
 
   // Conteúdo principal
   descricao:
@@ -73,7 +72,7 @@ export const vertData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/vert/plantas/2-dormitorios.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 320.000",
       descricao: "Apartamento com boa distribuição e aproveitamento de espaços",
     },
     {
@@ -84,7 +83,7 @@ export const vertData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/vert/plantas/duplex-inferior.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 420.000",
       descricao: "Pavimento inferior do duplex com sala ampla e cozinha integrada",
     },
     {
@@ -95,7 +94,7 @@ export const vertData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/vert/plantas/duplex-superior.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 420.000",
       descricao: "Pavimento superior do duplex com dormitórios e banheiro",
     },
     {
@@ -106,7 +105,7 @@ export const vertData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/vert/plantas/cobertura-superior.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 480.000",
       descricao: "Cobertura duplex com terraço gourmet e área de lazer privativa",
       destaque: true,
     },

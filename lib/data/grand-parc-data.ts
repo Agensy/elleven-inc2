@@ -1,6 +1,6 @@
 import type { EmpreendimentoData } from "@/lib/types/empreendimento"
 
-export const grandParcData: any = {
+export const grandParcData: EmpreendimentoData = {
   // Identificação
   slug: "grand-parc",
   nome: "Grand Parc",
@@ -20,15 +20,14 @@ export const grandParcData: any = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Entregues",
+  status: "Em Obras",
   area: "40m² a 85m²",
   quartos: 3,
   vagas: 2,
   entrega: "2026",
 
   // Preço
-  preco: 0,
-  precoFormatado: "100% Vendido",
+  precoFormatado: "A partir de R$ 380.000",
 
   // Descrição
   descricao:
@@ -78,7 +77,7 @@ export const grandParcData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-parc/plantas/tipo-a.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 380.000",
       descricao: "Apartamento compacto com sala integrada",
     },
     {
@@ -89,7 +88,7 @@ export const grandParcData: any = {
       banheiros: 1,
       vagas: 1,
       imagem: "/empreendimentos/grand-parc/plantas/tipo-b.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 420.000",
       descricao: "Apartamento com layout otimizado",
       destaque: true,
     },
@@ -101,7 +100,7 @@ export const grandParcData: any = {
       banheiros: 2,
       vagas: 2,
       imagem: "/empreendimentos/grand-parc/plantas/duplex-superior.webp",
-      preco: "100% Vendido",
+      preco: "A partir de R$ 650.000",
       descricao: "Cobertura duplex com varanda espaçosa",
     },
   ],

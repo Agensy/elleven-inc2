@@ -21,13 +21,11 @@ interface EmpreendimentoPageProps {
 export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
   const [showContact, setShowContact] = useState(false)
 
-  console.log("Dados recebidos em EmpreendimentoPage:", data)
-
   const handleShowContact = () => setShowContact(true)
   const handleCloseContact = () => setShowContact(false)
 
   // Criar dados de informações baseados nos dados do empreendimento
-  let informacoesData = [
+  const informacoesData = [
     {
       id: "localizacao",
       titulo: "Localização",
@@ -89,11 +87,6 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
     },
   ]
 
-  // Se o empreendimento já foi entregue, remove a aba de "Investimento"
-  if (data.status === "Entregues") {
-    informacoesData = informacoesData.filter((aba) => aba.id !== "investimento")
-  }
-
   // ADAPTADOR UNIVERSAL - Normaliza qualquer formato de galeria
   const normalizarGaleria = (data: any) => {
     // Formato EmpreendimentoData completo (ex: Grand Club Cotia)
@@ -146,8 +139,6 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         slogan={data.slogan || ""}
         imagemBackground={data.identidadeVisual?.imagemBackground || "/placeholder.svg"}
         logo={data.identidadeVisual?.logo || "/placeholder.svg"}
-        heroType={data.heroType}
-        status={data.status}
         onShowContact={handleShowContact}
       />
 
@@ -177,20 +168,17 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         nome={data.nome}
         plantas={data.plantas || []}
         especificacoes={data.especificacoes}
-        status={data.status}
         corPrimaria={data.identidadeVisual?.corPrimaria || "#192849"}
       />
 
-      {/* Renderiza a seção e o modal de contato apenas se o empreendimento não foi entregue */}
-      {data.status !== "Entregues" && (
-        <>
-          <EmpreendimentoContato nome={data.nome} />
-          <EmpreendimentoModalContato nome={data.nome} showContact={showContact} onClose={handleCloseContact} />
-        </>
-      )}
+      {/* Seção de Contato */}
+      <EmpreendimentoContato nome={data.nome} />
 
       {/* Footer Padrão do Site */}
       <Footer />
+
+      {/* Modal de Contato */}
+      <EmpreendimentoModalContato nome={data.nome} showContact={showContact} onClose={handleCloseContact} />
     </div>
   )
 }

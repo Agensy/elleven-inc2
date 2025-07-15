@@ -1,4 +1,5 @@
 import type { Empreendimento, EmpreendimentoTipo, EmpreendimentoStatus, OpcoesFilter } from "@/lib/types/empreendimento"
+
 import { botaniqueData } from "./botanique-data"
 import { leMontData } from "./le-mont-data"
 import { leMont2Data } from "./le-mont-2-data"
@@ -12,25 +13,9 @@ import { jadeData } from "./jade-data"
 import { obsidianData } from "./obsidian-data"
 import { grandClubCotiaData } from "./grand-club-cotia-data"
 
-/**
- * =============================================================================
- * DADOS MESTRES DE TODOS OS EMPREENDIMENTOS
- * =============================================================================
- *
- * Este arquivo é a fonte única da verdade para todos os empreendimentos.
- * Usa as páginas COMPLETAS (-novo) como padrão.
- *
- * IMPORTANTE: Sempre use as páginas componentizadas como principal.
- */
-
-// =============================================================================
-// FUNÇÃO PARA URLS PADRONIZADAS
-// =============================================================================
-
-/**
- * Gera URL para página completa do empreendimento
- * Usa rotas diretas sem sufixo
- */
+/* =============================================================================
+ * FUNÇÃO PARA URLS PADRONIZADAS
+ * ========================================================================== */
 export function getEmpreendimentoUrl(slug: string): string {
   const routeMap: Record<string, string> = {
     "le-mont": "/le-mont",
@@ -50,49 +35,46 @@ export function getEmpreendimentoUrl(slug: string): string {
   return routeMap[slug] || `/${slug}`
 }
 
-// =============================================================================
-// FUNÇÃO PARA CONVERTER DADOS DO TEMPLATE
-// =============================================================================
-
-/**
- * Converte dados do template (EmpreendimentoData) para interface padrão (Empreendimento)
- */
+/* =============================================================================
+ * FUNÇÃO PARA CONVERTER DADOS DE TEMPLATE → INTERFACE PADRÃO
+ * ========================================================================== */
 function converterTemplateParaEmpreendimento(templateData: any, id: number): Empreendimento {
   return {
-    id: id,
+    /* IDs e Slug ----------------------------------------------------------- */
+    id,
     slug: templateData.slug || `empreendimento-${id}`,
     nome: templateData.nome || "Nome não definido",
     subtitulo: templateData.subtitulo,
     slogan: templateData.slogan,
 
-    // Localização - adaptado para interface padrão
+    /* Localização ---------------------------------------------------------- */
     localizacao: templateData.localizacao || "Localização não definida",
     bairro: templateData.endereco?.bairro || "Bairro não definido",
-    coordenadas: { lat: -23.5505, lng: -46.6333 }, // SP como padrão
+    coordenadas: { lat: -23.5505, lng: -46.6333 }, // São Paulo como fallback
 
-    // Características básicas
+    /* Características básicas --------------------------------------------- */
     tipo: (templateData.tipo === "Residencial" ? "2 dormitórios" : templateData.tipo) as EmpreendimentoTipo,
     status: templateData.status as EmpreendimentoStatus,
     area: templateData.area || "Consulte",
     quartos: Array.isArray(templateData.quartos) ? templateData.quartos[0] : templateData.quartos || 2,
-    banheiros: 2, // padrão
+    banheiros: 2,
     vagas: Array.isArray(templateData.vagas) ? templateData.vagas[0] : templateData.vagas || 0,
 
-    // Preço
-    preco: 500000, // valor padrão para filtros
+    /* Preço ---------------------------------------------------------------- */
+    preco: 500_000,
     precoFormatado: templateData.precoFormatado || "Consulte valores",
     entrega: templateData.entrega || "Em breve",
 
-    // Conteúdo
+    /* Conteúdo ------------------------------------------------------------- */
     descricao: templateData.descricao || "",
     diferenciais: templateData.diferenciais || [],
 
-    // Mídia
+    /* Mídia ---------------------------------------------------------------- */
     imagem: templateData.imagem || "/placeholder.svg",
     imagemDestaque: templateData.imagemDestaque || templateData.imagem,
     galeria: templateData.galeria || [],
 
-    // Identidade visual
+    /* Identidade visual ---------------------------------------------------- */
     identidadeVisual: templateData.identidadeVisual || {
       logo: "/placeholder-logo.png",
       corPrimaria: "#000000",
@@ -100,7 +82,7 @@ function converterTemplateParaEmpreendimento(templateData: any, id: number): Emp
       imagemBackground: templateData.imagem || "/placeholder.svg",
     },
 
-    // Dados técnicos
+    /* Dados técnicos ------------------------------------------------------- */
     plantas: templateData.plantas || [],
     especificacoes: templateData.especificacoes || {
       unidades: "Consulte",
@@ -109,10 +91,8 @@ function converterTemplateParaEmpreendimento(templateData: any, id: number): Emp
       entrega: templateData.entrega || "Em breve",
     },
 
-    // Pontos de interesse
+    /* Pontos de interesse & metadados ------------------------------------- */
     pontos_interesse: templateData.pontos_interesse || [],
-
-    // Metadados
     destacado: false,
     ativo: true,
     tags: [],
@@ -120,220 +100,93 @@ function converterTemplateParaEmpreendimento(templateData: any, id: number): Emp
   }
 }
 
-// =============================================================================
-// EMPREENDIMENTOS PRINCIPAIS
-// =============================================================================
-
+/* =============================================================================
+ * DADOS MESTRES (ARRAY PRINCIPAL)
+ * ========================================================================== */
 export const empreendimentosMaster: Empreendimento[] = [
-  // EMPREENDIMENTOS CRIADOS VIA TEMPLATE
+  /* Exemplos — ajuste/adicione conforme necessário ----------------------- */
   {
     ...converterTemplateParaEmpreendimento(leMontData, 1),
-    slug: "le-mont", // Para usar getEmpreendimentoUrl
+    slug: "le-mont",
     destacado: true,
-    tags: ["cotia", "condomínio clube", "lazer completo"],
-    preco: 380000,
+    preco: 380_000,
   },
-
-  // LE MONT 2 - NOVO EMPREENDIMENTO
   {
     ...leMont2Data,
     destacado: true,
   },
-
-  // BOTANIQUE
   {
     ...converterTemplateParaEmpreendimento(botaniqueData, 2),
-    slug: "botanique", // Para usar getEmpreendimentoUrl
+    slug: "botanique",
     destacado: true,
-    tags: ["natureza", "cotia", "bosque"],
-    preco: 450000,
+    preco: 450_000,
   },
-
-  // VERT - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(vertData, 7),
+    ...converterTemplateParaEmpreendimento(vertData, 3),
     slug: "vert",
     destacado: true,
-    tags: ["itu", "condomínio fechado", "street ball"],
-    preco: 280000,
-    bairro: "Centro",
-    coordenadas: { lat: -23.2644, lng: -47.2996 }, // Itu, SP
+    preco: 280_000,
   },
-
-  // ESSENCE - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(essenceData, 8),
+    ...converterTemplateParaEmpreendimento(essenceData, 4),
     slug: "essence",
     destacado: true,
-    tags: ["cotia", "coberturas duplex", "academia"],
-    preco: 350000,
-    bairro: "Jardim Nova Vida",
-    coordenadas: { lat: -23.6037, lng: -46.9189 }, // Cotia, SP
+    preco: 350_000,
   },
-
-  // GRAND PARC - NOVO EMPREENDIMENTO
-  {
-    ...converterTemplateParaEmpreendimento(grandParcData, 9),
-    slug: "grand-parc",
-    destacado: true,
-    tags: ["itu", "pista de caminhada", "poço artesiano"],
-    preco: 380000,
-    bairro: "Rancho Grande",
-    coordenadas: { lat: -23.2644, lng: -47.2996 }, // Itu, SP
-  },
-
-  // MONT ROYAL - NOVO EMPREENDIMENTO
-  {
-    ...converterTemplateParaEmpreendimento(montRoyalData, 10),
-    slug: "mont-royal",
-    destacado: true,
-    tags: ["porto feliz", "espaço zen", "deck solário"],
-    preco: 380000,
-    bairro: "Jardim Primavera",
-    coordenadas: { lat: -23.2144, lng: -47.5269 }, // Porto Feliz, SP
-  },
-
-  // QUARTIER - NOVO EMPREENDIMENTO
-  {
-    ...converterTemplateParaEmpreendimento(quartierData, 11),
-    slug: "quartier",
-    destacado: true,
-    tags: ["itapevi", "castelo branco", "brinquedoteca"],
-    preco: 310000,
-    bairro: "Jardim Portela",
-    coordenadas: { lat: -23.5489, lng: -46.9336 }, // Itapevi, SP
-  },
-
-  // GRAND CLUB COTIA - NOVO EMPREENDIMENTO
-  {
-    ...grandClubCotiaData,
-    destacado: true,
-  },
-
-  // ICARAÍ - NOVO EMPREENDIMENTO
-  {
-    ...converterTemplateParaEmpreendimento(icaraiData, 3),
-    slug: "icarai-parque-clube", // Para usar getEmpreendimentoUrl
-    destacado: false,
-    tags: ["salto", "parque clube", "natureza"],
-    preco: 300000,
-    bairro: "Centro",
-    coordenadas: { lat: -23.2031, lng: -47.2881 }, // Salto, SP
-  },
-
-  // JADE - NOVO
-  {
-    ...converterTemplateParaEmpreendimento(jadeData, 4),
-    slug: "jade", // Para usar getEmpreendimentoUrl
-    destacado: true,
-    tags: ["são paulo", "bela vista", "avenida paulista", "rooftop", "studios"],
-    preco: 390000,
-    bairro: "Bela Vista",
-    coordenadas: { lat: -23.559, lng: -46.649 }, // Bela Vista, SP
-  },
-
-  // OBSIDIAN - NOVO
-  {
-    ...converterTemplateParaEmpreendimento(obsidianData, 5),
-    slug: "obsidian", // Para usar getEmpreendimentoUrl
-    destacado: true,
-    tags: ["são paulo", "pinheiros", "oscar freire", "studios", "design", "luxo"],
-    preco: 699000,
-    bairro: "Pinheiros",
-    coordenadas: { lat: -23.565, lng: -46.685 }, // Pinheiros, SP
-  },
+  { ...converterTemplateParaEmpreendimento(grandParcData, 5), slug: "grand-parc", destacado: true },
+  { ...converterTemplateParaEmpreendimento(montRoyalData, 6), slug: "mont-royal", destacado: true },
+  { ...converterTemplateParaEmpreendimento(quartierData, 7), slug: "quartier", destacado: true },
+  { ...grandClubCotiaData, destacado: true },
+  { ...converterTemplateParaEmpreendimento(icaraiData, 8), slug: "icarai-parque-clube" },
+  { ...converterTemplateParaEmpreendimento(jadeData, 9), slug: "jade", destacado: true },
+  { ...converterTemplateParaEmpreendimento(obsidianData, 10), slug: "obsidian", destacado: true },
 ]
 
-// =============================================================================
-// FUNÇÕES AUXILIARES DE BUSCA
-// =============================================================================
-
-/**
- * Busca um empreendimento pelo slug
- */
-export function buscarEmpreendimentoPorSlug(slug: string): Empreendimento | undefined {
+/* =============================================================================
+ * HELPERS DE BUSCA
+ * ========================================================================== */
+export function buscarEmpreendimentoPorSlug(slug: string) {
   return empreendimentosMaster.find((e) => e.slug === slug)
 }
 
-/**
- * Retorna todos os empreendimentos ativos
- */
-export function buscarEmpreendimentosAtivos(): Empreendimento[] {
+export function buscarEmpreendimentosAtivos() {
   return empreendimentosMaster.filter((e) => e.ativo)
 }
 
-/**
- * Retorna os empreendimentos marcados como destaque
- */
-export function buscarEmpreendimentosDestaque(): Empreendimento[] {
+export function buscarEmpreendimentosDestaque() {
   return empreendimentosMaster.filter((e) => e.destacado)
 }
 
-/**
- * Adiciona um novo empreendimento à lista mestra
- * Útil para testes ou adições dinâmicas
- */
-export function adicionarEmpreendimento(novoEmpreendimento: Empreendimento): void {
-  empreendimentosMaster.push(novoEmpreendimento)
+export function adicionarEmpreendimento(novo: Empreendimento) {
+  empreendimentosMaster.push(novo)
 }
 
-// =============================================================================
-// FUNÇÕES PARA FILTROS DE BUSCA
-// =============================================================================
-
-/**
- * Retorna todas as opções de filtro disponíveis
- */
+/* =============================================================================
+ * GERAÇÃO DE OPÇÕES DE FILTRO
+ * ========================================================================== */
 export function getOpcoesFiltro(): OpcoesFilter {
-  const todosStatus = new Set<EmpreendimentoStatus>()
-  const todosTipos = new Set<string>()
-  const todosBairros = new Set<string>()
+  const statusSet = new Set<EmpreendimentoStatus>()
+  const tiposSet = new Set<string>()
+  const bairrosSet = new Set<string>()
 
   empreendimentosMaster.forEach((e) => {
-    todosStatus.add(e.status)
-    todosTipos.add(e.tipo)
-    todosBairros.add(e.bairro)
+    statusSet.add(e.status)
+    tiposSet.add(e.tipo)
+    bairrosSet.add(e.bairro)
   })
 
   return {
-    status: Array.from(todosStatus),
-    tipos: Array.from(todosTipos),
-    bairros: Array.from(todosBairros),
+    status: [...statusSet],
+    tipos: [...tiposSet],
+    bairros: [...bairrosSet],
     faixas: [
-      { label: "Até R$300.000", min: 0, max: 300000 },
-      { label: "R$300.001 a R$500.000", min: 300001, max: 500000 },
-      { label: "R$500.001 a R$800.000", min: 500001, max: 800000 },
-      { label: "Acima de R$800.000", min: 800001, max: Number.POSITIVE_INFINITY },
+      { label: "Até R$300.000", min: 0, max: 300_000 },
+      { label: "R$300.001 a R$500.000", min: 300_001, max: 500_000 },
+      { label: "R$500.001 a R$800.000", min: 500_001, max: 800_000 },
+      { label: "Acima de R$800.000", min: 800_001, max: Number.POSITIVE_INFINITY },
     ],
   }
 }
 
-// =============================================================================
-// CONFIGURAÇÕES DE FILTROS
-// =============================================================================
-
-/**
- * Opções disponíveis para os filtros de busca
- * Baseadas nos empreendimentos disponíveis
- */
-export const opcoesFiltros: OpcoesFilter = {
-  tipos: ["Studio", "1 dormitório", "2 dormitórios", "3 dormitórios", "Cobertura"],
-  status: ["Breve lançamento", "Lançamento", "Em obras", "Entregues"],
-  bairros: [
-    "Bela Vista",
-    "Pinheiros",
-    "Jardim D'Icaraí",
-    "Chácara Roselândia",
-    "Jardim Isis",
-    "Granja Viana",
-    "Centro",
-  ],
-  faixas: [
-    { label: "Até R$ 300.000", min: 0, max: 300000 },
-    { label: "R$ 300.000 - R$ 500.000", min: 300000, max: 500000 },
-    { label: "R$ 500.000 - R$ 800.000", min: 500000, max: 800000 },
-    { label: "R$ 800.000 - R$ 1.200.000", min: 800000, max: 1200000 },
-    { label: "R$ 1.200.000 - R$ 2.000.000", min: 1200000, max: 2000000 },
-    { label: "Acima de R$ 2.000.000", min: 2000000, max: Number.POSITIVE_INFINITY },
-  ],
-}
+/* Exporta um snapshot pronto para consumo nos componentes ------------------- */
+export const opcoesFiltros = getOpcoesFiltro()

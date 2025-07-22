@@ -1,10 +1,10 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+import type { Empreendimento } from "@/lib/types/empreendimento"
 import { botaniqueData } from "./botanique-data"
 
 export interface EmpreendimentoCompleto {
   id: string
   nome: string
-  status: "Concluído" | "Em Construção" | "Parceria"
+  status: "Entregues" | "Em Construção" | "Parceria"
   tipo: "Residencial" | "Comercial"
   localizacao: {
     endereco: string
@@ -29,7 +29,7 @@ export interface EmpreendimentoCompleto {
 }
 
 // Dados centralizados de todos os empreendimentos
-export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
+export const empreendimentosCompletos: Record<string, Empreendimento> = {
   botanique: botaniqueData,
 
   grandClubCotia: {
@@ -41,7 +41,7 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
     localizacao: "Cotia - SP",
     bairro: "Nakamura Park",
     tipo: "1 e 2 dormitórios",
-    status: "Concluído",
+    status: "Entregues",
     area: "45 a 70m²",
     quartos: 2,
     banheiros: 2,
@@ -125,7 +125,7 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
     diferenciais: ["198 unidades", "8 Torres", "1 e 2 Dormitórios", "Lazer completo"],
     destacado: true,
     ativo: true,
-    tags: ["cotia", "concluido"],
+    tags: ["cotia", "entregues"],
     categoria: ["residencial"],
   },
 
@@ -219,7 +219,7 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
     localizacao: "Cotia - SP",
     bairro: "Jardim Ísis",
     tipo: "1 e 2 dormitórios",
-    status: "Concluído",
+    status: "Entregues",
     area: "45 a 65m²",
     quartos: 2,
     banheiros: 2,
@@ -290,7 +290,7 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
     diferenciais: ["150 unidades", "5 Torres", "1 e 2 Dormitórios", "Unidades Garden"],
     destacado: true,
     ativo: true,
-    tags: ["cotia", "concluido"],
+    tags: ["cotia", "entregues"],
     categoria: ["residencial"],
   },
 
@@ -303,14 +303,14 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
     localizacao: "Cotia - SP",
     bairro: "Jardim Ísis",
     tipo: "1, 2 e 3 dormitórios",
-    status: "Concluído",
+    status: "Entregues",
     area: "45 a 85m²",
     quartos: 3,
     banheiros: 2,
     vagas: 2,
     preco: 480000,
     precoFormatado: "A partir de R$ 480.000",
-    entrega: "2017",
+    entrega: "2019",
     descricao:
       "O Condomínio Le Mont 2 foi planejado com atenção aos detalhes, focado na qualidade de vida de sua família.",
     imagem: "/empreendimentos/le-mont-2/vitrine-le-mont-2.jpeg",
@@ -408,7 +408,7 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
     diferenciais: ["120 unidades", "4 Torres", "1, 2 e 3 Dormitórios", "Área de lazer completa"],
     destacado: true,
     ativo: true,
-    tags: ["cotia", "concluido"],
+    tags: ["cotia", "entregues"],
     categoria: ["residencial"],
   },
 
@@ -741,12 +741,12 @@ export const empreendimentosCompletos: Record<string, EmpreendimentoData> = {
 }
 
 // Função para buscar empreendimento por slug
-export function getEmpreendimentoBySlug(slug: string): EmpreendimentoData | null {
+export function getEmpreendimentoBySlug(slug: string): Empreendimento | null {
   return empreendimentosCompletos[slug] || null
 }
 
 // Lista de todos os empreendimentos
-export function getAllEmpreendimentos(): EmpreendimentoData[] {
+export function getAllEmpreendimentos(): Empreendimento[] {
   return Object.values(empreendimentosCompletos)
 }
 

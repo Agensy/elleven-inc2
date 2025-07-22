@@ -212,8 +212,8 @@ export const empreendimentosMaster: Empreendimento[] = [
 
     coordenadas: { lat: -23.6037, lng: -46.9189 },
     tipo: "2 dormitórios" as EmpreendimentoTipo,
-    status: "Breve lançamento" as EmpreendimentoStatus,
-    entrega: "2025",
+    status: "Entregues" as EmpreendimentoStatus,
+    entrega: "2019",
     area: "31,06m² a 46,32m²",
     quartos: 2,
     banheiros: 1,

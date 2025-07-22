@@ -20,7 +20,7 @@ export const grandClubCotiaData: Empreendimento = {
   quartos: 2,
   banheiros: 1,
   vagas: 1,
-  entrega: "2025",
+  entrega: "2019",
   preco: 220000,
   precoFormatado: "A partir de R$ 165.000",
 
@@ -129,7 +129,7 @@ export const grandClubCotiaData: Empreendimento = {
     unidades: "198 apartamentos",
     andares: "8 torres",
     elevadores: "2 por torre",
-    entrega: "2025",
+    entrega: "2019",
   },
 
   // Identidade visual

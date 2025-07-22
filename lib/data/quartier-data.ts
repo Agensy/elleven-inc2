@@ -1,6 +1,6 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+import type { Empreendimento } from "@/lib/types/empreendimento"
 
-export const quartierData: EmpreendimentoData = {
+export const quartierData: Empreendimento = {
   // Informações básicas
   nome: "Quartier Residencial Clube",
   slug: "quartier",

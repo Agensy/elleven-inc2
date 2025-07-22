@@ -1,6 +1,6 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+import type { Empreendimento } from "@/lib/types/empreendimento"
 
-export const grandParcData: EmpreendimentoData = {
+export const grandParcData: Empreendimento = {
   // Identificação
   slug: "grand-parc",
   nome: "Grand Parc",

@@ -2,7 +2,7 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const leMontData: Empreendimento = {
   // Identificação básica
-  id: "le-mont",
+  id: 1,
   slug: "le-mont-novo",
   nome: "Le Mont",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",
@@ -10,22 +10,22 @@ export const leMontData: Empreendimento = {
 
   // Localização
   localizacao: "Cotia - SP",
-  endereco: {
-    rua: "Estrada Morro Grande",
-    numero: "3400",
-    bairro: "Jardim Isis",
-    cidade: "Cotia",
-    estado: "SP",
-    cep: "06709-015",
+  bairro: "Jardim Isis",
+  coordenadas: {
+    lat: -23.6036,
+    lng: -46.9195
   },
 
   // Características básicas
   tipo: "Residencial",
-  status: "Concluído",
+  status: "Entregues",
   entrega: "2016",
   area: "18.000 m²",
   quartos: 3,
+  banheiros: 2,
   vagas: 1,
+  preco: 0,
+  ativo: true,
 
   // Preços
   precoFormatado: "Consulte valores",
@@ -56,9 +56,12 @@ export const leMontData: Empreendimento = {
     imagemBackground:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1%20-%20VITRINE_LE%20MONT%201-tpzwlGlJbz53ZZYI1khTDNV2R5Dxe7.jpeg",
     corPrimaria: "#2F4F2F",
-    corSecundaria: "#6B8E23",
-    corDestaque: "#D4AF37",
+    corSecundaria: "#6B8E23"
   },
+
+  // Campos obrigatórios adicionais
+  tags: ["residencial", "condomínio", "cotia"],
+  categoria: ["apartamento", "residencial"],
 
   // Diferenciais
   diferenciais: [
@@ -171,6 +174,6 @@ export const leMontData: Empreendimento = {
     unidades: "150",
     andares: "5 pavimentos",
     elevadores: "1 por torre",
-    entrega: "Concluído em 2016",
+    entrega: "2016",
   },
 }

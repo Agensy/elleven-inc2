@@ -4,10 +4,16 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
+    "build:static": "next build && next export",
     "deploy": "git push origin main && git push tiago main",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "optimize": "npm run lint && npm run build",
+    "precommit": "npm run lint",
+    "perf:check": "node scripts/performance-check.js",
+    "perf:analyze": "npm run build && npm run perf:check"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

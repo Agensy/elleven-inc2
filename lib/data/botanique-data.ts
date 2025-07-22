@@ -1,8 +1,8 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+import type { Empreendimento } from "@/lib/types/empreendimento"
 
-export const botaniqueData: EmpreendimentoData = {
+export const botaniqueData: Empreendimento = {
   // Identificação básica
-  id: 1,
+  id: 2,
   slug: "botanique",
   nome: "BOTANIQUE",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",
@@ -11,10 +11,14 @@ export const botaniqueData: EmpreendimentoData = {
   // Localização
   localizacao: "Jardim Ísis, Cotia - SP",
   bairro: "Jardim Ísis",
+  coordenadas: {
+    lat: -23.6024,
+    lng: -46.9292,
+  },
 
   // Características básicas
   tipo: "2 e 3 dormitórios",
-  status: "Concluído",
+  status: "Entregues",
   area: "60 a 120m²",
   quartos: 3,
   banheiros: 2,
@@ -122,11 +126,7 @@ export const botaniqueData: EmpreendimentoData = {
     entrega: "2020",
   },
 
-  // Coordenadas para mapa
-  coordenadas: {
-    lat: -23.6024,
-    lng: -46.9292,
-  },
+
 
   // Pontos de interesse próximos
   pontos_interesse: [
@@ -165,6 +165,6 @@ export const botaniqueData: EmpreendimentoData = {
   // Configurações de exibição
   destacado: true,
   ativo: true,
-  tags: ["natureza", "familia", "cotia", "concluido"],
+  tags: ["natureza", "familia", "cotia", "entregues"],
   categoria: ["residencial", "apartamento"],
 }

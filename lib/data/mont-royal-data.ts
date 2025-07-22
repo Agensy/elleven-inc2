@@ -1,6 +1,6 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+import type { Empreendimento } from "@/lib/types/empreendimento"
 
-export const montRoyalData: EmpreendimentoData = {
+export const montRoyalData: Empreendimento = {
   // Informações básicas
   nome: "Mont Royal Condomínio Residencial",
   slug: "mont-royal",

@@ -1,6 +1,6 @@
-import type { EmpreendimentoData } from "@/lib/types/empreendimento"
+import type { Empreendimento } from "@/lib/types/empreendimento"
 
-export const essenceData: EmpreendimentoData = {
+export const essenceData: Empreendimento = {
   // Identificação
   nome: "Essence",
   slug: "essence",

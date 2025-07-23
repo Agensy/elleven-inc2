@@ -78,8 +78,8 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
         subtitulo: `${data.precoFormatado || "Consulte valores"} - ${data.status || "Disponível"}`,
         pontos: [
           { titulo: "Área", distancia: data.area || "N/A" },
-          { titulo: "Quartos", distancia: data.quartos?.toString() || "N/A" },
-          { titulo: "Vagas", distancia: data.vagas?.toString() || "N/A" },
+          ...(data.tipo !== "Studio" && data.quartos > 0 ? [{ titulo: "Quartos", distancia: data.quartos.toString() }] : []),
+          ...(data.tipo !== "Studio" && data.vagas > 0 ? [{ titulo: "Vagas", distancia: data.vagas.toString() }] : []),
           { titulo: "Entrega", distancia: data.entrega || "N/A" },
         ],
         imagem: data.galeria?.[2] || data.identidadeVisual?.imagemBackground || "/placeholder.svg",
@@ -154,22 +154,32 @@ export default function EmpreendimentoPage({ data }: EmpreendimentoPageProps) {
       />
 
       {/* Informações com Sistema de Abas */}
-      <EmpreendimentoInformacoes
-        nome={data.nome}
-        informacoes={informacoesData}
-        endereco={data.localizacao}
-      />
+      {informacoesData && informacoesData.length > 0 && (
+        <EmpreendimentoInformacoes
+          nome={data.nome}
+          informacoes={informacoesData}
+          endereco={data.localizacao}
+        />
+      )}
 
       {/* Galeria de Imagens */}
-      <EmpreendimentoGaleria nome={data.nome} galeria={galeriaFormatada} />
+      {galeriaFormatada && galeriaFormatada.imagens && galeriaFormatada.imagens.length > 0 && (
+        <EmpreendimentoGaleria nome={data.nome} galeria={galeriaFormatada} />
+      )}
 
       {/* Plantas e Ficha Técnica */}
-      <EmpreendimentoPlantas
-        nome={data.nome}
-        plantas={data.plantas || []}
-        especificacoes={data.especificacoes}
-        corPrimaria={data.identidadeVisual?.corPrimaria || "#192849"}
-      />
+      {data.plantas && data.plantas.length > 0 && (
+         <EmpreendimentoPlantas
+           nome={data.nome}
+           plantas={data.plantas.map(planta => ({
+             ...planta,
+             quartos: planta.quartos || 0,
+             vagas: planta.vagas || 0
+           }))}
+           especificacoes={data.especificacoes}
+           corPrimaria={data.identidadeVisual?.corPrimaria || "#192849"}
+         />
+       )}
 
       {/* Seção de Contato */}
       <EmpreendimentoContato nome={data.nome} />

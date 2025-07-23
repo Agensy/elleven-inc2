@@ -24,7 +24,7 @@ O **Formulário Completo de Empreendimentos** foi desenvolvido com base na anál
 ## 📋 Estrutura do Formulário
 
 ### **Seção 1: Informações Básicas**
-```typescript
+\`\`\`typescript
 informacoesBasicas: {
   nome: string                    // ✅ Obrigatório
   slug: string                    // ✅ Auto-gerado ou manual
@@ -36,10 +36,10 @@ informacoesBasicas: {
   ativo: boolean                  // ✅ Padrão: true
   destacado?: boolean             // ⚪ Padrão: false
 }
-```
+\`\`\`
 
 ### **Seção 2: Localização e Endereço**
-```typescript
+\`\`\`typescript
 localizacao: {
   endereco: {                     // ✅ Completo
     rua: string
@@ -55,10 +55,10 @@ localizacao: {
     lng: number
   }
 }
-```
+\`\`\`
 
 ### **Seção 3: Características do Imóvel**
-```typescript
+\`\`\`typescript
 caracteristicas: {
   tipo: EmpreendimentoTipo        // ✅ Obrigatório
   area: string                    // ✅ Ex: "45m² a 180m²"
@@ -66,56 +66,56 @@ caracteristicas: {
   banheiros: number               // ✅ Obrigatório
   vagas: number                   // 🔄 Condicional (0 para Studio)
 }
-```
+\`\`\`
 
 ### **Seção 4: Preços e Valores**
-```typescript
+\`\`\`typescript
 precificacao: {
   precoInicial: number            // ✅ Obrigatório
   precoFinal?: number             // ⚪ Opcional
   precoFormatado: string          // ✅ Para exibição
 }
-```
+\`\`\`
 
 ### **Seção 5: Imagens e Mídia**
-```typescript
+\`\`\`typescript
 midia: {
   imagemPrincipal: string         // ✅ Obrigatório
   imagemDestaque?: string         // ⚪ Opcional
   galeria: string[]               // ✅ Array de URLs
 }
-```
+\`\`\`
 
 ### **Seção 6: Identidade Visual**
-```typescript
+\`\`\`typescript
 identidadeVisual: {
   corPrimaria: string             // ✅ Formato hex
   corSecundaria: string           // ✅ Formato hex
   logo?: string                   // ⚪ Opcional
   imagemBackground?: string       // ⚪ Opcional
 }
-```
+\`\`\`
 
 ### **Seção 7: Diferenciais e Características**
-```typescript
+\`\`\`typescript
 diferenciais: {
   lista: string[]                 // ✅ Lista de diferenciais
   tags: string[]                  // ✅ Para busca
   categoria: string[]             // ✅ Para filtros
 }
-```
+\`\`\`
 
 ### **Seção 8: Pontos de Interesse**
-```typescript
+\`\`\`typescript
 pontosInteresse: Array<{
   nome: string                    // ✅ Nome do local
   distancia: string               // ✅ Ex: "500m", "2km"
   tipo: "transporte" | "comercio" | "shopping" | "saude" | "educacao" | "parque" | "lazer"
 }>
-```
+\`\`\`
 
 ### **Seção 9: Plantas e Tipologias**
-```typescript
+\`\`\`typescript
 plantas: Array<{
   id: number                      // ✅ ID único
   nome: string                    // ✅ Nome da tipologia
@@ -129,10 +129,10 @@ plantas: Array<{
   descricao: string               // ✅ Descrição
   destaque?: boolean              // ⚪ Planta principal
 }>
-```
+\`\`\`
 
 ### **Seção 10: Especificações Técnicas**
-```typescript
+\`\`\`typescript
 especificacoes: {
   unidades: string                // ✅ Número de unidades
   andares: string                 // ✅ Número de andares
@@ -141,10 +141,10 @@ especificacoes: {
   rooftop?: string                // ⚪ Info rooftop
   academia?: string               // ⚪ Info academia
 }
-```
+\`\`\`
 
 ### **Seção 11: Informações para Abas**
-```typescript
+\`\`\`typescript
 informacoesAbas?: Array<{
   id: string                      // ✅ ID único
   titulo: string                  // ✅ Título da aba
@@ -159,10 +159,10 @@ informacoesAbas?: Array<{
     imagem: string                // ✅ URL da imagem
   }
 }>
-```
+\`\`\`
 
 ### **Seção 12: SEO e Metadados**
-```typescript
+\`\`\`typescript
 seo?: {
   title: string                   // ⚪ Título da página
   description: string             // ⚪ Descrição meta
@@ -171,27 +171,27 @@ seo?: {
   ogDescription?: string          // ⚪ Descrição Open Graph
   ogImage?: string                // ⚪ Imagem Open Graph
 }
-```
+\`\`\`
 
 ## 🔧 Funcionalidades Avançadas
 
 ### **1. Geração Automática de Slug**
-```typescript
+\`\`\`typescript
 gerarSlug("Novo Empreendimento Studios") // → "novo-empreendimento-studios"
-```
+\`\`\`
 
 ### **2. Validação Inteligente**
-```typescript
+\`\`\`typescript
 const { valido, erros } = validarFormulario(dadosFormulario)
 if (!valido) {
   console.log("Erros encontrados:", erros)
 }
-```
+\`\`\`
 
 ### **3. Conversão para Empreendimento**
-```typescript
+\`\`\`typescript
 const empreendimento = converterParaEmpreendimento(dadosFormulario)
-```
+\`\`\`
 
 ## 🎨 Renderização Condicional
 
@@ -235,22 +235,22 @@ const empreendimento = converterParaEmpreendimento(dadosFormulario)
 ## 🚀 Como Implementar
 
 ### **1. Importar o Formulário**
-```typescript
+\`\`\`typescript
 import { 
   FormularioEmpreendimentoCompleto,
   validarFormulario,
   converterParaEmpreendimento,
   gerarSlug
 } from '@/lib/templates/formulario-empreendimento-completo'
-```
+\`\`\`
 
 ### **2. Criar Estado do Formulário**
-```typescript
+\`\`\`typescript
 const [dadosFormulario, setDadosFormulario] = useState<Partial<FormularioEmpreendimentoCompleto>>({})
-```
+\`\`\`
 
 ### **3. Implementar Validação**
-```typescript
+\`\`\`typescript
 const handleSubmit = () => {
   const { valido, erros } = validarFormulario(dadosFormulario)
   
@@ -262,10 +262,10 @@ const handleSubmit = () => {
   const empreendimento = converterParaEmpreendimento(dadosFormulario as FormularioEmpreendimentoCompleto)
   // Salvar empreendimento...
 }
-```
+\`\`\`
 
 ### **4. Renderização Condicional**
-```typescript
+\`\`\`typescript
 // Mostrar campo quartos apenas se não for Studio
 {dadosFormulario.caracteristicas?.tipo !== 'Studio' && (
   <CampoQuartos />
@@ -275,11 +275,11 @@ const handleSubmit = () => {
 {(dadosFormulario.caracteristicas?.vagas || 0) > 0 && (
   <CampoVagas />
 )}
-```
+\`\`\`
 
 ## 📝 Exemplo Prático
 
-```typescript
+\`\`\`typescript
 // Exemplo de preenchimento para um Studio
 const studioExample: FormularioEmpreendimentoCompleto = {
   informacoesBasicas: {
@@ -299,7 +299,7 @@ slug: "novo-empreendimento-studios",
   },
   // ... resto das informações
 }
-```
+\`\`\`
 
 ## 🔍 Validações Implementadas
 

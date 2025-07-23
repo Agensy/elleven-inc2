@@ -37,7 +37,7 @@ Quando receber informações sobre um empreendimento:
 
 ### **Para Studios (quartos = 0):**
 
-```typescript
+\`\`\`typescript
 // ❌ NÃO renderizar campo quartos
 {empreendimento.tipo !== 'Studio' && (
   <div className="quartos">
@@ -57,11 +57,11 @@ Quando receber informações sobre um empreendimento:
   <span className="area">{empreendimento.area}</span>
   <span className="localizacao">{empreendimento.localizacao}</span>
 </div>
-```
+\`\`\`
 
 ### **Para Apartamentos (quartos > 0):**
 
-```typescript
+\`\`\`typescript
 // ✅ Renderizar TODOS os campos
 <div className="caracteristicas-completas">
   <span>{empreendimento.quartos} quartos</span>
@@ -69,7 +69,7 @@ Quando receber informações sobre um empreendimento:
   <span>{empreendimento.vagas} vagas</span>
   <span>{empreendimento.area}</span>
 </div>
-```
+\`\`\`
 
 ---
 
@@ -77,7 +77,7 @@ Quando receber informações sobre um empreendimento:
 
 ### **Passo 1: Análise das Informações**
 
-```markdown
+\`\`\`markdown
 **Entrada da IA:**
 "Criar página para Novo Empreendimento Studios, localizado na Rua das Flores, 123, 
 com unidades de 25m² a 35m², sem quartos (Studio), preço a partir de R$ 280.000"
@@ -90,11 +90,11 @@ com unidades de 25m² a 35m², sem quartos (Studio), preço a partir de R$ 280.0
    - Área: "25m² a 35m²"
    - Quartos: 0
    - Preço: "A partir de R$ 280.000"
-```
+\`\`\`
 
 ### **Passo 2: Aplicação das Regras**
 
-```typescript
+\`\`\`typescript
 // IA deve aplicar estas regras automaticamente:
 
 const empreendimento = {
@@ -128,11 +128,11 @@ const renderizarCaracteristicas = () => {
     </div>
   )
 }
-```
+\`\`\`
 
 ### **Passo 3: Validação Automática**
 
-```typescript
+\`\`\`typescript
 // IA deve validar automaticamente:
 
 const validarEmpreendimento = (dados) => {
@@ -154,14 +154,14 @@ const validarEmpreendimento = (dados) => {
   
   return erros
 }
-```
+\`\`\`
 
 ---
 
 ## 🎨 Componentes a Serem Atualizados
 
 ### **1. EmpreendimentoSobre.tsx**
-```typescript
+\`\`\`typescript
 // IA deve aplicar renderização condicional:
 
 {/* Tipo - sempre mostrar */}
@@ -187,10 +187,10 @@ const validarEmpreendimento = (dados) => {
     <span>{empreendimento.vagas} vagas</span>
   </div>
 )}
-```
+\`\`\`
 
 ### **2. EmpreendimentoPlantas.tsx**
-```typescript
+\`\`\`typescript
 // IA deve garantir que plantas tenham dados corretos:
 
 const plantasFormatadas = empreendimento.plantas.map(planta => ({
@@ -198,10 +198,10 @@ const plantasFormatadas = empreendimento.plantas.map(planta => ({
   quartos: planta.quartos || 0, // ← Garantir 0 para Studios
   vagas: planta.vagas || 0      // ← Garantir 0 se não tiver
 }))
-```
+\`\`\`
 
 ### **3. EmpreendimentoPage.tsx**
-```typescript
+\`\`\`typescript
 // IA deve aplicar renderização condicional de seções:
 
 {/* Sempre renderizar */}
@@ -222,45 +222,45 @@ const plantasFormatadas = empreendimento.plantas.map(planta => ({
 {empreendimento.plantas && empreendimento.plantas.length > 0 && (
   <EmpreendimentoPlantas plantas={plantasFormatadas} />
 )}
-```
+\`\`\`
 
 ---
 
 ## 🚀 Fluxo Completo de Implementação
 
 ### **1. Receber Informações**
-```
+\`\`\`
 Input: "Criar empreendimento X com características Y"
-```
+\`\`\`
 
 ### **2. Processar Template**
-```
+\`\`\`
 1. Ler template-empreendimento-ia.md
 2. Extrair informações do input
 3. Mapear para campos do template
 4. Identificar tipo (Studio vs Apartamento)
-```
+\`\`\`
 
 ### **3. Aplicar Regras**
-```
+\`\`\`
 1. Definir quartos (0 para Studio, >0 para apartamentos)
 2. Definir vagas (opcional para Studio, obrigatório para apartamentos)
 3. Aplicar renderização condicional
-```
+\`\`\`
 
 ### **4. Gerar Código**
-```
+\`\`\`
 1. Atualizar empreendimentos-master.ts
 2. Criar/atualizar página do empreendimento
 3. Aplicar componentes com renderização condicional
-```
+\`\`\`
 
 ### **5. Validar Resultado**
-```
+\`\`\`
 1. Verificar se campos obrigatórios estão preenchidos
 2. Testar renderização condicional
 3. Validar funcionamento da página
-```
+\`\`\`
 
 ---
 

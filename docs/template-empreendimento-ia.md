@@ -126,14 +126,14 @@
 ### Galeria de Imagens
 **Campo:** `galeria`  
 **Exemplo:**
-```
+\`\`\`
 [
   "/images/novo-empreendimento/fachada.jpg",
   "/images/novo-empreendimento/lobby.jpg",
   "/images/novo-empreendimento/apartamento-decorado.jpg",
   "/images/novo-empreendimento/area-lazer.jpg"
 ]
-```
+\`\`\`
 **Descrição:** Array com URLs das imagens da galeria
 
 ---
@@ -162,7 +162,7 @@
 ### Lista de Diferenciais
 **Campo:** `diferenciais`  
 **Exemplo:**
-```
+\`\`\`
 [
   "Localização privilegiada",
   "Acabamentos de alto padrão",
@@ -170,7 +170,7 @@
   "Segurança 24h",
   "Próximo ao metrô"
 ]
-```
+\`\`\`
 **Descrição:** Array com os principais diferenciais
 
 ### Tags
@@ -190,7 +190,7 @@
 ### Lista de Pontos Próximos
 **Campo:** `pontos_interesse`  
 **Exemplo:**
-```
+\`\`\`
 [
   {
     "nome": "Estação de Metrô Consolação",
@@ -208,7 +208,7 @@
     "tipo": "saude"
   }
 ]
-```
+\`\`\`
 **Tipos disponíveis:** transporte, comercio, shopping, saude, educacao, parque, lazer
 
 ---
@@ -218,7 +218,7 @@
 ### Lista de Plantas
 **Campo:** `plantas`  
 **Exemplo:**
-```
+\`\`\`
 [
   {
     "id": 1,
@@ -245,7 +245,7 @@
     "descricao": "Studio amplo com vaga"
   }
 ]
-```
+\`\`\`
 
 ---
 
@@ -288,7 +288,7 @@
 ### Abas de Informações Detalhadas
 **Campo:** `informacoes`  
 **Exemplo:**
-```
+\`\`\`
 [
   {
     "id": "transporte",
@@ -331,7 +331,7 @@
     }
   }
 ]
-```
+\`\`\`
 **Ícones disponíveis:** Train, ShoppingBag, Hospital, GraduationCap, Trees, Coffee, MapPin
 
 ---
@@ -369,7 +369,7 @@
 
 ### Regras de Renderização Condicional:
 
-```typescript
+\`\`\`typescript
 // Para Studios (quartos = 0)
 - NÃO exibir campo "Quartos" na interface
 - Exibir "Vagas" apenas se > 0
@@ -379,7 +379,7 @@
 - Exibir TODOS os campos
 - "Quartos" e "Vagas" são obrigatórios
 - Informações completas
-```
+\`\`\`
 
 ### Validações Obrigatórias:
 
@@ -395,7 +395,7 @@
 
 ### Exemplo de Uso no Código:
 
-```typescript
+\`\`\`typescript
 // Renderização condicional para quartos
 {empreendimento.quartos > 0 && (
   <div className="campo-quartos">
@@ -409,7 +409,7 @@
     <span>{empreendimento.vagas} vagas</span>
   </div>
 )}
-```
+\`\`\`
 
 ---
 

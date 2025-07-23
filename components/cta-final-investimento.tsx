@@ -79,6 +79,7 @@ export default function CtaFinalInvestimento() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-6 text-lg font-semibold rounded-xl shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 group"
+              onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20como%20investir', '_blank')}
             >
               Quero investir agora
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
@@ -88,6 +89,7 @@ export default function CtaFinalInvestimento() {
               size="lg"
               variant="outline"
               className="border-2 border-white/30 text-white hover:bg-white/10 px-12 py-6 text-lg font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 bg-transparent"
+              onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20como%20investir', '_blank')}
             >
               Falar com especialista
             </Button>
@@ -97,26 +99,28 @@ export default function CtaFinalInvestimento() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300 cursor-pointer"
+              onClick={() => window.open('tel:+5511915373813', '_self')}
             >
               <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-white font-semibold mb-2">Ligue agora</h3>
               <p className="text-gray-300 text-sm mb-3">Fale diretamente com nossos especialistas</p>
-              <p className="text-white font-medium">(11) 99999-9999</p>
+              <p className="text-white font-medium">+55 11 91537-3813</p>
             </motion.div>
 
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300 cursor-pointer"
+              onClick={() => window.open('mailto:sac@ellevenengenharia.com.br', '_self')}
             >
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-white font-semibold mb-2">Envie um e-mail</h3>
               <p className="text-gray-300 text-sm mb-3">Receba uma proposta personalizada</p>
-              <p className="text-white font-medium">contato@elleven.com.br</p>
+              <p className="text-white font-medium">sac@ellevenengenharia.com.br</p>
             </motion.div>
           </div>
 

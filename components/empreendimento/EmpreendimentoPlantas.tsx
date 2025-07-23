@@ -189,14 +189,22 @@ export default function EmpreendimentoPlantas({
               </div>
             )}
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-[#192849]/20 text-[#192849] hover:bg-[#192849]/10 bg-transparent w-full"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Baixar Planta Técnica
-            </Button>
+            {plantaPrincipal && plantaPrincipal.imagem && (
+              <a
+                href={plantaPrincipal.imagem}
+                download={`planta-${nome.toLowerCase().replace(/\s+/g, "-")}-${plantaPrincipal.tipo.toLowerCase().replace(/\s+/g, "-")}.jpg`}
+                className="w-full"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#192849]/20 text-[#192849] hover:bg-[#192849]/10 bg-transparent w-full"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Baixar Planta Técnica
+                </Button>
+              </a>
+            )}
           </motion.div>
         </div>
 

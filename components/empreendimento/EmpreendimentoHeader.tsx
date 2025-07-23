@@ -113,14 +113,16 @@ export default function EmpreendimentoHeader({ nome, onShowContact }: Empreendim
 
           {/* CTAs */}
           <div className="hidden md:flex gap-3">
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-gray-200 text-gray-600 hover:bg-gray-50 group bg-transparent"
-            >
-              <Download className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
-              Material
-            </Button>
+            <Link href="https://drive.google.com/file/d/15ULczqGRGYk14Gx_7aXuhJHywwa6Aj7F/view?usp=drive_link" target="_blank">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-gray-200 text-gray-600 hover:bg-gray-50 group bg-transparent"
+              >
+                <Download className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
+                Material
+              </Button>
+            </Link>
             <Button
               size="sm"
               className="bg-[#1A2D54] hover:bg-[#152444] text-white shadow-lg hover:shadow-xl transition-all duration-300"
@@ -154,10 +156,12 @@ export default function EmpreendimentoHeader({ nome, onShowContact }: Empreendim
                   </button>
                 ))}
                 <div className="flex gap-2 mt-4">
-                  <Button variant="outline" size="sm" className="flex-1 bg-transparent">
-                    <Download className="h-4 w-4 mr-2" />
-                    Material
-                  </Button>
+                  <Link href="https://drive.google.com/file/d/15ULczqGRGYk14Gx_7aXuhJHywwa6Aj7F/view?usp=drive_link" target="_blank" className="flex-1">
+                    <Button variant="outline" size="sm" className="w-full bg-transparent">
+                      <Download className="h-4 w-4 mr-2" />
+                      Material
+                    </Button>
+                  </Link>
                   <Button
                     size="sm"
                     className="flex-1 bg-[#1A2D54] hover:bg-[#152444] text-white"

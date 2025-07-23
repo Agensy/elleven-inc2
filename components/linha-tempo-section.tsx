@@ -103,7 +103,7 @@ const todosOsProjetos = [
     imagem: "/linha-tempo/icarai.jpg",
     entrega: "2026",
     mesEntrega: "Novembro",
-    status: "Em Andamento",
+    status: "Em Obra",
     categoria: "Em Andamento",
     slug: "icarai-parque-clube", // Usando slug completo para mapeamento correto
   },

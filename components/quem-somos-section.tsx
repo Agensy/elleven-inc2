@@ -7,34 +7,34 @@ const timeElleven = [
   {
     id: 1,
     nome: "Eduardo Rocha",
-    cargo: "Founder e CEO",
+    cargo: ["Founder e CEO"],
     imagem: "https://agensya.com.br/wp-content/uploads/2025/06/1-EDUARDO-ROCHA.png", // Mantém a imagem existente
     descricao:
-      "Executivo com mais de 30 anos no mundo corporativo e mais de 10 no setor imobiliário, com foco na construção de negócios rentáveis. Já entregou mais de 2.000 unidades habitacionais, atuando em todas as etapas dos projetos. É bacharel em Administração, pós-graduado em Marketing (ESPM) e possui MBA em Planejamento Estratégico (FGV).",
+      "Executivo com uma combinação de visão estratégica e experiência prática, focado em construir negócios saudáveis e rentáveis. Com mais de 30 anos de trajetória no mundo corporativo e mais de 10 anos de atuação no setor de incorporação imobiliária, já entregou mais de 2.000 unidades habitacionais. Possui vasta experiência na execução de obras, acompanhando todo o ciclo de desenvolvimento, desde a concepção até a entrega das chaves. É bacharel em Administração de Empresas, pós-graduado em Marketing pela ESPM e possui MBA em Planejamento Estratégico pela Fundação Getúlio Vargas.",
   },
   {
     id: 2,
     nome: "Marco Túlio",
-    cargo: "Diretor Executivo de Parcerias", // Changed from "Diretor Executivo de Parcerias e Investidores"
+    cargo: ["Diretor Executivo", "Parcerias e Investidores"],
     imagem: "https://agensya.com.br/wp-content/uploads/2025/06/2-MARCO-TULIO.png", // Mantém a imagem existente
     descricao:
-      "Com mais de 28 anos de carreira, acumula experiência em projetos de implementação, desenvolvimento e expansão de negócios. Atuou como executivo na SAP e fundou empresas de consultoria em tecnologia. Hoje, aplica seu conhecimento para acelerar o crescimento da Elleven no mercado imobiliário.",
+      "Possui mais de 28 anos de experiência em projetos de implementação, desenvolvimento, treinamento e vendas de softwares corporativos. Foi executivo na subsidiária brasileira da SAP, sócio fundador da Finity Consultoria e diretor de vendas na Spread Tecnologia e IntraGroup. Atualmente, aplica toda sua experiência em processos de negócios para impulsionar o crescimento do ecossistema da empresa no mercado imobiliário.",
   },
   {
     id: 3,
     nome: "Fernando Remor",
-    cargo: "Diretor Executivo Jurídico",
+    cargo: ["Diretor Executivo", "Jurídico"],
     imagem: "https://agensya.com.br/wp-content/uploads/2025/06/3-FERNANDO-REMOR.png", // Mantém a imagem existente
     descricao:
-      "Advogado formado pela USP, com mais de 35 anos de atuação. Sua experiência inclui assessoria em negócios internacionais e estruturação de operações para investidores estrangeiros no Brasil. Atua também como empresário no mercado imobiliário dos EUA, com foco em house flipping e fundos de investimento.",
+      "Advogado graduado pela USP, com mais de 35 anos de experiência na advocacia. Sua trajetória inclui a participação em inúmeros negócios internacionais, com destaque para a assessoria a clientes estrangeiros interessados em fazer negócios no Brasil. Há 7 anos nos Estados Unidos, é empresário no ramo de house flipping em Pittsburgh, na Pensilvânia, além de ser especialista em operações estruturadas com fundos de investimentos.",
   },
   {
     id: 4,
     nome: "Mauro Resende",
-    cargo: "Diretor Executivo de Engenharia",
+    cargo: ["Diretor Executivo", "de Engenharia"],
     imagem: "https://agensya.com.br/wp-content/uploads/2025/06/4-MAURO-RESENDE.png", // Mantém a imagem existente
     descricao:
-      "Engenheiro civil com mais de 40 anos de experiência em infraestrutura e saneamento. Foi responsável por mais de um milhão de metros quadrados construídos e mais de 10 mil unidades habitacionais. É formado pela UFMG, com especializações em Administração (Mackenzie) e MBA em Gestão de Negócios Imobiliários (FGV).",
+      "Engenheiro civil com mais de 40 anos de experiência em projetos de infraestrutura e saneamento. Foi responsável pela construção de mais de um milhão de metros quadrados, incluindo a execução de escolas, hospitais e unidades de saúde. Construindo mais de 10.000 unidades habitacionais, abrangendo os segmentos econômico, médio e alto padrão. Formado pela UFMG em 1981, com especializações em Administração (Mackenzie) e MBA em Gestão de Negócios Imobiliários (FGV), destacou-se em obras de sistemas de captação e tratamento de água, redes de esgoto, pontes, viadutos e empreendimentos imobiliários.",
   },
 ]
 
@@ -121,9 +121,13 @@ export default function QuemSomosSection() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">{timeElleven[0].nome}</h3>
-                  <p className="text-orange-500 font-medium text-lg uppercase tracking-wider mb-4">
-                    {timeElleven[0].cargo}
-                  </p>
+                  <div className="text-orange-500 font-medium text-lg uppercase tracking-wider mb-4">
+                    {Array.isArray(timeElleven[0].cargo) ? (
+                      timeElleven[0].cargo.map((line, index) => <span key={index} className="block">{line}</span>)
+                    ) : (
+                      timeElleven[0].cargo
+                    )}
+                  </div>
                 </div>
 
                 <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
@@ -167,7 +171,13 @@ export default function QuemSomosSection() {
                   <h4 className="text-xl font-bold text-foreground group-hover:text-orange-500 transition-colors duration-300">
                     {pessoa.nome}
                   </h4>
-                  <p className="text-orange-500 font-medium text-sm uppercase tracking-wider">{pessoa.cargo}</p>
+                  <div className="text-orange-500 font-medium text-sm uppercase tracking-wider">
+                    {Array.isArray(pessoa.cargo) ? (
+                      pessoa.cargo.map((line, index) => <span key={index} className="block">{line}</span>)
+                    ) : (
+                      pessoa.cargo
+                    )}
+                  </div>
                   <p
                     className="text-muted-foreground leading-relaxed mt-4 group-hover:text-foreground/80 transition-colors duration-300"
                     style={{ fontSize: "0.875rem" }}

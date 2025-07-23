@@ -97,7 +97,7 @@ export default function ContatoPage() {
                           value={formData.telefone}
                           onChange={handleChange}
                           className="border-gray-300 focus:border-[#1A2D54] focus:ring-[#1A2D54]"
-                          placeholder="(11) 99999-9999"
+                          placeholder="+55 11 91537-3813"
                           required
                         />
                       </div>
@@ -175,7 +175,7 @@ export default function ContatoPage() {
                         <Phone className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">(11) 3333-4444</div>
+                        <div className="font-medium text-gray-900">+55 11 91537-3813</div>
                         <div className="text-sm text-gray-600">Plantão de Vendas</div>
                       </div>
                     </div>
@@ -185,7 +185,7 @@ export default function ContatoPage() {
                         <MessageCircle className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">(11) 99999-9999</div>
+                        <div className="font-medium text-gray-900">+55 11 91537-3813</div>
                         <div className="text-sm text-gray-600">WhatsApp</div>
                       </div>
                     </div>
@@ -195,7 +195,7 @@ export default function ContatoPage() {
                         <Mail className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">contato@elleven.com.br</div>
+                        <div className="font-medium text-gray-900">sac@ellevenengenharia.com.br</div>
                         <div className="text-sm text-gray-600">E-mail principal</div>
                       </div>
                     </div>
@@ -211,9 +211,8 @@ export default function ContatoPage() {
                     Nosso Escritório
                   </h3>
                   <div className="text-gray-700 mb-4">
-                    <p>Av. Paulista, 1000 - Conjunto 101</p>
-                    <p>Bela Vista, São Paulo - SP</p>
-                    <p>CEP: 01310-100</p>
+                    <p>Avenida Cauaxi, 293 - Sala 1402</p>
+                    <p>Alphaville, São Paulo - SP</p>
                   </div>
                   
                   <div className="flex items-center gap-2 text-[#1A2D54] mb-4">
@@ -234,11 +233,19 @@ export default function ContatoPage() {
                   <h3 className="text-xl font-bold mb-4">Precisa de Atendimento Urgente?</h3>
                   <p className="mb-6">Nossa equipe está sempre disponível para atendê-lo</p>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button variant="outline" className="bg-white text-[#1A2D54] hover:bg-gray-100 border-white">
+                    <Button 
+                      variant="outline" 
+                      className="bg-white text-[#1A2D54] hover:bg-gray-100 border-white"
+                      onClick={() => window.open('tel:+5511915373813', '_self')}
+                    >
                       <Phone className="mr-2 h-4 w-4" />
                       Ligar Agora
                     </Button>
-                    <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
+                    <Button 
+                      variant="outline" 
+                      className="bg-transparent border-white text-white hover:bg-white/10"
+                      onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20o%20empreendimento', '_blank')}
+                    >
                       <MessageCircle className="mr-2 h-4 w-4" />
                       WhatsApp
                     </Button>

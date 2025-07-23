@@ -167,13 +167,24 @@ export default function ParceirosContent() {
                   <p className="text-white/80">Kabanna Real Estate</p>
                 </div>
 
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={(e) => {
+                  e.preventDefault()
+                  const formData = new FormData(e.target as HTMLFormElement)
+                  const nome = formData.get('nome')
+                  const email = formData.get('email')
+                  const telefone = formData.get('telefone')
+                  const message = `Quero saber mais sobre como investir. Meus dados: Nome: ${nome}, Email: ${email}, Telefone: ${telefone}`
+                  const whatsappUrl = `https://wa.me/5511915373813?text=${encodeURIComponent(message)}`
+                  window.open(whatsappUrl, '_blank')
+                }}>
                   <div>
                     <label className="block text-sm font-medium mb-2">Nome Completo</label>
                     <input
                       type="text"
+                      name="nome"
                       className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-orange-500"
                       placeholder="Seu nome completo"
+                      required
                     />
                   </div>
 
@@ -181,8 +192,10 @@ export default function ParceirosContent() {
                     <label className="block text-sm font-medium mb-2">Email</label>
                     <input
                       type="email"
+                      name="email"
                       className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-orange-500"
                       placeholder="seu@email.com"
+                      required
                     />
                   </div>
 
@@ -190,12 +203,14 @@ export default function ParceirosContent() {
                     <label className="block text-sm font-medium mb-2">Telefone</label>
                     <input
                       type="tel"
+                      name="telefone"
                       className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      placeholder="(11) 99999-9999"
+                      placeholder="+55 11 91537-3813"
+                      required
                     />
                   </div>
 
-                  <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  <button type="submit" className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Quero Investir nos EUA
                   </button>
                 </form>
@@ -222,14 +237,14 @@ export default function ParceirosContent() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8">
               {otherPartners.map((partner, index) => (
-                <Link key={partner.name} href="/parceiros">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-blue-700/50 cursor-pointer"
-                  >
+                <motion.div
+                  key={partner.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-br from-[#1A2D54] to-[#2A4A7A] rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-blue-700/50"
+                >
                     <div className="w-full h-16 flex items-center justify-center mb-4">
                       <Image
                         src={partner.logo || "/placeholder.svg"}
@@ -240,8 +255,7 @@ export default function ParceirosContent() {
                       />
                     </div>
                     <p className="text-gray-300 text-sm leading-relaxed">{partner.description}</p>
-                  </motion.div>
-                </Link>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -274,15 +288,27 @@ export default function ParceirosContent() {
               Junte-se à nossa rede de parceiros e ofereça soluções completas aos seus clientes
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              <a
+                href="https://wa.me/5511915373813?text=Quero%20me%20tornar%20parceiro%20da%20Elleven."
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Quero Ser Parceiro
-              </Button>
-              <Button size="lg" variant="ghost" className="border-2 border-white/30 text-white">
-                Saiba Mais
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  Quero Ser Parceiro
+                </Button>
+              </a>
+              <a
+                href="https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20me%20tornar%20parceiro%20da%20Elleven."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" variant="ghost" className="border-2 border-white/30 text-white">
+                  Saiba Mais
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>

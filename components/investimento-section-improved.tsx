@@ -106,29 +106,12 @@ export default function InvestimentoSectionImproved() {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { duration: 0.2 },
-                  }}
-                  className={`group p-5 rounded-xl transition-all duration-300 cursor-pointer ${
-                    benefit.color === "orange"
-                      ? "card-premium border-orange-200 bg-gradient-to-br from-orange-50 to-orange-100/50"
-                      : "card-clean hover:shadow-lg"
-                  }`}
+                  className={`p-5 rounded-xl ${benefit.color === "orange" ? "card-premium border-orange-200 bg-gradient-to-br from-orange-50 to-orange-100/50" : "card-clean"}`}
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className={`
-                      w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110
-                      ${
-                        benefit.color === "orange"
-                          ? "bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25"
-                          : benefit.color === "green"
-                            ? "bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-500/25"
-                            : "bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25"
-                      }
-                    `}
-                    >
+                      className={`w-12 h-12 rounded-lg flex items-center justify-center ${benefit.color === "orange" ? "bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25" : benefit.color === "green" ? "bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-500/25" : "bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25"}`}>
+
                       <benefit.icon className="h-6 w-6 text-white" />
                     </div>
 
@@ -193,18 +176,14 @@ export default function InvestimentoSectionImproved() {
                 whileInView="whileInView"
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                whileHover={{
-                  scale: 1.05,
-                  transition: { duration: 0.2 },
-                }}
-                className="absolute top-8 right-4 lg:-right-8 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-xl p-4 lg:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                className="absolute top-8 right-4 lg:-right-8 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-xl p-4 lg:p-6 shadow-xl"
               >
                 <div className="text-center space-y-2">
-                  <div className="text-2xl lg:text-3xl font-bold text-gradient-orange group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-2xl lg:text-3xl font-bold text-gradient-orange">
                     R$ 2M+
                   </div>
                   <div className="text-xs lg:text-sm text-muted font-medium">Investimentos Realizados</div>
-                  <div className="w-8 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="w-8 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full mx-auto"></div>
                 </div>
               </motion.div>
 
@@ -215,18 +194,14 @@ export default function InvestimentoSectionImproved() {
                 whileInView="whileInView"
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                whileHover={{
-                  scale: 1.05,
-                  transition: { duration: 0.2 },
-                }}
-                className="absolute bottom-8 left-4 lg:-left-8 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-xl p-4 lg:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                className="absolute bottom-8 left-4 lg:-left-8 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-xl p-4 lg:p-6 shadow-xl"
               >
                 <div className="text-center space-y-2">
-                  <div className="text-2xl lg:text-3xl font-bold text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-2xl lg:text-3xl font-bold text-blue-600">
                     12%
                   </div>
                   <div className="text-xs lg:text-sm text-muted font-medium">Rentabilidade Anual</div>
-                  <div className="w-8 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="w-8 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto"></div>
                 </div>
               </motion.div>
 

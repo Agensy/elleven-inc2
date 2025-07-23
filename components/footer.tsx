@@ -128,7 +128,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="#"
+                  href="#servicos"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                   style={{ fontSize: "0.875rem" }}
                 >
@@ -137,7 +137,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#servicos"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                   style={{ fontSize: "0.875rem" }}
                 >
@@ -146,7 +146,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#servicos"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                   style={{ fontSize: "0.875rem" }}
                 >
@@ -155,7 +155,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#servicos"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                   style={{ fontSize: "0.875rem" }}
                 >
@@ -164,7 +164,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#servicos"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                   style={{ fontSize: "0.875rem" }}
                 >
@@ -215,7 +215,7 @@ export default function Footer() {
           className="border-t border-white/20 mt-12 pt-6 text-center"
         >
           <p className="text-white/60" style={{ fontSize: "0.875rem" }}>
-            © 2024 Elleven Engenharia. Todos os direitos reservados.
+            © 2025 Elleven Engenharia. Todos os direitos reservados.
           </p>
         </motion.div>
       </div>

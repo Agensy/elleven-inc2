@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function HeroSection() {
   return (
@@ -41,33 +42,37 @@ export default function HeroSection() {
 
           {/* CTA Buttons - Enhanced with Light Effect */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
-            >
-              <span className="relative z-10 flex items-center">
-                Ver Empreendimentos
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
+            <Link href="#empreendimentos" passHref>
+              <Button
+                size="lg"
+                className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
+              >
+                <span className="relative z-10 flex items-center">
+                  Ver Empreendimentos
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
 
-              {/* Glow Effect on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 via-white/10 to-orange-400/30 blur-md"></div>
-              </div>
-            </Button>
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 via-white/10 to-orange-400/30 blur-md"></div>
+                </div>
+              </Button>
+            </Link>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="relative overflow-hidden bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
-            >
-              <span className="relative z-10">Invista</span>
-              
-              {/* Glass shimmer effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/20 to-white/5 blur-sm"></div>
-              </div>
-            </Button>
+            <Link href="#investimento" passHref>
+              <Button
+                size="lg"
+                variant="outline"
+                className="relative overflow-hidden bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
+              >
+                <span className="relative z-10">Invista</span>
+                
+                {/* Glass shimmer effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/20 to-white/5 blur-sm"></div>
+                </div>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

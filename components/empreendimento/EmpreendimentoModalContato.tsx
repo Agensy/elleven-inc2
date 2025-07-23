@@ -25,8 +25,10 @@ export default function EmpreendimentoModalContato({
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Formulário modal enviado:", formData)
-    // Aqui você pode adicionar a lógica de envio do formulário
+    // Redirecionar para WhatsApp com mensagem específica
+    const message = `Quero saber mais sobre o empreendimento ${nome}. Meus dados: Nome: ${formData.nome}, Email: ${formData.email}, Telefone: ${formData.telefone}`
+    const whatsappUrl = `https://wa.me/5511915373813?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
     onClose()
   }
 

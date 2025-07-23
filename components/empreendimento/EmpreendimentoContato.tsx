@@ -29,8 +29,10 @@ export default function EmpreendimentoContato({ nome }: EmpreendimentoContatoPro
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Formulário enviado:", formData)
-    // Aqui você pode adicionar a lógica de envio do formulário
+    // Redirecionar para WhatsApp com mensagem específica
+    const message = `Quero saber mais sobre o empreendimento ${nome}. Meus dados: Nome: ${formData.nome}, Email: ${formData.email}, Telefone: ${formData.telefone}${formData.mensagem ? `, Mensagem: ${formData.mensagem}` : ''}`
+    const whatsappUrl = `https://wa.me/5511915373813?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -88,7 +90,7 @@ export default function EmpreendimentoContato({ nome }: EmpreendimentoContatoPro
                       name="telefone"
                       value={formData.telefone}
                       onChange={handleInputChange}
-                      placeholder="(11) 99999-9999"
+                      placeholder="+55 11 91537-3813"
                       required
                       className="w-full h-12"
                     />

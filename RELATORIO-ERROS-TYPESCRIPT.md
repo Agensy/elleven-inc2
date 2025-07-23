@@ -121,12 +121,12 @@ Foram identificados **108 erros de TypeScript** distribuídos em **18 arquivos**
 ### Prioridade 1 - Crítica
 
 1. **Corrigir status de empreendimentos:**
-   ```typescript
+   \`\`\`typescript
    // Alterar de:
    status: "Em Obras"
    // Para:
    status: "Em obras"
-   ```
+   \`\`\`
 
 2. **Resolver propriedade `endereco`:**
    - Opção A: Adicionar à interface `Empreendimento`
@@ -160,7 +160,7 @@ Foram identificados **108 erros de TypeScript** distribuídos em **18 arquivos**
 
 ## Comandos para Verificação
 
-```bash
+\`\`\`bash
 # Verificar erros de TypeScript
 npx tsc --noEmit
 
@@ -169,7 +169,7 @@ npm run build
 
 # Servidor de desenvolvimento
 npm run dev
-```
+\`\`\`
 
 ## Conclusão
 

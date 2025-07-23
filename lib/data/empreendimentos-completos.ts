@@ -4,7 +4,7 @@ import { botaniqueData } from "./botanique-data"
 export interface EmpreendimentoCompleto {
   id: string
   nome: string
-  status: "Entregues" | "Em Construção" | "Parceria"
+  status: "Entregues" | "Em obras" | "Parceria"
   tipo: "Residencial" | "Comercial"
   localizacao: {
     endereco: string
@@ -36,7 +36,7 @@ export const empreendimentosCompletos: Record<string, Empreendimento> = {
     id: 2,
     slug: "grand-club-cotia",
     nome: "Grand Club Cotia",
-    subtitulo: "CONDOMÍNIO RESIDENCIAL",
+    subtitulo: "Entregues",
     slogan: "Viva com estilo e conforto",
     localizacao: "Cotia - SP",
     bairro: "Nakamura Park",
@@ -48,7 +48,7 @@ export const empreendimentosCompletos: Record<string, Empreendimento> = {
     vagas: 1,
     preco: 450000,
     precoFormatado: "A partir de R$ 450.000",
-    entrega: "2019",
+    entrega: "2022",
     descricao:
       "O Grand Club Cotia foi projetado para proporcionar um estilo de vida único, onde a flexibilidade e o conforto são prioridades.",
     imagem: "/empreendimentos/grand-club-cotia/vitrine-grand-club.jpeg",
@@ -118,7 +118,7 @@ export const empreendimentosCompletos: Record<string, Empreendimento> = {
       unidades: "198",
       andares: "8",
       elevadores: "2",
-      entrega: "2019",
+      entrega: "2022",
     },
     coordenadas: { lat: -23.6024, lng: -46.9292 },
     pontos_interesse: [],
@@ -138,7 +138,7 @@ export const empreendimentosCompletos: Record<string, Empreendimento> = {
     localizacao: "Salto - SP",
     bairro: "Jardim D'Icaraí",
     tipo: "2 e 3 dormitórios",
-    status: "Em Construção",
+    status: "Em obras",
     area: "65 a 95m²",
     quartos: 3,
     banheiros: 2,
@@ -503,7 +503,7 @@ export const empreendimentosCompletos: Record<string, Empreendimento> = {
     localizacao: "Valinhos - SP",
     bairro: "Centro",
     tipo: "2 e 3 dormitórios",
-    status: "Em Construção",
+    status: "Em obras",
     area: "65 a 90m²",
     quartos: 3,
     banheiros: 2,

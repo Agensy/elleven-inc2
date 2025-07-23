@@ -244,13 +244,13 @@ export default function EmpreendimentosListing() {
 
 function EmpreendimentoCard({ empreendimento }: { empreendimento: Empreendimento }) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
       <div className="relative h-48">
         <Image
           src={empreendimento.imagem || "/placeholder.svg"}
           alt={empreendimento.nome}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
         {empreendimento.destacado && <Badge className="absolute top-3 left-3 bg-primary">Destaque</Badge>}
         <Badge variant="secondary" className="absolute top-3 right-3">
@@ -258,49 +258,53 @@ function EmpreendimentoCard({ empreendimento }: { empreendimento: Empreendimento
         </Badge>
       </div>
 
-      <CardHeader>
+      <CardHeader className="pb-3">
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold">{empreendimento.nome}</h3>
+          <h3 className="text-xl font-semibold line-clamp-1">{empreendimento.nome}</h3>
           {empreendimento.subtitulo && <p className="text-sm text-muted-foreground">{empreendimento.subtitulo}</p>}
           <div className="flex items-center text-sm text-muted-foreground">
-            <MapPin className="h-4 w-4 mr-1" />
-            {empreendimento.localizacao}
+            <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
+            <span className="line-clamp-1">{empreendimento.localizacao}</span>
           </div>
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 pt-0">
+        {/* Descrição breve */}
+        {empreendimento.descricao && (
+          <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+            {empreendimento.descricao}
+          </p>
+        )}
+
         {/* Características */}
-        <div className="flex items-center gap-4 text-sm">
+        <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <Bed className="h-4 w-4" />
-            {empreendimento.quartos} dorm
+            <span>{empreendimento.quartos} dorm</span>
           </div>
           <div className="flex items-center gap-1">
             <Bath className="h-4 w-4" />
-            {empreendimento.banheiros} banh
+            <span>{empreendimento.banheiros} banh</span>
           </div>
           <div className="flex items-center gap-1">
             <Car className="h-4 w-4" />
-            {empreendimento.vagas} vaga
+            <span>{empreendimento.vagas} vaga</span>
           </div>
         </div>
 
-        {/* Área e preço */}
-        <div className="space-y-1">
+        {/* Área */}
+        <div className="flex items-center justify-between">
           <p className="text-sm text-muted-foreground">A partir de {empreendimento.area}</p>
-          <p className="text-lg font-semibold text-primary">{empreendimento.precoFormatado}</p>
-        </div>
-
-        {/* Entrega */}
-        <div className="flex items-center text-sm text-muted-foreground">
-          <Calendar className="h-4 w-4 mr-1" />
-          Entrega: {empreendimento.entrega}
+          <div className="flex items-center text-sm text-muted-foreground">
+            <Calendar className="h-4 w-4 mr-1" />
+            <span>{empreendimento.entrega}</span>
+          </div>
         </div>
 
         {/* Botão */}
         <Link href={getEmpreendimentoUrl(empreendimento.slug)}>
-          <Button className="w-full">Ver Detalhes</Button>
+          <Button className="w-full group-hover:bg-primary/90 transition-colors">Ver Detalhes</Button>
         </Link>
       </CardContent>
     </Card>

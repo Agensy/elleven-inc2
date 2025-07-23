@@ -73,31 +73,70 @@ export default function EmpreendimentoHero({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center relative z-20"
           >
-            <Button
-              size="lg"
-              className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-base font-semibold group transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:ease-out"
-              onClick={onShowContact}
-            >
-              <span className="relative z-10 flex items-center">
-                Tenho Interesse
-                <ArrowLeft className="ml-2 h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-              </span>
-
-              {/* Glow Effect on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 via-white/10 to-orange-400/30 blur-md"></div>
-              </div>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 text-white hover:text-white px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105"
-              onClick={onShowContact}
-            >
-              Quero Investir
-            </Button>
+            <button
+              type="button"
+              className="relative z-30 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-base font-semibold rounded-md transition-colors duration-300 cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                const message = `Olá! Quero saber mais sobre o empreendimento ${nome}.`
+                const phoneNumber = '5511915373813'
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+                console.log('=== BOTÃO TENHO INTERESSE CLICADO ===')
+                console.log('Nome do empreendimento:', nome)
+                console.log('Mensagem:', message)
+                console.log('WhatsApp URL:', whatsappUrl)
+                console.log('Tentando abrir WhatsApp...')
+                
+                try {
+                  const opened = window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+                  if (opened) {
+                    console.log('WhatsApp aberto com sucesso')
+                  } else {
+                    console.log('Pop-up bloqueado, tentando fallback')
+                    window.location.href = whatsappUrl
+                  }
+                } catch (error) {
+                  console.error('Erro ao abrir WhatsApp:', error)
+                  window.location.href = whatsappUrl
+                }
+             }}
+           >
+             Tenho Interesse
+           </button>
+            <button
+              type="button"
+              className="relative z-30 bg-white/10 border border-white/30 hover:bg-white/20 text-white px-8 py-4 text-base font-semibold rounded-md transition-colors duration-300 cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                const message = `Olá! Tenho interesse em investir no empreendimento ${nome}. Gostaria de mais informações.`
+                const phoneNumber = '5511915373813'
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+                console.log('=== BOTÃO QUERO INVESTIR CLICADO ===')
+                console.log('Nome do empreendimento:', nome)
+                console.log('Mensagem:', message)
+                console.log('WhatsApp URL:', whatsappUrl)
+                console.log('Tentando abrir WhatsApp...')
+                
+                try {
+                  const opened = window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+                  if (opened) {
+                    console.log('WhatsApp aberto com sucesso')
+                  } else {
+                    console.log('Pop-up bloqueado, tentando fallback')
+                    window.location.href = whatsappUrl
+                  }
+                } catch (error) {
+                  console.error('Erro ao abrir WhatsApp:', error)
+                  window.location.href = whatsappUrl
+                }
+             }}
+           >
+             Quero Investir
+           </button>
           </motion.div>
         </div>
       </div>

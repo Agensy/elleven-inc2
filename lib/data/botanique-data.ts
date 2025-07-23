@@ -2,7 +2,7 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const botaniqueData: Empreendimento = {
   // Identificação básica
-  id: 2,
+  id: 6,
   slug: "botanique",
   nome: "BOTANIQUE",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",

@@ -2,10 +2,10 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const grandClubCotiaData: Empreendimento = {
   // Identificação básica
-  id: 6,
+  id: 9,
   slug: "grand-club-cotia",
   nome: "Grand Club Cotia",
-  subtitulo: "BREVE LANÇAMENTO",
+  subtitulo: "Entregues",
   slogan: "Espaço, sofisticação e qualidade de vida em um só lugar",
 
   // Localização
@@ -15,12 +15,12 @@ export const grandClubCotiaData: Empreendimento = {
 
   // Características básicas
   tipo: "2 dormitórios",
-  status: "Breve lançamento",
+  status: "Entregues",
   area: "31,06m² a 46,32m²",
   quartos: 2,
   banheiros: 1,
   vagas: 1,
-  entrega: "2019",
+  entrega: "2022",
   preco: 220000,
   precoFormatado: "A partir de R$ 165.000",
 

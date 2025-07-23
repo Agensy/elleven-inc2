@@ -21,9 +21,10 @@ export default function ContatoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Aqui você implementaria o envio do formulário
-    console.log("Formulário enviado:", formData)
-    // Adicionar toast de sucesso aqui
+    // Enviar via WhatsApp
+    const message = `Contato via site - Nome: ${formData.nome}, Email: ${formData.email}, Telefone: ${formData.telefone}, Assunto: ${formData.assunto}, Mensagem: ${formData.mensagem}`
+    const whatsappUrl = `https://wa.me/5511915373813?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -244,7 +245,7 @@ export default function ContatoPage() {
                     <Button 
                       variant="outline" 
                       className="bg-transparent border-white text-white hover:bg-white/10"
-                      onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20o%20empreendimento', '_blank')}
+                      onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20os%20empreendimentos', '_blank')}
                     >
                       <MessageCircle className="mr-2 h-4 w-4" />
                       WhatsApp

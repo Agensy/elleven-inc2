@@ -2,9 +2,10 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const grandParcData: Empreendimento = {
   // Identificação
+  id: 5,
   slug: "grand-parc",
   nome: "Grand Parc",
-  subtitulo: "Em Obras",
+  subtitulo: "Entregue",
   slogan: "Você não mora, você vive melhor!",
 
   // Localização
@@ -20,11 +21,11 @@ export const grandParcData: Empreendimento = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   area: "40m² a 85m²",
   quartos: 3,
   vagas: 2,
-  entrega: "2026",
+  entrega: "2016",
 
   // Preço
   precoFormatado: "A partir de R$ 380.000",
@@ -203,4 +204,10 @@ export const grandParcData: Empreendimento = {
       "Conheça o Grand Parc. Condomínio fechado em Itu com piscina, espaço grill, pista de caminhada e muito mais. Segurança e bem-estar.",
     ogImage: "/empreendimentos/grand-parc/vitrine-grand-parc.webp",
   },
+
+  // Metadados
+  ativo: true,
+  destacado: true,
+  tags: ["itu", "condomínio fechado", "lazer completo", "entregues"],
+  categoria: ["residencial", "condomínio clube"],
 }

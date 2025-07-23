@@ -2,26 +2,19 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const quartierData: Empreendimento = {
   // Informações básicas
+  id: 7,
   nome: "Quartier Residencial Clube",
   slug: "quartier",
-  subtitulo: "Em Obras",
+  subtitulo: "Entregue",
   slogan: "O lar que conecta conforto, segurança e praticidade",
 
   // Localização
   localizacao: "Itapevi, São Paulo - SP",
-  endereco: {
-    rua: "Rua São Geraldo",
-    numero: "89",
-    bairro: "Jardim Portela",
-    cidade: "Itapevi",
-    estado: "SP",
-    cep: "06694-000",
-  },
 
   // Características do imóvel
   tipo: "Residencial",
-  status: "Em Obras",
-  entrega: "2026",
+  status: "Entregues",
+  entrega: "2019",
   area: "36,60m² a 45,82m²",
   quartos: 2,
   vagas: 1,
@@ -227,4 +220,10 @@ Localizado estrategicamente em Itapevi, próximo à Rodovia Castelo Branco, o Qu
     ogDescription: "Viva a qualidade de vida em um condomínio clube com lazer, segurança e praticidade em Itapevi.",
     ogImage: "/empreendimentos/quartier/vitrine-quartier.webp",
   },
+
+  // Metadados
+  ativo: true,
+  destacado: true,
+  tags: ["itapevi", "condomínio fechado", "lazer completo", "entregues"],
+  categoria: ["residencial", "condomínio clube"],
 }

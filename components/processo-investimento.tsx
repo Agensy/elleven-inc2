@@ -133,10 +133,19 @@ export default function ProcessoInvestimento() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-secondary hover:bg-secondary/90 shadow-glow-sm">
+              <Button 
+                size="lg" 
+                className="bg-secondary hover:bg-secondary/90 shadow-glow-sm"
+                onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20como%20investir%20nos%20empreendimentos', '_blank')}
+              >
                 Agendar Consulta Gratuita
               </Button>
-              <Button size="lg" variant="outline" className="border-dark-700 hover:border-dark-600 hover:bg-dark-800">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-dark-700 hover:border-dark-600 hover:bg-dark-800"
+                onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20como%20investir%20nos%20empreendimentos', '_blank')}
+              >
                 Falar com Especialista
               </Button>
             </div>

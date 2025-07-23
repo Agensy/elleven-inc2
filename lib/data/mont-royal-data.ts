@@ -2,26 +2,19 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const montRoyalData: Empreendimento = {
   // Informações básicas
+  id: 10,
   nome: "Mont Royal Condomínio Residencial",
   slug: "mont-royal",
-  subtitulo: "Lançamento",
+  subtitulo: "Entregue",
   slogan: "Viva com elegância e sofisticação",
 
   // Localização
-  localizacao: "São Paulo, São Paulo - SP",
-  endereco: {
-    rua: "Rua das Palmeiras",
-    numero: "150",
-    bairro: "Vila Madalena",
-    cidade: "São Paulo",
-    estado: "SP",
-    cep: "05435-000",
-  },
+  localizacao: "Porto Feliz, São Paulo - SP",
 
   // Características do imóvel
   tipo: "Residencial",
-  status: "Lançamento",
-  entrega: "2025",
+  status: "Entregues",
+  entrega: "2017",
   area: "45m² a 65m²",
   quartos: 2,
   vagas: 1,
@@ -113,54 +106,6 @@ Com apartamentos de 2 dormitórios e uma completa área de lazer, o Mont Royal o
     { nome: "Restaurantes", distancia: "200m", tipo: "comercio" },
   ],
 
-  // Seções da página
-  secoes: {
-    hero: {
-      titulo: "Viva com elegância e sofisticação",
-      subtitulo: "O Mont Royal oferece o melhor em conforto e localização na Vila Madalena",
-      ctas: ["Quero Saber Mais", "Agendar Visita", "Receber Plantas"],
-    },
-
-    sobre: {
-      titulo: "Conheça o Mont Royal",
-      conteudo: `O Mont Royal é um empreendimento que combina elegância, sofisticação e qualidade de vida em um dos bairros mais desejados de São Paulo.
-
-Com apartamentos de 2 dormitórios e uma completa área de lazer, o Mont Royal oferece o melhor em conforto e comodidade. Localizado estrategicamente na Vila Madalena, próximo a restaurantes, bares e com fácil acesso ao transporte público.`,
-    },
-
-    informacoes: {
-      localizacao: {
-        titulo: "Localização Privilegiada",
-        descricao:
-          "Situado na Vila Madalena, um dos bairros mais valorizados de São Paulo, com proximidade ao metrô, restaurantes e vida noturna.",
-      },
-
-      lazer: {
-        titulo: "Lazer e Comodidades",
-        itens: [
-          "Piscina adulto e infantil",
-          "Deck solário",
-          "Espaço gourmet",
-          "Quadra poliesportiva",
-          "Salão de festas",
-          "Fitness center",
-        ],
-      },
-
-      seguranca: {
-        titulo: "Segurança e Conforto",
-        descricao:
-          "Portaria 24h, sistema de monitoramento, controle de acesso e toda segurança que você e sua família merecem.",
-      },
-
-      investimento: {
-        titulo: "Investimento Inteligente",
-        descricao:
-          "Localização valorizada, infraestrutura completa e alto potencial de valorização no mercado imobiliário paulistano.",
-      },
-    },
-  },
-
   // SEO
   seo: {
     title: "Mont Royal Condomínio Residencial - Vila Madalena São Paulo",
@@ -171,4 +116,10 @@ Com apartamentos de 2 dormitórios e uma completa área de lazer, o Mont Royal o
     ogDescription: "Viva com estilo no Mont Royal, o empreendimento mais desejado da Vila Madalena.",
     ogImage: "/empreendimentos/mont-royal/vitrine-mont-royal.webp",
   },
+
+  // Metadados
+  ativo: true,
+  destacado: true,
+  tags: ["porto feliz", "condomínio fechado", "lazer completo", "entregues"],
+  categoria: ["residencial", "condomínio clube"],
 }

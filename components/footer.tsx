@@ -192,9 +192,13 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-white/70 flex-shrink-0" />
-                <p className="text-white/70" style={{ fontSize: "0.875rem" }}>
+                <button 
+                  onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20mais%20sobre%20os%20empreendimentos', '_blank')}
+                  className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer" 
+                  style={{ fontSize: "0.875rem" }}
+                >
                   +55 11 91537-3813
-                </p>
+                </button>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-white/70 flex-shrink-0" />

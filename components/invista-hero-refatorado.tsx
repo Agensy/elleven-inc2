@@ -102,6 +102,7 @@ export default function InvistaHeroRefatorado() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-6 text-lg font-semibold rounded-xl shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 group"
+              onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20como%20investir%20nos%20empreendimentos', '_blank')}
             >
               Quero investir agora
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />

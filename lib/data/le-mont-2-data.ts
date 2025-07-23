@@ -1,7 +1,7 @@
 import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const leMont2Data: Empreendimento = {
-  id: 6,
+  id: 2,
   slug: "le-mont-2",
   nome: "Le Mont 2",
   subtitulo: "CONDOMÍNIO RESIDENCIAL",

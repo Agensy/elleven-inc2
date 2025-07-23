@@ -2,9 +2,10 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const essenceData: Empreendimento = {
   // Identificação
+  id: 8,
   nome: "Essence",
   slug: "essence",
-  subtitulo: "Em Obras",
+  subtitulo: "Entregue",
   slogan: "Viva a tranquilidade de estar em casa",
 
   // Localização
@@ -20,11 +21,11 @@ export const essenceData: Empreendimento = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   area: "40m² a 112m²",
   quartos: 4,
   vagas: 2,
-  entrega: "2026",
+  entrega: "2015",
   precoFormatado: "A partir de R$ 350.000",
 
   // Conteúdo principal
@@ -216,4 +217,10 @@ export const essenceData: Empreendimento = {
       "180 apartamentos em Cotia com 2 a 4 dormitórios, coberturas duplex, piscina, salão de festas, espaço gourmet e muito mais. Segurança e comodidade para toda a família.",
     ogImage: "/empreendimentos/essence/vitrine-essence.webp",
   },
+
+  // Metadados
+  ativo: true,
+  destacado: true,
+  tags: ["cotia", "condomínio fechado", "lazer completo", "entregues"],
+  categoria: ["residencial", "condomínio clube"],
 }

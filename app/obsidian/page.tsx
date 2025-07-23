@@ -3,20 +3,20 @@ import { EmpreendimentoPage } from "@/components/empreendimento"
 import { buscarEmpreendimentoPorSlug } from "@/lib/data/empreendimentos-master"
 
 export const metadata: Metadata = {
-  title: "Obsidian - Breve Lançamento Pinheiros by Gemini | Elleven Engenharia",
+  title: "Obsidian - Studios de Alto Padrão Pinheiros by Gemini | Elleven Engenharia",
   description:
-    "Obsidian - Breve lançamento em Pinheiros by Gemini. Apartamentos de alto padrão com design contemporâneo, próximo à Oscar Freire. Exclusividade e sofisticação.",
-  keywords: "obsidian pinheiros, apartamentos pinheiros, gemini pinheiros, oscar freire apartamentos, alto padrão pinheiros",
+    "Obsidian - Studios de alto padrão em Pinheiros by Gemini. A 40m da Oscar Freire e 100m do metrô. Design contemporâneo, acabamentos premium e localização privilegiada.",
+  keywords: "obsidian pinheiros, studios pinheiros, gemini pinheiros, oscar freire apartamentos, alto padrão pinheiros, studios são paulo, pinheiros investimento",
   openGraph: {
     title: "Obsidian Pinheiros - Viva a Exclusividade",
     description:
-      "Breve lançamento em Pinheiros by Gemini. Design contemporâneo com acabamentos premium, localização privilegiada próxima à Oscar Freire.",
+      "Studios de alto padrão em Pinheiros by Gemini. A 40m da Oscar Freire e 100m do metrô. 41 unidades exclusivas com fechadura inteligente e rooftop com vista panorâmica.",
     images: [
       {
         url: "/empreendimentos/obsidian/fachadas/fachada 001.jpeg",
         width: 1200,
         height: 630,
-        alt: "Obsidian - Breve Lançamento Pinheiros",
+        alt: "Obsidian - Studios de Alto Padrão Pinheiros",
       },
     ],
   },

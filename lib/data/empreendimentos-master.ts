@@ -7,6 +7,7 @@ import { essenceData } from "./essence-data"
 import { grandParcData } from "./grand-parc-data"
 import { montRoyalData } from "./mont-royal-data"
 import { quartierData } from "./quartier-data"
+import { obsidianData } from "./obsidian-data"
 
 /**
  * =============================================================================
@@ -138,7 +139,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // BOTANIQUE
   {
-    ...converterTemplateParaEmpreendimento(botaniqueData, 2),
+    ...botaniqueData,
     slug: "botanique", // Para usar getEmpreendimentoUrl
     destacado: true,
     tags: ["natureza", "cotia", "bosque"],
@@ -147,7 +148,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // VERT - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(vertData, 7),
+    ...vertData,
     slug: "vert",
     destacado: true,
     tags: ["itu", "condomínio fechado", "street ball"],
@@ -158,7 +159,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // ESSENCE - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(essenceData, 8),
+    ...essenceData,
     slug: "essence",
     destacado: true,
     tags: ["cotia", "coberturas duplex", "academia"],
@@ -169,7 +170,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // GRAND PARC - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(grandParcData, 9),
+    ...grandParcData,
     slug: "grand-parc",
     destacado: true,
     tags: ["itu", "pista de caminhada", "poço artesiano"],
@@ -180,7 +181,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // MONT ROYAL - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(montRoyalData, 10),
+    ...montRoyalData,
     slug: "mont-royal",
     destacado: true,
     tags: ["porto feliz", "espaço zen", "deck solário"],
@@ -191,7 +192,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // QUARTIER - NOVO EMPREENDIMENTO
   {
-    ...converterTemplateParaEmpreendimento(quartierData, 11),
+    ...quartierData,
     slug: "quartier",
     destacado: true,
     tags: ["itapevi", "castelo branco", "brinquedoteca"],
@@ -202,10 +203,10 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // GRAND CLUB COTIA - NOVO EMPREENDIMENTO
   {
-    id: 6,
+    id: 9,
     nome: "Grand Club Cotia",
     slug: "grand-club-cotia",
-    subtitulo: "BREVE LANÇAMENTO",
+    subtitulo: "Entregues",
     slogan: "Espaço, sofisticação e qualidade de vida em um só lugar",
     localizacao: "R. Geraldo Otaviano de Almeida, 1025 - Bairro Nakamura Park, Cotia - SP",
     bairro: "Nakamura Park",
@@ -213,7 +214,7 @@ export const empreendimentosMaster: Empreendimento[] = [
     coordenadas: { lat: -23.6037, lng: -46.9189 },
     tipo: "2 dormitórios" as EmpreendimentoTipo,
     status: "Entregues" as EmpreendimentoStatus,
-    entrega: "2019",
+    entrega: "2022",
     area: "31,06m² a 46,32m²",
     quartos: 2,
     banheiros: 1,
@@ -325,7 +326,7 @@ export const empreendimentosMaster: Empreendimento[] = [
 
   // JADE
   {
-    id: 3,
+    id: 11,
     nome: "Jade",
     slug: "jade",
     subtitulo: "LANÇAMENTO EXCLUSIVO",
@@ -410,67 +411,15 @@ export const empreendimentosMaster: Empreendimento[] = [
 
 
 
-  // OBSIDIAN
+  // OBSIDIAN - DADOS COMPLETOS REFATORADOS
   {
-    id: 4,
-    nome: "Obsidian",
-    slug: "obsidian",
-    subtitulo: "BREVE LANÇAMENTO by Gemini",
-    slogan: "Viva a Exclusividade",
-    localizacao: "Pinheiros, São Paulo - SP",
-    bairro: "Pinheiros",
-
-    coordenadas: { lat: -23.564608, lng: -46.682358 },
-    tipo: "2 dormitórios" as EmpreendimentoTipo,
-    status: "Breve lançamento" as EmpreendimentoStatus,
-    entrega: "2027",
-    area: "70m²",
-    quartos: 2,
-    banheiros: 2,
-    vagas: 1,
-    preco: 950000,
-    precoFormatado: "A partir de R$ 950.000",
-    descricao:
-      "Localizado em Pinheiros-SP. Uma das regiões mais nobres e valorizadas da cidade, o OBSIDIAN de alto padrão é o empreendimento perfeito para quem busca um estilo de vida sofisticado, design, moderno e prático. Com projeto arquitetônico inovador, o imóvel foi desenvolvido para oferecer a máxima excelência em qualidade, conforto e funcionalidade.",
-    imagem: "/empreendimentos/obsidian/fachadas/fachada 001.jpeg",
-    imagemDestaque: "/empreendimentos/obsidian/background-obsidian.jpeg",
-    galeria: [
-      "/empreendimentos/obsidian/fachadas/fachada 001.jpeg",
-      "/empreendimentos/obsidian/fachadas/fachada 002.jpeg",
-      "/empreendimentos/obsidian/fachadas/fachada 003.jpeg",
-    ],
-    identidadeVisual: {
-      logo: "/empreendimentos/obsidian/logo-obsidian.png",
-      corPrimaria: "#DBA47A",
-      corSecundaria: "#2D2D2D",
-      imagemBackground: "/empreendimentos/obsidian/background-obsidian.jpeg",
-    },
-    diferenciais: [
-      "Localização privilegiada em região nobre",
-      "Design contemporâneo com acabamentos premium",
-      "Áreas comuns equipadas e decoradas",
-      "Tecnologia e sustentabilidade integradas",
-    ],
-    pontos_interesse: [
-      { nome: "Estação de Metrô Oscar Freire", distancia: "100m", tipo: "transporte" },
-      { nome: "Oscar Freire", distancia: "40m", tipo: "comercio" },
-    ],
-    plantas: [],
-    especificacoes: {
-      unidades: "80 unidades",
-      andares: "15 andares",
-      elevadores: "2 elevadores",
-      entrega: "2027",
-    },
-    ativo: true,
+    ...obsidianData,
     destacado: true,
-    tags: ["luxo", "pinheiros", "gemini"],
-    categoria: ["residencial", "alto padrão"],
   },
 
   // ICARAÍ PARQUE CLUBE
   {
-    id: 5,
+    id: 12,
     nome: "Icaraí Parque Clube",
     slug: "icarai-parque-clube",
     subtitulo: "Em Obras",

@@ -2,9 +2,10 @@ import type { Empreendimento } from "@/lib/types/empreendimento"
 
 export const vertData: Empreendimento = {
   // Identificação
+  id: 3,
   slug: "vert",
   nome: "Vert Condomínio Residencial",
-  subtitulo: "Em Obras",
+  subtitulo: "Entregue",
   slogan: "Um novo jeito de viver com qualidade e segurança",
 
   // Localização
@@ -20,11 +21,11 @@ export const vertData: Empreendimento = {
 
   // Características básicas
   tipo: "Residencial",
-  status: "Em Obras",
+  status: "Entregues",
   area: "42m² a 85m²",
   quartos: 2,
   vagas: 1,
-  entrega: "2026",
+  entrega: "2016",
   precoFormatado: "A partir de R$ 280.000",
 
   // Conteúdo principal
@@ -185,4 +186,10 @@ export const vertData: Empreendimento = {
       "Apartamentos em Itu com piscina, salão de festas, espaço gourmet e muito mais. Segurança e bem-estar para toda a família.",
     ogImage: "/empreendimentos/vert/vitrine-vert.webp",
   },
+
+  // Metadados
+  ativo: true,
+  destacado: true,
+  tags: ["itu", "condomínio fechado", "lazer completo", "entregues"],
+  categoria: ["residencial", "condomínio clube"],
 }

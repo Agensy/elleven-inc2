@@ -136,12 +136,19 @@ export default function InvestimentoSectionImproved() {
               transition={{ delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <Button className="btn-accent group shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/30">
+              <Button 
+                className="btn-accent group shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/30"
+                onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20como%20investir%20nos%20empreendimentos', '_blank')}
+              >
                 Quero Investir
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
 
-              <Button variant="outline" className="btn-secondary border-2">
+              <Button 
+                variant="outline" 
+                className="btn-secondary border-2"
+                onClick={() => window.open('https://wa.me/5511915373813?text=Quero%20saber%20como%20investir%20nos%20empreendimentos', '_blank')}
+              >
                 Simular Investimento
               </Button>
             </motion.div>

@@ -152,22 +152,18 @@ export default function EmpreendimentoPlantas({
                 <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Área: {plantaPrincipal.area}</span>
               </div>
-              {plantaPrincipal.tipo !== "Studio" && plantaPrincipal.quartos > 0 && (
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Quartos: {plantaPrincipal.quartos}</span>
-                </div>
-              )}
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
+                <span className="text-gray-700">Quartos: {plantaPrincipal.quartos}</span>
+              </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Banheiros: {plantaPrincipal.banheiros}</span>
               </div>
-              {plantaPrincipal.tipo !== "Studio" && plantaPrincipal.vagas > 0 && (
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Vagas: {plantaPrincipal.vagas}</span>
-                </div>
-              )}
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
+                <span className="text-gray-700">Vagas: {plantaPrincipal.vagas}</span>
+              </div>
               {plantaPrincipal.descricao && (
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-[#192849] flex-shrink-0 mt-0.5" />
@@ -222,9 +218,9 @@ export default function EmpreendimentoPlantas({
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">{planta.tipo}</h4>
                   <div className="space-y-1 text-sm text-gray-600">
                     <p>Área: {planta.area}</p>
-                    {planta.tipo !== "Studio" && planta.quartos > 0 && <p>Quartos: {planta.quartos}</p>}
+                    <p>Quartos: {planta.quartos}</p>
                     <p>Banheiros: {planta.banheiros}</p>
-                    {planta.tipo !== "Studio" && planta.vagas > 0 && <p>Vagas: {planta.vagas}</p>}
+                    <p>Vagas: {planta.vagas}</p>
                   </div>
                   <div className="mt-4 text-lg font-bold" style={{ color: corPrimaria }}>
                     {planta.preco}
@@ -236,9 +232,9 @@ export default function EmpreendimentoPlantas({
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">{tipologia.nome}</h4>
                   <div className="space-y-1 text-sm text-gray-600">
                     <p>Área: {tipologia.area}</p>
-                    {tipologia.nome !== "Studio" && tipologia.quartos > 0 && <p>Quartos: {tipologia.quartos}</p>}
+                    <p>Quartos: {tipologia.quartos}</p>
                     <p>Banheiros: {tipologia.banheiros}</p>
-                    {tipologia.nome !== "Studio" && tipologia.vagas > 0 && <p>Vagas: {tipologia.vagas}</p>}
+                    <p>Vagas: {tipologia.vagas}</p>
                   </div>
                   <div className="mt-4 text-lg font-bold" style={{ color: corPrimaria }}>
                     Consulte valores

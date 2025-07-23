@@ -45,39 +45,38 @@ export default function EmpreendimentoSobre({
             {/* Grid de Informações */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Características */}
-              {(tipo || area) && (
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Características</h3>
-                  <div className="space-y-3">
-                    {tipo && (
-                      <div>
-                        <p className="text-sm font-medium text-gray-500 mb-1">Tipo</p>
-                        <p className="text-gray-900">
-                          {tipo}{area && ` (${area})`}
-                        </p>
-                      </div>
-                    )}
-                    {!tipo && area && (
-                      <div>
-                        <p className="text-sm font-medium text-gray-500 mb-1">Área</p>
-                        <p className="text-gray-900">{area}</p>
-                      </div>
-                    )}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Características</h3>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Tipo</p>
+                    <p className="text-gray-900">
+                      {tipo} ({area})
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Lazer</p>
+                    <p className="text-gray-900">Infraestrutura Completa</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500 mb-1">Tecnologia</p>
+                    <p className="text-gray-900">Acesso inteligente</p>
                   </div>
                 </div>
-              )}
+              </div>
 
               {/* Localização */}
-              {localizacao && (
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Localização</h3>
-                  <div className="space-y-3">
-                    <div>
-                      <p className="text-gray-900 font-medium">{localizacao}</p>
-                    </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Localização</h3>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-gray-900 font-medium">{endereco}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-900">{localizacao}</p>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </motion.div>
 

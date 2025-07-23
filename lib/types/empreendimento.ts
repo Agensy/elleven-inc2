@@ -50,9 +50,9 @@ export interface Planta {
   id: number
   tipo: string
   area: string
-  quartos?: number
+  quartos: number
   banheiros: number
-  vagas?: number
+  vagas: number
   imagem: string
   preco: string
   descricao: string
@@ -65,8 +65,6 @@ export interface EspecificacoesTecnicas {
   andares: string
   elevadores: string
   entrega: string
-  rooftop?: string
-  academia?: string
 }
 
 // Interface para identidade visual do empreendimento

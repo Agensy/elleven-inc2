@@ -25,19 +25,7 @@ export default function EmpreendimentoInformacoes({
   informacoes,
   endereco
 }: EmpreendimentoInformacoesProps) {
-  // Filtrar informações válidas
-  const informacoesValidas = informacoes.filter(info => 
-    info && info.titulo && info.detalhes && 
-    info.detalhes.titulo && info.detalhes.pontos && 
-    info.detalhes.pontos.length > 0
-  )
-  
-  // Se não há informações válidas, não renderizar o componente
-  if (!informacoesValidas || informacoesValidas.length === 0) {
-    return null
-  }
-  
-  const [activeInfo, setActiveInfo] = useState(informacoesValidas[0]?.id || "localizacao")
+  const [activeInfo, setActiveInfo] = useState("localizacao")
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -48,7 +36,7 @@ export default function EmpreendimentoInformacoes({
 
   // Função para obter os detalhes da informação ativa
   const getActiveInfoDetails = () => {
-    return informacoesValidas.find((info) => info.id === activeInfo)?.detalhes
+    return informacoes.find((info) => info.id === activeInfo)?.detalhes
   }
 
   // Função para renderizar ícone de forma segura
@@ -73,7 +61,7 @@ export default function EmpreendimentoInformacoes({
         <div className="max-w-6xl mx-auto">
           <div className="border-b border-gray-200 mb-8">
             <nav className="flex space-x-8 overflow-x-auto">
-              {informacoesValidas.map((tab) => (
+              {informacoes.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveInfo(tab.id)}

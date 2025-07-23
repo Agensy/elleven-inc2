@@ -28,59 +28,59 @@
 
 ## 📊 Resultados Atuais
 
-```
+\`\`\`
 Página Principal: 189kB (24.1kB próprio + 165kB shared)
 Páginas de Empreendimentos: ~166kB cada
 Páginas Especiais: 153-198kB
-```
+\`\`\`
 
 ## 🎯 Recomendações Adicionais
 
 ### 1. **Otimização de Imagens Avançada**
-```bash
+\`\`\`bash
 # Instalar ferramentas de otimização
 npm install --save-dev imagemin imagemin-webp imagemin-avif
-```
+\`\`\`
 
 ### 2. **Preload de Recursos Críticos**
-```tsx
+\`\`\`tsx
 // Em app/layout.tsx
 <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="" />
 <link rel="preconnect" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
-```
+\`\`\`
 
 ### 3. **Service Worker para Cache**
-```javascript
+\`\`\`javascript
 // Implementar PWA para cache offline
 // Usar next-pwa ou workbox
-```
+\`\`\`
 
 ### 4. **Otimização de CSS**
-```bash
+\`\`\`bash
 # Purge CSS não utilizado
 npm install --save-dev @fullhuman/postcss-purgecss
-```
+\`\`\`
 
 ### 5. **Compressão Adicional**
-```javascript
+\`\`\`javascript
 // next.config.mjs
 compression: true,
 swcMinify: true,
-```
+\`\`\`
 
 ## 🔧 Scripts de Build Otimizados
 
 ### Desenvolvimento
-```bash
+\`\`\`bash
 npm run dev          # Desenvolvimento normal
-```
+\`\`\`
 
 ### Produção
-```bash
+\`\`\`bash
 npm run build        # Build otimizado
 npm run build:analyze # Build com análise de bundle
 npm run optimize     # Lint + Build
-```
+\`\`\`
 
 ## 📈 Métricas de Performance
 
@@ -110,16 +110,16 @@ npm run optimize     # Lint + Build
 ## 🚀 Deploy Otimizado
 
 ### 1. **CDN Configuration**
-```javascript
+\`\`\`javascript
 // Configurar headers de cache
 Cache-Control: public, max-age=31536000, immutable
-```
+\`\`\`
 
 ### 2. **Gzip/Brotli**
-```javascript
+\`\`\`javascript
 // Compressão automática no servidor
 Content-Encoding: br
-```
+\`\`\`
 
 ## 📱 Mobile Optimization
 
@@ -134,16 +134,16 @@ Content-Encoding: br
 ## 🔍 Monitoramento
 
 ### 1. **Analytics de Performance**
-```javascript
+\`\`\`javascript
 // Implementar Web Vitals tracking
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals'
-```
+\`\`\`
 
 ### 2. **Error Tracking**
-```javascript
+\`\`\`javascript
 // Sentry ou similar para monitoramento
 // Tracking de erros de carregamento
-```
+\`\`\`
 
 ## 📋 Checklist de Deploy
 

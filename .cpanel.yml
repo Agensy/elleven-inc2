@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/Julio861/elleven
+    - /bin/cp -R * $DEPLOYPATH

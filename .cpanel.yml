@@ -1,4 +1,6 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/Julio861/elleven
-    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home2/julio861/public_html/elleven
+    - npm install --production
+    - npm run build
+    - /bin/cp -R dist/* $DEPLOYPATH
